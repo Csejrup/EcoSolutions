@@ -10,10 +10,25 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("presentation/views/mainmenu.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
+
+        try {
+
+            Parent root = FXMLLoader.load(getClass().getResource("presentation/views/loginsceen.fxml"));
+            primaryStage.setScene(new Scene(root));
+            root.getStylesheets().add("style.css");
+            primaryStage.setTitle("Hello World");
+            primaryStage.setResizable(false);
+         //   primaryStage.setScene(new Scene(root, 300, 275));
+            primaryStage.show();
+
+
+
+        }catch(Exception e){
+            e.printStackTrace();
+
+        }
+
+
     }
 
 

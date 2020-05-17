@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="rootpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.loginController">
+   <children>
+      <Pane layoutX="85.0" layoutY="50.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff; -fx-background-radius: 40px;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Label layoutX="226.0" layoutY="46.0" text="Eco Solutions" textFill="#1e00c9">
+               <font>
+                  <Font name="Myanmar Text" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="224.0" layoutY="80.0" prefHeight="34.0" prefWidth="156.0" text=" Welcome to Eco Solutions" textAlignment="CENTER" textFill="#b2b2b2" />
+            <JFXTextField fx:id="txtUserName" focusColor="#b90808" layoutX="194.0" layoutY="144.0" prefHeight="25.0" prefWidth="215.0" promptText="Username">
+               <font>
+                  <Font name="Myanmar Text" size="12.0" />
+               </font>
+            </JFXTextField>
+            <JFXPasswordField fx:id="txtPW" focusColor="#b90808" layoutX="195.0" layoutY="225.0" prefHeight="25.0" prefWidth="215.0" promptText="Password">
+               <font>
+                  <Font name="Myanmar Text" size="12.0" />
+               </font>
+            </JFXPasswordField>
+            <JFXButton fx:id="btnLogIn" layoutX="243.0" layoutY="310.0" onAction="#handleLogIn" prefHeight="34.0" prefWidth="111.0" style="-fx-background-color: #b90808; -fx-background-radius: 50px;" text="Log In" textFill="WHITE">
+               <font>
+                  <Font name="Myanmar Text" size="12.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="198.0" layoutY="369.0" text="Forgot Password" textFill="#b2b2b2" />
+            <Label layoutX="301.0" layoutY="369.0" text="Create new Password" textFill="#b2b2b2" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

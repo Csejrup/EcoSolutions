@@ -20,9 +20,9 @@ public abstract class AbstractController {
      */
     protected void loadScreen(Stage primaryStage, String layoutfile){
         try{
-            Parent root = FXMLLoader.load(getClass().getResource("/GUI/layouts/" + layoutfile));
+            Parent root = FXMLLoader.load(getClass().getResource("ecosolutions/presentation/views/" + layoutfile));
             Scene scene = new Scene(root);
-            primaryStage.setTitle("ECCO Canteen");
+            primaryStage.setTitle("Eco Solutions");
             primaryStage.setScene(scene);
             primaryStage.show();
         }catch(IOException e){
