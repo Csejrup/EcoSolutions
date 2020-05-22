@@ -25,6 +25,8 @@ public abstract class AbstractController {
             primaryStage.setTitle("Eco Solutions");
             primaryStage.setScene(scene);
             primaryStage.show();
+
+
         }catch(IOException e){
             e.printStackTrace();
         }
