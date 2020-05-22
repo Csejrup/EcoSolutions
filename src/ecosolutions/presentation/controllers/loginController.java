@@ -13,11 +13,11 @@ import java.io.IOException;
 
 public class loginController extends AbstractController{
 
-    @FXML
-    private AnchorPane rootpane;
+    @FXML private AnchorPane rootpane;
 
-    @FXML
-    private JFXTextField txtUserName;
+
+    @FXML private JFXTextField txtUserName;
+
 
     @FXML
     private JFXPasswordField txtPW;
@@ -28,6 +28,7 @@ public class loginController extends AbstractController{
     @FXML
     void handleLogIn(ActionEvent event) throws IOException
     {
+        /*
         //(txtPW.getText().equals("1234") && txtUserName.getText().equals("johnwick")
         if(txtPW.getText().equals(""))
         {
@@ -38,5 +39,7 @@ public class loginController extends AbstractController{
         {
           //  info1.setText("Password is incorrect. Please Try Again");
         }
+
+         */
     }
 }
