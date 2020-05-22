@@ -18,7 +18,6 @@ public class loginController extends AbstractController{
 
     @FXML private JFXTextField txtUserName;
 
-
     @FXML
     private JFXPasswordField txtPW;
 
@@ -28,6 +27,8 @@ public class loginController extends AbstractController{
     @FXML
     void handleLogIn(ActionEvent event) throws IOException
     {
+        if(txtPW.getText().equals("A"));
+
         /*
         //(txtPW.getText().equals("1234") && txtUserName.getText().equals("johnwick")
         if(txtPW.getText().equals(""))
