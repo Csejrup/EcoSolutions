@@ -1,4 +1,4 @@
-package ecosolutions.presentation.controllers;
+package ecosolutions.View.GUI_CONTROLLERS;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,7 +20,7 @@ public abstract class AbstractController {
      */
     protected void loadScreen(Stage primaryStage, String layoutfile){
         try{
-            Parent root = FXMLLoader.load(getClass().getResource("ecosolutions/presentation/views/" + layoutfile));
+            Parent root = FXMLLoader.load(getClass().getResource("ecosolutions/View/fxml/" + layoutfile));
             Scene scene = new Scene(root);
             primaryStage.setTitle("Eco Solutions");
             primaryStage.setScene(scene);

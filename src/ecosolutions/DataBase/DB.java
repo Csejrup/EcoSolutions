@@ -1,4 +1,4 @@
-package ecosolutions.persistence;
+package ecosolutions.DataBase;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -36,11 +36,11 @@ public class DB {
                     userName=props.getProperty("userName", "sa");
                     password=props.getProperty("password");
                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                System.out.println("Database Driver Ready");
+                System.out.println("Database ecosolutions.Account.Driver Ready");
 
             }catch(Exception e){
                 e.printStackTrace();
-                System.out.println("Driver Failed");
+                System.out.println("ecosolutions.Account.Driver Failed");
             }
         }
         /**

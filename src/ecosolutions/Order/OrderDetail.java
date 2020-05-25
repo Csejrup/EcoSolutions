@@ -1,3 +1,5 @@
+package ecosolutions.Order;
+
 public class OrderDetail {
 
 	private int qty;
@@ -25,7 +27,7 @@ public class OrderDetail {
 	 * @param clothType
 	 */
 	public void setClothType(String clothType) {
-		// TODO - implement OrderDetail.setClothType
+		// TODO - implement ecosolutions.Order.OrderDetail.setClothType
 		throw new UnsupportedOperationException();
 	}
 
@@ -38,7 +40,7 @@ public class OrderDetail {
 	 * @param date
 	 */
 	public void setDate(String date) {
-		// TODO - implement OrderDetail.setDate
+		// TODO - implement ecosolutions.Order.OrderDetail.setDate
 		throw new UnsupportedOperationException();
 	}
 

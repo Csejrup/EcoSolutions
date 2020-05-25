@@ -1,3 +1,5 @@
+package ecosolutions.Order;
+
 public enum OrderStatus {
 	;
 
