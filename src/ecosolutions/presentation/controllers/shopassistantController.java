@@ -8,8 +8,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
-public class shopassistantController {
+public class shopassistantController extends AbstractController{
+    @FXML
+    private JFXButton btnLogOut;
 
     @FXML
     private AnchorPane rootpane;
@@ -37,7 +40,8 @@ public class shopassistantController {
 
     @FXML
     void handleLogOut(ActionEvent event) {
-
+        Stage stage = (Stage) btnLogOut.getScene().getWindow();
+        loadScreen(stage, "loginscreen.fxml");
     }
 
     @FXML

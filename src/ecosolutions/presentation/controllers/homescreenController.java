@@ -1,4 +1,4 @@
 package ecosolutions.presentation.controllers;
 
-public class homescreenController {
+public class homescreenController extends AbstractController{
 }

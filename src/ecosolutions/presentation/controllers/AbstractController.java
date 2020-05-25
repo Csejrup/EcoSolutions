@@ -20,13 +20,13 @@ public abstract class AbstractController {
      */
     protected void loadScreen(Stage primaryStage, String layoutfile){
         try{
-            Parent root = FXMLLoader.load(getClass().getResource("ecosolutions/presentation/views/" + layoutfile));
+            System.out.println(layoutfile);
+            Parent root = FXMLLoader.load(getClass().getResource("/ecosolutions/presentation/views/" + layoutfile));
             Scene scene = new Scene(root);
+            root.getStylesheets().add("style.css");
             primaryStage.setTitle("Eco Solutions");
             primaryStage.setScene(scene);
             primaryStage.show();
-
-
         }catch(IOException e){
             e.printStackTrace();
         }

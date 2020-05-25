@@ -1,4 +1,4 @@
 package ecosolutions.presentation.controllers;
 
-public class customerController {
+public class customerController extends AbstractController {
 }
