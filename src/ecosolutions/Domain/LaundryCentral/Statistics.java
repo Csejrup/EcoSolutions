@@ -1,14 +1,16 @@
+package ecosolutions.Domain.LaundryCentral;
+
 public class Statistics {
 
 	private int orderstat;
 
 	public void genOrderStat() {
-		// TODO - implement Statistics.genOrderStat
+		// TODO - implement ecosolutions.Domain.LaundryCentral.Statistics.genOrderStat
 		throw new UnsupportedOperationException();
 	}
 
 	public void getOrderstat() {
-		// TODO - implement Statistics.getOrderstat
+		// TODO - implement ecosolutions.Domain.LaundryCentral.Statistics.getOrderstat
 		throw new UnsupportedOperationException();
 	}
 

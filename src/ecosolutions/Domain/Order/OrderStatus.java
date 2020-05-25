@@ -1,3 +1,5 @@
+package ecosolutions.Domain.Order;
+
 public enum OrderStatus {
 	;
 

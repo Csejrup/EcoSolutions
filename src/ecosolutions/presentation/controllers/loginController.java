@@ -3,9 +3,11 @@ package ecosolutions.presentation.controllers;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import ecosolutions.Domain.Account.Account;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -27,20 +29,28 @@ public class loginController extends AbstractController{
     @FXML
     void handleLogIn(ActionEvent event) throws IOException
     {
-        if(txtPW.getText().equals("A"));
+        String userName = txtUserName.getText();
+        String password = txtPW.getText();
+        btnLogIn.setOnAction(e->{
+            boolean loggedin = Account.verifyLogin(userName, password);
+            if(loggedin){
+                if(userName.startsWith("m")){
 
-        /*
-        //(txtPW.getText().equals("1234") && txtUserName.getText().equals("johnwick")
-        if(txtPW.getText().equals(""))
-        {
-            Stage mainWindow = (Stage)((Node)event.getSource()).getScene().getWindow();
-            loadScreen(mainWindow, "loginscreen.fxml");
-        }
-        else
-        {
-          //  info1.setText("Password is incorrect. Please Try Again");
-        }
+                    //LOAD NEW SCREEN FOR MANAGER
+                }
+                if(userName.startsWith("s")){
+                    //LOAD NEW SCREEN FOR SHOPASSISTANT
+                }
+                if(userName.startsWith("d")){
+                    //LOAD NEW SCREEN FOR DRIVER
+                }
+            }else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("INCORRECT LOGIN, TRY AGAIN");
+                alert.setHeaderText("BAD LOGIN");
+                alert.show();
+            }
+        });
 
-         */
     }
 }
