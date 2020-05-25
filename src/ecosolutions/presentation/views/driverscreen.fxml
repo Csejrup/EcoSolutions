@@ -27,7 +27,7 @@
                         <Font name="Myanmar Text" size="12.0" />
                      </font>
                   </JFXCheckBox>
-                  <JFXButton fx:id="driverLogOut" layoutX="23.0" layoutY="208.0" onAction="#handleLogOut" prefHeight="37.0" prefWidth="116.0" style="-fx-background-color: #b90808; -fx-background-radius: 50px;" text="Log Out" textFill="WHITE">
+                  <JFXButton fx:id="btnLogOut" layoutX="23.0" layoutY="208.0" onAction="#handleLogOut" prefHeight="37.0" prefWidth="116.0" style="-fx-background-color: #b90808; -fx-background-radius: 50px;" text="Log Out" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text Bold" size="12.0" />
                      </font>
@@ -50,7 +50,7 @@
          <top>
             <Pane prefHeight="62.0" prefWidth="516.0" style="-fx-background-color: #b90808;" BorderPane.alignment="CENTER">
                <children>
-                  <Label alignment="CENTER" layoutY="7.0" prefHeight="48.0" prefWidth="181.0" style="-fx-background-color: #b90808;" text="Update Order" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="-11.0" layoutY="7.0" prefHeight="48.0" prefWidth="181.0" style="-fx-background-color: #b90808;" text="Update Order" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text" size="20.0" />
                      </font>

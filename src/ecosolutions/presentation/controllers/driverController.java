@@ -4,8 +4,11 @@ import com.jfoenix.controls.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
-public class driverController {
+public class driverController extends AbstractController{
+    @FXML
+    private JFXButton btnLogOut;
 
     @FXML
     private JFXCheckBox checkBoxUp;
@@ -30,7 +33,8 @@ public class driverController {
 
     @FXML
     void handleLogOut(ActionEvent event) {
-
+        Stage stage = (Stage) btnLogOut.getScene().getWindow();
+        loadScreen(stage, "loginscreen.fxml");
     }
 
 }
