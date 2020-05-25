@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import ecosolutions.Domain.Account.Account;
+import ecosolutions.persistence.DB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -31,8 +32,9 @@ public class loginController extends AbstractController{
     @FXML
     void handleLogIn(ActionEvent event) throws IOException
     {
-        String userName = txtUserName.getText();
+        String employeeID = txtUserName.getText();
         String password = txtPW.getText();
+
        // btnLogIn.setOnAction(e->{
             //boolean loggedin = Account.verifyLogin(userName, password);
            // if(loggedin){
@@ -46,15 +48,31 @@ public class loginController extends AbstractController{
                     System.out.println("hej");
                     Stage stage = (Stage) btnLogIn.getScene().getWindow();
                     loadScreen(stage, "shopassistantscreen.fxml");
+  /*
+  //JBDC CODE NOT IN CONTROLLER!!!!!!!
+        btnLogIn.setOnAction(e->{
+            boolean loggedin = Account.verifyLogin(employeeID, password);
+            DB.selectSQL("SELECT fldRole from tblRole where fldEmployeeID = '"+employeeID+"';");
+            String Role = DB.getQueryData();
+            if(loggedin){
+                if(Role.equals("Manager")){
+
+                    //LOAD NEW SCREEN FOR MANAGER
+                }
+                if(Role.equals("ShopAssistant")){
 
                     //LOAD NEW SCREEN FOR SHOPASSISTANT
-
                 }
+                */              
                 if(userName.startsWith("d")){
                     Stage stage = (Stage) btnLogIn.getScene().getWindow();
                     loadScreen(stage, "driverscreen.fxml");
+  /*
+                if(Role.equals("Driver")){
+
                     //LOAD NEW SCREEN FOR DRIVER
                 }
+                */
                     if(userName.startsWith("l")){
                         Stage stage = (Stage) btnLogIn.getScene().getWindow();
                         loadScreen(stage, "cleaningscreen.fxml");
