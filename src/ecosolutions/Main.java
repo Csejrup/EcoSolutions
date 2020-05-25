@@ -13,7 +13,7 @@ public class Main extends Application {
 
         try {
 
-            Parent root = FXMLLoader.load(getClass().getResource("presentation/views/driverscreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("presentation/views/loginscreen.fxml"));
             primaryStage.setScene(new Scene(root));
             root.getStylesheets().add("style.css");
             primaryStage.setTitle("Eco Solutions");
