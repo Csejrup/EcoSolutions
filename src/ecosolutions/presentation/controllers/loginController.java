@@ -39,15 +39,16 @@ public class loginController extends AbstractController{
             //boolean loggedin = Account.verifyLogin(userName, password);
            // if(loggedin){
                 if(true){
-                if(userName.startsWith("m")){
+                if(employeeID.startsWith("m")){
                     Stage stage = (Stage) btnLogIn.getScene().getWindow();
                     loadScreen(stage, "managerscreen.fxml");
                     //LOAD NEW SCREEN FOR MANAGER
                 }
-                if(userName.startsWith("s")){
+                if(employeeID.startsWith("s")) {
                     System.out.println("hej");
                     Stage stage = (Stage) btnLogIn.getScene().getWindow();
                     loadScreen(stage, "shopassistantscreen.fxml");
+                }
   /*
   //JBDC CODE NOT IN CONTROLLER!!!!!!!
         btnLogIn.setOnAction(e->{
@@ -64,16 +65,17 @@ public class loginController extends AbstractController{
                     //LOAD NEW SCREEN FOR SHOPASSISTANT
                 }
                 */              
-                if(userName.startsWith("d")){
+                if(employeeID.startsWith("d")) {
                     Stage stage = (Stage) btnLogIn.getScene().getWindow();
                     loadScreen(stage, "driverscreen.fxml");
+                }
   /*
                 if(Role.equals("Driver")){
 
                     //LOAD NEW SCREEN FOR DRIVER
                 }
                 */
-                    if(userName.startsWith("l")){
+                    if(employeeID.startsWith("l")){
                         Stage stage = (Stage) btnLogIn.getScene().getWindow();
                         loadScreen(stage, "cleaningscreen.fxml");
                         //LOAD NEW SCREEN FOR DRIVER
