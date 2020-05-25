@@ -36,6 +36,11 @@ public class shopassistantController {
     private TextField qtyTextField;
 
     @FXML
+    void handleLogOut(ActionEvent event) {
+
+    }
+
+    @FXML
     void handleOrderConfirm(ActionEvent event) {
 
     }

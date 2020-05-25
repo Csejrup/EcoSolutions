@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="ecosolutions.presentation.controllers.laundryworkerController" prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="512.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.laundryworkerController">
+   <children>
+      <BorderPane layoutX="-2.0" layoutY="-1.0" prefHeight="512.0" prefWidth="693.0">
+         <left>
+            <Pane prefHeight="451.0" prefWidth="211.0" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXTextField layoutX="38.0" layoutY="52.0" text="Order Number" />
+                  <JFXTextField layoutX="38.0" layoutY="98.0" text="Machine Number" />
+               </children>
+            </Pane>
+         </left>
+         <top>
+            <Pane prefHeight="61.0" prefWidth="720.0" style="-fx-background-color: #b90808;" BorderPane.alignment="CENTER" />
+         </top>
+         <center>
+            <JFXTreeTableView prefHeight="451.0" prefWidth="502.0" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </children>
 </AnchorPane>
