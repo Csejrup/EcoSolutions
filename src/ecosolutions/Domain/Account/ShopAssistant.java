@@ -7,13 +7,12 @@ public class ShopAssistant extends Account {
 
 	private String assistantName;
 
-	public static boolean login(String userName, String password) {
-
-		DB.selectSQL("SELECT fldPassword from tblDriver WHERE fldUsername = ('" + userName + "')");
+	public static boolean login(String employeeID, String password) {
+		DB.selectSQL("SELECT fldPassword from tblAccount WHERE fldEmployeeID = ('" + employeeID + "')");
 		String PW = DB.getQueryData();
-		DB.selectSQL("SELECT fldUsername from tblDriver WHERE fldUsername = ('" + userName + "')");
+		DB.selectSQL("SELECT fldEmployeeID from tblAccount WHERE fldEmployeeID = ('" + employeeID + "')");
 		String UN = DB.getQueryData();
-		return userName.equals(UN) && password.equals(PW);
+		return employeeID.equals(UN) && password.equals(PW);
 	}
 
 	public void managePayment() {

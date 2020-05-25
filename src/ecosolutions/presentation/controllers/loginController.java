@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import ecosolutions.Domain.Account.Account;
+import ecosolutions.persistence.DB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -29,19 +30,21 @@ public class loginController extends AbstractController{
     @FXML
     void handleLogIn(ActionEvent event) throws IOException
     {
-        String userName = txtUserName.getText();
+        String employeeID = txtUserName.getText();
         String password = txtPW.getText();
         btnLogIn.setOnAction(e->{
-            boolean loggedin = Account.verifyLogin(userName, password);
+            boolean loggedin = Account.verifyLogin(employeeID, password);
+            DB.selectSQL("SELECT fldRole from tblRole where fldEmployeeID = '"+employeeID+"';");
+            String Role = DB.getQueryData();
             if(loggedin){
-                if(userName.startsWith("m")){
+                if(Role.equals("Manager")){
 
                     //LOAD NEW SCREEN FOR MANAGER
                 }
-                if(userName.startsWith("s")){
+                if(Role.equals("ShopAssistant")){
                     //LOAD NEW SCREEN FOR SHOPASSISTANT
                 }
-                if(userName.startsWith("d")){
+                if(Role.equals("Driver")){
                     //LOAD NEW SCREEN FOR DRIVER
                 }
             }else{
