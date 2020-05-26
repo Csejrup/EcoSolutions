@@ -36,11 +36,11 @@ public class DB {
                     userName=props.getProperty("userName", "sa");
                     password=props.getProperty("password");
                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                System.out.println("Database ecosolutions.Domain.Account.Driver Ready");
+                System.out.println("Driver Ready");
 
             }catch(Exception e){
                 e.printStackTrace();
-                System.out.println("ecosolutions.Domain.Account.Driver Failed");
+                System.out.println("Driver Failed");
             }
         }
         /**

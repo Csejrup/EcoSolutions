@@ -32,7 +32,7 @@ public class driverController extends AbstractController{
     private TreeTableColumn<?, ?> locationCol;
 
     @FXML
-    void handleLogOut(ActionEvent event) {
+    private void handleLogOut(ActionEvent event) {
         Stage stage = (Stage) btnLogOut.getScene().getWindow();
         loadScreen(stage, "loginscreen.fxml");
     }
