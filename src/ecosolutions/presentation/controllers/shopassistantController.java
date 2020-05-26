@@ -11,42 +11,49 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class shopassistantController extends AbstractController{
-    @FXML
-    private JFXButton btnLogOut;
+
+
+    @FXML private JFXButton btnLogOut, btnConfirm, btnRemove, btnReturn, btnEdit, btnAdd;
+    @FXML private JFXListView<?> itemListView;
+    @FXML private JFXListView<?> orderListView;
+    @FXML private JFXTextField dueTextField, firstnameTextField, phoneNoTextField, lastnameTextField;
+    @FXML private TextField qtyTextField;
+
+
+
 
     @FXML
-    private AnchorPane rootpane;
+    void handleAddItem(ActionEvent event) {
 
-    @FXML
-    private Pane pane1;
-
-    @FXML
-    private JFXListView<?> itemListView;
-
-    @FXML
-    private JFXButton btnConfirm;
-
-    @FXML
-    private JFXTextField dueTextField;
-
-    @FXML
-    private JFXTextField nameTextfield;
-
-    @FXML
-    private JFXTextField phoneNoTextField;
-
-    @FXML
-    private TextField qtyTextField;
-
-    @FXML
-    void handleLogOut(ActionEvent event) {
-        Stage stage = (Stage) btnLogOut.getScene().getWindow();
-        loadScreen(stage, "loginscreen.fxml");
     }
+    @FXML
+    void handleRemove(ActionEvent event) {
 
+    }
     @FXML
     void handleOrderConfirm(ActionEvent event) {
 
     }
+
+
+
+
+    @FXML
+    private void handleEditOrder(ActionEvent event) {
+        Stage stage = (Stage) btnEdit.getScene().getWindow();
+        loadScreen(stage, "orderlistscreen.fxml");
+    }
+
+    @FXML
+    private void handleReturn(ActionEvent event) {
+        Stage stage = (Stage) btnReturn.getScene().getWindow();
+        loadScreen(stage, "shopassistantscreen.fxml");
+    }
+    @FXML
+    private void handleLogOut(ActionEvent event) {
+        Stage stage = (Stage) btnLogOut.getScene().getWindow();
+        loadScreen(stage, "loginscreen.fxml");
+    }
+
 
 }

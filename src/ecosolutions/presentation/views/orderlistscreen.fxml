@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="356.0" prefWidth="341.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.shopassistantController">
+   <children>
+      <BorderPane prefHeight="597.0" prefWidth="341.0">
+         <top>
+            <Pane prefHeight="60.0" prefWidth="341.0" style="-fx-background-color: #b90808;" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="112.0" layoutY="2.0" text="Order List" textFill="WHITE">
+                     <font>
+                        <Font name="Myanmar Text" size="27.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </top>
+         <bottom>
+            <Pane prefHeight="541.0" prefWidth="341.0" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXListView fx:id="orderListView" layoutX="14.0" layoutY="79.0" prefHeight="328.0" prefWidth="217.0" />
+                  <Label alignment="CENTER" layoutX="14.0" layoutY="28.0" prefHeight="37.0" prefWidth="216.0" style="-fx-background-color: #424242;" text="Select Item to Remove" textFill="WHITE">
+                     <font>
+                        <Font name="Myanmar Text" size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btnRemove" layoutX="241.0" layoutY="79.0" onAction="#handleRemove" prefHeight="41.0" prefWidth="86.0" style="-fx-background-color: #b90808; -fx-background-radius: 50px;" text="Remove" textFill="WHITE">
+                     <font>
+                        <Font name="Myanmar Text" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnReturn" layoutX="32.0" layoutY="463.0" onAction="#handleReturn" prefHeight="41.0" prefWidth="278.0" style="-fx-background-color: #b90808; -fx-background-radius: 50px;" text="Return" textFill="WHITE">
+                     <font>
+                        <Font name="Myanmar Text" size="15.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </Pane>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>

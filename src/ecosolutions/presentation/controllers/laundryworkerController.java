@@ -43,17 +43,17 @@ public class laundryworkerController extends AbstractController{
     private TreeTableColumn<?, ?> statusCol;
 
     @FXML
-    void handleNewOrder(ActionEvent event) {
+    private void handleNewOrder(ActionEvent event) {
         Stage stage = (Stage) btnNewOrder.getScene().getWindow();
         loadScreen(stage, "cleaningscreen.fxml");
     }
     @FXML
-    void handleCleaning(ActionEvent event) {
+    private void handleCleaning(ActionEvent event) {
         Stage stage = (Stage) btnCleaning.getScene().getWindow();
         loadScreen(stage, "laundryworkerscreen.fxml");
     }
     @FXML
-    void handleLogOut(ActionEvent event) {
+    private void handleLogOut(ActionEvent event) {
         Stage stage = (Stage) btnLogOut.getScene().getWindow();
         loadScreen(stage, "loginscreen.fxml");
     }
