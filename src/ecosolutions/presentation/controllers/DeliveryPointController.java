@@ -10,7 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class shopassistantController extends AbstractController{
+public class DeliveryPointController extends AbstractController{
 
 
     @FXML private JFXButton btnLogOut, btnConfirm, btnRemove, btnReturn, btnEdit, btnAdd;
@@ -47,7 +47,7 @@ public class shopassistantController extends AbstractController{
     @FXML
     private void handleReturn(ActionEvent event) {
         Stage stage = (Stage) btnReturn.getScene().getWindow();
-        loadScreen(stage, "shopassistantscreen.fxml");
+        loadScreen(stage, "deliverypointscreen.fxml");
     }
     @FXML
     private void handleLogOut(ActionEvent event) {

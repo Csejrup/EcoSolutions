@@ -15,10 +15,8 @@ public class Main extends Application {
 
             Parent root = FXMLLoader.load(getClass().getResource("presentation/views/loginscreen.fxml"));
             primaryStage.setScene(new Scene(root));
-            root.getStylesheets().add("style.css");
             primaryStage.setTitle("Eco Solutions");
             primaryStage.setResizable(false);
-         //   primaryStage.setScene(new Scene(root, 300, 275));
             primaryStage.show();
         }catch(Exception e){
             e.printStackTrace();

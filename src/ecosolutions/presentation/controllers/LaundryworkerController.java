@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TreeTableColumn;
 import javafx.stage.Stage;
 
-public class laundryworkerController extends AbstractController{
+public class LaundryworkerController extends AbstractController{
     @FXML
     private JFXButton btnLogOut;
     @FXML

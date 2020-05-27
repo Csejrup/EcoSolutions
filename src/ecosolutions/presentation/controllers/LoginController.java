@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class loginController extends AbstractController{
+public class LoginController extends AbstractController{
 
     @FXML private AnchorPane rootpaneloginscreen;
 
@@ -27,8 +27,38 @@ public class loginController extends AbstractController{
     @FXML
     private JFXButton btnLogIn;
 
+    /**
+     * TEMPORARY SOLUTION TO LOGIN
+     *
+     */
+    @FXML
+    private void handleLogIn(ActionEvent event) throws IOException {
+        String employeeID = txtUserName.getText();
+        String password = txtPW.getText();
 
-
+        if(employeeID.startsWith("s")) {
+            System.out.println("hej");
+            Stage stage = (Stage) btnLogIn.getScene().getWindow();
+            loadScreen(stage, "deliverypointscreen.fxml");
+        }
+        else if (employeeID.startsWith("m")){
+            Stage stage = (Stage) btnLogIn.getScene().getWindow();
+            loadScreen(stage, "managerscreen.fxml");
+        }
+        else if (employeeID.startsWith("l")){
+            Stage stage = (Stage) btnLogIn.getScene().getWindow();
+            loadScreen(stage, "laundryworkerscreen.fxml");
+        }
+        else if (employeeID.startsWith("d")){
+            Stage stage = (Stage) btnLogIn.getScene().getWindow();
+            loadScreen(stage, "driverscreen.fxml");
+        } else{
+            txtUserName.getStyleClass().add("wrong-credentials");
+            txtPW.getStyleClass().add("wrong-credentials");
+        }
+    }
+    /* TODO IMPLEMENT KUBAS CODE
+    /*
     @FXML
     private void handleLogIn(ActionEvent event) throws IOException
     {
@@ -47,10 +77,9 @@ public class loginController extends AbstractController{
                 if(employeeID.startsWith("s")) {
                     System.out.println("hej");
                     Stage stage = (Stage) btnLogIn.getScene().getWindow();
-                    loadScreen(stage, "shopassistantscreen.fxml");
+                    loadScreen(stage, "deliverypointscreen.fxml");
                 }
-  /*
-  //JBDC CODE NOT IN CONTROLLER!!!!!!!
+
         btnLogIn.setOnAction(e->{
             boolean loggedin = Account.verifyLogin(employeeID, password);
             DB.selectSQL("SELECT fldRole from tblRole where fldEmployeeID = '"+employeeID+"';");
@@ -64,7 +93,7 @@ public class loginController extends AbstractController{
 
                     //LOAD NEW SCREEN FOR SHOPASSISTANT
                 }
-                */              
+
                 if(employeeID.startsWith("d")) {
                     Stage stage = (Stage) btnLogIn.getScene().getWindow();
                     loadScreen(stage, "driverscreen.fxml");
@@ -74,19 +103,25 @@ public class loginController extends AbstractController{
 
                     //LOAD NEW SCREEN FOR DRIVER
                 }
-                */
+
                     if(employeeID.startsWith("l")){
                         Stage stage = (Stage) btnLogIn.getScene().getWindow();
                         loadScreen(stage, "cleaningscreen.fxml");
                         //LOAD NEW SCREEN FOR DRIVER
                     }
             }else{
+                 txtUserName.getStyleClass().add("wrong-credentials");
+                 txtPW.getStyleClass().add("wrong-credentials");
+                /*
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("INCORRECT LOGIN, TRY AGAIN");
                 alert.setHeaderText("BAD LOGIN");
                 alert.show();
+
+
             }
     //    });
 
     }
+    */
 }

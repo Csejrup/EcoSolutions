@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-public class driverController extends AbstractController{
+public class DriverController extends AbstractController{
     @FXML
     private JFXButton btnLogOut;
 

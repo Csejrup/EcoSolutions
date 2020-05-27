@@ -26,6 +26,7 @@ public class Manager extends Account {
 	}
 
 	public void viewActiveOrders() {
+
 		// TODO - implement ecosolutions.Domain.Account.Manager.viewActiveOrders
 		throw new UnsupportedOperationException();
 	}
