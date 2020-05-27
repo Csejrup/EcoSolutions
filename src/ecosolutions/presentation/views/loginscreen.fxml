@@ -11,40 +11,40 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootpaneloginscreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.loginController">
+<AnchorPane fx:id="rootpaneloginscreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="700.0" styleClass="loginroot" stylesheets="@../../../resources/StyleSheets/color-style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.loginController">
     <children>
-        <Pane layoutX="85.0" layoutY="50.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff; -fx-background-radius: 40px;">
+        <Pane fx:id="root" layoutX="100.0" layoutY="50.0" prefHeight="450.0" prefWidth="500.0" style="-fx-background-radius: 40px;" styleClass="root" stylesheets="@../../../resources/StyleSheets/color-style.css">
             <effect>
                 <DropShadow />
             </effect>
             <children>
-                <Label layoutX="226.0" layoutY="46.0" text="Eco Solutions" textFill="#1e00c9">
+                <Label layoutX="171.0" layoutY="40.0" styleClass="label-login1" text="Eco Solutions">
                     <font>
                         <Font name="Myanmar Text" size="24.0" />
                     </font>
                 </Label>
-                <Label layoutX="224.0" layoutY="80.0" prefHeight="34.0" prefWidth="156.0" text=" Welcome to Eco Solutions" textAlignment="CENTER" textFill="#b2b2b2" />
-                <JFXTextField fx:id="txtUserName" focusColor="#b90808" layoutX="194.0" layoutY="144.0" prefHeight="25.0" prefWidth="215.0" promptText="Username">
+                <Label contentDisplay="CENTER" layoutX="129.0" layoutY="79.0" prefHeight="39.0" prefWidth="242.0" styleClass="label-login2" text=" Welcome to Eco Solutions" textAlignment="CENTER" textFill="#b2b2b2" />
+                <JFXTextField fx:id="txtUserName" focusColor="#b90808" labelFloat="true" layoutX="143.0" layoutY="160.0" prefHeight="54.0" prefWidth="215.0" promptText="Username" styleClass="text-field">
                     <font>
                         <Font name="Myanmar Text" size="12.0" />
                     </font>
                 </JFXTextField>
-                <JFXPasswordField fx:id="txtPW" focusColor="#b90808" layoutX="195.0" layoutY="225.0" prefHeight="25.0" prefWidth="215.0" promptText="Password">
+                <JFXPasswordField fx:id="txtPW" focusColor="#b90808" labelFloat="true" layoutX="142.0" layoutY="267.0" prefHeight="54.0" prefWidth="215.0" promptText="Password" styleClass="text-field">
                     <font>
                         <Font name="Myanmar Text" size="12.0" />
                     </font>
                 </JFXPasswordField>
-                <JFXButton fx:id="btnLogIn" layoutX="243.0" layoutY="310.0" onAction="#handleLogIn" prefHeight="34.0" prefWidth="111.0" style="-fx-background-color: #b90808; -fx-background-radius: 50px;" text="Log In" textFill="WHITE">
+                <JFXButton fx:id="btnLogIn" layoutX="194.0" layoutY="376.0" onAction="#handleLogIn" prefHeight="34.0" prefWidth="111.0" styleClass="login-button" text="Log In" textFill="WHITE">
                     <font>
                         <Font name="Myanmar Text" size="12.0" />
                     </font>
                 </JFXButton>
-            <ImageView fitHeight="37.0" fitWidth="25.0" layoutX="163.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="glyph-icon" fitHeight="25.0" fitWidth="25.0" layoutX="117.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../resources/user.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="34.0" fitWidth="25.0" layoutX="163.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="glyph-icon" fitHeight="33.0" fitWidth="25.0" layoutX="117.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../resources/key.png" />
                </image>

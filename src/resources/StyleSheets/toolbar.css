@@ -1,0 +1,13 @@
+/** Toolbar CSS Style **/
+
+.tab{
+    -fx-background-color: -fx-primary;
+    -fx-pref-width: 350;
+    -fx-pref-height: 60;
+}
+.tab-header-background{
+    -fx-background-color: -fx-primary;
+}
+.button{
+    -fx-background-color: #424242;
+}

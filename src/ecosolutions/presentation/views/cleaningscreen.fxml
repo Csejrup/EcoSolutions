@@ -11,23 +11,23 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="419.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.laundryworkerController">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" stylesheets="@../../../resources/StyleSheets/color-style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.laundryworkerController">
    <children>
-      <BorderPane layoutX="-2.0" layoutY="-1.0" prefHeight="424.0" prefWidth="444.0">
+      <BorderPane layoutX="-2.0" layoutY="-1.0" prefHeight="500.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
             <Pane prefHeight="451.0" prefWidth="211.0" BorderPane.alignment="CENTER">
                <children>
-                  <JFXTextField fx:id="orderNoTextField" layoutX="38.0" layoutY="57.0" promptText="Order Number">
+                  <JFXTextField fx:id="orderNoTextField" labelFloat="true" layoutX="10.0" layoutY="84.0" promptText="Order Number">
                      <font>
                         <Font name="Myanmar Text" size="12.0" />
                      </font>
                   </JFXTextField>
-                  <JFXButton fx:id="btnCleaning" alignment="CENTER" layoutX="21.0" layoutY="300.0" onAction="#handleCleaning" prefHeight="47.0" prefWidth="172.0" style="-fx-background-color: #b90808; -fx-background-radius: 50px;" text="Start Cleaning" textFill="WHITE">
+                  <JFXButton fx:id="btnCleaning" alignment="CENTER" layoutX="20.0" layoutY="358.0" onAction="#handleCleaning" prefHeight="47.0" prefWidth="172.0" text="Start Cleaning" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text" size="15.0" />
                      </font>
                   </JFXButton>
-                  <JFXTextField fx:id="machineNoTextField" layoutX="38.0" layoutY="208.0" promptText="Order Number" text="Machine Number">
+                  <JFXTextField fx:id="machineNoTextField" labelFloat="true" layoutX="10.0" layoutY="251.0" promptText="Machine Number">
                      <font>
                         <Font name="Myanmar Text" size="12.0" />
                      </font>
@@ -37,7 +37,7 @@
                         <Font name="Myanmar Text" size="16.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutY="148.0" prefHeight="50.0" prefWidth="213.0" style="-fx-background-color: #424242;" text="Start Cleaning Process" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="-5.0" layoutY="170.0" prefHeight="50.0" prefWidth="219.0" style="-fx-background-color: #424242;" text="Start Cleaning Process" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text" size="16.0" />
                      </font>
@@ -46,14 +46,14 @@
             </Pane>
          </left>
          <top>
-            <Pane prefHeight="61.0" prefWidth="720.0" style="-fx-background-color: #b90808;" BorderPane.alignment="CENTER">
+            <Pane prefHeight="61.0" prefWidth="720.0" styleClass="panelaundry" BorderPane.alignment="CENTER">
                <children>
                   <Label layoutX="29.0" layoutY="2.0" prefHeight="62.0" prefWidth="193.0" text="Laundry Order" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text" size="26.0" />
                      </font>
                   </Label>
-                  <JFXButton fx:id="btnLogOut" alignment="CENTER" layoutX="350.0" layoutY="14.0" onAction="#handleLogOut" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #d50000; -fx-background-radius: 50px;" text="Log Out" textFill="WHITE">
+                  <JFXButton fx:id="btnLogOut" alignment="CENTER" layoutX="495.0" layoutY="11.0" onAction="#handleLogOut" prefHeight="39.0" prefWidth="91.0" styleClass="logout-button" text="Log Out" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text" size="12.0" />
                      </font>

@@ -1,0 +1,109 @@
+
+
+* {
+    -fx-primary : #b3e5fc;
+    -fx-secondary : #78909c;
+    -fx-primarytext: #424242;
+    -fx-red: #FF0000;
+    -fx-managerprimary : #78909c;
+}
+
+.root{
+    -fx-background-color: -fx-primary;
+}
+
+.button{
+    -fx-text-fill: -fx-primarytext;
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -fx-secondary;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-font-size: 12pt;
+}
+.button:hover {
+    -fx-border-color: -fx-secondary;
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: -fx-primarytext;
+}
+/** Login Screen Specifics **/
+.label-login1{
+    -fx-text-fill: -fx-primarytext;
+    -fx-font-size: 20pt;
+}
+.label-login2{
+    -fx-text-fill: -fx-primarytext;
+    -fx-font-size: 15pt;
+}
+
+.text-field{
+    -fx-text-fill: -fx-primarytext;
+    -fx-font-size: 13pt;
+    -jfx-focus-color: -fx-secondary;
+}
+.wrong-credentials{
+    -jfx-unfocus-color: -fx-red;
+    -jfx-focus-color: -fx-red;
+}
+.loginroot{
+    -fx-background-image: url("../darkgreen.jpg");
+}
+/* Laundry Worker Specifics */
+.panelaundry{
+    -fx-background-color: -fx-secondary ;
+}
+.logout-button{
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: -fx-secondary;
+    -fx-border-color: -fx-primary;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-font-size: 12pt;
+}
+.logout-button:hover {
+    -fx-border-color: -fx-secondary;
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: #FFFFFF;
+}
+/** Manager Screen CSS Style **/
+
+.buttonmanager{
+    -fx-text-fill: -fx-primarytext;
+    -fx-background-color: -fx-managerprimary;
+}
+.rootmanager{
+    -fx-background-color: -fx-managerprimary ;
+}
+
+
+/* TabPane Style */
+.tab{
+    -fx-background-color: -fx-managerprimary ;
+    -fx-pref-width: 280;
+    -fx-pref-height: 60;
+}
+.tab-header-background{
+    -fx-background-color: -fx-managerprimary ;
+}
+
+/* Menubar style*/
+.menu-bar{
+    -fx-base : -fx-managerprimary ;
+    -fx-background-color: -fx-managerprimary ;
+}
+.context-menu{
+    -fx-background-color: derive(-fx-managerprimary , +20%);
+}
+
+/* Toolbar Button Style*/
+.toolbar-button{
+    -fx-background-color: -fx-managerprimary;
+}
+.toolbar-button:hover{
+    -fx-background-color: derive(-fx-primary, -10%);
+    -fx-text-fill: -fx-managerprimary;
+}
+/*text style*/
+.main-text{
+    -fx-text-fill: -fx-primary;
+    -fx-font-size: 13pt;
+}
