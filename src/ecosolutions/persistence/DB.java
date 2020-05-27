@@ -65,6 +65,7 @@ public class DB {
         }
         /**
          FUNCTION FOR HANDLING SQL 'SELECT'
+         @param sqlQuery
          */
         public static void selectSQL(String sqlQuery)  {
             //CLEARING THE LIST FOR REPEATEDLY USAGE
@@ -84,6 +85,7 @@ public class DB {
             }
         }/**
          OTHER SQL QUERIES
+        @param sqlQuery
          */
         public static void insertSQL(String sqlQuery){otherThanSelect(sqlQuery);}
         public static void updateSQL(String sqlQuery){otherThanSelect(sqlQuery);}
@@ -107,6 +109,7 @@ public class DB {
         }
         /**
          FOR GETTING ONE RESULT FROM SELECT_SQL STATEMENT.
+         @return queryValue
          */
         //PROBLEM WITH 'IF THERE IS PREVIOUS SELECT AND NEXT ONE FIELD IS NOT INTO DATABASE SYSTEM TAKES PREVIOSE SQL STATEMENT AND SHOWS IT === TO REPAIR.
         public static String getQueryData(){
@@ -127,6 +130,7 @@ public class DB {
         }
         /**
          FOR GETTING MORE THAN ONE RESULT FROM SELECT_SQL STATEMENT //AUTOMATICALLY CREATES LIST OF STRING.
+         @return queryList
          */
         public static List<String> getSqlList(){
             try{

@@ -1,5 +1,7 @@
 package ecosolutions.Domain.Account;
 
+import ecosolutions.persistence.DB;
+
 public class Customer extends Account {
 
 	private String customerName;
@@ -18,6 +20,11 @@ public class Customer extends Account {
 	public void updateProfile() {
 		// TODO - implement ecosolutions.Domain.Account.Customer.updateProfile
 		throw new UnsupportedOperationException();
+	}
+	public static int getCustomerID(){
+		DB.selectSQL("SELECT MAX(fldCustomerID) FROM tblCustomer");
+		return Integer.parseInt(DB.getQueryData());
+
 	}
 
 }

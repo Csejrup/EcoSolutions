@@ -35,8 +35,8 @@ public class loginController extends AbstractController{
         String employeeID = txtUserName.getText();
         String password = txtPW.getText();
 
-       // btnLogIn.setOnAction(e->{
-            //boolean loggedin = Account.verifyLogin(userName, password);
+        //btnLogIn.setOnAction(e->{
+           // boolean loggedin = Account.verifyLogin(employeeID, password);
            // if(loggedin){
                 if(true){
                 if(employeeID.startsWith("m")){
@@ -53,8 +53,7 @@ public class loginController extends AbstractController{
   //JBDC CODE NOT IN CONTROLLER!!!!!!!
         btnLogIn.setOnAction(e->{
             boolean loggedin = Account.verifyLogin(employeeID, password);
-            DB.selectSQL("SELECT fldRole from tblRole where fldEmployeeID = '"+employeeID+"';");
-            String Role = DB.getQueryData();
+
             if(loggedin){
                 if(Role.equals("Manager")){
 

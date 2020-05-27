@@ -4,7 +4,7 @@ import ecosolutions.persistence.DB;
 
 public abstract class Account {
 
-	private int AccountID;
+	private static int accountID;
 	private String Password;
 	private String registerDate;
 	private String LoginStatus;
@@ -12,6 +12,7 @@ public abstract class Account {
 	public static boolean verifyLogin(String userName, String password) {
 		DB.selectSQL("SELECT fldUsername FROM tblAccount WHERE fldUserName = '"+userName+"';");
 		String checkFirstLetter = DB.getQueryData();
+
 		if(checkFirstLetter.startsWith("m")) {
 			return Manager.login(userName, password);
 		}
@@ -19,8 +20,17 @@ public abstract class Account {
 			return Driver.login(userName,password);
 		}
 		if(checkFirstLetter.startsWith("s")){
+
+			DB.selectSQL("SELECT fldAccountID FROM tblAccount WHERE fldUserName = '"+userName+"';");
+			accountID = Integer.parseInt(DB.getQueryData());
 			return ShopAssistant.login(userName,password);
 		}
 		else return false;
+
 	}
+	public static int getDeliveryPoint(){
+		DB.selectSQL("SELECT fldDeliveryPointID FROM tblDeliveryPoint WHERE fldAccountID = '"+accountID+"';");
+		return Integer.parseInt(DB.getQueryData());
+	}
+
 }
