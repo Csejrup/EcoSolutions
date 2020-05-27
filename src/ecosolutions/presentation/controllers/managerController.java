@@ -32,7 +32,7 @@ public class managerController extends  AbstractController implements Initializa
     @FXML private TableColumn<orderList, String> deliverypointCol;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initCol();
+       // initCol();
     }
 
     private void initCol() {
