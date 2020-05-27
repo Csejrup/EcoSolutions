@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class LoginController extends AbstractController{
+public class loginController extends AbstractController{
 
     @FXML private AnchorPane rootpaneloginscreen;
 
@@ -39,7 +39,7 @@ public class LoginController extends AbstractController{
         if(employeeID.startsWith("s")) {
             System.out.println("hej");
             Stage stage = (Stage) btnLogIn.getScene().getWindow();
-            loadScreen(stage, "deliverypointscreen.fxml");
+            loadScreen(stage, "shopassistantscreen.fxml");
         }
         else if (employeeID.startsWith("m")){
             Stage stage = (Stage) btnLogIn.getScene().getWindow();
@@ -77,7 +77,7 @@ public class LoginController extends AbstractController{
                 if(employeeID.startsWith("s")) {
                     System.out.println("hej");
                     Stage stage = (Stage) btnLogIn.getScene().getWindow();
-                    loadScreen(stage, "deliverypointscreen.fxml");
+                    loadScreen(stage, "shopassistantscreen.fxml");
                 }
 
         btnLogIn.setOnAction(e->{
