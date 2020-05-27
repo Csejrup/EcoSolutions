@@ -30,7 +30,7 @@ public class loginController extends AbstractController{
 
 
     @FXML
-    void handleLogIn(ActionEvent event) throws IOException
+    private void handleLogIn(ActionEvent event) throws IOException
     {
         String employeeID = txtUserName.getText();
         String password = txtPW.getText();

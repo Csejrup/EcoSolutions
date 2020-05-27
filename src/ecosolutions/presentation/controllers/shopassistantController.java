@@ -27,6 +27,7 @@ import java.util.Date;
 import java.util.List;
 
 public class shopassistantController extends AbstractController{
+
     //ADD BASIC CLOTH TYPES
     ObservableList<String> laundryType = FXCollections.observableArrayList("T-Shirt","Jacket","Carpet","Jeans","Suit","Blinds");
     private List<String>  itemList = new ArrayList<>();
@@ -34,35 +35,52 @@ public class shopassistantController extends AbstractController{
     @FXML
     private JFXButton btnLogOut;
 
-    @FXML
-    private AnchorPane rootpane;
 
     @FXML
     private Pane pane1;
-    @FXML
-    private JFXButton btnRefresh;
 
     @FXML
     private JFXListView<String> itemListView = new JFXListView<>();
 
 
-    @FXML
-    private JFXButton btnConfirm;
+    @FXML private JFXButton btnLogOut, btnConfirm, btnRemove, btnReturn, btnEdit, btnAdd;
+    @FXML private JFXListView<?> orderListView;
+    @FXML private JFXTextField dueTextField, firstnameTextField, phoneNoTextField, lastnameTextField;
+    @FXML private TextField qtyTextField;
+
+
+
+
 
     @FXML
-    private JFXTextField dueTextField;
+    void handleAddItem(ActionEvent event) {
+
+    }
+    @FXML
+    void handleRemove(ActionEvent event) {
+
+    }
+    @FXML
+    void handleOrderConfirm(ActionEvent event) {
+
+    }
+
+
+
 
     @FXML
-    private JFXTextField nameTextfield;
+    private void handleEditOrder(ActionEvent event) {
+        Stage stage = (Stage) btnEdit.getScene().getWindow();
+        loadScreen(stage, "orderlistscreen.fxml");
+    }
 
     @FXML
-    private JFXTextField phoneNoTextField;
-
+    private void handleReturn(ActionEvent event) {
+        Stage stage = (Stage) btnReturn.getScene().getWindow();
+        loadScreen(stage, "shopassistantscreen.fxml");
+    }
     @FXML
-    private TextField qtyTextField;
-
-    @FXML
-    void handleLogOut(ActionEvent event) {
+    private void handleLogOut(ActionEvent event) {
         Stage stage = (Stage) btnLogOut.getScene().getWindow();
         loadScreen(stage, "loginscreen.fxml");
     }
@@ -134,6 +152,7 @@ public class shopassistantController extends AbstractController{
 
 
     }
+
 
 
 }
