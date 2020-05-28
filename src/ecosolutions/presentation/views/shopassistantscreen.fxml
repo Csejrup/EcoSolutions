@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXListView?>
-<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="597.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.shopassistantController">
+<AnchorPane prefHeight="597.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.shopassistantController">
    <children>
       <Pane layoutX="10.0" layoutY="12.0" prefHeight="574.0" prefWidth="347.0">
          <children>
@@ -63,7 +60,7 @@
                   <Font name="Myanmar Text" size="12.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnAdd" layoutX="242.0" layoutY="269.0" onAction="#handleAddItem" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: #b90808; -fx-background-radius: 50px;" text="Add" textFill="WHITE">
+            <JFXButton fx:id="btnAdd" layoutX="242.0" layoutY="269.0" onAction="#addToBasket" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: #b90808; -fx-background-radius: 50px;" text="Add" textFill="WHITE">
                <font>
                   <Font name="Myanmar Text" size="12.0" />
                </font>

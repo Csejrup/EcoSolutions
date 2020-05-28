@@ -25,6 +25,7 @@ public class OrderTable {
     public static ArrayList<String> getClothTypeList(){
         return clothTypeList;
     }public static ArrayList<Integer> getClothQTYList(){
+
         return clothQTYList;
     }
 

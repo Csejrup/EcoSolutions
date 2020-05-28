@@ -17,6 +17,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -26,12 +27,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class shopassistantController extends AbstractController{
+public class shopassistantController extends AbstractController implements Initializable {
 
     //ADD BASIC CLOTH TYPES
     ObservableList<String> laundryType = FXCollections.observableArrayList("T-Shirt","Jacket","Carpet","Jeans","Suit","Blinds");
@@ -135,7 +138,6 @@ public class shopassistantController extends AbstractController{
     }
     @FXML
     void refreshItems(ActionEvent event){
-        itemListView.setItems(laundryType);
     }
 
     /**
@@ -148,6 +150,8 @@ public class shopassistantController extends AbstractController{
         int quantityOfCloth = Integer.parseInt(qtyTextField.getText());
 
         if(orderType!=null&&quantityOfCloth>0){
+            ObservableList<OrderTable> data = tv.getItems();
+            data.add(new OrderTable(orderType,quantityOfCloth));
             clothTypeOL.add(new OrderTable(orderType,quantityOfCloth));
             OrderTable.addClothQTYList(quantityOfCloth);
             OrderTable.addClothTypeList(orderType);
@@ -162,6 +166,8 @@ public class shopassistantController extends AbstractController{
     }
 
 
-
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        itemListView.setItems(laundryType);
+    }
 }
