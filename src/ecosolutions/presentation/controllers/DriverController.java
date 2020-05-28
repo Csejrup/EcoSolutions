@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-public class driverController extends AbstractController{
+public class DriverController extends AbstractController{
     @FXML
     private JFXButton btnLogOut;
 
@@ -34,7 +34,7 @@ public class driverController extends AbstractController{
     @FXML
     private void handleLogOut(ActionEvent event) {
         Stage stage = (Stage) btnLogOut.getScene().getWindow();
-        loadScreen(stage, "loginscreen.fxml");
+        loadScreen(stage, "LoginView.fxml");
     }
 
 }

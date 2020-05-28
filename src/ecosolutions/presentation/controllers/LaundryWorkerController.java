@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TreeTableColumn;
 import javafx.stage.Stage;
 
-public class laundryworkerController extends AbstractController{
+public class LaundryWorkerController extends AbstractController{
     @FXML
     private JFXButton btnLogOut, btncheckOrder, btnNewOrder, btnCleaning;
 
@@ -43,16 +43,16 @@ public class laundryworkerController extends AbstractController{
     @FXML
     private void handleNewOrder(ActionEvent event) {
         Stage stage = (Stage) btnNewOrder.getScene().getWindow();
-        loadScreen(stage, "cleaningscreen.fxml");
+        loadScreen(stage, "CleaningView.fxml");
     }
     @FXML
     private void handleCleaning(ActionEvent event) {
         Stage stage = (Stage) btnCleaning.getScene().getWindow();
-        loadScreen(stage, "laundryworkerscreen.fxml");
+        loadScreen(stage, "LaundryWorkerView.fxml");
     }
     @FXML
     private void handleLogOut(ActionEvent event) {
         Stage stage = (Stage) btnLogOut.getScene().getWindow();
-        loadScreen(stage, "loginscreen.fxml");
+        loadScreen(stage, "LoginView.fxml");
     }
 }

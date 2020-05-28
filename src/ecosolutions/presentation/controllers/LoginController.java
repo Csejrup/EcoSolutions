@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class loginController extends AbstractController{
+public class LoginController extends AbstractController{
 
     @FXML private AnchorPane rootpaneloginscreen;
 
@@ -35,19 +35,19 @@ public class loginController extends AbstractController{
         if(employeeID.startsWith("s")) {
             System.out.println("hej");
             Stage stage = (Stage) btnLogIn.getScene().getWindow();
-            loadScreen(stage, "shopassistantscreen.fxml");
+            loadScreen(stage, "DeliveryPointView.fxml");
         }
         else if (employeeID.startsWith("m")){
             Stage stage = (Stage) btnLogIn.getScene().getWindow();
-            loadScreen(stage, "managerscreen.fxml");
+            loadScreen(stage, "ManagerView.fxml");
         }
         else if (employeeID.startsWith("l")){
             Stage stage = (Stage) btnLogIn.getScene().getWindow();
-            loadScreen(stage, "laundryworkerscreen.fxml");
+            loadScreen(stage, "LaundryWorkerView.fxml");
         }
         else if (employeeID.startsWith("d")){
             Stage stage = (Stage) btnLogIn.getScene().getWindow();
-            loadScreen(stage, "driverscreen.fxml");
+            loadScreen(stage, "DriverView.fxml");
         } else{
             txtUserName.getStyleClass().add("wrong-credentials");
             txtPW.getStyleClass().add("wrong-credentials");
@@ -67,13 +67,13 @@ public class loginController extends AbstractController{
                 if(true){
                 if(employeeID.startsWith("m")){
                     Stage stage = (Stage) btnLogIn.getScene().getWindow();
-                    loadScreen(stage, "managerscreen.fxml");
+                    loadScreen(stage, "ManagerView.fxml");
                     //LOAD NEW SCREEN FOR MANAGER
                 }
                 if(employeeID.startsWith("s")) {
                     System.out.println("hej");
                     Stage stage = (Stage) btnLogIn.getScene().getWindow();
-                    loadScreen(stage, "shopassistantscreen.fxml");
+                    loadScreen(stage, "DeliveryPointView.fxml");
                 }
 
         btnLogIn.setOnAction(e->{
@@ -91,7 +91,7 @@ public class loginController extends AbstractController{
 
                 if(employeeID.startsWith("d")) {
                     Stage stage = (Stage) btnLogIn.getScene().getWindow();
-                    loadScreen(stage, "driverscreen.fxml");
+                    loadScreen(stage, "DriverView.fxml");
                 }
   /*
                 if(Role.equals("Driver")){
@@ -101,7 +101,7 @@ public class loginController extends AbstractController{
 
                     if(employeeID.startsWith("l")){
                         Stage stage = (Stage) btnLogIn.getScene().getWindow();
-                        loadScreen(stage, "cleaningscreen.fxml");
+                        loadScreen(stage, "CleaningView.fxml");
                         //LOAD NEW SCREEN FOR DRIVER
                     }
             }else{

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="356.0" prefWidth="341.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.shopassistantController">
+<AnchorPane prefHeight="356.0" prefWidth="341.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.DeliveryPointController">
    <children>
       <BorderPane prefHeight="597.0" prefWidth="341.0">
          <top>

@@ -28,7 +28,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class shopassistantController extends AbstractController implements Initializable {
+public class DeliveryPointController extends AbstractController implements Initializable {
 
     //ADD BASIC CLOTH TYPES
     ObservableList<String> laundryType = FXCollections.observableArrayList("T-Shirt","Jacket","Carpet","Jeans","Suit","Blinds");
@@ -68,18 +68,18 @@ public class shopassistantController extends AbstractController implements Initi
     @FXML
     private void handleEditOrder(ActionEvent event) {
         Stage stage = (Stage) btnEdit.getScene().getWindow();
-        loadScreen(stage, "orderlistscreen.fxml");
+        loadScreen(stage, "OrderListView.fxml");
     }
 
     @FXML
     private void handleReturn(ActionEvent event) {
         Stage stage = (Stage) btnReturn.getScene().getWindow();
-        loadScreen(stage, "shopassistantscreen.fxml");
+        loadScreen(stage, "DeliveryPointView.fxml");
     }
     @FXML
     private void handleLogOut(ActionEvent event) {
         Stage stage = (Stage) btnLogOut.getScene().getWindow();
-        loadScreen(stage, "loginscreen.fxml");
+        loadScreen(stage, "LoginView.fxml");
     }
 
     @FXML

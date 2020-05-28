@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 /**
  *
  */
-public class managerController extends  AbstractController implements Initializable {
+public class ManagerController extends  AbstractController implements Initializable {
 
     @FXML private Text txtorderno, txtorderstat, txtempname, txtrole, txtstatus;
 
