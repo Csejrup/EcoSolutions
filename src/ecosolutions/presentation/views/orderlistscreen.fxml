@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXListView?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="356.0" prefWidth="341.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.shopassistantController">
+<AnchorPane prefHeight="356.0" prefWidth="341.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.shopassistantController">
    <children>
       <BorderPane prefHeight="597.0" prefWidth="341.0">
          <top>
@@ -25,7 +22,6 @@
          <bottom>
             <Pane prefHeight="541.0" prefWidth="341.0" BorderPane.alignment="CENTER">
                <children>
-                  <JFXListView fx:id="orderListView" layoutX="14.0" layoutY="79.0" prefHeight="328.0" prefWidth="217.0" />
                   <Label alignment="CENTER" layoutX="14.0" layoutY="28.0" prefHeight="37.0" prefWidth="216.0" style="-fx-background-color: #424242;" text="Select Item to Remove" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text" size="16.0" />
@@ -41,6 +37,12 @@
                         <Font name="Myanmar Text" size="15.0" />
                      </font>
                   </JFXButton>
+                  <TableView fx:id="tv" layoutX="22.0" layoutY="78.0" prefHeight="353.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn fx:id="tcClothType" prefWidth="131.0" text="CLOTH TYPE" />
+                      <TableColumn fx:id="tcClothQTY" prefWidth="67.0" text="QUANTITY" />
+                    </columns>
+                  </TableView>
                </children>
             </Pane>
          </bottom>
