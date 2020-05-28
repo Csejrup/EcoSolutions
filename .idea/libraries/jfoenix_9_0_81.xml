@@ -2,8 +2,6 @@
   <library name="jfoenix-9.0.81">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/.idea/Driver/jfoenix-9.0.8.jar!/" />
-      <root url="jar://$PROJECT_DIR$/.idea/Driver/fontawesomefx-fontawesome-4.7.0-5.jar!/" />
-      <root url="jar://$PROJECT_DIR$/.idea/Driver/fontawesomefx-commons-8.15.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

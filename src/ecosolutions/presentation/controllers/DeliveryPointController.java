@@ -8,6 +8,7 @@ import ecosolutions.Domain.CustomerService;
 import ecosolutions.Domain.OrderService;
 
 import ecosolutions.persistence.DB;
+import ecosolutions.presentation.models.OrderTableView;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +19,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -32,9 +34,9 @@ public class DeliveryPointController extends AbstractController implements Initi
 
     //ADD BASIC CLOTH TYPES
     ObservableList<String> laundryType = FXCollections.observableArrayList("T-Shirt","Jacket","Carpet","Jeans","Suit","Blinds");
-    ObservableList<OrderService> clothTypeOL = FXCollections.observableArrayList();
-    ArrayList<String> itemList = OrderService.getClothTypeList();
-    ArrayList<Integer> itemQuantity = OrderService.getClothQTYList();
+
+    ArrayList<String> itemType = new ArrayList<>();
+    ArrayList<Integer> itemQuantity = new ArrayList<>();
 
 
     @FXML
@@ -49,9 +51,9 @@ public class DeliveryPointController extends AbstractController implements Initi
 
 
     @FXML private JFXButton btnConfirm, btnRemove, btnReturn, btnEdit, btnAdd;
-    @FXML private TableView<OrderService> tv;
-    @FXML private static TableColumn<List<StringProperty>,String> tcClothType;
-    @FXML private static TableColumn<Integer,Integer> tcClothQTY ;
+    @FXML private TableView<OrderTableView> tv = new TableView<>();
+    @FXML private static TableColumn<ArrayList<String>,String> tcClothType = new TableColumn<>();
+    @FXML private static TableColumn<ArrayList<Integer>,Integer> tcClothQTY  = new TableColumn<>();
 
     @FXML private JFXTextField dueTextField, firstnameTextField, phoneNoTextField, lastnameTextField;
     @FXML private TextField qtyTextField;
@@ -104,22 +106,22 @@ public class DeliveryPointController extends AbstractController implements Initi
 
 
 
-        if(customerName!=null&&customerPhone!=null&&itemList.size()!=0&&itemQuantity.size()!=0) {
+        if(customerName!=null&&customerPhone!=null&&itemType.size()!=0&&itemQuantity.size()!=0) {
             DB.insertSQL("INSERT INTO tblOrder(fldOrderID,fldCustomerID,fldOrderDesID,fldOrderStatusID,fldDeliveryPointID,fldDateofOrder) VALUES ('"+orderID+"','"+customerID+"','"+orderDescID+"','"+statusID+"','"+deliveryPointID+"','"+date+"');");
             DB.insertSQL("INSERT INTO tblCustomer(fldCustomerID,fldName,fldSurname,fldPhone) VALUES ('"+customerID+"','"+customerName+"','"+customerSurName+"','"+customerPhone+"');");
 
             /**
              * LOOP FOR ADDING ITEMS FROM LIST INTO DATABASE
              */
-                for (int i=0;i<itemList.size();i++){
-                    String clothType = itemList.get(i);
+                for (int i=0;i<itemType.size();i++){
+                    String clothType = itemType.get(i);
                     int itemQTY = itemQuantity.get(i);
                     DB.insertSQL("INSERT INTO tlbOrderDescription(fldOrderDesID,fldOrderID,fldItemQuantity,fldItemType,fldPrice,fldWeight) VALUES ('"+orderDescID+"','"+orderID+"','"+itemQTY+"','"+clothType+"');");
                 }
                 // INSERTING PRE-DEFINED STATUS INTO DATABASE
                 DB.insertSQL("INSERT INTO tblOrderStatus(fldOrderStatusID,fldOrderStatus) VALUES ('"+statusID+"','"+status+"');");
                 itemQuantity.clear();
-                itemList.clear();
+                itemType.clear();
         }
         /**
          * FOR PRICE
@@ -141,11 +143,8 @@ public class DeliveryPointController extends AbstractController implements Initi
         int quantityOfCloth = Integer.parseInt(qtyTextField.getText());
 
         if(orderType!=null&&quantityOfCloth>0){
-            ObservableList<OrderService> data = tv.getItems();
-            data.add(new OrderService(orderType,quantityOfCloth));
-            clothTypeOL.add(new OrderService(orderType,quantityOfCloth));
-            OrderService.addClothQTYList(quantityOfCloth);
-            OrderService.addClothTypeList(orderType);
+            itemType.add(orderType);
+            itemQuantity.add(quantityOfCloth);
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("PICK CLOTH TYPE AND INSERT QUANTITY");
@@ -153,10 +152,20 @@ public class DeliveryPointController extends AbstractController implements Initi
         }
 
     }
+    private ObservableList<OrderTableView> getOrders(){
+        ObservableList<OrderTableView> clothTypeOL = FXCollections.observableArrayList();
+        clothTypeOL.add(new OrderTableView(itemType,itemQuantity));
+        return clothTypeOL;
+    }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         itemListView.setItems(laundryType);
+        if(itemType.size()>0&&itemQuantity.size()>0){
+            tcClothType.setCellValueFactory(new PropertyValueFactory<>("clothType"));
+            tcClothQTY.setCellValueFactory(new PropertyValueFactory<>("clothQTY"));
+            tv.setItems(getOrders());
+        }
     }
 }
