@@ -2,8 +2,7 @@ package ecosolutions.persistence.DAO;
 
 import java.util.List;
 
-public class OrderDao implements Dao{
-
+public class CentralDao implements Dao{
     @Override
     public Object get(int id) {
         return null;

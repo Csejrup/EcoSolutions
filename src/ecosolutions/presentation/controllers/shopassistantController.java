@@ -1,17 +1,13 @@
 package ecosolutions.presentation.controllers;
 
-import com.jfoenix.controls.JFXAlert;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
-import ecosolutions.Domain.Account.Account;
-import ecosolutions.Domain.Account.Customer;
-import ecosolutions.Domain.DeliveryPoint.DeliveryPoint;
-import ecosolutions.Domain.Order.Order;
-import ecosolutions.Domain.Order.OrderDetail;
-import ecosolutions.Domain.Order.OrderTable;
+import ecosolutions.Domain.AccountService;
+import ecosolutions.Domain.CustomerService;
+import ecosolutions.Domain.OrderService;
+
 import ecosolutions.persistence.DB;
-import javafx.beans.Observable;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,8 +18,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -38,9 +32,9 @@ public class shopassistantController extends AbstractController implements Initi
 
     //ADD BASIC CLOTH TYPES
     ObservableList<String> laundryType = FXCollections.observableArrayList("T-Shirt","Jacket","Carpet","Jeans","Suit","Blinds");
-    ObservableList<OrderTable> clothTypeOL = FXCollections.observableArrayList();
-    ArrayList<String> itemList = OrderTable.getClothTypeList();
-    ArrayList<Integer> itemQuantity = OrderTable.getClothQTYList();
+    ObservableList<OrderService> clothTypeOL = FXCollections.observableArrayList();
+    ArrayList<String> itemList = OrderService.getClothTypeList();
+    ArrayList<Integer> itemQuantity = OrderService.getClothQTYList();
 
 
     @FXML
@@ -55,16 +49,12 @@ public class shopassistantController extends AbstractController implements Initi
 
 
     @FXML private JFXButton btnConfirm, btnRemove, btnReturn, btnEdit, btnAdd;
-    @FXML private TableView<OrderTable> tv;
+    @FXML private TableView<OrderService> tv;
     @FXML private static TableColumn<List<StringProperty>,String> tcClothType;
     @FXML private static TableColumn<Integer,Integer> tcClothQTY ;
 
     @FXML private JFXTextField dueTextField, firstnameTextField, phoneNoTextField, lastnameTextField;
     @FXML private TextField qtyTextField;
-
-
-
-
 
     @FXML
     void handleAddItem(ActionEvent event) {
@@ -96,18 +86,18 @@ public class shopassistantController extends AbstractController implements Initi
     void handleOrderConfirm(ActionEvent event) {
         String customerName = firstnameTextField.getText();
         String customerSurName = lastnameTextField.getText();
-        int orderID = OrderDetail.getMaxOrderID()+1;
-        int customerID = Customer.getCustomerID()+1;
-        int deliveryPointID = Account.getDeliveryPoint();
+        int orderID = OrderService.getMaxOrderID()+1;
+        int customerID = CustomerService.getCustomerID()+1;
+        int deliveryPointID = AccountService.getDeliveryPoint();
         //String customerSurname = surnameTextField.getText()
         String customerPhone = phoneNoTextField.getText();
         //AVOIDING ZERO BY ADDING 1 TO list.
         int quantityOfItemsInOrder = itemQuantity.size();
         //Assigning new ListID for fldListID.
         //GETTING last statusID
-        int statusID = OrderDetail.getMaxStatusID()+1;
+        int statusID = OrderService.getMaxStatusID()+1;
         String status = "REGISTERED";
-        int orderDescID = OrderDetail.getMaxOrderDescID()+1;
+        int orderDescID = OrderService.getMaxOrderDescID()+1;
         Date now = new Date();
         SimpleDateFormat sdp = new SimpleDateFormat("dd/MM/yyyy");
         String date = sdp.format(now);
@@ -144,19 +134,18 @@ public class shopassistantController extends AbstractController implements Initi
      * ADDING ITEM TO THE 'BASKET'
      * @param event
      */
+
     @FXML
     void addToBasket(ActionEvent event){
         String orderType = itemListView.getSelectionModel().getSelectedItem();
         int quantityOfCloth = Integer.parseInt(qtyTextField.getText());
 
         if(orderType!=null&&quantityOfCloth>0){
-            ObservableList<OrderTable> data = tv.getItems();
-            data.add(new OrderTable(orderType,quantityOfCloth));
-            clothTypeOL.add(new OrderTable(orderType,quantityOfCloth));
-            OrderTable.addClothQTYList(quantityOfCloth);
-            OrderTable.addClothTypeList(orderType);
-
-
+            ObservableList<OrderService> data = tv.getItems();
+            data.add(new OrderService(orderType,quantityOfCloth));
+            clothTypeOL.add(new OrderService(orderType,quantityOfCloth));
+            OrderService.addClothQTYList(quantityOfCloth);
+            OrderService.addClothTypeList(orderType);
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("PICK CLOTH TYPE AND INSERT QUANTITY");

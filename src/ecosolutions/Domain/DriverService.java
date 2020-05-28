@@ -1,8 +1,8 @@
-package ecosolutions.Domain.Account;
+package ecosolutions.Domain;
 
 import ecosolutions.persistence.DB;
 
-public class Driver extends Account {
+public class DriverService extends AccountService {
 
 	private String driverName;
 

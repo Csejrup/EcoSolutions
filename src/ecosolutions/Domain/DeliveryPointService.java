@@ -1,8 +1,8 @@
-package ecosolutions.Domain.Account;
+package ecosolutions.Domain;
 
 import ecosolutions.persistence.DB;
 
-public class ShopAssistant extends Account {
+public class DeliveryPointService extends AccountService {
 
 
 	private String assistantName;

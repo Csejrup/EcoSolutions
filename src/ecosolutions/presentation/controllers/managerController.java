@@ -12,7 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import java.net.URL;
 import java.util.ResourceBundle;
-import ecosolutions.Domain.Order.OrderList;
+
 /**
  *
  */

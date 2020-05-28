@@ -1,8 +1,8 @@
-package ecosolutions.Domain.Account;
+package ecosolutions.Domain;
 
 import ecosolutions.persistence.DB;
 
-public abstract class Account {
+public abstract class AccountService {
 
 	private static int accountID;
 	private String Password;
@@ -14,16 +14,16 @@ public abstract class Account {
 		String checkFirstLetter = DB.getQueryData();
 
 		if(checkFirstLetter.startsWith("m")) {
-			return Manager.login(userName, password);
+			return ManagerService.login(userName, password);
 		}
 		if(checkFirstLetter.startsWith("d")){
-			return Driver.login(userName,password);
+			return DriverService.login(userName,password);
 		}
 		if(checkFirstLetter.startsWith("s")){
 
 			DB.selectSQL("SELECT fldAccountID FROM tblAccount WHERE fldUserName = '"+userName+"';");
 			accountID = Integer.parseInt(DB.getQueryData());
-			return ShopAssistant.login(userName,password);
+			return DeliveryPointService.login(userName,password);
 		}
 		else return false;
 

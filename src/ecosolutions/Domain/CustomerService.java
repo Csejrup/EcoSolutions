@@ -1,8 +1,8 @@
-package ecosolutions.Domain.Account;
+package ecosolutions.Domain;
 
 import ecosolutions.persistence.DB;
 
-public class Customer extends Account {
+public class CustomerService extends AccountService {
 
 	private String customerName;
 	private String phone_No;
