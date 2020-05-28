@@ -44,7 +44,6 @@
             <JFXTreeTableView fx:id="tableViewOrders" BorderPane.alignment="CENTER">
                <columns>
                   <TreeTableColumn fx:id="ordernoCol" editable="false" prefWidth="75.0" sortable="false" text="Order Number" />
-                  <TreeTableColumn fx:id="machinenoCol" editable="false" prefWidth="75.0" sortable="false" text="Machine Number" />
                   <TreeTableColumn fx:id="statusCol" editable="false" prefWidth="75.0" sortable="false" text="Cleaning Status" />
                </columns>
                <columnResizePolicy>

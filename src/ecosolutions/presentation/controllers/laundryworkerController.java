@@ -8,18 +8,14 @@ import javafx.stage.Stage;
 
 public class laundryworkerController extends AbstractController{
     @FXML
-    private JFXButton btnLogOut;
-    @FXML
-    private JFXButton btnNewOrder;
+    private JFXButton btnLogOut, btncheckOrder, btnNewOrder, btnCleaning;
+
 
     @FXML
     private JFXTextField orderNoTextField;
 
     @FXML
     private JFXTextField machineNoTextField;
-
-    @FXML
-    private JFXButton btnCleaning;
 
     @FXML
     private JFXTreeTableView<?> tableItem;
@@ -37,10 +33,12 @@ public class laundryworkerController extends AbstractController{
     private TreeTableColumn<?, ?> ordernoCol;
 
     @FXML
-    private TreeTableColumn<?, ?> machinenoCol;
+    private TreeTableColumn<?, ?> statusCol;
 
     @FXML
-    private TreeTableColumn<?, ?> statusCol;
+    void loadOrder(ActionEvent event) {
+
+    }
 
     @FXML
     private void handleNewOrder(ActionEvent event) {
