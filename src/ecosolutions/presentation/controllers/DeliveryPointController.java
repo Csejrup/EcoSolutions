@@ -8,7 +8,9 @@ import ecosolutions.Domain.CustomerService;
 import ecosolutions.Domain.OrderService;
 
 import ecosolutions.persistence.DB;
+import ecosolutions.presentation.models.Order;
 import ecosolutions.presentation.models.OrderTableView;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,6 +25,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,15 +36,18 @@ import java.util.ResourceBundle;
 public class DeliveryPointController extends AbstractController implements Initializable {
 
     //ADD BASIC CLOTH TYPES
+    public static ObservableList<OrderTableView> items = FXCollections.observableArrayList();
     ObservableList<String> laundryType = FXCollections.observableArrayList("T-Shirt","Jacket","Carpet","Jeans","Suit","Blinds");
 
-    ArrayList<String> itemType = new ArrayList<>();
-    ArrayList<Integer> itemQuantity = new ArrayList<>();
+    private static ArrayList<String> itemType = new ArrayList<>();
 
+    private static ArrayList<Integer> itemQuantity = new ArrayList<>();
 
     @FXML
     private JFXButton btnLogOut;
-
+//GLOBAL VARIABLES FOR TABLEVIEW
+    public static String orderType;
+    public static int orderQTY;
 
     @FXML
     private Pane pane1;
@@ -51,19 +57,14 @@ public class DeliveryPointController extends AbstractController implements Initi
 
 
     @FXML private JFXButton btnConfirm, btnRemove, btnReturn, btnEdit, btnAdd;
-    @FXML private TableView<OrderTableView> tv = new TableView<>();
-    @FXML private static TableColumn<ArrayList<String>,String> tcClothType = new TableColumn<>();
-    @FXML private static TableColumn<ArrayList<Integer>,Integer> tcClothQTY  = new TableColumn<>();
+
+
 
     @FXML private JFXTextField dueTextField, firstnameTextField, phoneNoTextField, lastnameTextField;
     @FXML private TextField qtyTextField;
 
     @FXML
     void handleAddItem(ActionEvent event) {
-
-    }
-    @FXML
-    void handleRemove(ActionEvent event) {
 
     }
 
@@ -73,11 +74,6 @@ public class DeliveryPointController extends AbstractController implements Initi
         loadScreen(stage, "OrderListView.fxml");
     }
 
-    @FXML
-    private void handleReturn(ActionEvent event) {
-        Stage stage = (Stage) btnReturn.getScene().getWindow();
-        loadScreen(stage, "DeliveryPointView.fxml");
-    }
     @FXML
     private void handleLogOut(ActionEvent event) {
         Stage stage = (Stage) btnLogOut.getScene().getWindow();
@@ -128,9 +124,6 @@ public class DeliveryPointController extends AbstractController implements Initi
          * DB.selectSQL("SELECT fldPrice FROM tblItem WHERE fldItemType = 'orderType')
          */
     }
-    @FXML
-    void refreshItems(ActionEvent event){
-    }
 
     /**
      * ADDING ITEM TO THE 'BASKET'
@@ -138,34 +131,38 @@ public class DeliveryPointController extends AbstractController implements Initi
      */
 
     @FXML
-    void addToBasket(ActionEvent event){
-        String orderType = itemListView.getSelectionModel().getSelectedItem();
-        int quantityOfCloth = Integer.parseInt(qtyTextField.getText());
-
-        if(orderType!=null&&quantityOfCloth>0){
-            itemType.add(orderType);
-            itemQuantity.add(quantityOfCloth);
-        }else{
+    void addToBasket(ActionEvent event) {
+        orderType = itemListView.getSelectionModel().getSelectedItem();
+        orderQTY = Integer.parseInt(qtyTextField.getText());
+        if (orderType != null && orderQTY > 0) {
+                    items.add(new OrderTableView(orderType,orderQTY));
+        }
+        else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("PICK CLOTH TYPE AND INSERT QUANTITY");
             alert.show();
         }
-
     }
-    private ObservableList<OrderTableView> getOrders(){
-        ObservableList<OrderTableView> clothTypeOL = FXCollections.observableArrayList();
-        clothTypeOL.add(new OrderTableView(itemType,itemQuantity));
-        return clothTypeOL;
+    public static ObservableList<OrderTableView> getItems(){
+       return items;
+
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         itemListView.setItems(laundryType);
-        if(itemType.size()>0&&itemQuantity.size()>0){
-            tcClothType.setCellValueFactory(new PropertyValueFactory<>("clothType"));
-            tcClothQTY.setCellValueFactory(new PropertyValueFactory<>("clothQTY"));
-            tv.setItems(getOrders());
-        }
+    }
+
+    public static void removeFromItemTypeList(String remove){
+        itemType.remove(remove);
+
+    } public static void removeFromItemQtyList(int remove){
+        System.out.println("index of remove: "+itemQuantity.indexOf(remove));
+        itemQuantity.remove(remove);
+    }
+
+    public static ArrayList<Integer> getItemQuantity() {
+        return itemQuantity;
     }
 }
