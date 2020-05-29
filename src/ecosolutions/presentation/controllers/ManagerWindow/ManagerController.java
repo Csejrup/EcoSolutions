@@ -39,7 +39,7 @@ public class ManagerController extends AbstractController implements Initializab
     @FXML
     void loadOrderList(ActionEvent event) {
         Stage stage = (Stage) btnorders.getScene().getWindow();
-        loadnewScreen("FullOrderListView.fxml");
+        loadpopup("FullOrderListView.fxml");
     }
 
     @FXML
@@ -55,24 +55,7 @@ public class ManagerController extends AbstractController implements Initializab
     @FXML
     void loadWorkForceList(ActionEvent event) {
         Stage stage = (Stage) btnworkforce.getScene().getWindow();
-        loadnewScreen("EmployeesView.fxml");
+        loadpopup("EmployeesView.fxml");
     }
-
-    protected void loadnewScreen(String layoutfile){
-        try{
-            FXMLLoader fxmlloader = new FXMLLoader((getClass().getResource("/ecosolutions/presentation/views/" + layoutfile)));
-            Parent root2 = (Parent) fxmlloader.load();
-            Stage stage = new Stage();
-            stage.setTitle("Overview over Active Orders");
-            stage.setScene(new Scene(root2));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-
-
 
 }
