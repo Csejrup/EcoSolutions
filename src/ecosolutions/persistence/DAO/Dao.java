@@ -8,7 +8,7 @@ import java.util.Optional;
  * @param <T>
  */
 public interface Dao<T> {
-    Object get(int id);
+    public Optional<T> getbyID(int id);
 
     List<T> getAll();
 

@@ -41,12 +41,12 @@
                 </JFXButton>
             <ImageView id="glyph-icon" fitHeight="25.0" fitWidth="25.0" layoutX="117.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../resources/user.png" />
+                  <Image url="@../../../resources/pictures/user.png" />
                </image>
             </ImageView>
             <ImageView id="glyph-icon" fitHeight="33.0" fitWidth="25.0" layoutX="117.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../resources/key.png" />
+                  <Image url="@../../../resources/pictures/key.png" />
                </image>
             </ImageView>
             </children>

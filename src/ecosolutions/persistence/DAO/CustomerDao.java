@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public class CustomerDao implements Dao {
     @Override
-    public Object get(int id) {
+    public Optional<Customer> getbyID(int id) {
         return null;
     }
 

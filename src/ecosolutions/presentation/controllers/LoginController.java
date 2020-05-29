@@ -3,7 +3,10 @@ package ecosolutions.presentation.controllers;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import ecosolutions.Domain.EmployeeService;
+import ecosolutions.Domain.OrderService;
 import ecosolutions.persistence.DAO.Dao;
+import ecosolutions.persistence.DAO.EmployeeDao;
 import ecosolutions.persistence.DAO.OrderDao;
 import ecosolutions.persistence.DatabaseHandler;
 import ecosolutions.presentation.models.Order;
@@ -38,24 +41,27 @@ public class LoginController extends AbstractController{
         String password = txtPW.getText();
 
 
-        Dao dao = new OrderDao();
 
-        var orders = dao.getAll();
-        orders.forEach(System.out::println);
+        /*
+        var employees = ex.getAll();
+        employees.forEach(System.out::println);
+ EmployeeService es = new EmployeeService();
+        var employees = es.getEmployees();
+        employees.forEach(System.out::println);
 
+         */
 
 
        // var loadedorder = dao.get(4);
        // System.out.println(loadedorder);
 
-        if(employeeID.startsWith("s")) {
-            System.out.println("hej");
-            Stage stage = (Stage) btnLogIn.getScene().getWindow();
-            loadScreen(stage, "DeliveryPointView.fxml");
-        }
-        else if (employeeID.startsWith("m")){
+        if(employeeID.startsWith("m")) {
             Stage stage = (Stage) btnLogIn.getScene().getWindow();
             loadScreen(stage, "ManagerView.fxml");
+        }
+        else if (employeeID.startsWith("s")){
+            Stage stage = (Stage) btnLogIn.getScene().getWindow();
+            loadScreen(stage, "DeliveryPointView.fxml");
         }
         else if (employeeID.startsWith("l")){
             Stage stage = (Stage) btnLogIn.getScene().getWindow();

@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="800.0" stylesheets="@../../../resources/StyleSheets/color-style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.ManagerController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="800.0" stylesheets="@../../../resources/StyleSheets/color-style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.ManagerWindow.ManagerController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <center>
@@ -99,7 +99,7 @@
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../resources/employee.png" />
+                              <Image url="@../../../resources/pictures/employee.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -108,7 +108,7 @@
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../resources/order.png" />
+                              <Image url="@../../../resources/pictures/order.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -117,16 +117,16 @@
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../resources/statistics.png" />
+                              <Image url="@../../../resources/pictures/statistics.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="btnsettings" contentDisplay="TOP" mnemonicParsing="false" onAction="#loadSettings" prefHeight="132.0" prefWidth="141.0" styleClass="toolbar-button" text="Settings" textFill="WHITE">
+                  <JFXButton fx:id="btnsettings" contentDisplay="TOP" mnemonicParsing="false" onAction="#loadSettings" prefHeight="132.0" prefWidth="141.0" styleClass="toolbar-button" text="Return" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../resources/settings.png" />
+                              <Image url="@../../../resources/pictures/settings.png" />
                            </image>
                         </ImageView>
                      </graphic>

@@ -1,11 +1,12 @@
 package ecosolutions.Domain;
 
+import ecosolutions.persistence.DAO.OrderDao;
 import ecosolutions.persistence.DB;
-import javafx.beans.Observable;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import ecosolutions.presentation.models.Order;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 
 public class OrderService {
@@ -14,7 +15,9 @@ public class OrderService {
     private String clothType;
     private String date;
 
+    public OrderService(){
 
+    }
     public static ArrayList<String> clothTypeList;
     public static ArrayList<Integer> clothQTYList;
     private int clothQTY;
@@ -54,6 +57,38 @@ public class OrderService {
     public static int getMaxOrderDescID(){
         DB.selectSQL("SELECT MAX(fldOrderDescID) FROM tblOrderDescription");
         return Integer.parseInt(DB.getQueryData());
+    }
+    private static boolean doesNotExist(Order order){
+        OrderDao orderDao = new OrderDao();
+        for(Order o : orderDao.getAll()){
+            if(o.equals(order)){
+                return false;
+            }
+        }
+        return true;
+    }
+    public static Optional<Order> getOrder(int id){
+        OrderDao orderDao = new OrderDao();
+        return orderDao.getbyID(id);
+    }
+    public static void addOrder(Order order){
+        OrderDao orderDao = new OrderDao();
+        if(doesNotExist(order)){
+            orderDao.save(order);
+        }
+        orderDao.save(order);
+    }
+    public static void updateOrder(Order order){
+        OrderDao orderDao = new OrderDao();
+        orderDao.update(order);
+    }
+    public static void deleteOrder(int order){
+        OrderDao orderDao = new OrderDao();
+        orderDao.delete(order);
+    }
+    public static List<Order>getOrders(){
+        OrderDao orderDao = new OrderDao();
+       return orderDao.getAll();
     }
 
 }

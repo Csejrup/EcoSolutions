@@ -45,7 +45,7 @@
     -jfx-focus-color: -fx-red;
 }
 .loginroot{
-    -fx-background-image: url("../darkgreen.jpg");
+    -fx-background-image: url("../pictures/darkgreen.jpg");
 }
 /* Laundry Worker Specifics */
 .panelaundry{
