@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="356.0" prefWidth="341.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.DeliveryPointController">
+<AnchorPane prefHeight="356.0" prefWidth="341.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.OrderItemsController">
    <children>
       <BorderPane prefHeight="597.0" prefWidth="341.0">
          <top>
@@ -39,8 +39,8 @@
                   </JFXButton>
                   <TableView fx:id="tv" layoutX="22.0" layoutY="78.0" prefHeight="353.0" prefWidth="200.0">
                     <columns>
-                      <TableColumn fx:id="tcClothType" prefWidth="131.0" text="CLOTH TYPE" />
-                      <TableColumn fx:id="tcClothQTY" prefWidth="67.0" text="QUANTITY" />
+                      <TableColumn fx:id="tcClothType" prefWidth="118.0" text="CLOTH TYPE" />
+                      <TableColumn fx:id="tcClothQTY" prefWidth="81.0" text="QUANTITY" />
                     </columns>
                   </TableView>
                </children>
