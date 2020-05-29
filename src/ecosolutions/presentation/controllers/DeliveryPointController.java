@@ -38,11 +38,6 @@ public class DeliveryPointController extends AbstractController implements Initi
     //ADD BASIC CLOTH TYPES
     public static ObservableList<OrderTableView> items = FXCollections.observableArrayList();
     ObservableList<String> laundryType = FXCollections.observableArrayList("T-Shirt","Jacket","Carpet","Jeans","Suit","Blinds");
-
-    private static ArrayList<String> itemType = new ArrayList<>();
-
-    private static ArrayList<Integer> itemQuantity = new ArrayList<>();
-
     @FXML
     private JFXButton btnLogOut;
 //GLOBAL VARIABLES FOR TABLEVIEW
@@ -87,12 +82,8 @@ public class DeliveryPointController extends AbstractController implements Initi
         int orderID = OrderService.getMaxOrderID()+1;
         int customerID = CustomerService.getCustomerID()+1;
         int deliveryPointID = AccountService.getDeliveryPoint();
-        //String customerSurname = surnameTextField.getText()
         String customerPhone = phoneNoTextField.getText();
-        //AVOIDING ZERO BY ADDING 1 TO list.
-        int quantityOfItemsInOrder = itemQuantity.size();
-        //Assigning new ListID for fldListID.
-        //GETTING last statusID
+
         int statusID = OrderService.getMaxStatusID()+1;
         String status = "REGISTERED";
         int orderDescID = OrderService.getMaxOrderDescID()+1;
@@ -102,22 +93,21 @@ public class DeliveryPointController extends AbstractController implements Initi
 
 
 
-        if(customerName!=null&&customerPhone!=null&&itemType.size()!=0&&itemQuantity.size()!=0) {
+        if(customerName!=null&&customerPhone!=null&&items.size()!=0) {
             DB.insertSQL("INSERT INTO tblOrder(fldOrderID,fldCustomerID,fldOrderDesID,fldOrderStatusID,fldDeliveryPointID,fldDateofOrder) VALUES ('"+orderID+"','"+customerID+"','"+orderDescID+"','"+statusID+"','"+deliveryPointID+"','"+date+"');");
             DB.insertSQL("INSERT INTO tblCustomer(fldCustomerID,fldName,fldSurname,fldPhone) VALUES ('"+customerID+"','"+customerName+"','"+customerSurName+"','"+customerPhone+"');");
 
             /**
              * LOOP FOR ADDING ITEMS FROM LIST INTO DATABASE
              */
-                for (int i=0;i<itemType.size();i++){
-                    String clothType = itemType.get(i);
-                    int itemQTY = itemQuantity.get(i);
+                for (int i=0;i<items.size();i++){
+                    String clothType = items.get(i).getClothType();
+                    int itemQTY = items.get(i).getClothQty();
                     DB.insertSQL("INSERT INTO tlbOrderDescription(fldOrderDesID,fldOrderID,fldItemQuantity,fldItemType,fldPrice,fldWeight) VALUES ('"+orderDescID+"','"+orderID+"','"+itemQTY+"','"+clothType+"');");
                 }
                 // INSERTING PRE-DEFINED STATUS INTO DATABASE
                 DB.insertSQL("INSERT INTO tblOrderStatus(fldOrderStatusID,fldOrderStatus) VALUES ('"+statusID+"','"+status+"');");
-                itemQuantity.clear();
-                itemType.clear();
+              items.clear();
         }
         /**
          * FOR PRICE
@@ -154,15 +144,5 @@ public class DeliveryPointController extends AbstractController implements Initi
         itemListView.setItems(laundryType);
     }
 
-    public static void removeFromItemTypeList(String remove){
-        itemType.remove(remove);
 
-    } public static void removeFromItemQtyList(int remove){
-        System.out.println("index of remove: "+itemQuantity.indexOf(remove));
-        itemQuantity.remove(remove);
-    }
-
-    public static ArrayList<Integer> getItemQuantity() {
-        return itemQuantity;
-    }
 }
