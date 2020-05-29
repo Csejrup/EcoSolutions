@@ -1,6 +1,9 @@
 package ecosolutions.persistence.DAO;
 
+import ecosolutions.presentation.models.Customer;
+
 import java.util.List;
+import java.util.Optional;
 
 public class CustomerDao implements Dao {
     @Override
@@ -9,7 +12,7 @@ public class CustomerDao implements Dao {
     }
 
     @Override
-    public List getAll() {
+    public List<Customer> getAll() {
         return null;
     }
 
@@ -19,12 +22,12 @@ public class CustomerDao implements Dao {
     }
 
     @Override
-    public void update(Object o, String[] params) {
+    public void update(Object o) {
 
     }
 
     @Override
-    public void delete(Object o) {
+    public void delete(int id) {
 
     }
 }

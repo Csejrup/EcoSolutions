@@ -5,14 +5,33 @@ public class Order {
 	private int orderID;
 	private int customerID;
 	private int qty;
+	private String orderstatus;
 
-	public Order(int orderID, int customerID, int qty, String status, String clothtype, String orderdate) {
+
+	private String deliverypointname;
+	public Order(){
+	}
+	public Order(int orderID, int customerID, int qty, String orderstatus, String clothtype, String orderdate, String deliverypointname) {
 		this.orderID = orderID;
 		this.customerID = customerID;
 		this.qty = qty;
-		this.status = status;
+		this.status = orderstatus;
 		this.clothtype = clothtype;
 		this.orderdate = orderdate;
+		this.deliverypointname = deliverypointname;
+	}
+	public String getDeliverypointname() {
+		return deliverypointname;
+	}
+
+	public void setDeliverypointname(String deliverypointname) {
+		this.deliverypointname = deliverypointname;
+	}
+	public String getOrderstatus() {
+		return orderstatus;
+	}
+	public void setOrderstatus(String orderstatus){
+		this.orderstatus = orderstatus;
 	}
 
 	public int getOrderID() {
@@ -71,6 +90,29 @@ public class Order {
 	public void createOrderSlip() {
 		// TODO - implement ecosolutions.presentation.models.Order.createOrderSlip
 		throw new UnsupportedOperationException();
+	}
+	/*
+	@Override
+	public String toString() {
+		return "Order{" +
+				"orderID=" + orderID +
+				", customerID=" + customerID +
+				", qty=" + qty +
+				", orderstatus='" + orderstatus + '\'' +
+				", deliverypointname='" + deliverypointname + '\'' +
+				", clothtype='" + clothtype + '\'' +
+				", orderdate='" + orderdate + '\'' +
+				'}';
+	}
+
+	 */
+	@Override
+	public String toString() {
+		return "Order{" +
+				"orderID=" + orderID +
+				", orderstatus='" + orderstatus + '\'' +
+				", deliverypointname='" + deliverypointname + '\'' +
+				'}';
 	}
 
 }

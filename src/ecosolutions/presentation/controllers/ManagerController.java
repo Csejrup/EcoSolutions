@@ -30,6 +30,7 @@ public class ManagerController extends  AbstractController implements Initializa
     @FXML private TableColumn<orderList, String> qtyCol;
     @FXML private TableColumn<orderList, String> customerCol;
     @FXML private TableColumn<orderList, String> deliverypointCol;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
        // initCol();
