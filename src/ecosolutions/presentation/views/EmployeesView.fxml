@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.ManagerWindow.EmployeesListController">
+   <children>
+      <TableView fx:id="tableView" layoutX="115.0" layoutY="42.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="idCol" editable="false" prefWidth="75.0" sortable="false" text="Employee ID" />
+          <TableColumn fx:id="fnCol" prefWidth="75.0" text="First Name" />
+            <TableColumn fx:id="lnCol" prefWidth="75.0" text="Last Name" />
+            <TableColumn fx:id="roleCol" prefWidth="75.0" text="Role" />
+            <TableColumn fx:id="statCol" editable="false" prefWidth="75.0" sortable="false" text="Status" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public class CentralDao implements Dao{
     @Override
-    public Object get(int id) {
+    public Optional<Central> getbyID(int id) {
         return null;
     }
 

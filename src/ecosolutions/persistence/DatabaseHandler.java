@@ -100,8 +100,8 @@ public final class DatabaseHandler {
             stmt.execute(qu);
             return true;
         }
-        catch (SQLException ex) {
-            System.out.println("Exception at execQuery:dataHandler" + ex.getLocalizedMessage());
+        catch (SQLException e) {
+            System.out.println("Exception at execQuery:dataHandler" + e.getLocalizedMessage());
             return false;
         }
         finally {

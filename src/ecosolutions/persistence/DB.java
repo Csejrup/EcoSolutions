@@ -43,6 +43,14 @@ public class DB {
                 System.out.println("Driver Failed");
             }
         }
+        /*
+        private static DB instance = new DB();
+        private DB(){}
+        public static DB getInstance(){
+            return instance;
+        }
+
+         */
         /**
          CONNECT WITH DATABASE
          */

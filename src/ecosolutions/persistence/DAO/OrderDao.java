@@ -15,15 +15,18 @@ import java.util.Optional;
  */
 public class OrderDao implements Dao<Order>{
     @Override
-    public Object get(int id)
+    public Optional<Order> getbyID(int id)
     {
         var conn = DatabaseHandler.getInstance().getConnection();
         try{
             var stmt = conn.prepareStatement("SELECT fldOrderID FROM tblOrder WHERE fldOrderID =" + id);
+            //stmt.setInt(1,id);
             ResultSet rs = stmt.executeQuery();
 
             if(rs.next()){
-                return exportOrder(rs);
+                Order order = new Order();
+                order.setOrderID(rs.getInt("fldOrderID"));
+                return Optional.of(order);
                 /*
                 var _ID = rs.getInt("fldOrderID");
                // String orderID = Integer.toString(_ID);
@@ -54,6 +57,7 @@ public class OrderDao implements Dao<Order>{
             while(rs.next()){
                 Order order = exportOrder(rs);
                 orders.add(order);
+
             }
             stmt.close();
         }catch(SQLException e){

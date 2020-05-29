@@ -1,5 +1,7 @@
 package ecosolutions.presentation.models;
 
+import javafx.util.StringConverter;
+
 public class Order {
 
 	private int orderID;
@@ -106,6 +108,7 @@ public class Order {
 	}
 
 	 */
+
 	@Override
 	public String toString() {
 		return "Order{" +
@@ -114,5 +117,4 @@ public class Order {
 				", deliverypointname='" + deliverypointname + '\'' +
 				'}';
 	}
-
 }

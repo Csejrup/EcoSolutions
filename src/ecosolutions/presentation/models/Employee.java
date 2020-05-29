@@ -2,31 +2,37 @@ package ecosolutions.presentation.models;
 
 public class Employee {
 
-    private int roleid;
-    private int statusid;
+    private String role;
+    private String status;
     private String firstname;
+    private String lastname;
+    private int employeeid;
+    public Employee(){
 
-    public Employee(int roleid, int statusid, String firstname, String lastname) {
-        this.roleid = roleid;
-        this.statusid = statusid;
+    }
+
+    public Employee(String role, String status, String firstname, String lastname, int employeeid) {
+        this.role = role;
+        this.status = status;
         this.firstname = firstname;
         this.lastname = lastname;
+        this.employeeid = employeeid;
     }
 
-    public int getRoleid() {
-        return roleid;
+    public String getRole() {
+        return role;
     }
 
-    public void setRoleid(int roleid) {
-        this.roleid = roleid;
+    public void setRole(String role) {
+        this.role = role;
     }
 
-    public int getStatusid() {
-        return statusid;
+    public String getStatus() {
+        return status;
     }
 
-    public void setStatusid(int statusid) {
-        this.statusid = statusid;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getFirstname() {
@@ -44,7 +50,20 @@ public class Employee {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
+    public int getEmployeeid(){
+        return employeeid;
+    }
+    public void setEmployeeid(int id){
+        this.employeeid = id;
+    }
 
-    private String lastname;
-
+    @Override
+    public String toString(){
+        return "Employee{" +
+                "employeeid='" + employeeid + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", status='" + status + '\'' +
+                "role='" + role + '\'' + '}';
+    }
 }
