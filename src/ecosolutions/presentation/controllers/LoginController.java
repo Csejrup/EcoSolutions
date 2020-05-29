@@ -3,12 +3,17 @@ package ecosolutions.presentation.controllers;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import ecosolutions.persistence.DAO.Dao;
+import ecosolutions.persistence.DAO.OrderDao;
+import ecosolutions.persistence.DatabaseHandler;
+import ecosolutions.presentation.models.Order;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class LoginController extends AbstractController{
 
@@ -31,6 +36,17 @@ public class LoginController extends AbstractController{
     private void handleLogIn(ActionEvent event) throws IOException {
         String employeeID = txtUserName.getText();
         String password = txtPW.getText();
+
+
+        Dao dao = new OrderDao();
+
+        var orders = dao.getAll();
+        orders.forEach(System.out::println);
+
+
+
+       // var loadedorder = dao.get(4);
+       // System.out.println(loadedorder);
 
         if(employeeID.startsWith("s")) {
             System.out.println("hej");

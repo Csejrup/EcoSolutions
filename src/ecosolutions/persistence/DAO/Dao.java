@@ -1,7 +1,12 @@
 package ecosolutions.persistence.DAO;
 
 import java.util.List;
+import java.util.Optional;
 
+/**
+ * One DAO class per table or view
+ * @param <T>
+ */
 public interface Dao<T> {
     Object get(int id);
 
@@ -9,9 +14,9 @@ public interface Dao<T> {
 
     void save(T t);
 
-     void update(T t, String[] params);
+     void update(T t);
 
-     void delete(T t);
+     void delete(int id);
 
 
 }

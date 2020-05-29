@@ -157,6 +157,8 @@ public class DB {
             return queryList;
         }
 
+
+
         /**
          * FOR CLEARING PENIDING DATA
          */
@@ -168,4 +170,5 @@ public class DB {
                 }
             } while (true);
         }
+
     }
