@@ -1,9 +1,6 @@
 package ecosolutions.persistence.DAO;
-
-import ecosolutions.persistence.DB;
 import ecosolutions.persistence.DatabaseHandler;
 import ecosolutions.presentation.models.Order;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,29 +24,20 @@ public class OrderDao implements Dao<Order>{
                 Order order = new Order();
                 order.setOrderID(rs.getInt("fldOrderID"));
                 return Optional.of(order);
-                /*
-                var _ID = rs.getInt("fldOrderID");
-               // String orderID = Integer.toString(_ID);
-               // Order order = new Order(orderID);
-                Order order = new Order(_ID);
-                return Optional.of(order);
-
-                 */
             }
             stmt.close();
         }catch(SQLException e){
             e.printStackTrace();
         }
-        return null;
+        return Optional.empty();
     }
-
     @Override
     public List<Order> getAll() {
         List<Order> orders = new ArrayList<>();
-
         var conn = DatabaseHandler.getInstance().getConnection();
         try{
             var stmt = conn.createStatement();
+            //SQL STATEMENT FOR SELECTING EVERY ORDER RELATED DATA IN MULTIPLE TABLES, CONNECTED THROUGH INNER JOIN AND TBLORDER
             ResultSet rs = stmt.executeQuery("SELECT tblOrder.fldOrderID, tblOrderStatus.fldOrderStatus, tblDeliveryPoint.fldDPointName " +
                     "FROM tblDeliveryPoint INNER JOIN " +
                     "(tblOrder INNER JOIN tblOrderStatus ON tblOrderStatus.fldOrderStatusID = tblOrder.fldOrderStatusID) " +
@@ -57,7 +45,6 @@ public class OrderDao implements Dao<Order>{
             while(rs.next()){
                 Order order = exportOrder(rs);
                 orders.add(order);
-
             }
             stmt.close();
         }catch(SQLException e){
@@ -65,12 +52,25 @@ public class OrderDao implements Dao<Order>{
         }
         return orders;
     }
-
+    //TODO CREATE THIS
     @Override
     public void save(Order order) {
+        var conn = DatabaseHandler.getInstance().getConnection();
+        try{
+            var stmt = conn.prepareStatement("");
+            stmt.setInt(1, order.getOrderID());
+            stmt.setInt(2, order.getOrderID());
+            stmt.setInt(3, order.getOrderID());
+            stmt.setInt(4, order.getOrderID());
+            stmt.setInt(5, order.getOrderID());
+            stmt.setInt(6, order.getOrderID());
 
+            stmt.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
     }
-
+    //TODO COMPLETE THIS FOR UPDATING AN ORDER IN DATABASE IN ITS RIGHT PLACES
     @Override
     public void update(Order order) {
         var conn = DatabaseHandler.getInstance().getConnection();
@@ -80,26 +80,20 @@ public class OrderDao implements Dao<Order>{
 
         }catch(Exception e){
             e.printStackTrace();
-
         }
     }
-
     @Override
-    public void delete(int id) {
-
+    public void delete(Order order) {
+        var conn = DatabaseHandler.getInstance().getConnection();
+        try{
+            var stmt = conn.prepareStatement("DELETE FROM tblOrder WHERE fldOrder =?");
+            stmt.setInt(1, order.getOrderID());
+            stmt.executeUpdate();
+            stmt.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
     }
-    /*
-
-
-    private Order extractOrder(ResultSet rs) throws SQLException{
-        Order order = new Order();
-        order.setOrderID(rs.getInt("fldOrderID"));
-        order.setQty(rs.getInt("fldQuantity"));
-        return order;
-    }
-
-     */
-
     private Order exportOrder(ResultSet rs) throws SQLException{
         Order order = new Order();
         order.setOrderID(rs.getInt("fldOrderID"));

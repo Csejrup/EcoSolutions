@@ -6,7 +6,6 @@ import ecosolutions.presentation.models.Employee;
 import java.util.List;
 
 public class EmployeeService {
-
     private static boolean doesNotExist(Employee employee){
         EmployeeDao employeedao = new EmployeeDao();
         for(Employee e : employeedao.getAll()){
@@ -31,7 +30,7 @@ public class EmployeeService {
         EmployeeDao employeedao = new EmployeeDao();
         employeedao.update(employee);
     }
-    public static void deleteEmployee(int employee){
+    public static void deleteEmployee(Employee employee){
         EmployeeDao employeedao = new EmployeeDao();
         employeedao.delete(employee);
     }

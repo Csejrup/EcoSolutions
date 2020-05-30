@@ -5,7 +5,7 @@ import ecosolutions.presentation.models.Central;
 import java.util.List;
 import java.util.Optional;
 
-public class CentralDao implements Dao{
+public class CentralDao implements Dao<Central>{
     @Override
     public Optional<Central> getbyID(int id) {
         return null;
@@ -17,17 +17,17 @@ public class CentralDao implements Dao{
     }
 
     @Override
-    public void save(Object o) {
+    public void save(Central central) {
 
     }
 
     @Override
-    public void update(Object o) {
+    public void update(Central central) {
 
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Central central) {
 
     }
 }

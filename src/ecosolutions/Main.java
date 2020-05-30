@@ -1,5 +1,7 @@
 package ecosolutions;
 
+
+import ecosolutions.persistence.DatabaseHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,6 +20,10 @@ public class Main extends Application {
             primaryStage.setTitle("Eco Solutions");
             primaryStage.setResizable(false);
             primaryStage.show();
+
+            new Thread(() -> {
+                DatabaseHandler.getInstance();
+            }).start();
         }catch(Exception e){
             e.printStackTrace();
         }

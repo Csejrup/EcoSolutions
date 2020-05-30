@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-
+//TODO CLEAN UP
 public class OrderService {
 
     private int qty;
@@ -82,7 +82,7 @@ public class OrderService {
         OrderDao orderDao = new OrderDao();
         orderDao.update(order);
     }
-    public static void deleteOrder(int order){
+    public static void deleteOrder(Order order){
         OrderDao orderDao = new OrderDao();
         orderDao.delete(order);
     }

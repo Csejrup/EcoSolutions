@@ -32,8 +32,8 @@ public class LaundryWorkerController extends AbstractController{
     @FXML
     private TreeTableColumn<?, ?> ordernoCol;
 
-    @FXML
-    private TreeTableColumn<?, ?> statusCol;
+    @FXML private TreeTableColumn<?, ?> statusCol;
+
 
     @FXML
     void loadOrder(ActionEvent event) {

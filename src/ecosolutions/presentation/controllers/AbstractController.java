@@ -35,9 +35,9 @@ public abstract class AbstractController {
     protected void loadpopup(String layoutfile) {
         try {
             FXMLLoader fxmlloader = new FXMLLoader((getClass().getResource("/ecosolutions/presentation/views/" + layoutfile)));
-            Parent root2 = (Parent) fxmlloader.load();
+            Parent root2 = fxmlloader.load();
             Stage stage = new Stage();
-            stage.setTitle("Overview over Active Orders");
+            stage.setTitle("Pop Up");
             stage.setScene(new Scene(root2));
             stage.show();
         } catch (IOException e) {
