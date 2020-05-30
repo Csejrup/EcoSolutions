@@ -91,7 +91,8 @@ public class DB {
             }catch (Exception e ){
                 e.printStackTrace();
             }
-        }/**
+        }
+        /**
          OTHER SQL QUERIES
         @param sqlQuery
          */

@@ -5,7 +5,7 @@ import ecosolutions.presentation.models.Customer;
 import java.util.List;
 import java.util.Optional;
 
-public class CustomerDao implements Dao {
+public class CustomerDao implements Dao<Customer> {
     @Override
     public Optional<Customer> getbyID(int id) {
         return null;
@@ -17,17 +17,17 @@ public class CustomerDao implements Dao {
     }
 
     @Override
-    public void save(Object o) {
+    public void save(Customer customer) {
 
     }
 
     @Override
-    public void update(Object o) {
+    public void update(Customer customer) {
 
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Customer customer) {
 
     }
 }

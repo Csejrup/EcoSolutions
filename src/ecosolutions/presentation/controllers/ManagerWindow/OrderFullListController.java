@@ -43,11 +43,11 @@ public class OrderFullListController implements Initializable {
         return (Stage) tableView.getScene().getWindow();
     }
     private void initCol(){
-        ordernoCol.setCellValueFactory(new PropertyValueFactory<Order, String>("orderID"));
-        statusCol.setCellValueFactory(new PropertyValueFactory<Order, String>("orderstatus"));
-        qtyCol.setCellValueFactory(new PropertyValueFactory<Order, String>("qty"));
-        customerCol.setCellValueFactory(new PropertyValueFactory<Order, String>("customerID"));
-        deliverypointCol.setCellValueFactory(new PropertyValueFactory<Order, String>("deliverypointname"));
+        ordernoCol.setCellValueFactory(new PropertyValueFactory<>("orderID"));
+        statusCol.setCellValueFactory(new PropertyValueFactory<>("orderstatus"));
+        qtyCol.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        customerCol.setCellValueFactory(new PropertyValueFactory<>("customerID"));
+        deliverypointCol.setCellValueFactory(new PropertyValueFactory<>("deliverypointname"));
     }
     private void loadData(){
         list.clear();

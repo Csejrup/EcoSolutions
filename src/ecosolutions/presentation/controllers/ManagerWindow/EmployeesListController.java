@@ -45,11 +45,11 @@ public class EmployeesListController implements Initializable {
         return (Stage) tableView.getScene().getWindow();
     }
     private void initCol(){
-        idCol.setCellValueFactory(new PropertyValueFactory<Employee, String>("employeeid"));
-        fnCol.setCellValueFactory(new PropertyValueFactory<Employee, String>("firstname"));
-        lnCol.setCellValueFactory(new PropertyValueFactory<Employee, String>("lastname"));
-        roleCol.setCellValueFactory(new PropertyValueFactory<Employee, String>("role"));
-        statCol.setCellValueFactory(new PropertyValueFactory<Employee, String>("status"));
+        idCol.setCellValueFactory(new PropertyValueFactory<>("employeeid"));
+        fnCol.setCellValueFactory(new PropertyValueFactory<>("firstname"));
+        lnCol.setCellValueFactory(new PropertyValueFactory<>("lastname"));
+        roleCol.setCellValueFactory(new PropertyValueFactory<>("role"));
+        statCol.setCellValueFactory(new PropertyValueFactory<>("status"));
     }
 
     private void loadData(){

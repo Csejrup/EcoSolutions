@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class EmployeeDao implements Dao {
+public class EmployeeDao implements Dao<Employee> {
     @Override
      public Optional<Employee> getbyID(int id) {
         var conn = DatabaseHandler.getInstance().getConnection();
@@ -50,20 +50,26 @@ public class EmployeeDao implements Dao {
         }
         return employees;
     }
-
     @Override
-    public void save(Object o) {
+    public void save(Employee employee) {
 
     }
 
     @Override
-    public void update(Object o) {
+    public void update(Employee employee) {
 
     }
-
     @Override
-    public void delete(int id) {
-
+    public void delete(Employee employee) {
+        var conn = DatabaseHandler.getInstance().getConnection();
+        try{
+            var stmt = conn.prepareStatement("DELETE FROM tblEmployee WHERE fldEmployeeID =?");
+            stmt.setInt(1, employee.getEmployeeid());
+            stmt.executeUpdate();
+            stmt.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
     }
     private Employee exportEmployee(ResultSet rs) throws SQLException{
         Employee employee = new Employee();
