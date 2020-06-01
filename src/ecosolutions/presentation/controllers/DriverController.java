@@ -16,8 +16,11 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.net.URL;
+import java.net.http.WebSocket;
 import java.sql.SQLOutput;
 import java.util.ResourceBundle;
+
+import static javax.swing.JOptionPane.showMessageDialog;
 
 public class DriverController extends AbstractController implements Initializable {
     ObservableList list = FXCollections.observableArrayList();
@@ -58,8 +61,8 @@ public class DriverController extends AbstractController implements Initializabl
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initCol();
         loadData();
-        tableView.getSelectionModel().getSelectedItem();
     }
+
     private void initCol(){
         ordernoCol.setCellValueFactory(new PropertyValueFactory<>("orderID"));
         ordstatCol.setCellValueFactory(new PropertyValueFactory<>("orderstatus"));
@@ -71,24 +74,36 @@ public class DriverController extends AbstractController implements Initializabl
     }
 
     public void changeStatus(ActionEvent event){
-        change("Under_Way");
+        checkRow("Under_Way");
+        checkBoxDeliv.setSelected(false);
     }
 
-    public void statusDelivered(ActionEvent event) { change("Delivered"); }
+    public void statusDelivered(ActionEvent event) {
+        checkRow("Delivered");
+        checkBoxUp.setSelected(false);
+    }
 
-    private void change(String status){
+     private void change(String status){
          Order order = new Order();
          OrderDao dao = new OrderDao();
 
-         order.setOrderID(tableView.getSelectionModel().getSelectedItem().getOrderID());
-         order.setOrderstatus(status);
-         System.out.println(order);
-         dao.update(order);
-         refresh();
+                      order.setOrderID(tableView.getSelectionModel().getSelectedItem().getOrderID());
+             order.setOrderstatus(status);
+             System.out.println(order);
+             dao.update(order);
+             refresh();
+
+
     }
     private void refresh(){
         tableView.getItems().clear();
         loadData();
-
+    }
+    private void checkRow(String status){
+        if(tableView.isCacheShape()) {
+            change(status);
+        }else {
+            showMessageDialog(null,"Select order");
+        }
     }
 }
