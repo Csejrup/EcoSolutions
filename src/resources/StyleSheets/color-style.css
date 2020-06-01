@@ -17,6 +17,7 @@
     -fx-background-color: -fx-primary;
     -fx-border-color: -fx-secondary;
     -fx-border-radius: 20px;
+    -fx-border-width: 1.5pt;
     -fx-background-radius: 20px;
     -fx-font-size: 12pt;
 }
@@ -56,6 +57,7 @@
     -fx-background-color: -fx-secondary;
     -fx-border-color: -fx-primary;
     -fx-border-radius: 20px;
+    -fx-border-width: 1.5pt;
     -fx-background-radius: 20px;
     -fx-font-size: 12pt;
 }
@@ -77,12 +79,19 @@
 
 /* TabPane Style */
 .tab{
-    -fx-background-color: -fx-managerprimary ;
+    -fx-background-color: -fx-primary ;
     -fx-pref-width: 280;
     -fx-pref-height: 60;
+    -fx-text-color: -fx-managerprimary;
+
+}
+.tab-label{
+    -fx-text-fill: -fx-managerprimary;
+    -fx-font-size: 15pt;
 }
 .tab-header-background{
-    -fx-background-color: -fx-managerprimary ;
+    -fx-background-color: -fx-primary ;
+    -fx-text-color: -fx-managerprimary;
 }
 
 /* Menubar style*/
@@ -93,15 +102,19 @@
 .context-menu{
     -fx-background-color: derive(-fx-managerprimary , +20%);
 }
-
 /* Toolbar Button Style*/
 .toolbar-button{
-    -fx-background-color: -fx-managerprimary;
+    -fx-background-color: -fx-primary;
+    -fx-background-radius: 0px;
+    -fx-border-color: -fx-primary;
+    -fx-font-size: 12pt;
+    -fx-border-width: 1.5pt;
 }
 .toolbar-button:hover{
-    -fx-background-color: derive(-fx-primary, -10%);
-    -fx-text-fill: -fx-managerprimary;
+    -fx-background-color: derive(-fx-primary, -20%);
+    -fx-border-color: derive(-fx-primary, -20%);
 }
+
 /*text style*/
 .main-text{
     -fx-text-fill: -fx-primary;
@@ -110,5 +123,4 @@
 /* Pie Chart Style*/
 .chart-pie-label{
     -fx-fill: #4e6069;
-
 }

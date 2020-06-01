@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Tab;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -26,6 +27,8 @@ public class ManagerController extends AbstractController implements Initializab
     @FXML private JFXTextField employIDInput, orderIDInput;
     @FXML private StackPane ordercontainer, employcontainer;
 
+    @FXML private Tab overviewtab, laundryotab;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -35,6 +38,7 @@ public class ManagerController extends AbstractController implements Initializab
     @FXML
     private void loadEmployeeInfo(){
         clearemployCache();
+        disablenableGraph(false);
 
     }
     @FXML
@@ -59,12 +63,21 @@ public class ManagerController extends AbstractController implements Initializab
         employchart = new PieChart(DatabaseHandler.getEmployeeStatistics());
         employcontainer.getChildren().add(employchart);
 
+
+
     }
     private void refreshGraphs(){
-
+        orderchart = new PieChart(DatabaseHandler.getOrderGraphStatistics());
+        employchart = new PieChart(DatabaseHandler.getEmployeeStatistics());
     }
-    private void disablenableGraph(){
-
+    private void disablenableGraph(Boolean status){
+        if(status){
+            orderchart.setOpacity(1);
+            employchart.setOpacity(1);
+        }else{
+            orderchart.setOpacity(0);
+            employchart.setOpacity(0);
+        }
     }
 
     private boolean validateInput(){
