@@ -156,17 +156,17 @@ public final class DatabaseHandler {
             ResultSet rs = execQuery(query1);
             if(rs.next()){
                 int count = rs.getInt(1);
-                data2.add(new PieChart.Data("Total Working ("+count+")" , count));
+                data2.add(new PieChart.Data("Total Signed-In ("+count+")" , count));
             }
             rs = execQuery(query2);
             if(rs.next()){
                 int count = rs.getInt(1);
-                data2.add(new PieChart.Data("Total Resting ("+count+")", count));
+                data2.add(new PieChart.Data("Total Signed-Off ("+count+")", count));
             }
             rs = execQuery(query3);
             if(rs.next()){
                 int count = rs.getInt(1);
-                data2.add(new PieChart.Data("Total On Holiday ("+count+")", count));
+                data2.add(new PieChart.Data("Total On Vacation ("+count+")", count));
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -36,10 +36,7 @@ public class EmployeeDao implements Dao<Employee> {
         var conn = DatabaseHandler.getInstance().getConnection();
         try{
             var stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT tblEmployee.fldName, tblEmployee.fldSurname, tblEmployee.fldEmployeeID, tblRole.fldRole, tblStatus.fldStatus " +
-                    "FROM tblRole INNER JOIN " +
-                    "(tblEmployee INNER JOIN tblStatus ON tblStatus.fldStatusID=tblEmployee.fldStatusID) " +
-                    "ON tblRole.fldRoleID = tblEmployee.fldRoleID");
+            ResultSet rs = stmt.executeQuery("EXEC fetchemployeeData");
             while(rs.next()){
                 Employee employee = exportEmployee(rs);
                 employees.add(employee);
@@ -57,7 +54,20 @@ public class EmployeeDao implements Dao<Employee> {
 
     @Override
     public void update(Employee employee) {
+        var conn = DatabaseHandler.getInstance().getConnection();
 
+        try {
+            var stmt = conn.prepareStatement("UPDATE tblCustomerID SET fldName=?,fldSurname=?,fldPhone=? WHERE fldCustomerID=?");
+            stmt.setString(1, employee.getFirstname());
+            stmt.setString(2, employee.getLastname());
+            stmt.setString(3, employee.getPhone_no());
+            stmt.setString(4, employee.getPhone_no());
+            stmt.setString(3, employee.getPhone_no());
+            stmt.setInt(4, employee.getEmployeeid());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     @Override
     public void delete(Employee employee) {
@@ -78,6 +88,7 @@ public class EmployeeDao implements Dao<Employee> {
         employee.setStatus(rs.getString("fldStatus"));
         employee.setRole(rs.getString("fldRole"));
         employee.setEmployeeid(rs.getInt("fldEmployeeID"));
+        employee.setPhone_no(rs.getString("fldPhone_no"));
         return employee;
     }
 }

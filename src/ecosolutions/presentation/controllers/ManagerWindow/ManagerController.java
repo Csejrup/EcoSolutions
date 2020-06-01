@@ -38,13 +38,13 @@ public class ManagerController extends AbstractController implements Initializab
     @FXML
     private void loadEmployeeInfo(){
         clearemployCache();
-        disablenableGraph(false);
+
 
     }
     @FXML
     private void loadOrderInfo(){
         clearOrderCache();
-
+        disablenableGraph(false);
 
     }
     void clearOrderCache(){
@@ -70,6 +70,7 @@ public class ManagerController extends AbstractController implements Initializab
         orderchart = new PieChart(DatabaseHandler.getOrderGraphStatistics());
         employchart = new PieChart(DatabaseHandler.getEmployeeStatistics());
     }
+
     private void disablenableGraph(Boolean status){
         if(status){
             orderchart.setOpacity(1);
