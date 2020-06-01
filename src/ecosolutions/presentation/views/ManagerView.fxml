@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="800.0" stylesheets="@../../../resources/StyleSheets/color-style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.ManagerWindow.ManagerController">
@@ -25,37 +26,65 @@
                      <tabs>
                         <Tab text="Overview">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
                                  <children>
-                                    <VBox layoutX="26.0" layoutY="26.0" prefHeight="377.0" prefWidth="540.0" styleClass="root">
+                                    <VBox layoutX="3.0" layoutY="6.0" prefHeight="411.0" prefWidth="663.0">
                                        <children>
-                                          <HBox alignment="CENTER" prefHeight="189.0" prefWidth="530.0">
+                                          <HBox alignment="CENTER" prefHeight="208.0" prefWidth="623.0">
                                              <children>
-                                                <JFXTextField fx:id="orderID" labelFloat="true" promptText="Order ID" />
-                                                <VBox alignment="CENTER" prefHeight="141.0" prefWidth="328.0" spacing="10.0">
+                                                <JFXTextField fx:id="orderIDInput" labelFloat="true" promptText="Order ID" />
+                                                <StackPane fx:id="ordercontainer">
                                                    <children>
-                                                      <Text fx:id="txtorderno" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="Order Number" textAlignment="CENTER" wrappingWidth="333.625">
-                                                         <VBox.margin>
-                                                            <Insets />
-                                                         </VBox.margin></Text>
-                                                      <Text fx:id="txtorderstat" layoutX="10.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="Order Status" textAlignment="CENTER" wrappingWidth="314.625" />
+                                                      <VBox alignment="CENTER" prefHeight="170.0" prefWidth="436.0" spacing="10.0">
+                                                         <children>
+                                                            <Text fx:id="txtorderno" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" textAlignment="CENTER" wrappingWidth="333.625">
+                                                               <VBox.margin>
+                                                                  <Insets />
+                                                               </VBox.margin>
+                                                               <font>
+                                                                  <Font name="Myanmar Text" size="12.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text fx:id="txtorderstat" layoutX="10.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" textAlignment="CENTER" wrappingWidth="314.625">
+                                                               <font>
+                                                                  <Font name="Myanmar Text" size="12.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </VBox>
                                                    </children>
-                                                </VBox>
+                                                </StackPane>
                                              </children>
                                              <VBox.margin>
                                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                              </VBox.margin>
                                           </HBox>
-                                          <HBox alignment="CENTER" prefHeight="204.0" prefWidth="540.0">
+                                          <HBox alignment="CENTER" prefHeight="208.0" prefWidth="623.0">
                                              <children>
-                                                <JFXTextField fx:id="employID" labelFloat="true" promptText="Employee ID" />
-                                                <VBox alignment="CENTER" prefHeight="156.0" prefWidth="379.0" spacing="10.0">
+                                                <JFXTextField fx:id="employIDInput" labelFloat="true" promptText="Employee ID" />
+                                                <StackPane fx:id="employcontainer" prefHeight="197.0" prefWidth="424.0">
                                                    <children>
-                                                      <Text fx:id="txtempname" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="Employee Name" textAlignment="CENTER" wrappingWidth="299.13671875" />
-                                                      <Text fx:id="txtrole" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="Role" textAlignment="CENTER" wrappingWidth="281.390625" />
-                                                      <Text fx:id="txtstatus" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="Status" textAlignment="CENTER" wrappingWidth="281.49609375" />
+                                                      <VBox alignment="CENTER" prefHeight="156.0" prefWidth="379.0" spacing="10.0">
+                                                         <children>
+                                                            <Text fx:id="txtempname" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" textAlignment="CENTER" wrappingWidth="299.13671875">
+                                                               <font>
+                                                                  <Font name="Myanmar Text" size="12.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text fx:id="txtrole" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" textAlignment="CENTER" wrappingWidth="281.390625">
+                                                               <font>
+                                                                  <Font name="Myanmar Text" size="12.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text fx:id="txtstatus" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" textAlignment="CENTER" wrappingWidth="281.49609375">
+                                                               <font>
+                                                                  <Font name="Myanmar Text" size="12.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </VBox>
                                                    </children>
-                                                </VBox>
+                                                </StackPane>
                                              </children>
                                              <VBox.margin>
                                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -69,7 +98,7 @@
                         </Tab>
                         <Tab text="Laundry Order">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
                                  <children>
                                     <BorderPane layoutX="165.0" layoutY="97.0" prefHeight="426.0" prefWidth="590.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <top>
@@ -92,7 +121,7 @@
                </children>
             </AnchorPane>
          </center>
-         <right>
+         <left>
             <VBox prefHeight="480.0" prefWidth="130.0" styleClass="rootmanager" BorderPane.alignment="CENTER">
                <children>
                   <JFXButton fx:id="btnworkforce" contentDisplay="TOP" mnemonicParsing="false" onAction="#loadWorkForceList" prefHeight="121.0" prefWidth="136.0" styleClass="toolbar-button" text="Workforce" textFill="WHITE">
@@ -133,7 +162,7 @@
                   </JFXButton>
                </children>
             </VBox>
-         </right>
+         </left>
       </BorderPane>
    </children>
 </StackPane>

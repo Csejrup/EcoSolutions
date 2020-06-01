@@ -40,7 +40,8 @@ public class OrderDao implements Dao<Order>{
             //SQL STATEMENT FOR SELECTING EVERY ORDER RELATED DATA IN MULTIPLE TABLES, CONNECTED THROUGH INNER JOIN AND TBLORDER
             ResultSet rs = stmt.executeQuery("SELECT tblOrder.fldOrderID, tblOrderStatus.fldOrderStatus, tblDeliveryPoint.fldDPointName " +
                     "FROM tblDeliveryPoint INNER JOIN " +
-                    "(tblOrder INNER JOIN tblOrderStatus ON tblOrderStatus.fldOrderStatusID = tblOrder.fldOrderStatusID) " +
+                    "(tblOrder INNER JOIN tblOrderStatus ON tblOrderStatus.fldOrderStatusID = tblOrder.fldOrderStatusID " +
+                    "INNER JOIN tblCustomer ON tblCustomer.fldCustomerID = tblOrder.fldCustomerID) " +
                     "ON tblDeliveryPoint.fldDeliveryPointID = tblOrder.fldDeliveryPointID");
             while(rs.next()){
                 Order order = exportOrder(rs);
@@ -87,7 +88,7 @@ public class OrderDao implements Dao<Order>{
     public void delete(Order order) {
         var conn = DatabaseHandler.getInstance().getConnection();
         try{
-            var stmt = conn.prepareStatement("DELETE FROM tblOrder WHERE fldOrder =?");
+            var stmt = conn.prepareStatement("DELETE FROM tblOrder WHERE fldOrderID =?");
             stmt.setInt(1, order.getOrderID());
             stmt.executeUpdate();
             stmt.close();

@@ -1,5 +1,9 @@
 package ecosolutions.persistence;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.chart.PieChart;
+
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.*;
@@ -15,6 +19,7 @@ public final class DatabaseHandler {
     private static String database;
     private static String user;
     private static String password;
+
     static {
         Properties props = new Properties();
 
@@ -80,7 +85,7 @@ public final class DatabaseHandler {
             System.out.println("Database connection failed");
         }
     }
-    public ResultSet execQuery(String query) {
+    public static ResultSet execQuery(String query) {
         ResultSet result;
         try {
             stmt = conn.createStatement();
@@ -108,7 +113,66 @@ public final class DatabaseHandler {
         }
     }
 
+    public static ObservableList<PieChart.Data> getOrderGraphStatistics(){
+        ObservableList<PieChart.Data> data = FXCollections.observableArrayList();
+        try {
 
+            String query1 = "SELECT COUNT(*) FROM tblOrder WHERE fldOrderStatusID = 1";
+            String query2 = "SELECT COUNT(*) FROM tblOrder WHERE fldOrderStatusID = 2";
+            String query3 = "SELECT COUNT(*) FROM tblOrder WHERE fldOrderStatusID = 3";
+            String query4 = "SELECT COUNT(*) FROM tblOrder WHERE fldOrderStatusID = 4";
+            ResultSet rs = execQuery(query1);
+            if(rs.next()){
+                int count = rs.getInt(1);
+                data.add(new PieChart.Data("Total Pending ("+count+")", count));
+            }
+            rs = execQuery(query2);
+            if(rs.next()){
+                int count = rs.getInt(1);
+                data.add(new PieChart.Data("Total Ready ("+count+")", count));
+            }
+            rs = execQuery(query3);
+            if(rs.next()){
+                int count = rs.getInt(1);
+                data.add(new PieChart.Data("Total Cleaning ("+count+")", count));
+            }
+            rs = execQuery(query4);
+            if(rs.next()){
+                int count = rs.getInt(1);
+                data.add(new PieChart.Data("Total Complete ("+count+")", count));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return data;
+    }
+    public static ObservableList<PieChart.Data> getEmployeeStatistics(){
+        ObservableList<PieChart.Data> data2 = FXCollections.observableArrayList();
+        try {
+
+            String query1 = "SELECT COUNT(*) FROM tblEmployee WHERE fldStatusID = 1";
+            String query2 = "SELECT COUNT(*) FROM tblEmployee WHERE fldStatusID = 2";
+            String query3 = "SELECT COUNT(*) FROM tblEmployee WHERE fldStatusID = 3";
+            ResultSet rs = execQuery(query1);
+            if(rs.next()){
+                int count = rs.getInt(1);
+                data2.add(new PieChart.Data("Total Working ("+count+")" , count));
+            }
+            rs = execQuery(query2);
+            if(rs.next()){
+                int count = rs.getInt(1);
+                data2.add(new PieChart.Data("Total Resting ("+count+")", count));
+            }
+            rs = execQuery(query3);
+            if(rs.next()){
+                int count = rs.getInt(1);
+                data2.add(new PieChart.Data("Total On Holiday ("+count+")", count));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return data2;
+    }
     /**
      * Disconnects the program from the database
      * @throws Exception

@@ -96,7 +96,6 @@ public class DeliveryPointController extends AbstractController implements Initi
         if(customerName!=null&&customerPhone!=null&&items.size()!=0) {
             DB.insertSQL("INSERT INTO tblOrder(fldOrderID,fldCustomerID,fldOrderDesID,fldOrderStatusID,fldDeliveryPointID,fldDateofOrder) VALUES ('"+orderID+"','"+customerID+"','"+orderDescID+"','"+statusID+"','"+deliveryPointID+"','"+date+"');");
             DB.insertSQL("INSERT INTO tblCustomer(fldCustomerID,fldName,fldSurname,fldPhone) VALUES ('"+customerID+"','"+customerName+"','"+customerSurName+"','"+customerPhone+"');");
-
             /**
              * LOOP FOR ADDING ITEMS FROM LIST INTO DATABASE
              */

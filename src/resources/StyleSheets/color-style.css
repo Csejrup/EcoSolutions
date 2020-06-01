@@ -107,3 +107,8 @@
     -fx-text-fill: -fx-primary;
     -fx-font-size: 13pt;
 }
+/* Pie Chart Style*/
+.chart-pie-label{
+    -fx-fill: #4e6069;
+
+}
