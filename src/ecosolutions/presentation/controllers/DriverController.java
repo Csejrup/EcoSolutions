@@ -59,9 +59,7 @@ public class DriverController extends AbstractController implements Initializabl
         initCol();
         loadData();
         tableView.getSelectionModel().getSelectedItem();
-
     }
-
     private void initCol(){
         ordernoCol.setCellValueFactory(new PropertyValueFactory<>("orderID"));
         ordstatCol.setCellValueFactory(new PropertyValueFactory<>("orderstatus"));
@@ -76,19 +74,17 @@ public class DriverController extends AbstractController implements Initializabl
         change("Under_Way");
     }
 
-    public void statusDelivered(ActionEvent event) {
-    change("Delivered");
+    public void statusDelivered(ActionEvent event) { change("Delivered"); }
 
-    }
-
-     private void change(String status){
+    private void change(String status){
          Order order = new Order();
          OrderDao dao = new OrderDao();
+
          order.setOrderID(tableView.getSelectionModel().getSelectedItem().getOrderID());
          order.setOrderstatus(status);
          System.out.println(order);
          dao.update(order);
-        refresh();
+         refresh();
     }
     private void refresh(){
         tableView.getItems().clear();
