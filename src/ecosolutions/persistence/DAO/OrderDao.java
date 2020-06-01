@@ -38,11 +38,7 @@ public class OrderDao implements Dao<Order>{
         try{
             var stmt = conn.createStatement();
             //SQL STATEMENT FOR SELECTING EVERY ORDER RELATED DATA IN MULTIPLE TABLES, CONNECTED THROUGH INNER JOIN AND TBLORDER
-            ResultSet rs = stmt.executeQuery("SELECT tblOrder.fldOrderID, tblOrderStatus.fldOrderStatus, tblDeliveryPoint.fldDPointName " +
-                    "FROM tblDeliveryPoint INNER JOIN " +
-                    "(tblOrder INNER JOIN tblOrderStatus ON tblOrderStatus.fldOrderStatusID = tblOrder.fldOrderStatusID " +
-                    "INNER JOIN tblCustomer ON tblCustomer.fldCustomerID = tblOrder.fldCustomerID) " +
-                    "ON tblDeliveryPoint.fldDeliveryPointID = tblOrder.fldDeliveryPointID");
+            ResultSet rs = stmt.executeQuery("EXEC orderdataSelect");
             while(rs.next()){
                 Order order = exportOrder(rs);
                 orders.add(order);

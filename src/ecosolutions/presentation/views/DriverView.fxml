@@ -17,7 +17,7 @@
             <Pane prefHeight="321.0" prefWidth="155.0" BorderPane.alignment="CENTER">
                <children>
 
-                  <JFXCheckBox fx:id="checkBoxUp" layoutX="15.0" layoutY="14.0" text="Picked Up" onAction="#changeStatus">
+                  <JFXCheckBox fx:id="checkBoxUp" layoutX="14.0" layoutY="53.0" onAction="#changeStatus" text="Picked Up">
 
 
                      <font>
@@ -25,23 +25,23 @@
                      </font>
                   </JFXCheckBox>
 
-                  <JFXCheckBox fx:id="checkBoxDeliv" layoutX="14.0" layoutY="43.0" text="Delivered" onAction="#statusDelivered">
+                  <JFXCheckBox fx:id="checkBoxDeliv" layoutX="15.0" layoutY="82.0" onAction="#statusDelivered" text="Delivered">
 
 
                      <font>
                         <Font name="Myanmar Text" size="12.0" />
                      </font>
                   </JFXCheckBox>
-                  <Label alignment="CENTER" layoutX="-8.0" prefHeight="48.0" prefWidth="171.0" style="-fx-background-color: #424242;" text="Update Order" textFill="WHITE">
-                     <font>
-                        <Font name="Myanmar Text Bold" size="20.0" />
-                     </font>
-                  </Label>
                   <JFXButton fx:id="btnLogOut" layoutX="20.0" layoutY="278.0" onAction="#handleLogOut" prefHeight="37.0" prefWidth="116.0" text="Log Out" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text Bold" size="12.0" />
                      </font>
                   </JFXButton>
+                  <Label alignment="CENTER" layoutX="-8.0" prefHeight="48.0" prefWidth="171.0" style="-fx-background-color: #424242;" text="Update Order" textFill="WHITE">
+                     <font>
+                        <Font name="Myanmar Text Bold" size="20.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </left>
