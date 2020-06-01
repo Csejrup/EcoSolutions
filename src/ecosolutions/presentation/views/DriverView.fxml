@@ -10,23 +10,34 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="321.0" prefWidth="509.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.DriverController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../resources/StyleSheets/color-style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.DriverController">
    <children>
-      <BorderPane layoutX="-3.0" prefHeight="321.0" prefWidth="516.0">
+      <BorderPane layoutX="-3.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
-            <Pane prefHeight="321.0" prefWidth="155.0" style="-fx-background-color: #eeeeee;" BorderPane.alignment="CENTER">
+            <Pane prefHeight="321.0" prefWidth="155.0" BorderPane.alignment="CENTER">
                <children>
+
                   <JFXCheckBox fx:id="checkBoxUp" layoutX="15.0" layoutY="14.0" text="Picked Up" onAction="#changeStatus">
+
+
                      <font>
                         <Font name="Myanmar Text" size="12.0" />
                      </font>
                   </JFXCheckBox>
+
                   <JFXCheckBox fx:id="checkBoxDeliv" layoutX="14.0" layoutY="43.0" text="Delivered" onAction="#statusDelivered">
+
+
                      <font>
                         <Font name="Myanmar Text" size="12.0" />
                      </font>
                   </JFXCheckBox>
-                  <JFXButton fx:id="btnLogOut" layoutX="23.0" layoutY="208.0" onAction="#handleLogOut" prefHeight="37.0" prefWidth="116.0" style="-fx-background-color: #b90808; -fx-background-radius: 50px;" text="Log Out" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="-8.0" prefHeight="48.0" prefWidth="171.0" style="-fx-background-color: #424242;" text="Update Order" textFill="WHITE">
+                     <font>
+                        <Font name="Myanmar Text Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btnLogOut" layoutX="20.0" layoutY="278.0" onAction="#handleLogOut" prefHeight="37.0" prefWidth="116.0" text="Log Out" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text Bold" size="12.0" />
                      </font>
@@ -35,16 +46,11 @@
             </Pane>
          </left>
          <top>
-            <Pane prefHeight="62.0" prefWidth="516.0" style="-fx-background-color: #b90808;" BorderPane.alignment="CENTER">
+            <Pane prefHeight="62.0" prefWidth="516.0" styleClass="menu-bar" BorderPane.alignment="CENTER">
                <children>
-                  <Label alignment="CENTER" layoutX="-11.0" layoutY="7.0" prefHeight="48.0" prefWidth="181.0" style="-fx-background-color: #b90808;" text="Update Order" textFill="WHITE">
+                  <Label layoutX="300.0" layoutY="1.0" text="Active Orders" textFill="WHITE">
                      <font>
-                        <Font name="Myanmar Text" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="245.0" layoutY="7.0" text="List of Active Orders" textFill="WHITE">
-                     <font>
-                        <Font name="Myanmar Text" size="20.0" />
+                        <Font name="Myanmar Text Bold" size="25.0" />
                      </font>
                   </Label>
                </children>
