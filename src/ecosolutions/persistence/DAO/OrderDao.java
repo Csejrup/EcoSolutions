@@ -75,8 +75,9 @@ public class OrderDao implements Dao<Order>{
     public void update(Order order) {
         var conn = DatabaseHandler.getInstance().getConnection();
         try{
-            var stmt = conn.prepareStatement("");
-            ResultSet rs = stmt.executeQuery();
+            var stmt = conn.prepareStatement("EXEC  update_orderstatus @status ="+order.getOrderstatus()+", @orderID="+order.getOrderID());
+            //ResultSet rs = stmt.executeQuery();
+            stmt.executeUpdate();
 
         }catch(Exception e){
             e.printStackTrace();
