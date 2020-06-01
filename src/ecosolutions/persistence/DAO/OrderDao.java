@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * DAO Class Responsible for connecting with the Database and fetch table Order (tblOrder)
+ * DAO Class Responsible for connecting with the Database and fetch an Order and its information
  * CRUD - Create, retrieve, update, delete
  */
 public class OrderDao implements Dao<Order>{
