@@ -40,21 +40,6 @@ public class LoginController extends AbstractController{
         String employeeID = txtUserName.getText();
         String password = txtPW.getText();
 
-
-
-        /*
-        var employees = ex.getAll();
-        employees.forEach(System.out::println);
- EmployeeService es = new EmployeeService();
-        var employees = es.getEmployees();
-        employees.forEach(System.out::println);
-
-         */
-
-
-       // var loadedorder = dao.get(4);
-       // System.out.println(loadedorder);
-
         if(employeeID.startsWith("m")) {
             Stage stage = (Stage) btnLogIn.getScene().getWindow();
             loadScreen(stage, "ManagerView.fxml");
