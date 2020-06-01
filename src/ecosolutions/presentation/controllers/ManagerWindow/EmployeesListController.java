@@ -12,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class EmployeesListController implements Initializable {
@@ -35,6 +36,8 @@ public class EmployeesListController implements Initializable {
     @FXML
     private TableColumn<Employee, String> statCol;
 
+    @FXML
+    private TableColumn<Employee, String> phone_noCol;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -50,11 +53,13 @@ public class EmployeesListController implements Initializable {
         lnCol.setCellValueFactory(new PropertyValueFactory<>("lastname"));
         roleCol.setCellValueFactory(new PropertyValueFactory<>("role"));
         statCol.setCellValueFactory(new PropertyValueFactory<>("status"));
+        phone_noCol.setCellValueFactory(new PropertyValueFactory<>("phone_no"));
     }
 
     private void loadData(){
+        List<Employee> listofemployees = EmployeeService.getEmployees();
         list.clear();
-        tableView.getItems().addAll(EmployeeService.getEmployees());
+        tableView.getItems().addAll(listofemployees);
     }
 
 }

@@ -22,13 +22,13 @@
          <center>
             <AnchorPane prefHeight="389.0" prefWidth="737.0" BorderPane.alignment="CENTER">
                <children>
-                  <JFXTabPane styleClass="tab" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <JFXTabPane styleClass="root" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <tabs>
-                        <Tab fx:id="overviewtab" text="Overview">
+                        <Tab text="Overview">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
                                  <children>
-                                    <VBox layoutX="3.0" layoutY="6.0" prefHeight="411.0" prefWidth="663.0">
+                                    <VBox layoutX="3.0" layoutY="6.0" prefHeight="420.0" prefWidth="670.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
                                           <HBox alignment="CENTER" prefHeight="208.0" prefWidth="623.0">
                                              <children>
@@ -61,10 +61,10 @@
                                           </HBox>
                                           <HBox alignment="CENTER" prefHeight="208.0" prefWidth="623.0">
                                              <children>
-                                                <JFXTextField fx:id="employIDInput" labelFloat="true" promptText="Employee ID" />
+                                                <JFXTextField fx:id="employIDInput" labelFloat="true" prefHeight="38.0" prefWidth="194.0" promptText="Employee ID" />
                                                 <StackPane fx:id="employcontainer" prefHeight="197.0" prefWidth="424.0">
                                                    <children>
-                                                      <VBox alignment="CENTER" prefHeight="156.0" prefWidth="379.0" spacing="10.0">
+                                                      <VBox alignment="CENTER" prefHeight="170.0" prefWidth="449.0" spacing="10.0">
                                                          <children>
                                                             <Text fx:id="txtempname" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" textAlignment="CENTER" wrappingWidth="299.13671875">
                                                                <font>
@@ -96,7 +96,7 @@
                               </AnchorPane>
                            </content>
                         </Tab>
-                        <Tab fx:id="laundryotab" text="Laundry Order">
+                        <Tab text="Laundry Order">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
                                  <children>
@@ -122,58 +122,55 @@
             </AnchorPane>
          </center>
          <left>
-            <Pane styleClass="root" BorderPane.alignment="CENTER">
+            <VBox prefHeight="447.0" prefWidth="130.0" styleClass="rootmanager" BorderPane.alignment="CENTER">
                <children>
-                  <VBox layoutY="68.0" prefHeight="412.0" prefWidth="130.0">
+                  <Pane prefHeight="58.0" prefWidth="130.0" styleClass="root">
                      <children>
-                        <JFXButton fx:id="btnworkforce" contentDisplay="TOP" mnemonicParsing="false" onAction="#loadWorkForceList" prefHeight="103.0" prefWidth="130.0" styleClass="toolbar-button" text="Workforce" textFill="WHITE">
-                           <graphic>
-                              <ImageView fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../resources/pictures/employee.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font name="Myanmar Text" size="12.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="btnorders" contentDisplay="TOP" mnemonicParsing="false" onAction="#loadOrderList" prefHeight="103.0" prefWidth="130.0" styleClass="toolbar-button" text="Orders" textFill="WHITE">
-                           <graphic>
-                              <ImageView fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../resources/pictures/order.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="btnstatistics" contentDisplay="TOP" mnemonicParsing="false" onAction="#loadStatisticsList" prefHeight="103.0" prefWidth="130.0" styleClass="toolbar-button" text="Statistics" textFill="WHITE">
-                           <graphic>
-                              <ImageView fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../resources/pictures/statistics.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="btnsettings" contentDisplay="TOP" mnemonicParsing="false" onAction="#loadSettings" prefHeight="103.0" prefWidth="130.0" styleClass="toolbar-button" text="Return" textFill="WHITE">
-                           <graphic>
-                              <ImageView fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../resources/pictures/return.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
+                        <ImageView fitHeight="57.0" fitWidth="113.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/pictures/ecosolution.png" />
+                           </image>
+                        </ImageView>
                      </children>
-                  </VBox>
-                  <ImageView fitHeight="57.0" fitWidth="113.0" layoutX="9.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../resources/pictures/ecosolution.png" />
-                     </image>
-                  </ImageView>
+                  </Pane>
+                  <JFXButton fx:id="btnworkforce" contentDisplay="TOP" mnemonicParsing="false" onAction="#loadWorkForceList" prefHeight="110.0" prefWidth="130.0" styleClass="toolbar-button" text="Workforce" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/pictures/employee.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btnorders" contentDisplay="TOP" mnemonicParsing="false" onAction="#loadOrderList" prefHeight="111.0" prefWidth="130.0" styleClass="toolbar-button" text="Orders" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/pictures/order.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btnstatistics" contentDisplay="TOP" mnemonicParsing="false" onAction="#loadStatisticsList" prefHeight="111.0" prefWidth="130.0" styleClass="toolbar-button" text="Statistics" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/pictures/statistics.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btnsettings" contentDisplay="TOP" mnemonicParsing="false" onAction="#loadSettings" prefHeight="111.0" prefWidth="130.0" styleClass="toolbar-button" text="Return" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/pictures/return.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
                </children>
-            </Pane>
+            </VBox>
          </left>
       </BorderPane>
    </children>

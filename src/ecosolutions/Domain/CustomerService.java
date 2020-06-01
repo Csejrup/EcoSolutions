@@ -1,30 +1,49 @@
 package ecosolutions.Domain;
 
+import ecosolutions.persistence.DAO.CustomerDao;
 import ecosolutions.persistence.DB;
+import ecosolutions.presentation.models.Customer;
+
+import java.util.List;
+import java.util.Optional;
 
 public class CustomerService extends AccountService {
 
-	private String customerName;
-	private String phone_No;
-
-	public void register() {
-		// TODO - implement ecosolutions.Domain.Account.Customer.register
-		throw new UnsupportedOperationException();
-	}
-
-	public void login() {
-		// TODO - implement ecosolutions.Domain.Account.Customer.login
-		throw new UnsupportedOperationException();
-	}
-
-	public void updateProfile() {
-		// TODO - implement ecosolutions.Domain.Account.Customer.updateProfile
-		throw new UnsupportedOperationException();
-	}
 	public static int getCustomerID(){
 		DB.selectSQL("SELECT MAX(fldCustomerID) FROM tblCustomer");
 		return Integer.parseInt(DB.getQueryData());
 
 	}
-
+	private static boolean doesNotExist(Customer customer){
+		var customerDao = new CustomerDao();
+		for(Customer c : customerDao.getAll()){
+			if(c.equals(customer)){
+				return false;
+			}
+		}
+		return true;
+	}
+	public static Optional<Customer> getCustomer(int id){
+		var customerDao = new CustomerDao();
+		return customerDao.getbyID(id);
+	}
+	public static void addCustomer(Customer customer){
+		var customerDao = new CustomerDao();
+		if(doesNotExist(customer)){
+			customerDao.save(customer);
+		}
+		customerDao.save(customer);
+	}
+	public static void updateCustomer(Customer customer){
+		var customerDao = new CustomerDao();
+		customerDao.update(customer);
+	}
+	public static void deleteCustomer(Customer customer){
+		var customerDao = new CustomerDao();
+		customerDao.delete(customer);
+	}
+	public static List<Customer> getCustomers(){
+		var customerDao = new CustomerDao();
+		return customerDao.getAll();
+	}
 }
