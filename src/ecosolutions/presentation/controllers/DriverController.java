@@ -23,32 +23,15 @@ import java.util.ResourceBundle;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class DriverController extends AbstractController implements Initializable {
+
+    @FXML private JFXButton btnLogOut, driverLogOut;
+    @FXML private JFXCheckBox checkBoxUp, checkBoxDeliv;
+    @FXML private TableView<Order> tableView;
+    @FXML private TableColumn<Order, String> ordernoCol;
+    @FXML private TableColumn<Order, String> ordstatCol;
+    @FXML private TableColumn<Order, String> locaCol;
+
     ObservableList list = FXCollections.observableArrayList();
-
-    @FXML
-    private JFXButton btnLogOut;
-
-    @FXML
-    private JFXCheckBox checkBoxUp;
-
-    @FXML
-    private JFXCheckBox checkBoxDeliv;
-
-    @FXML
-    private JFXButton driverLogOut;
-
-    @FXML
-    private TableView<Order> tableView;
-
-    @FXML
-    private TableColumn<Order, String> ordernoCol;
-
-    @FXML
-    private TableColumn<Order, String> ordstatCol;
-
-    @FXML
-    private TableColumn<Order, String> locaCol;
-
 
     @FXML
     private void handleLogOut(ActionEvent event) {

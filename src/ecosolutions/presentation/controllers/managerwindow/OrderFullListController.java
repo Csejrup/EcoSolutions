@@ -1,4 +1,4 @@
-package ecosolutions.presentation.controllers.ManagerWindow;
+package ecosolutions.presentation.controllers.managerwindow;
 
 import ecosolutions.Domain.OrderService;
 import ecosolutions.presentation.models.Order;
@@ -16,23 +16,13 @@ import java.util.ResourceBundle;
 
 public class OrderFullListController implements Initializable {
     ObservableList<Order> list = FXCollections.observableArrayList();
-    @FXML
-    private TableView<Order> tableView;
 
-    @FXML
-    private TableColumn<Order, String> ordernoCol;
-
-    @FXML
-    private TableColumn<Order, String> statusCol;
-
-    @FXML
-    private TableColumn<Order, String> qtyCol;
-
-    @FXML
-    private TableColumn<Order, String> customerCol;
-
-    @FXML
-    private TableColumn<Order, String> deliverypointCol;
+    @FXML private TableView<Order> tableView;
+    @FXML private TableColumn<Order, String> ordernoCol;
+    @FXML private TableColumn<Order, String> statusCol;
+    @FXML private TableColumn<Order, String> qtyCol;
+    @FXML private TableColumn<Order, String> customerCol;
+    @FXML private TableColumn<Order, String> deliverypointCol;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

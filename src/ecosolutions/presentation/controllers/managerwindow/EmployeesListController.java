@@ -1,4 +1,4 @@
-package ecosolutions.presentation.controllers.ManagerWindow;
+package ecosolutions.presentation.controllers.managerwindow;
 
 import ecosolutions.Domain.EmployeeService;
 import ecosolutions.presentation.models.Employee;
