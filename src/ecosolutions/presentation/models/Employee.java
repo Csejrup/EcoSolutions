@@ -18,15 +18,14 @@ public class Employee {
     public Employee(){
 
     }
-    //CONSTRUCTOR
-    public Employee(String role, String status, String firstname, String lastname, int employeeid, String phone_no) {
-        this.role = role;
-        this.status = status;
+
+    public Employee(String firstname, String lastname, int employeeid, String phone_no) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.employeeid = employeeid;
         this.phone_no = phone_no;
     }
+
     //SETTERS//
     public void setPhone_no(String phone_no) {
         this.phone_no = phone_no;

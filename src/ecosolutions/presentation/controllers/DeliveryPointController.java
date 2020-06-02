@@ -40,29 +40,17 @@ import java.util.ResourceBundle;
 
 public class DeliveryPointController extends AbstractController implements Initializable {
 
-    //ADD BASIC CLOTH TYPES
-    public static ObservableList<OrderTableView> items = FXCollections.observableArrayList();
-    ObservableList<String> laundryType = FXCollections.observableArrayList("T-Shirt","Jacket","Carpet","Jeans","Suit","Blinds");
-    @FXML
-    private JFXButton btnLogOut;
-//GLOBAL VARIABLES FOR TABLEVIEW
-    public static String orderType;
-    public static int orderQTY;
-
-    @FXML
-    private Pane pane1;
-
-    @FXML
-    private JFXListView<String> itemListView = new JFXListView<>();
-
-
-    @FXML private JFXButton btnConfirm, btnRemove, btnReturn, btnEdit, btnAdd;
-
-
-
+    @FXML private JFXListView<String> itemListView = new JFXListView<>();
+    @FXML private JFXButton btnConfirm, btnRemove, btnReturn, btnEdit, btnAdd, btnLogOut;
     @FXML private JFXTextField dueTextField, firstnameTextField, phoneNoTextField, lastnameTextField;
     @FXML private TextField qtyTextField;
 
+    //GLOBAL VARIABLES FOR TABLEVIEW
+    public static String orderType;
+    public static int orderQTY;
+    //ADD BASIC CLOTH TYPES
+    public static ObservableList<OrderTableView> items = FXCollections.observableArrayList();
+    ObservableList<String> laundryType = FXCollections.observableArrayList("T-Shirt","Jacket","Carpet","Jeans","Suit","Blinds");
     @FXML
     void handleAddItem(ActionEvent event) {
 
@@ -103,6 +91,22 @@ public class DeliveryPointController extends AbstractController implements Initi
 
 
 
+
+
+       /* if(customerName!=null&&customerPhone!=null&&items.size()!=0) {
+            DB.insertSQL("INSERT INTO tblOrder(fldOrderID,fldCustomerID,fldOrderDesID,fldOrderStatusID,fldDeliveryPointID,fldDateofOrder) VALUES ('"+orderID+"','"+customerID+"','"+orderDescID+"','"+statusID+"','"+deliveryPointID+"','"+date+"');");
+            DB.insertSQL("INSERT INTO tblCustomer(fldCustomerID,fldName,fldSurname,fldPhone) VALUES ('"+customerID+"','"+customerName+"','"+customerSurName+"','"+customerPhone+"');");
+            /**
+             * LOOP FOR ADDING ITEMS FROM LIST INTO DATABASE
+             */
+               /* for (int i=0;i<items.size();i++){
+                    String clothType = items.get(i).getClothType();
+                    int itemQTY = items.get(i).getClothQty();
+                    DB.insertSQL("INSERT INTO tlbOrderDescription(fldOrderDesID,fldOrderID,fldItemQuantity,fldItemType,fldPrice,fldWeight) VALUES ('"+orderDescID+"','"+orderID+"','"+itemQTY+"','"+clothType+"');");
+                }
+                // INSERTING PRE-DEFINED STATUS INTO DATABASE
+                DB.insertSQL("INSERT INTO tblOrderStatus(fldOrderStatusID,fldOrderStatus) VALUES ('"+statusID+"','"+status+"');");
+              items.clear();*/
 
         }
         /**

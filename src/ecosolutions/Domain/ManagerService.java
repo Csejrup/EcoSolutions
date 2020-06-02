@@ -5,8 +5,6 @@ import ecosolutions.persistence.DB;
 public class ManagerService extends AccountService {
 
 
-	private String managerName;
-
 	public static boolean login(String employeeID, String password) {
 		DB.selectSQL("SELECT fldPassword from tblAccount WHERE fldEmployeeID = ('" + employeeID + "')");
 		String PW = DB.getQueryData();

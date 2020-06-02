@@ -1,4 +1,4 @@
-package ecosolutions.presentation.controllers.ManagerWindow;
+package ecosolutions.presentation.controllers.managerwindow;
 
 import ecosolutions.Domain.EmployeeService;
 import ecosolutions.presentation.models.Employee;
@@ -18,26 +18,15 @@ import java.util.ResourceBundle;
 public class EmployeesListController implements Initializable {
 
     ObservableList list = FXCollections.observableArrayList();
-    @FXML
-    private TableView<Employee> tableView;
 
-    @FXML
-    private TableColumn<Employee, String> idCol;
+    @FXML private TableView<Employee> tableView;
+    @FXML private TableColumn<Employee, String> idCol;
+    @FXML private TableColumn<Employee, String> fnCol;
+    @FXML private TableColumn<Employee, String> lnCol;
+    @FXML private TableColumn<Employee, String> roleCol;
+    @FXML private TableColumn<Employee, String> statCol;
+    @FXML private TableColumn<Employee, String> phone_noCol;
 
-    @FXML
-    private TableColumn<Employee, String> fnCol;
-
-    @FXML
-    private TableColumn<Employee, String> lnCol;
-
-    @FXML
-    private TableColumn<Employee, String> roleCol;
-
-    @FXML
-    private TableColumn<Employee, String> statCol;
-
-    @FXML
-    private TableColumn<Employee, String> phone_noCol;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -47,6 +36,7 @@ public class EmployeesListController implements Initializable {
     private Stage getStage(){
         return (Stage) tableView.getScene().getWindow();
     }
+
     private void initCol(){
         idCol.setCellValueFactory(new PropertyValueFactory<>("employeeid"));
         fnCol.setCellValueFactory(new PropertyValueFactory<>("firstname"));
@@ -55,11 +45,9 @@ public class EmployeesListController implements Initializable {
         statCol.setCellValueFactory(new PropertyValueFactory<>("status"));
         phone_noCol.setCellValueFactory(new PropertyValueFactory<>("phone_no"));
     }
-
     private void loadData(){
         List<Employee> listofemployees = EmployeeService.getEmployees();
         list.clear();
         tableView.getItems().addAll(listofemployees);
     }
-
 }

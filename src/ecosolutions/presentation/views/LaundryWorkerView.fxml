@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,8 +12,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
-<StackPane stylesheets="@../../../resources/StyleSheets/color-style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.LaundryWorkerController">
+<StackPane stylesheets="@../../../resources/StyleSheets/color-style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.laundryworkerwindow.LaundryWorkerController">
    <children>
       <AnchorPane>
          <children>
@@ -22,7 +20,7 @@
                <left>
                   <Pane prefHeight="340.0" prefWidth="163.0" BorderPane.alignment="CENTER">
                      <children>
-                        <JFXButton fx:id="btnNewOrder" alignment="CENTER" layoutX="25.0" layoutY="25.0" onAction="#handleNewOrder" prefHeight="47.0" prefWidth="114.0" text="New Order" textFill="WHITE">
+                        <JFXButton fx:id="btnNewOrder" alignment="CENTER" layoutX="19.0" layoutY="25.0" onAction="#handleNewOrder" prefHeight="47.0" prefWidth="128.0" text="Check Order" textFill="WHITE">
                            <font>
                               <Font name="Myanmar Text" size="15.0" />
                            </font>
@@ -57,15 +55,15 @@
                   </Pane>
                </top>
                <center>
-                  <JFXTreeTableView fx:id="tableViewOrders" BorderPane.alignment="CENTER">
-                     <columns>
-                        <TreeTableColumn fx:id="ordernoCol" editable="false" prefWidth="75.0" sortable="false" text="Order Number" />
-                        <TreeTableColumn fx:id="statusCol" editable="false" prefWidth="75.0" sortable="false" text="Cleaning Status" />
-                     </columns>
+                  <TableView fx:id="tableview" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <columns>
+                      <TableColumn fx:id="ord_noCol" prefWidth="75.0" text="Order Number" />
+                      <TableColumn fx:id="c_statCol" prefWidth="75.0" text="Cleaning Status" />
+                    </columns>
                      <columnResizePolicy>
-                        <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
-                  </JFXTreeTableView>
+                  </TableView>
                </center>
             </BorderPane>
          </children>

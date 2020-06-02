@@ -25,7 +25,6 @@ public class OrderDao implements Dao<Order>{
             var stmt = conn.prepareStatement("SELECT fldOrderID FROM tblOrder WHERE fldOrderID =" + id);
             //stmt.setInt(1,id);
             ResultSet rs = stmt.executeQuery();
-
             if(rs.next()){
                 Order order = new Order();
                 order.setOrderID(rs.getInt("fldOrderID"));
@@ -60,9 +59,19 @@ public class OrderDao implements Dao<Order>{
     public void save(Order order) {
         var conn = DatabaseHandler.getInstance().getConnection();
         try{
+
             var stmt = conn.prepareStatement("INSERT INTO tblOrder(fldCustomerID,fldOrderStatusID," +
                     "fldDateofOrder) VALUES('"+order.getCustomerID()+"','"+order.getOrderStatusID()+ "','"+order.getDate()+"');");
             stmt.executeQuery();
+
+           /* var stmt = conn.prepareStatement("");
+            stmt.setInt(1, order.getOrderID());
+            stmt.setInt(2, order.getOrderID());
+            stmt.setInt(3, order.getOrderID());
+            stmt.setInt(4, order.getOrderID());
+            stmt.setInt(5, order.getOrderID());
+            stmt.setInt(6, order.getOrderID());*/
+
             stmt.close();
         }catch(SQLException e){
             e.printStackTrace();
@@ -76,7 +85,6 @@ public class OrderDao implements Dao<Order>{
             var stmt = conn.prepareStatement("EXEC  update_orderstatus @status ="+order.getOrderstatus()+", @orderID="+order.getOrderID());
             //ResultSet rs = stmt.executeQuery();
             stmt.executeUpdate();
-
         }catch(Exception e){
             e.printStackTrace();
         }
