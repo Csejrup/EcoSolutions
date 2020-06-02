@@ -20,16 +20,9 @@ import java.sql.SQLException;
 
 public class LoginController extends AbstractController{
 
-    @FXML private AnchorPane rootpaneloginscreen;
-
-
     @FXML private JFXTextField txtUserName;
-
-    @FXML
-    private JFXPasswordField txtPW;
-
-    @FXML
-    private JFXButton btnLogIn;
+    @FXML private JFXPasswordField txtPW;
+    @FXML private JFXButton btnLogIn;
 
     /**
      * TEMPORARY SOLUTION TO LOGIN

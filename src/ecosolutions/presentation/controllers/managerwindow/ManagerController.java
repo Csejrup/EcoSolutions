@@ -1,4 +1,4 @@
-package ecosolutions.presentation.controllers.ManagerWindow;
+package ecosolutions.presentation.controllers.managerwindow;
 
 import com.jfoenix.controls.*;
 import ecosolutions.persistence.DatabaseHandler;
@@ -19,16 +19,14 @@ import ecosolutions.presentation.models.Status;
  *
  */
 public class ManagerController extends AbstractController implements Initializable {
-    PieChart orderchart, employchart;
+
     @FXML private Text txtorderno, txtorderstat, txtempname, txtrole, txtstatus;
-
     @FXML private JFXButton btnrefresh, btnworkforce, btnorders, btnstatistics, btnsettings;
-
     @FXML private JFXTextField employIDInput, orderIDInput;
     @FXML private StackPane ordercontainer, employcontainer;
-
     @FXML private Tab overviewtab, laundryotab;
 
+    private PieChart orderchart, employchart;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -62,15 +60,11 @@ public class ManagerController extends AbstractController implements Initializab
 
         employchart = new PieChart(DatabaseHandler.getEmployeeStatistics());
         employcontainer.getChildren().add(employchart);
-
-
-
     }
     private void refreshGraphs(){
         orderchart = new PieChart(DatabaseHandler.getOrderGraphStatistics());
         employchart = new PieChart(DatabaseHandler.getEmployeeStatistics());
     }
-
     private void disablenableGraph(Boolean status){
         if(status){
             orderchart.setOpacity(1);
@@ -80,7 +74,6 @@ public class ManagerController extends AbstractController implements Initializab
             employchart.setOpacity(0);
         }
     }
-
     private boolean validateInput(){
        orderIDInput.fireEvent(new ActionEvent());
        employIDInput.fireEvent(new ActionEvent());
