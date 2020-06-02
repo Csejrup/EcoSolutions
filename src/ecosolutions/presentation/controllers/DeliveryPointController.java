@@ -7,7 +7,11 @@ import ecosolutions.Domain.AccountService;
 import ecosolutions.Domain.CustomerService;
 import ecosolutions.Domain.OrderService;
 
+import ecosolutions.persistence.DAO.AccountDao;
+import ecosolutions.persistence.DAO.OrderDao;
 import ecosolutions.persistence.DB;
+import ecosolutions.presentation.models.Account;
+import ecosolutions.presentation.models.Customer;
 import ecosolutions.presentation.models.Order;
 import ecosolutions.presentation.models.OrderTableView;
 import javafx.beans.property.SimpleStringProperty;
@@ -27,6 +31,7 @@ import javafx.stage.Stage;
 
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -64,41 +69,50 @@ public class DeliveryPointController extends AbstractController implements Initi
     }
 
     @FXML
-    void handleOrderConfirm(ActionEvent event) {
+    void handleOrderConfirm(ActionEvent event) throws SQLException {
         String customerName = firstnameTextField.getText();
         String customerSurName = lastnameTextField.getText();
-        int orderID = OrderService.getMaxOrderID()+1;
-        int customerID = CustomerService.getCustomerID()+1;
-        int deliveryPointID = AccountService.getDeliveryPoint();
-        String customerPhone = phoneNoTextField.getText();
-
-        int statusID = OrderService.getMaxStatusID()+1;
-        String status = "REGISTERED";
-        int orderDescID = OrderService.getMaxOrderDescID()+1;
-        Date now = new Date();
+        String customerPhoneNr = phoneNoTextField.getText();
+        java.util.Date now = new Date();
         SimpleDateFormat sdp = new SimpleDateFormat("dd/MM/yyyy");
         String date = sdp.format(now);
+        int orderStatusID = 1;
+        CustomerService.addCustomer(new Customer(customerName,customerSurName,customerPhoneNr));
+        int customerID = CustomerService.getCustomerID();
+        OrderService.addCustomerID(customerID);
+        int orderID = OrderService.getLastOrderID();
+        float price = 12.3F;
+        float weigth = 10F;
+        //TODO PRICE AND WEIGHT HERE - DONE
+        //TODO ERROR WHILE INSERTING CUSTOMERID CAUSED BY INSERTING DATA INTO FK FIELD
+        Order newOrder = new Order(customerID,orderStatusID,date, items,price,weigth);
+        OrderService.addOrder(newOrder);
+        OrderService.addOrderDetails(newOrder);
 
-        if(customerName!=null&&customerPhone!=null&&items.size()!=0) {
+
+
+
+
+       /* if(customerName!=null&&customerPhone!=null&&items.size()!=0) {
             DB.insertSQL("INSERT INTO tblOrder(fldOrderID,fldCustomerID,fldOrderDesID,fldOrderStatusID,fldDeliveryPointID,fldDateofOrder) VALUES ('"+orderID+"','"+customerID+"','"+orderDescID+"','"+statusID+"','"+deliveryPointID+"','"+date+"');");
             DB.insertSQL("INSERT INTO tblCustomer(fldCustomerID,fldName,fldSurname,fldPhone) VALUES ('"+customerID+"','"+customerName+"','"+customerSurName+"','"+customerPhone+"');");
             /**
              * LOOP FOR ADDING ITEMS FROM LIST INTO DATABASE
              */
-                for (int i=0;i<items.size();i++){
+               /* for (int i=0;i<items.size();i++){
                     String clothType = items.get(i).getClothType();
                     int itemQTY = items.get(i).getClothQty();
                     DB.insertSQL("INSERT INTO tlbOrderDescription(fldOrderDesID,fldOrderID,fldItemQuantity,fldItemType,fldPrice,fldWeight) VALUES ('"+orderDescID+"','"+orderID+"','"+itemQTY+"','"+clothType+"');");
                 }
                 // INSERTING PRE-DEFINED STATUS INTO DATABASE
                 DB.insertSQL("INSERT INTO tblOrderStatus(fldOrderStatusID,fldOrderStatus) VALUES ('"+statusID+"','"+status+"');");
-              items.clear();
+              items.clear();*/
+
         }
         /**
          * FOR PRICE
          * DB.selectSQL("SELECT fldPrice FROM tblItem WHERE fldItemType = 'orderType')
          */
-    }
 
     /**
      * ADDING ITEM TO THE 'BASKET'

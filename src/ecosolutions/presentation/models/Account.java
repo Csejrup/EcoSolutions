@@ -7,6 +7,7 @@ public class Account {
 
     //VARIABLES//
     private int account_id;
+    private static int staticAccountID;
     private String pw;
     private String username;
 
@@ -19,6 +20,7 @@ public class Account {
         this.account_id = account_id;
         this.pw = pw;
         this.username = username;
+        staticAccountID = account_id;
     }
 
     //SETTERS//
@@ -38,6 +40,9 @@ public class Account {
     //GETTERS//
     public int getAccount_id() {
         return account_id;
+    }
+    public static int getStaticAccountID() {
+        return staticAccountID;
     }
 
     public String getPw() {
