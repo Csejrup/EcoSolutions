@@ -1,8 +1,14 @@
 package ecosolutions.persistence.DAO;
 import ecosolutions.persistence.DatabaseHandler;
+import ecosolutions.presentation.controllers.DeliveryPointController;
 import ecosolutions.presentation.models.Order;
+import ecosolutions.presentation.models.OrderTableView;
+import javafx.collections.ObservableList;
+
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,14 +60,9 @@ public class OrderDao implements Dao<Order>{
     public void save(Order order) {
         var conn = DatabaseHandler.getInstance().getConnection();
         try{
-            var stmt = conn.prepareStatement("");
-            stmt.setInt(1, order.getOrderID());
-            stmt.setInt(2, order.getOrderID());
-            stmt.setInt(3, order.getOrderID());
-            stmt.setInt(4, order.getOrderID());
-            stmt.setInt(5, order.getOrderID());
-            stmt.setInt(6, order.getOrderID());
-
+            var stmt = conn.prepareStatement("INSERT INTO tblOrder(fldCustomerID,fldOrderStatusID," +
+                    "fldDateofOrder) VALUES('"+order.getCustomerID()+"','"+order.getOrderStatusID()+ "','"+order.getDate()+"');");
+            stmt.executeQuery();
             stmt.close();
         }catch(SQLException e){
             e.printStackTrace();
@@ -103,5 +104,65 @@ public class OrderDao implements Dao<Order>{
         order.setDeliverypointname(rs.getString("fldDPointName"));
         return order;
     }
+
+    /**
+     * HANDLING ORDER DESCRIPTION
+     * @param order
+     * @throws SQLException
+     */
+    public void addOrderDetails(Order order){
+        var conn = DatabaseHandler.getInstance().getConnection();
+        try {
+            for(int i = 0; i<order.getItemz().size();i++){
+                String clothType = order.getItemz().get(i).getClothType();
+                int clothQTY = order.getItemz().get(i).getClothQty();
+            var stmt = conn.prepareStatement("INSERT INTO tblOrderDescription(fldOrderID,fldItemQuantity,fldItemType,fldPrice,fldWeight) VALUES ('"+getLastOrderID()+"','"+clothType+"','"+clothQTY+"','"+order.getPrice()+"','"+order.getWeight()+"');");
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    public static void addCustomerID(int customerID) {
+        var conn = DatabaseHandler.getInstance().getConnection();
+        try{
+            var stmt = conn.prepareStatement("INSERT INTO tblOrder(fldCustomerID) VALUES('"+customerID+"');");
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+
+    public static int getLastOrderID()  {
+        var conn = DatabaseHandler.getInstance().getConnection();
+        int lastOrderID = 0;
+        try {
+            var stmt = conn.prepareStatement("SELECT MAX(fldOrderID) FROM tblOrder");
+            ResultSet s = stmt.executeQuery();
+            ResultSetMetaData rsmd = s.getMetaData();
+            int Collumn = rsmd.getColumnCount();
+            lastOrderID =  Integer.parseInt(s.getString(Collumn));
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return lastOrderID;
+    }
+    public static int getLastCustomerID() throws SQLException {
+        var conn = DatabaseHandler.getInstance().getConnection();
+        var stmt = conn.prepareStatement("SELECT MAX(fldCustomerID) FROM tblCustomer");
+        ResultSet s = stmt.executeQuery();
+        ResultSetMetaData rsmd = s.getMetaData();
+        int Collumn = rsmd.getColumnCount();
+        return Integer.parseInt(s.getString(Collumn));
+    }
+    public static int getLastDescID() throws SQLException {
+        var conn = DatabaseHandler.getInstance().getConnection();
+        var stmt = conn.prepareStatement("SELECT MAX(fldOrderDesID) FROM tblOrderDescription");
+        ResultSet s = stmt.executeQuery();
+        ResultSetMetaData rsmd = s.getMetaData();
+        int Collumn = rsmd.getColumnCount();
+        return Integer.parseInt(s.getString(Collumn));
+    }
+
+
 
 }

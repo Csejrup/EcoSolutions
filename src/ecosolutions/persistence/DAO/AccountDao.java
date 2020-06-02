@@ -1,9 +1,11 @@
 package ecosolutions.persistence.DAO;
 
 import ecosolutions.persistence.DatabaseHandler;
+import ecosolutions.presentation.controllers.LoginController;
 import ecosolutions.presentation.models.Account;
 
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -91,5 +93,23 @@ public class AccountDao implements Dao<Account> {
         account.setPw(rs.getString("fldPassword"));
         account.setUsername(rs.getString("fldUsername"));
         return account;
+    }
+    private static int getAccountID() throws SQLException {
+        var conn = DatabaseHandler.getInstance().getConnection();
+        int userName = Integer.parseInt(LoginController.userName);
+        var stmt = conn.prepareStatement("SELECT fldAccountID FROM tblAccount WHERE fldUsername = '"+userName+"';");
+        ResultSet s = stmt.executeQuery();
+        ResultSetMetaData rsmd = s.getMetaData();
+        int Collumn = rsmd.getColumnCount();
+        return Integer.parseInt(s.getString(Collumn));
+    }
+    public static int getDeliveryPointID() throws SQLException{
+        var conn = DatabaseHandler.getInstance().getConnection();
+        int accountID = getAccountID();
+        var stmt = conn.prepareStatement("SELECT fldDeliveryPointID FROM tblDeliveryPoint WHERE fldAccountID = '"+accountID+"';");
+        ResultSet s = stmt.executeQuery();
+        ResultSetMetaData rsmd = s.getMetaData();
+        int Collumn = rsmd.getColumnCount();
+        return Integer.parseInt(s.getString(Collumn));
     }
 }
