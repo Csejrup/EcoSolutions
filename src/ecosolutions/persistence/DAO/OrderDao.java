@@ -19,7 +19,6 @@ public class OrderDao implements Dao<Order>{
             var stmt = conn.prepareStatement("SELECT fldOrderID FROM tblOrder WHERE fldOrderID =" + id);
             //stmt.setInt(1,id);
             ResultSet rs = stmt.executeQuery();
-
             if(rs.next()){
                 Order order = new Order();
                 order.setOrderID(rs.getInt("fldOrderID"));
@@ -61,7 +60,6 @@ public class OrderDao implements Dao<Order>{
             stmt.setInt(4, order.getOrderID());
             stmt.setInt(5, order.getOrderID());
             stmt.setInt(6, order.getOrderID());
-
             stmt.close();
         }catch(SQLException e){
             e.printStackTrace();
@@ -75,7 +73,6 @@ public class OrderDao implements Dao<Order>{
             var stmt = conn.prepareStatement("EXEC  update_orderstatus @status ="+order.getOrderstatus()+", @orderID="+order.getOrderID());
             //ResultSet rs = stmt.executeQuery();
             stmt.executeUpdate();
-
         }catch(Exception e){
             e.printStackTrace();
         }

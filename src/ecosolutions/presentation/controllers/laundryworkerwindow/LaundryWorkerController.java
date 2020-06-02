@@ -23,7 +23,6 @@ public class LaundryWorkerController extends AbstractController implements Initi
     @FXML private TableColumn<Order, String> ord_noCol;
     @FXML private TableColumn<Order, String> c_statCol;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initCol();

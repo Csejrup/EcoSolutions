@@ -1,8 +1,10 @@
 package ecosolutions.presentation.controllers.managerwindow;
 
 import com.jfoenix.controls.*;
+import ecosolutions.Domain.EmployeeService;
 import ecosolutions.persistence.DatabaseHandler;
 import ecosolutions.presentation.controllers.AbstractController;
+import ecosolutions.presentation.models.Employee;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,6 +16,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 import ecosolutions.presentation.models.Status;
+
 
 /**
  *
@@ -36,15 +39,15 @@ public class ManagerController extends AbstractController implements Initializab
     @FXML
     private void loadEmployeeInfo(){
         clearemployCache();
-
-
-    }
-    @FXML
-    private void loadOrderInfo(){
-        clearOrderCache();
         disablenableGraph(false);
 
     }
+
+    @FXML
+    private void loadOrderInfo(){
+        clearOrderCache();
+    }
+
     void clearOrderCache(){
         txtorderno.setText("");
         txtorderstat.setText("");

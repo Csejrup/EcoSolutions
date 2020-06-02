@@ -9,6 +9,7 @@ import ecosolutions.persistence.DAO.Dao;
 import ecosolutions.persistence.DAO.EmployeeDao;
 import ecosolutions.persistence.DAO.OrderDao;
 import ecosolutions.persistence.DatabaseHandler;
+import ecosolutions.presentation.models.Employee;
 import ecosolutions.presentation.models.Order;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +18,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Optional;
 
 public class LoginController extends AbstractController{
 
@@ -46,6 +48,7 @@ public class LoginController extends AbstractController{
             loadScreen(stage, "LaundryWorkerView.fxml");
         }
         else if (employeeID.startsWith("d")){
+
             Stage stage = (Stage) btnLogIn.getScene().getWindow();
             loadScreen(stage, "DriverView.fxml");
         } else{
