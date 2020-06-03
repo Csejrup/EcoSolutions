@@ -139,6 +139,9 @@ public class OrderDao implements Dao<Order>{
     }*/
 
 
+
+    }
+
     public static int getLastOrderID()  {
         var conn = DatabaseHandler.getInstance().getConnection();
         int lastOrderID = 0;
