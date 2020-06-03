@@ -174,7 +174,13 @@ public final class DatabaseHandler {
      * @throws Exception
      */
     public void close() throws Exception{
-        conn.close();
+        try {
+            conn.close();
+            System.out.println("Connection Closed");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Disconnection Failed");
+        }
     }
     public Connection getConnection(){
         return conn;
