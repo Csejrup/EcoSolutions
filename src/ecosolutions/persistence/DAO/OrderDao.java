@@ -169,8 +169,8 @@ public class OrderDao implements Dao<Order>{
         }catch (SQLException e){
             e.printStackTrace();
         }
-    }*/
-
+    }
+    */
     public static int getLastOrderID()  {
         var conn = DatabaseHandler.getInstance().getConnection();
         int lastOrderID = 0;
@@ -204,7 +204,4 @@ public class OrderDao implements Dao<Order>{
         int Collumn = rsmd.getColumnCount();
         return Integer.parseInt(s.getString(Collumn));
     }
-
-
-
 }

@@ -30,6 +30,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -50,7 +51,13 @@ public class DeliveryPointController extends AbstractController implements Initi
     //GLOBAL VARIABLES FOR TABLEVIEW
     public static String orderType;
     public static int orderQTY, orderID;
-    @FXML private JFXListView<String> itemListView = new JFXListView<>();
+    public static float itemPrice;
+    public static float totalAmount = 0;
+  
+    @FXML
+    private JFXListView<String> itemListView = new JFXListView<>();
+
+
     @FXML private JFXButton btnConfirm, btnRemove, btnReturn, btnEdit, btnAdd;
     @FXML private JFXTextField dueTextField, firstnameTextField, phoneNoTextField, lastnameTextField;
     @FXML private TextField qtyTextField;
@@ -63,6 +70,7 @@ public class DeliveryPointController extends AbstractController implements Initi
     @FXML
     private void handleEditOrder(ActionEvent event) {
         Stage stage = (Stage) btnEdit.getScene().getWindow();
+        btnEdit.getScene().getWindow().hide();
         loadScreen(stage, "OrderListView.fxml");
     }
 
@@ -90,11 +98,26 @@ public class DeliveryPointController extends AbstractController implements Initi
         //TODO PRICE AND WEIGHT HERE - DONE
         //TODO ERROR WHILE INSERTING CUSTOMERID CAUSED BY INSERTING DATA INTO FK FIELD
         Order newOrder = new Order(customerID,orderStatusID,date, items,price,weigth);
-        OrderService.addOrder(newOrder);
-        OrderService.addOrderDetails(newOrder);
-        items.clear();
+        if(customerName.isEmpty()||customerSurName.isEmpty()||customerPhoneNr.isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("INSERT CUSTOMER DETAILS");
+            alert.show();
+        }
+        else if(items.size()==0){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("ORDER IS EMPTY, PICK CLOTH TYPE AND QUANTITY.");
+            alert.show();
+        }
+        else {
+            OrderService.addOrder(newOrder);
+            OrderService.addOrderDetails(newOrder);
+            items.clear();
 
-
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("ORDER HAS BEN CREATED");
+            alert.show();
+            System.out.println(orderID);
+        }
 
         }
         /**
@@ -114,10 +137,15 @@ public class DeliveryPointController extends AbstractController implements Initi
             orderType = itemListView.getSelectionModel().getSelectedItem();
             orderQTY = Integer.parseInt(qtyTextField.getText());
             orderID = DeliveryPointService.getID(orderType);
-                    items.add(new OrderTableView(orderType,orderQTY,orderID));
+            itemPrice = DeliveryPointService.getPrice(orderType);
+                    items.add(new OrderTableView(orderType,orderQTY,orderID,itemPrice));
             System.out.println(orderID);
+            totalAmount+=(itemPrice*orderQTY);
+            qtyTextField.clear();
+            dueTextField.setText(String.valueOf(totalAmount));
         }
         catch(Exception e) {
+            e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("PICK CLOTH TYPE AND INSERT QUANTITY");
             alert.show();
@@ -131,8 +159,8 @@ public class DeliveryPointController extends AbstractController implements Initi
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         itemListView.setItems(DeliveryPointService.getItemTypes());
+        dueTextField.setText(String.valueOf(totalAmount));
     }
 
 
