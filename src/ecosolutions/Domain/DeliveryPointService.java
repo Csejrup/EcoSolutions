@@ -2,7 +2,7 @@ package ecosolutions.Domain;
 
 import ecosolutions.persistence.DAO.DeliveryPointDao;
 import ecosolutions.persistence.DB;
-import ecosolutions.presentation.models.OrderTableView;
+
 import javafx.collections.ObservableList;
 
 public class DeliveryPointService extends AccountService {

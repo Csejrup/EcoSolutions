@@ -31,7 +31,6 @@ public abstract class AbstractController {
             e.printStackTrace();
         }
     }
-
     protected void loadpopup(String layoutfile) {
         try {
             FXMLLoader fxmlloader = new FXMLLoader((getClass().getResource("/ecosolutions/presentation/views/" + layoutfile)));

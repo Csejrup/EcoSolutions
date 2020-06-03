@@ -53,6 +53,8 @@ public class OrderService {
         DB.selectSQL("SELECT MAX(fldOrderDescID) FROM tblOrderDescription");
         return Integer.parseInt(DB.getQueryData());
     }
+
+
     private static boolean doesNotExist(Order order){
         OrderDao orderDao = new OrderDao();
         for(Order o : orderDao.getAll()){
@@ -87,9 +89,15 @@ public class OrderService {
         OrderDao orderDao = new OrderDao();
        return orderDao.getAll();
     }
+    public static List<Order>getLWOrders(){
+        OrderDao orderDao = new OrderDao();
+        return orderDao.laundryworkerGetStatus();
+    }
+    public static List<Order>getDriverOrders(){
+        OrderDao orderDao = new OrderDao();
+        return orderDao.driverGetStatus();
+    }
     public static int getLastOrderID(){
        return OrderDao.getLastOrderID();
     }
-
-
 }
