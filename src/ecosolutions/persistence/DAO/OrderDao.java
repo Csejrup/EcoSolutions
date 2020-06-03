@@ -25,6 +25,7 @@ public class OrderDao implements Dao<Order>{
             var stmt = conn.prepareStatement("SELECT fldOrderID FROM tblOrder WHERE fldOrderID =" + id);
             //stmt.setInt(1,id);
             ResultSet rs = stmt.executeQuery();
+
             if(rs.next()){
                 Order order = new Order();
                 order.setOrderID(rs.getInt("fldOrderID"));
@@ -59,19 +60,9 @@ public class OrderDao implements Dao<Order>{
     public void save(Order order) {
         var conn = DatabaseHandler.getInstance().getConnection();
         try{
-
             var stmt = conn.prepareStatement("INSERT INTO tblOrder(fldCustomerID,fldOrderStatusID," +
                     "fldDateofOrder) VALUES('"+order.getCustomerID()+"','"+order.getOrderStatusID()+ "','"+order.getDate()+"');");
-            stmt.executeQuery();
-
-           /* var stmt = conn.prepareStatement("");
-            stmt.setInt(1, order.getOrderID());
-            stmt.setInt(2, order.getOrderID());
-            stmt.setInt(3, order.getOrderID());
-            stmt.setInt(4, order.getOrderID());
-            stmt.setInt(5, order.getOrderID());
-            stmt.setInt(6, order.getOrderID());*/
-
+            stmt.executeUpdate();
             stmt.close();
         }catch(SQLException e){
             e.printStackTrace();
@@ -85,6 +76,7 @@ public class OrderDao implements Dao<Order>{
             var stmt = conn.prepareStatement("EXEC  update_orderstatus @status ="+order.getOrderstatus()+", @orderID="+order.getOrderID());
             //ResultSet rs = stmt.executeQuery();
             stmt.executeUpdate();
+
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -121,32 +113,46 @@ public class OrderDao implements Dao<Order>{
     public void addOrderDetails(Order order){
         var conn = DatabaseHandler.getInstance().getConnection();
         try {
+
             for(int i = 0; i<order.getItemz().size();i++){
-                String clothType = order.getItemz().get(i).getClothType();
                 int clothQTY = order.getItemz().get(i).getClothQty();
-            var stmt = conn.prepareStatement("INSERT INTO tblOrderDescription(fldOrderID,fldItemQuantity,fldItemType,fldPrice,fldWeight) VALUES ('"+getLastOrderID()+"','"+clothType+"','"+clothQTY+"','"+order.getPrice()+"','"+order.getWeight()+"');");
+                int itemID = order.getItemz().get(i).getItemID();
+            var stmt = conn.prepareStatement("INSERT INTO tblOrderDescription(fldOrderID,fldItemID,fldQuantity) VALUES ('"+getLastOrderID()+"','"+itemID+"','"+clothQTY+"');");
+            stmt.executeUpdate();
+            stmt.close();
             }
+
         }catch (SQLException e){
             e.printStackTrace();
         }
     }
-    public static void addCustomerID(int customerID) {
+   /* public static void addCustomerID(int customerID) {
         var conn = DatabaseHandler.getInstance().getConnection();
         try{
+           *//* java.util.Date now = new Date();
+            SimpleDateFormat sdp = new SimpleDateFormat("yyyy/MM/dd");
+            String date = sdp.format(now);*//*
             var stmt = conn.prepareStatement("INSERT INTO tblOrder(fldCustomerID) VALUES('"+customerID+"');");
         }catch (SQLException e){
             e.printStackTrace();
         }
+    }*/
+
+
+
     }
+
     public static int getLastOrderID()  {
         var conn = DatabaseHandler.getInstance().getConnection();
         int lastOrderID = 0;
         try {
-            var stmt = conn.prepareStatement("SELECT MAX(fldOrderID) FROM tblOrder");
+            PreparedStatement stmt = conn.prepareStatement("SELECT MAX(fldOrderID) FROM tblOrder");
             ResultSet s = stmt.executeQuery();
-            ResultSetMetaData rsmd = s.getMetaData();
-            int Collumn = rsmd.getColumnCount();
-            lastOrderID =  Integer.parseInt(s.getString(Collumn));
+            if(s.next()){
+
+            lastOrderID =  s.getInt(1);
+            }
+            stmt.close();
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -159,6 +165,7 @@ public class OrderDao implements Dao<Order>{
         ResultSetMetaData rsmd = s.getMetaData();
         int Collumn = rsmd.getColumnCount();
         return Integer.parseInt(s.getString(Collumn));
+
     }
     public static int getLastDescID() throws SQLException {
         var conn = DatabaseHandler.getInstance().getConnection();

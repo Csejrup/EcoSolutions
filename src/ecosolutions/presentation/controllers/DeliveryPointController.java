@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
 import ecosolutions.Domain.AccountService;
 import ecosolutions.Domain.CustomerService;
+import ecosolutions.Domain.DeliveryPointService;
 import ecosolutions.Domain.OrderService;
 
 import ecosolutions.persistence.DAO.AccountDao;
@@ -37,20 +38,33 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutionException;
 
 public class DeliveryPointController extends AbstractController implements Initializable {
 
-    @FXML private JFXListView<String> itemListView = new JFXListView<>();
-    @FXML private JFXButton btnConfirm, btnRemove, btnReturn, btnEdit, btnAdd, btnLogOut;
-    @FXML private JFXTextField dueTextField, firstnameTextField, phoneNoTextField, lastnameTextField;
-    @FXML private TextField qtyTextField;
-
-    //GLOBAL VARIABLES FOR TABLEVIEW
-    public static String orderType;
-    public static int orderQTY;
     //ADD BASIC CLOTH TYPES
     public static ObservableList<OrderTableView> items = FXCollections.observableArrayList();
     ObservableList<String> laundryType = FXCollections.observableArrayList("T-Shirt","Jacket","Carpet","Jeans","Suit","Blinds");
+    @FXML
+    private JFXButton btnLogOut;
+//GLOBAL VARIABLES FOR TABLEVIEW
+    public static String orderType;
+    public static int orderQTY, orderID;
+
+    @FXML
+    private Pane pane1;
+
+    @FXML
+    private JFXListView<String> itemListView = new JFXListView<>();
+
+
+    @FXML private JFXButton btnConfirm, btnRemove, btnReturn, btnEdit, btnAdd;
+
+
+
+    @FXML private JFXTextField dueTextField, firstnameTextField, phoneNoTextField, lastnameTextField;
+    @FXML private TextField qtyTextField;
+
     @FXML
     void handleAddItem(ActionEvent event) {
 
@@ -73,14 +87,14 @@ public class DeliveryPointController extends AbstractController implements Initi
         String customerName = firstnameTextField.getText();
         String customerSurName = lastnameTextField.getText();
         String customerPhoneNr = phoneNoTextField.getText();
-        java.util.Date now = new Date();
-        SimpleDateFormat sdp = new SimpleDateFormat("dd/MM/yyyy");
-        String date = sdp.format(now);
+
         int orderStatusID = 1;
         CustomerService.addCustomer(new Customer(customerName,customerSurName,customerPhoneNr));
         int customerID = CustomerService.getCustomerID();
-        OrderService.addCustomerID(customerID);
         int orderID = OrderService.getLastOrderID();
+        java.util.Date now = new Date();
+        SimpleDateFormat sdp = new SimpleDateFormat("yyyy/MM/dd");
+        String date = sdp.format(now);
         float price = 12.3F;
         float weigth = 10F;
         //TODO PRICE AND WEIGHT HERE - DONE
@@ -88,25 +102,9 @@ public class DeliveryPointController extends AbstractController implements Initi
         Order newOrder = new Order(customerID,orderStatusID,date, items,price,weigth);
         OrderService.addOrder(newOrder);
         OrderService.addOrderDetails(newOrder);
+        items.clear();
 
 
-
-
-
-       /* if(customerName!=null&&customerPhone!=null&&items.size()!=0) {
-            DB.insertSQL("INSERT INTO tblOrder(fldOrderID,fldCustomerID,fldOrderDesID,fldOrderStatusID,fldDeliveryPointID,fldDateofOrder) VALUES ('"+orderID+"','"+customerID+"','"+orderDescID+"','"+statusID+"','"+deliveryPointID+"','"+date+"');");
-            DB.insertSQL("INSERT INTO tblCustomer(fldCustomerID,fldName,fldSurname,fldPhone) VALUES ('"+customerID+"','"+customerName+"','"+customerSurName+"','"+customerPhone+"');");
-            /**
-             * LOOP FOR ADDING ITEMS FROM LIST INTO DATABASE
-             */
-               /* for (int i=0;i<items.size();i++){
-                    String clothType = items.get(i).getClothType();
-                    int itemQTY = items.get(i).getClothQty();
-                    DB.insertSQL("INSERT INTO tlbOrderDescription(fldOrderDesID,fldOrderID,fldItemQuantity,fldItemType,fldPrice,fldWeight) VALUES ('"+orderDescID+"','"+orderID+"','"+itemQTY+"','"+clothType+"');");
-                }
-                // INSERTING PRE-DEFINED STATUS INTO DATABASE
-                DB.insertSQL("INSERT INTO tblOrderStatus(fldOrderStatusID,fldOrderStatus) VALUES ('"+statusID+"','"+status+"');");
-              items.clear();*/
 
         }
         /**
@@ -121,12 +119,15 @@ public class DeliveryPointController extends AbstractController implements Initi
 
     @FXML
     void addToBasket(ActionEvent event) {
-        orderType = itemListView.getSelectionModel().getSelectedItem();
-        orderQTY = Integer.parseInt(qtyTextField.getText());
-        if (orderType != null && orderQTY > 0) {
-                    items.add(new OrderTableView(orderType,orderQTY));
+
+        try {
+            orderType = itemListView.getSelectionModel().getSelectedItem();
+            orderQTY = Integer.parseInt(qtyTextField.getText());
+            orderID = DeliveryPointService.getID(orderType);
+                    items.add(new OrderTableView(orderType,orderQTY,orderID));
+            System.out.println(orderID);
         }
-        else {
+        catch(Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("PICK CLOTH TYPE AND INSERT QUANTITY");
             alert.show();
@@ -140,7 +141,8 @@ public class DeliveryPointController extends AbstractController implements Initi
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        itemListView.setItems(laundryType);
+
+        itemListView.setItems(DeliveryPointService.getItemTypes());
     }
 
 

@@ -7,10 +7,12 @@ import javafx.beans.property.SimpleStringProperty;
 public class OrderTableView {
     private SimpleStringProperty clothType;
     private int clothQty;
+    private int itemID;
 
-    public OrderTableView(String itemType, int itemQTY){
+    public OrderTableView(String itemType, int itemQTY, int itemID){
         clothType = new SimpleStringProperty(itemType);
         clothQty =  itemQTY;
+        this.itemID = itemID;
     }
 
     public String getClothType() {
@@ -19,6 +21,14 @@ public class OrderTableView {
 
     public SimpleStringProperty clothTypeProperty() {
         return clothType;
+    }
+
+    public int getItemID() {
+        return itemID;
+    }
+
+    public void setItemID(int itemID) {
+        this.itemID = itemID;
     }
 
     public void setClothType(String clothType) {

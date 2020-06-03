@@ -1,6 +1,9 @@
 package ecosolutions.Domain;
 
+import ecosolutions.persistence.DAO.DeliveryPointDao;
 import ecosolutions.persistence.DB;
+import ecosolutions.presentation.models.OrderTableView;
+import javafx.collections.ObservableList;
 
 public class DeliveryPointService extends AccountService {
 
@@ -20,6 +23,15 @@ public class DeliveryPointService extends AccountService {
 	public void setStatus() {
 		// TODO - implement ecosolutions.Domain.Account.ShopAssistant.setStatus
 		throw new UnsupportedOperationException();
+	}
+	public static ObservableList<String> getItemTypes(){
+
+		return DeliveryPointDao.getLaundryTypes();
+	}
+
+	public static int getID(String clothType){
+		return DeliveryPointDao.getItemID(clothType);
+
 	}
 
 }
