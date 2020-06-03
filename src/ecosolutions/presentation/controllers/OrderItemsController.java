@@ -22,6 +22,7 @@ public class OrderItemsController extends AbstractController implements Initiali
     @FXML private TableColumn<OrderTableView,String> tcClothType;
     @FXML private TableColumn<OrderTableView, Integer> tcClothQTY;
     @FXML private JFXButton btnReturn, btnRemove;
+    OrderTableView item;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -32,8 +33,9 @@ public class OrderItemsController extends AbstractController implements Initiali
     }
     @FXML
     void handleRemove(ActionEvent event) {
-        OrderTableView item = tv.getSelectionModel().getSelectedItem();
+        item = tv.getSelectionModel().getSelectedItem();
         tv.getItems().remove(item);
+        DeliveryPointController.totalAmount -= (item.getItemPrice()*item.getClothQty());
     }
 
     @FXML
@@ -41,4 +43,5 @@ public class OrderItemsController extends AbstractController implements Initiali
         Stage stage = (Stage) btnReturn.getScene().getWindow();
         loadScreen(stage, "DeliveryPointView.fxml");
     }
+
 }

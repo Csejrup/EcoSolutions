@@ -51,7 +51,8 @@ public class DeliveryPointController extends AbstractController implements Initi
 //GLOBAL VARIABLES FOR TABLEVIEW
     public static String orderType;
     public static int orderQTY, orderID;
-
+    public static float itemPrice;
+    public static float totalAmount = 0;
     @FXML
     private Pane pane1;
 
@@ -74,6 +75,7 @@ public class DeliveryPointController extends AbstractController implements Initi
     @FXML
     private void handleEditOrder(ActionEvent event) {
         Stage stage = (Stage) btnEdit.getScene().getWindow();
+        btnEdit.getScene().getWindow().hide();
         loadScreen(stage, "OrderListView.fxml");
     }
 
@@ -140,11 +142,15 @@ public class DeliveryPointController extends AbstractController implements Initi
             orderType = itemListView.getSelectionModel().getSelectedItem();
             orderQTY = Integer.parseInt(qtyTextField.getText());
             orderID = DeliveryPointService.getID(orderType);
-                    items.add(new OrderTableView(orderType,orderQTY,orderID));
+            itemPrice = DeliveryPointService.getPrice(orderType);
+                    items.add(new OrderTableView(orderType,orderQTY,orderID,itemPrice));
             System.out.println(orderID);
+            totalAmount+=(itemPrice*orderQTY);
             qtyTextField.clear();
+            dueTextField.setText(String.valueOf(totalAmount));
         }
         catch(Exception e) {
+            e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("PICK CLOTH TYPE AND INSERT QUANTITY");
             alert.show();
@@ -158,8 +164,8 @@ public class DeliveryPointController extends AbstractController implements Initi
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         itemListView.setItems(DeliveryPointService.getItemTypes());
+        dueTextField.setText(String.valueOf(totalAmount));
     }
 
 

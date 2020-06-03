@@ -33,5 +33,8 @@ public class DeliveryPointService extends AccountService {
 		return DeliveryPointDao.getItemID(clothType);
 
 	}
+	public static float getPrice(String clothType){
+		return DeliveryPointDao.getPrice(clothType);
+	}
 
 }
