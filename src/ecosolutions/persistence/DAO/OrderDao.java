@@ -138,8 +138,6 @@ public class OrderDao implements Dao<Order>{
             e.printStackTrace();
         }
     }
-
-
     public static int getLastOrderID()  {
         var conn = DatabaseHandler.getInstance().getConnection();
         int lastOrderID = 0;

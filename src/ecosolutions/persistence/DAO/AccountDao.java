@@ -94,6 +94,7 @@ public class AccountDao implements Dao<Account> {
         account.setUsername(rs.getString("fldUsername"));
         return account;
     }
+    /*
     private static int getAccountID() throws SQLException {
         var conn = DatabaseHandler.getInstance().getConnection();
         int userName = Integer.parseInt(LoginController.userName);
@@ -112,4 +113,5 @@ public class AccountDao implements Dao<Account> {
         int Collumn = rsmd.getColumnCount();
         return Integer.parseInt(s.getString(Collumn));
     }
+    */
 }
