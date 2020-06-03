@@ -22,7 +22,6 @@ public final class DatabaseHandler {
 
     static {
         Properties props = new Properties();
-
         String fileName = "db.properties";
         fileName = "db.properties";
         InputStream input;
@@ -109,14 +108,12 @@ public final class DatabaseHandler {
             System.out.println("Exception at execQuery:dataHandler" + e.getLocalizedMessage());
             return false;
         }
-        finally {
+        finally{
         }
     }
-
     public static ObservableList<PieChart.Data> getOrderGraphStatistics(){
         ObservableList<PieChart.Data> data = FXCollections.observableArrayList();
         try {
-
             String query1 = "SELECT COUNT(*) FROM tblOrder WHERE fldOrderStatusID = 1";
             String query2 = "SELECT COUNT(*) FROM tblOrder WHERE fldOrderStatusID = 2";
             String query3 = "SELECT COUNT(*) FROM tblOrder WHERE fldOrderStatusID = 3";
@@ -149,7 +146,6 @@ public final class DatabaseHandler {
     public static ObservableList<PieChart.Data> getEmployeeStatistics(){
         ObservableList<PieChart.Data> data2 = FXCollections.observableArrayList();
         try {
-
             String query1 = "SELECT COUNT(*) FROM tblEmployee WHERE fldStatusID = 1";
             String query2 = "SELECT COUNT(*) FROM tblEmployee WHERE fldStatusID = 2";
             String query3 = "SELECT COUNT(*) FROM tblEmployee WHERE fldStatusID = 3";

@@ -1,16 +1,9 @@
 package ecosolutions.persistence.DAO;
 import ecosolutions.persistence.DatabaseHandler;
-import ecosolutions.presentation.controllers.DeliveryPointController;
 import ecosolutions.presentation.models.Order;
-import ecosolutions.presentation.models.OrderTableView;
-import javafx.collections.ObservableList;
 
 import java.sql.*;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * DAO Class Responsible for connecting with the Database and fetch an Order and its information
@@ -93,6 +86,46 @@ public class OrderDao implements Dao<Order>{
             e.printStackTrace();
         }
     }
+
+    public List<Order> laundryworkerGetStatus(){
+        List<Order> lworders = new ArrayList<>();
+        var conn = DatabaseHandler.getInstance().getConnection();
+        try{
+            var stmt = conn.createStatement();
+            //SQL STATEMENT FOR SELECTING EVERY ORDER RELATED DATA IN MULTIPLE TABLES, CONNECTED THROUGH INNER JOIN AND TBLORDER
+            ResultSet rs = stmt.executeQuery("EXEC getorderstatus");
+            while(rs.next()){
+                var id = rs.getInt("fldOrderID");
+                var status = rs.getString("fldOrderStatus");
+                lworders.add(new Order(id, status));
+            }
+            stmt.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return lworders;
+
+    }
+    public List<Order> driverGetStatus(){
+        List<Order> driverorders = new ArrayList<>();
+        var conn = DatabaseHandler.getInstance().getConnection();
+        try{
+            var stmt = conn.createStatement();
+            //SQL STATEMENT FOR SELECTING EVERY ORDER RELATED DATA IN MULTIPLE TABLES, CONNECTED THROUGH INNER JOIN AND TBLORDER
+            ResultSet rs = stmt.executeQuery("EXEC orderstatus_forDriver");
+            while(rs.next()){
+                var id = rs.getInt("fldOrderID");
+                var status = rs.getString("fldOrderStatus");
+                var dpname = rs.getString("fldDPointName");
+                driverorders.add(new Order(id, status,dpname));
+            }
+            stmt.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return driverorders;
+    }
+
     private Order exportOrder(ResultSet rs) throws SQLException{
         Order order = new Order();
         order.setOrderID(rs.getInt("fldOrderID"));
@@ -136,9 +169,8 @@ public class OrderDao implements Dao<Order>{
         }catch (SQLException e){
             e.printStackTrace();
         }
-    }*/
-
-
+    }
+    */
     public static int getLastOrderID()  {
         var conn = DatabaseHandler.getInstance().getConnection();
         int lastOrderID = 0;
@@ -172,7 +204,4 @@ public class OrderDao implements Dao<Order>{
         int Collumn = rsmd.getColumnCount();
         return Integer.parseInt(s.getString(Collumn));
     }
-
-
-
 }

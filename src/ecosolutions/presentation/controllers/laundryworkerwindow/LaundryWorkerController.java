@@ -35,10 +35,9 @@ public class LaundryWorkerController extends AbstractController implements Initi
     }
     private void loadData(){
         list.clear();
-        List<Order> listoforders = OrderService.getOrders();
+        List<Order> listoforders = OrderService.getLWOrders();
         tableview.getItems().addAll(listoforders);
     }
-
     @FXML
     private void handleNewOrder(ActionEvent event) {
         Stage stage = (Stage) btnNewOrder.getScene().getWindow();

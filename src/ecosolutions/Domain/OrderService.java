@@ -11,9 +11,7 @@ import java.util.Optional;
 
 //TODO CLEAN UP
 public class OrderService {
-
-
-
+  
     private static boolean doesNotExist(Order order){
         OrderDao orderDao = new OrderDao();
         for(Order o : orderDao.getAll()){
@@ -48,9 +46,15 @@ public class OrderService {
         OrderDao orderDao = new OrderDao();
        return orderDao.getAll();
     }
+    public static List<Order>getLWOrders(){
+        OrderDao orderDao = new OrderDao();
+        return orderDao.laundryworkerGetStatus();
+    }
+    public static List<Order>getDriverOrders(){
+        OrderDao orderDao = new OrderDao();
+        return orderDao.driverGetStatus();
+    }
     public static int getLastOrderID(){
        return OrderDao.getLastOrderID();
     }
-
-
 }

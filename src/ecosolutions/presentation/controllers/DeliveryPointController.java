@@ -48,22 +48,17 @@ public class DeliveryPointController extends AbstractController implements Initi
     ObservableList<String> laundryType = FXCollections.observableArrayList("T-Shirt","Jacket","Carpet","Jeans","Suit","Blinds");
     @FXML
     private JFXButton btnLogOut;
-//GLOBAL VARIABLES FOR TABLEVIEW
+    //GLOBAL VARIABLES FOR TABLEVIEW
     public static String orderType;
     public static int orderQTY, orderID;
     public static float itemPrice;
     public static float totalAmount = 0;
-    @FXML
-    private Pane pane1;
-
+  
     @FXML
     private JFXListView<String> itemListView = new JFXListView<>();
 
 
     @FXML private JFXButton btnConfirm, btnRemove, btnReturn, btnEdit, btnAdd;
-
-
-
     @FXML private JFXTextField dueTextField, firstnameTextField, phoneNoTextField, lastnameTextField;
     @FXML private TextField qtyTextField;
 

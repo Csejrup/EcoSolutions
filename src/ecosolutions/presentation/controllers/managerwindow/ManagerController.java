@@ -40,9 +40,7 @@ public class ManagerController extends AbstractController implements Initializab
     private void loadEmployeeInfo(){
         clearemployCache();
         disablenableGraph(false);
-
     }
-
     @FXML
     private void loadOrderInfo(){
         clearOrderCache();
@@ -87,7 +85,6 @@ public class ManagerController extends AbstractController implements Initializab
     }
     @FXML
     void handleRefresh(ActionEvent event) {
-
     }
     @FXML
     void loadOrderList(ActionEvent event) {

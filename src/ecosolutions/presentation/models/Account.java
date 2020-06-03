@@ -41,6 +41,7 @@ public class Account {
     public int getAccount_id() {
         return account_id;
     }
+
     public static int getStaticAccountID() {
         return staticAccountID;
     }

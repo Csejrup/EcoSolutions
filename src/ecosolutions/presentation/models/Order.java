@@ -50,6 +50,17 @@ public class Order {
 		this.weight = weight;
 
 	}
+
+	public Order(int orderID, String orderstatus, String deliverypointname) {
+		this.orderID = orderID;
+		this.orderstatus = orderstatus;
+		this.deliverypointname = deliverypointname;
+	}
+	public Order(int orderID, String orderstatus) {
+		this.orderID = orderID;
+		this.orderstatus = orderstatus;
+	}
+
 	//SETTERS//
 	public void setDeliverypointname(String deliverypointname) {
 		this.deliverypointname = deliverypointname;
