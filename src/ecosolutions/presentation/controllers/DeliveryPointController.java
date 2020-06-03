@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
 import ecosolutions.Domain.AccountService;
 import ecosolutions.Domain.CustomerService;
+import ecosolutions.Domain.DeliveryPointService;
 import ecosolutions.Domain.OrderService;
 
 import ecosolutions.persistence.DAO.AccountDao;
@@ -37,6 +38,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutionException;
 
 public class DeliveryPointController extends AbstractController implements Initializable {
 
@@ -47,7 +49,7 @@ public class DeliveryPointController extends AbstractController implements Initi
     private JFXButton btnLogOut;
 //GLOBAL VARIABLES FOR TABLEVIEW
     public static String orderType;
-    public static int orderQTY;
+    public static int orderQTY, orderID;
 
     @FXML
     private Pane pane1;
@@ -85,14 +87,14 @@ public class DeliveryPointController extends AbstractController implements Initi
         String customerName = firstnameTextField.getText();
         String customerSurName = lastnameTextField.getText();
         String customerPhoneNr = phoneNoTextField.getText();
-        java.util.Date now = new Date();
-        SimpleDateFormat sdp = new SimpleDateFormat("dd/MM/yyyy");
-        String date = sdp.format(now);
+
         int orderStatusID = 1;
         CustomerService.addCustomer(new Customer(customerName,customerSurName,customerPhoneNr));
         int customerID = CustomerService.getCustomerID();
-        OrderService.addCustomerID(customerID);
         int orderID = OrderService.getLastOrderID();
+        java.util.Date now = new Date();
+        SimpleDateFormat sdp = new SimpleDateFormat("yyyy/MM/dd");
+        String date = sdp.format(now);
         float price = 12.3F;
         float weigth = 10F;
         //TODO PRICE AND WEIGHT HERE - DONE
@@ -100,7 +102,7 @@ public class DeliveryPointController extends AbstractController implements Initi
         Order newOrder = new Order(customerID,orderStatusID,date, items,price,weigth);
         OrderService.addOrder(newOrder);
         OrderService.addOrderDetails(newOrder);
-
+        items.clear();
 
 
 
@@ -117,12 +119,15 @@ public class DeliveryPointController extends AbstractController implements Initi
 
     @FXML
     void addToBasket(ActionEvent event) {
-        orderType = itemListView.getSelectionModel().getSelectedItem();
-        orderQTY = Integer.parseInt(qtyTextField.getText());
-        if (orderType != null && orderQTY > 0) {
-                    items.add(new OrderTableView(orderType,orderQTY));
+
+        try {
+            orderType = itemListView.getSelectionModel().getSelectedItem();
+            orderQTY = Integer.parseInt(qtyTextField.getText());
+            orderID = DeliveryPointService.getID(orderType);
+                    items.add(new OrderTableView(orderType,orderQTY,orderID));
+            System.out.println(orderID);
         }
-        else {
+        catch(Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("PICK CLOTH TYPE AND INSERT QUANTITY");
             alert.show();
@@ -136,7 +141,8 @@ public class DeliveryPointController extends AbstractController implements Initi
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        itemListView.setItems(laundryType);
+
+        itemListView.setItems(DeliveryPointService.getItemTypes());
     }
 
 

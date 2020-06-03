@@ -4,6 +4,7 @@ import ecosolutions.persistence.DatabaseHandler;
 import ecosolutions.presentation.models.Customer;
 
 import javax.xml.crypto.Data;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -105,16 +106,18 @@ public class CustomerDao implements Dao<Customer> {
 
     public int getCustomerID() {
         var conn = DatabaseHandler.getInstance().getConnection();
-        int custID = 0;
+        int customerID = 0;
         try{
-        var stmt = conn.prepareStatement("SELECT MAX(fldCustomerID) FROM tblCustomer");
+        PreparedStatement stmt = conn.prepareStatement("SELECT MAX(fldCustomerID) FROM tblCustomer");
         ResultSet rs = stmt.executeQuery();
-        ResultSetMetaData rsmd = rs.getMetaData();
-        int Collumn = rsmd.getColumnCount();
-        custID = Integer.parseInt(rs.getString(Collumn));
+        while (rs.next()){
+        customerID = Integer.parseInt(rs.getString(1));
         }
+        stmt.close();
+        }
+
         catch (SQLException e){
         e.printStackTrace();}
-        return custID;
+        return customerID;
     }
 }

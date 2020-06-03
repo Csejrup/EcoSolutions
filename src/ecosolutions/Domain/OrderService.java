@@ -68,9 +68,6 @@ public class OrderService {
     }
     public static void addOrder(Order order){
         OrderDao orderDao = new OrderDao();
-        if(doesNotExist(order)){
-            orderDao.save(order);
-        }
         orderDao.save(order);
     }
     public static void addOrderDetails(Order order)  {
@@ -89,9 +86,6 @@ public class OrderService {
     public static List<Order>getOrders(){
         OrderDao orderDao = new OrderDao();
        return orderDao.getAll();
-    }
-    public static void addCustomerID(int customerID){
-        OrderDao.addCustomerID(customerID);
     }
     public static int getLastOrderID(){
        return OrderDao.getLastOrderID();
