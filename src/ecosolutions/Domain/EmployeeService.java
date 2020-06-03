@@ -4,6 +4,7 @@ import ecosolutions.persistence.DAO.EmployeeDao;
 import ecosolutions.presentation.models.Employee;
 
 import java.util.List;
+import java.util.Optional;
 
 public class EmployeeService {
     private static boolean doesNotExist(Employee employee){
@@ -15,9 +16,10 @@ public class EmployeeService {
         }
         return true;
     }
-    public static void getEmployee(int id){
+    public static Optional<Employee> getEmployee(int id){
         EmployeeDao employeeDao = new EmployeeDao();
-        employeeDao.getbyID(id);
+
+        return employeeDao.getbyID(id);
     }
     public static void addEmployee(Employee employee){
         EmployeeDao employeedao = new EmployeeDao();

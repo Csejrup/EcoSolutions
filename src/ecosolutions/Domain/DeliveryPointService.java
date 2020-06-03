@@ -7,9 +7,6 @@ import javafx.collections.ObservableList;
 
 public class DeliveryPointService extends AccountService {
 
-
-	private String assistantName;
-
 	public static boolean login(String employeeID, String password) {
 		DB.selectSQL("SELECT fldPassword from tblAccount WHERE fldEmployeeID = ('" + employeeID + "')");
 		String PW = DB.getQueryData();

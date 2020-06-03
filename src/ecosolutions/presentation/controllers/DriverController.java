@@ -23,32 +23,15 @@ import java.util.ResourceBundle;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class DriverController extends AbstractController implements Initializable {
+
+    @FXML private JFXButton btnLogOut, driverLogOut;
+    @FXML private JFXCheckBox checkBoxUp, checkBoxDeliv;
+    @FXML private TableView<Order> tableView;
+    @FXML private TableColumn<Order, String> ordernoCol;
+    @FXML private TableColumn<Order, String> ordstatCol;
+    @FXML private TableColumn<Order, String> locaCol;
+
     ObservableList list = FXCollections.observableArrayList();
-
-    @FXML
-    private JFXButton btnLogOut;
-
-    @FXML
-    private JFXCheckBox checkBoxUp;
-
-    @FXML
-    private JFXCheckBox checkBoxDeliv;
-
-    @FXML
-    private JFXButton driverLogOut;
-
-    @FXML
-    private TableView<Order> tableView;
-
-    @FXML
-    private TableColumn<Order, String> ordernoCol;
-
-    @FXML
-    private TableColumn<Order, String> ordstatCol;
-
-    @FXML
-    private TableColumn<Order, String> locaCol;
-
 
     @FXML
     private void handleLogOut(ActionEvent event) {
@@ -61,6 +44,7 @@ public class DriverController extends AbstractController implements Initializabl
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initCol();
         loadData();
+
     }
 
     private void initCol(){
@@ -74,36 +58,38 @@ public class DriverController extends AbstractController implements Initializabl
     }
 
     public void changeStatus(ActionEvent event){
-        checkRow("Under_Way");
         checkBoxDeliv.setSelected(false);
+        change("Under_Way");
+
     }
 
     public void statusDelivered(ActionEvent event) {
-        checkRow("Delivered");
         checkBoxUp.setSelected(false);
+        change("Delivered");
     }
 
      private void change(String status){
          Order order = new Order();
          OrderDao dao = new OrderDao();
-
-                      order.setOrderID(tableView.getSelectionModel().getSelectedItem().getOrderID());
+         if(tableView.getSelectionModel().isEmpty()){
+             showMessageDialog(null,"Select order");
+             checkBoxDeliv.setSelected(false);
+             checkBoxUp.setSelected(false);
+         }
+                else {
+             order.setOrderID(tableView.getSelectionModel().getSelectedItem().getOrderID());
              order.setOrderstatus(status);
              System.out.println(order);
              dao.update(order);
              refresh();
 
+         }
 
     }
     private void refresh(){
         tableView.getItems().clear();
         loadData();
     }
-    private void checkRow(String status){
-        if(tableView.isCacheShape()) {
-            change(status);
-        }else {
-            showMessageDialog(null,"Select order");
-        }
-    }
+
+
 }
