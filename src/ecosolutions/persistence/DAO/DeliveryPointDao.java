@@ -109,4 +109,19 @@ public class DeliveryPointDao implements Dao<DeliveryPoint>{
         }
         return itemID;
     }
+    public static float getPrice(String itemType){
+        var conn = DatabaseHandler.getInstance().getConnection();
+        float itemPrice = 0;
+        try{
+            PreparedStatement stmt = conn.prepareStatement("SELECT fldPrice FROM tblLaundryItem WHERE fldItemType= '"+itemType+"';");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                itemPrice = Float.parseFloat(rs.getString(1));
+            }
+            stmt.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return itemPrice;
+    }
 }

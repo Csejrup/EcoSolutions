@@ -8,11 +8,21 @@ public class OrderTableView {
     private SimpleStringProperty clothType;
     private int clothQty;
     private int itemID;
+    private float itemPrice;
 
-    public OrderTableView(String itemType, int itemQTY, int itemID){
+    public OrderTableView(String itemType, int itemQTY, int itemID, float itemPrice){
         clothType = new SimpleStringProperty(itemType);
         clothQty =  itemQTY;
         this.itemID = itemID;
+        this.itemPrice = itemPrice;
+    }
+
+    public float getItemPrice() {
+        return itemPrice;
+    }
+
+    public void setItemPrice(int itemPrice) {
+        this.itemPrice = itemPrice;
     }
 
     public String getClothType() {
