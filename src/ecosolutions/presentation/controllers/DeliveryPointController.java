@@ -30,6 +30,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -100,11 +101,26 @@ public class DeliveryPointController extends AbstractController implements Initi
         //TODO PRICE AND WEIGHT HERE - DONE
         //TODO ERROR WHILE INSERTING CUSTOMERID CAUSED BY INSERTING DATA INTO FK FIELD
         Order newOrder = new Order(customerID,orderStatusID,date, items,price,weigth);
-        OrderService.addOrder(newOrder);
-        OrderService.addOrderDetails(newOrder);
-        items.clear();
+        if(customerName.isEmpty()||customerSurName.isEmpty()||customerPhoneNr.isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("INSERT CUSTOMER DETAILS");
+            alert.show();
+        }
+        else if(items.size()==0){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("ORDER IS EMPTY, PICK CLOTH TYPE AND QUANTITY.");
+            alert.show();
+        }
+        else {
+            OrderService.addOrder(newOrder);
+            OrderService.addOrderDetails(newOrder);
+            items.clear();
 
-
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("ORDER HAS BEN CREATED");
+            alert.show();
+            System.out.println(orderID);
+        }
 
         }
         /**
@@ -126,6 +142,7 @@ public class DeliveryPointController extends AbstractController implements Initi
             orderID = DeliveryPointService.getID(orderType);
                     items.add(new OrderTableView(orderType,orderQTY,orderID));
             System.out.println(orderID);
+            qtyTextField.clear();
         }
         catch(Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
