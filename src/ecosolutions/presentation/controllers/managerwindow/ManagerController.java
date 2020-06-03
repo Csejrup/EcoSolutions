@@ -97,8 +97,8 @@ public class ManagerController extends AbstractController implements Initializab
     }
     @FXML
     void loadStatisticsList(ActionEvent event) {
-
     }
+
     @FXML
     void loadWorkForceList(ActionEvent event) {
         loadpopup("EmployeesView.fxml");

@@ -43,25 +43,19 @@ import java.util.concurrent.ExecutionException;
 
 public class DeliveryPointController extends AbstractController implements Initializable {
 
+    @FXML private JFXListView<String> itemListView = new JFXListView<>();
+    @FXML private JFXButton btnConfirm, btnRemove, btnReturn, btnEdit, btnAdd,btnLogOut;
+    @FXML private JFXTextField dueTextField, firstnameTextField, phoneNoTextField, lastnameTextField;
+    @FXML private TextField qtyTextField;
+
     //ADD BASIC CLOTH TYPES
     public static ObservableList<OrderTableView> items = FXCollections.observableArrayList();
-    ObservableList<String> laundryType = FXCollections.observableArrayList("T-Shirt","Jacket","Carpet","Jeans","Suit","Blinds");
-    @FXML
-    private JFXButton btnLogOut;
+
     //GLOBAL VARIABLES FOR TABLEVIEW
     public static String orderType;
     public static int orderQTY, orderID;
     public static float itemPrice;
     public static float totalAmount = 0;
-  
-    @FXML
-    private JFXListView<String> itemListView = new JFXListView<>();
-
-
-    @FXML private JFXButton btnConfirm, btnRemove, btnReturn, btnEdit, btnAdd;
-    @FXML private JFXTextField dueTextField, firstnameTextField, phoneNoTextField, lastnameTextField;
-    @FXML private TextField qtyTextField;
-
     @FXML
     void handleAddItem(ActionEvent event) {
 
@@ -153,10 +147,7 @@ public class DeliveryPointController extends AbstractController implements Initi
     }
     public static ObservableList<OrderTableView> getItems(){
        return items;
-
     }
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         itemListView.setItems(DeliveryPointService.getItemTypes());
