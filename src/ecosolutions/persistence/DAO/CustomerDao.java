@@ -3,7 +3,6 @@ package ecosolutions.persistence.DAO;
 import ecosolutions.persistence.DatabaseHandler;
 import ecosolutions.presentation.models.Customer;
 
-import javax.xml.crypto.Data;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -119,5 +118,25 @@ public class CustomerDao implements Dao<Customer> {
         catch (SQLException e){
         e.printStackTrace();}
         return customerID;
+    }
+    public static boolean exist(int customerID){
+        var conn = DatabaseHandler.getInstance().getConnection();
+        try{
+            int cusID = 0;
+            PreparedStatement stmt = conn.prepareStatement("SELECT fldCustomerID FROM tblCustomer WHERE fldCustomerID = '"+customerID+"';");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                cusID = Integer.parseInt(rs.getString(1));
+            }
+            if(cusID == customerID){
+                return true;
+            }
+            stmt.close();
+        }
+
+        catch (SQLException e){
+            e.printStackTrace();}
+        return false;
+
     }
 }
