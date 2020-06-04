@@ -12,6 +12,7 @@ import java.util.Date;
 
 //TODO CLEAN UP THIS CLASS
 public class Order {
+	private String itemtype;
 	//VARIABLES//
 	private int orderID;
 	private int customerID;
@@ -45,7 +46,7 @@ public class Order {
 		this.customerID = customerID;
 		this.orderStatusID = orderStatusID;
 		this.date = date;
-		itemz = items;
+		this.itemz = items;
 		this.price = price;
 		this.weight = weight;
 
@@ -59,6 +60,11 @@ public class Order {
 	public Order(int orderID, String orderstatus) {
 		this.orderID = orderID;
 		this.orderstatus = orderstatus;
+	}
+
+	public Order(String clothtype, int qty) {
+		this.clothtype = clothtype;
+		this.qty = qty;
 	}
 
 	//SETTERS//
@@ -159,14 +165,28 @@ public class Order {
 
 	/**
 	 * Method to convert DB data to Strings
+	 *
 	 * @return
 	 */
 	@Override
 	public String toString() {
 		return "Order{" +
-				"orderID=" + orderID +
+				"itemtype='" + itemtype + '\'' +
+				", orderID=" + orderID +
+				", customerID=" + customerID +
+				", qty=" + qty +
 				", orderstatus='" + orderstatus + '\'' +
 				", deliverypointname='" + deliverypointname + '\'' +
+				", orderDescID=" + orderDescID +
+				", status='" + status + '\'' +
+				", clothtype='" + clothtype + '\'' +
+				", orderdate='" + orderdate + '\'' +
+				", orderStatusID=" + orderStatusID +
+				", date='" + date + '\'' +
+				", itemz=" + itemz +
+				", deliveryPointID=" + deliveryPointID +
+				", price=" + price +
+				", weight=" + weight +
 				'}';
 	}
 }

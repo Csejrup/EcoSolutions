@@ -52,6 +52,7 @@ public class DriverController extends AbstractController implements Initializabl
     private void loadData(){
         list.clear();
         List<Order> listoforders = OrderService.getDriverOrders();
+        listoforders.forEach(System.out::println);
         tableView.getItems().addAll(listoforders);
     }
     public void changeStatus(ActionEvent event){

@@ -86,7 +86,18 @@ public class OrderDao implements Dao<Order>{
             e.printStackTrace();
         }
     }
+    public void update(int id, String status) {
+       // var order = new Order();
+        var conn = DatabaseHandler.getInstance().getConnection();
+        try{
+            var stmt = conn.prepareStatement("EXEC  update_orderstatus @status ="+status+", @orderID="+id);
+            //ResultSet rs = stmt.executeQuery();
+            stmt.executeUpdate();
 
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     public List<Order> laundryworkerGetStatus(){
         List<Order> lworders = new ArrayList<>();
         var conn = DatabaseHandler.getInstance().getConnection();
@@ -126,6 +137,44 @@ public class OrderDao implements Dao<Order>{
         return driverorders;
     }
 
+    public List<Order> checkOrder(int id){
+        List<Order> checkorder = new ArrayList<>();
+        var conn = DatabaseHandler.getInstance().getConnection();
+        try{
+            var stmt = conn.createStatement();
+            //SQL STATEMENT FOR SELECTING EVERY ORDER RELATED DATA IN MULTIPLE TABLES, CONNECTED THROUGH INNER JOIN AND TBLORDER
+            ResultSet rs = stmt.executeQuery("EXEC checkorder @orderID="+ id);
+            while(rs.next()){
+                var itemtype = rs.getString("fldItemType");
+                var qty = rs.getInt("fldQuantity");
+                checkorder.add(new Order(itemtype, qty));
+            }
+            stmt.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return checkorder;
+    }
+    public Optional<Order> checkorderbyID(int id)
+    {
+        var conn = DatabaseHandler.getInstance().getConnection();
+        try{
+            var stmt = conn.prepareStatement("EXEC checkorder @orderID=" +id);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if(rs.next()){
+                Order order = new Order();
+                order.setClothtype(rs.getString("fldItemType"));
+                order.setQty(rs.getInt("fldQuantity"));
+                return Optional.of(order);
+            }
+            stmt.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return Optional.empty();
+    }
     private Order exportOrder(ResultSet rs) throws SQLException{
         Order order = new Order();
         order.setOrderID(rs.getInt("fldOrderID"));
@@ -146,7 +195,6 @@ public class OrderDao implements Dao<Order>{
     public void addOrderDetails(Order order){
         var conn = DatabaseHandler.getInstance().getConnection();
         try {
-
             for(int i = 0; i<order.getItemz().size();i++){
                 int clothQTY = order.getItemz().get(i).getClothQty();
                 int itemID = order.getItemz().get(i).getItemID();
@@ -154,7 +202,6 @@ public class OrderDao implements Dao<Order>{
             stmt.executeUpdate();
             stmt.close();
             }
-
         }catch (SQLException e){
             e.printStackTrace();
         }

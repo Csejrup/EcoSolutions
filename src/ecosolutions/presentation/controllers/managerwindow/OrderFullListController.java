@@ -29,9 +29,6 @@ public class OrderFullListController implements Initializable {
         initCol();
         loadData();
     }
-    private Stage getStage(){
-        return (Stage) tableView.getScene().getWindow();
-    }
     private void initCol(){
         ordernoCol.setCellValueFactory(new PropertyValueFactory<>("orderID"));
         statusCol.setCellValueFactory(new PropertyValueFactory<>("orderstatus"));
