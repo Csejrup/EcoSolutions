@@ -27,8 +27,7 @@ public class RegisterCustomerController extends AbstractController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("INSERT CUSTOMER DETAILS");
             alert.show();
-        }
-        else{
+        }else{
             CustomerService.addCustomer(new Customer(customerName,customerSurName,customerPhoneNr));
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setHeaderText("CUSTOMER CREATED");

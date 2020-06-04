@@ -111,64 +111,7 @@ public final class DatabaseHandler {
         finally{
         }
     }
-    public static ObservableList<PieChart.Data> getOrderGraphStatistics(){
-        ObservableList<PieChart.Data> data = FXCollections.observableArrayList();
-        try {
-            String query1 = "SELECT COUNT(*) FROM tblOrder WHERE fldOrderStatusID = 1";
-            String query2 = "SELECT COUNT(*) FROM tblOrder WHERE fldOrderStatusID = 2";
-            String query3 = "SELECT COUNT(*) FROM tblOrder WHERE fldOrderStatusID = 3";
-            String query4 = "SELECT COUNT(*) FROM tblOrder WHERE fldOrderStatusID = 4";
-            ResultSet rs = execQuery(query1);
-            if(rs.next()){
-                int count = rs.getInt(1);
-                data.add(new PieChart.Data("Total Pending ("+count+")", count));
-            }
-            rs = execQuery(query2);
-            if(rs.next()){
-                int count = rs.getInt(1);
-                data.add(new PieChart.Data("Total Ready ("+count+")", count));
-            }
-            rs = execQuery(query3);
-            if(rs.next()){
-                int count = rs.getInt(1);
-                data.add(new PieChart.Data("Total Cleaning ("+count+")", count));
-            }
-            rs = execQuery(query4);
-            if(rs.next()){
-                int count = rs.getInt(1);
-                data.add(new PieChart.Data("Total Complete ("+count+")", count));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return data;
-    }
-    public static ObservableList<PieChart.Data> getEmployeeStatistics(){
-        ObservableList<PieChart.Data> data2 = FXCollections.observableArrayList();
-        try {
-            String query1 = "SELECT COUNT(*) FROM tblEmployee WHERE fldStatusID = 1";
-            String query2 = "SELECT COUNT(*) FROM tblEmployee WHERE fldStatusID = 2";
-            String query3 = "SELECT COUNT(*) FROM tblEmployee WHERE fldStatusID = 3";
-            ResultSet rs = execQuery(query1);
-            if(rs.next()){
-                int count = rs.getInt(1);
-                data2.add(new PieChart.Data("Total Signed-In ("+count+")" , count));
-            }
-            rs = execQuery(query2);
-            if(rs.next()){
-                int count = rs.getInt(1);
-                data2.add(new PieChart.Data("Total Signed-Off ("+count+")", count));
-            }
-            rs = execQuery(query3);
-            if(rs.next()){
-                int count = rs.getInt(1);
-                data2.add(new PieChart.Data("Total On Vacation ("+count+")", count));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return data2;
-    }
+
     /**
      * Disconnects the program from the database
      * @throws Exception

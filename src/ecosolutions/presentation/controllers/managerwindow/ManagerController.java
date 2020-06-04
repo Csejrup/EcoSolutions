@@ -2,6 +2,8 @@ package ecosolutions.presentation.controllers.managerwindow;
 
 import com.jfoenix.controls.*;
 import ecosolutions.Domain.EmployeeService;
+import ecosolutions.Domain.OrderService;
+import ecosolutions.alert.AlertCreator;
 import ecosolutions.persistence.DatabaseHandler;
 import ecosolutions.presentation.controllers.AbstractController;
 import ecosolutions.presentation.models.Employee;
@@ -10,10 +12,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Tab;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import ecosolutions.presentation.models.Status;
 
@@ -22,7 +26,11 @@ import ecosolutions.presentation.models.Status;
  *
  */
 public class ManagerController extends AbstractController implements Initializable {
+    @FXML
+    private StackPane rootPane;
 
+    @FXML
+    private BorderPane rootborderPane;
     @FXML private Text txtorderno, txtorderstat, txtempname, txtrole, txtstatus;
     @FXML private JFXButton btnrefresh, btnworkforce, btnorders, btnstatistics, btnsettings;
     @FXML private JFXTextField employIDInput, orderIDInput;
@@ -56,15 +64,15 @@ public class ManagerController extends AbstractController implements Initializab
         txtstatus.setText("");
     }
     private void initGraphs(){
-        orderchart = new PieChart(DatabaseHandler.getOrderGraphStatistics());
+        orderchart = new PieChart(OrderService.getGraph1());
         ordercontainer.getChildren().add(orderchart);
 
-        employchart = new PieChart(DatabaseHandler.getEmployeeStatistics());
-        employcontainer.getChildren().add(employchart);
+       employchart = new PieChart(OrderService.getGraph2());
+       employcontainer.getChildren().add(employchart);
     }
     private void refreshGraphs(){
-        orderchart = new PieChart(DatabaseHandler.getOrderGraphStatistics());
-        employchart = new PieChart(DatabaseHandler.getEmployeeStatistics());
+        orderchart = new PieChart(OrderService.getGraph1());
+        employchart = new PieChart(OrderService.getGraph2());
     }
     private void disablenableGraph(Boolean status){
         if(status){
@@ -92,11 +100,13 @@ public class ManagerController extends AbstractController implements Initializab
     }
     @FXML
     void loadSettings(ActionEvent event) {
-        Stage stage = (Stage) btnworkforce.getScene().getWindow();
+        Stage stage = (Stage) btnsettings.getScene().getWindow();
         loadScreen(stage, "LoginView.fxml");
     }
     @FXML
     void loadStatisticsList(ActionEvent event) {
+        JFXButton button = new JFXButton("Okay");
+        AlertCreator.showAlertDialog(rootPane,rootborderPane, Arrays.asList(button),"Test",null);
     }
 
     @FXML

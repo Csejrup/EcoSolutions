@@ -17,8 +17,7 @@ public class LaundryWorkerController extends AbstractController implements Initi
 
     ObservableList list = FXCollections.observableArrayList();
 
-    @FXML private JFXButton btnLogOut, btncheckOrder, btnNewOrder, btnCleaning, btnPrint;
-    @FXML private JFXTextField orderNoTextField;
+    @FXML private JFXButton btnLogOut, btnNewOrder,btnComplete;
     @FXML private TableView<Order> tableview;
     @FXML private TableColumn<Order, String> ord_noCol;
     @FXML private TableColumn<Order, String> c_statCol;
@@ -48,6 +47,23 @@ public class LaundryWorkerController extends AbstractController implements Initi
         loadScreen(stage, "LoginView.fxml");
     }
     @FXML
+    void handleStatus(ActionEvent event) {
+        var orderService = new OrderService();
+        var order = new Order();
+        if(tableview.getSelectionModel().isEmpty()){
+
+        }else{
+           Order ord = tableview.getSelectionModel().getSelectedItem();
+            //System.out.println(Integer.parseInt(String.valueOf(ord)));
+          //  orderService.updateOrder(Integer.parseInt(String.valueOf(ord)),"Complete");
+
+            tableview.refresh();
+        }
+    }
+
+
+    /*
+    @FXML
     public void handlePrintLabel(ActionEvent event) {
         Order order =  tableview.getSelectionModel().getSelectedItem();
         int orderID = order.getOrderID();
@@ -58,4 +74,6 @@ public class LaundryWorkerController extends AbstractController implements Initi
             System.out.println("ORDER ID: " + orderID + "\nCLOTH TYPE: " + itemTypes.get(i)+"\nQUANTITY: "+itemQuantity.get(i));
         }
     }
+
+     */
 }
