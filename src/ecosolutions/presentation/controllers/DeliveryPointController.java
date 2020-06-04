@@ -5,6 +5,7 @@ import ecosolutions.Domain.CustomerService;
 import ecosolutions.Domain.DeliveryPointService;
 import ecosolutions.Domain.OrderService;
 
+import ecosolutions.alert.AlertCreator;
 import ecosolutions.presentation.models.Customer;
 import ecosolutions.presentation.models.Order;
 import ecosolutions.presentation.models.OrderTableView;
@@ -13,6 +14,8 @@ import javafx.collections.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -24,7 +27,11 @@ public class DeliveryPointController extends AbstractController implements Initi
     @FXML private JFXButton btnConfirm, btnRemove, btnreturn, btnEdit, btnAdd;
     @FXML private JFXTextField dueTextField, firstnameTextField, phoneNoTextField, lastnameTextField;
     @FXML private TextField qtyTextField, cusidTextField;
+    @FXML
+    private StackPane rootPane;
 
+    @FXML
+    private BorderPane rootborderPane;
     //ADD BASIC CLOTH TYPES
     public static ObservableList<OrderTableView> items = FXCollections.observableArrayList();
 
@@ -91,10 +98,15 @@ public class DeliveryPointController extends AbstractController implements Initi
             qtyTextField.clear();
             dueTextField.setText(String.valueOf(totalAmount));
         }catch(Exception e){
+
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("PICK CLOTH TYPE AND INSERT QUANTITY");
             alert.show();
+
+
+           // JFXButton button = new JFXButton("Okay");
+           // AlertCreator.showAlertDialog(rootPane,rootborderPane, Arrays.asList(button),"Select Item and set Quantity",null);
         }
     }
     public static ObservableList<OrderTableView> getItems(){

@@ -9,9 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-//C:\Users\sejru\OneDrive\EASV\2nd Semester\2nd Semester Project Exam\projectexamreal\src\ecosolutions\persistence\DAO\OrderDao.java
+
 
 import ecosolutions.persistence.DAO.*;
+import javafx.collections.ObservableList;
+import javafx.scene.chart.PieChart;
+
 //TODO CLEAN UP
 public class OrderService {
   
@@ -68,11 +71,30 @@ public class OrderService {
     public static List<String>getItemTypeByID(List<Integer> itemIDList){
         return OrderDao.getItemTypeByID(itemIDList);
     }public static List<Integer>getItemQuantityByID(List<Integer> itemIDList,int orderID){
-        return OrderDao.getQuantityByID(itemIDList,orderID);
+        OrderDao orderdao = new OrderDao();
+        return orderdao.getQuantityByID(itemIDList,orderID);
     }
 
 
     public static int getLastOrderID(){
        return OrderDao.getLastOrderID();
     }
+
+    public static ObservableList<PieChart.Data> getGraph1(){
+        OrderDao orderDao = new OrderDao();
+
+        return orderDao.getOrderGraphStatistics();
+
+
+    }
+    public static ObservableList<PieChart.Data> getGraph2(){
+        OrderDao orderDao = new OrderDao();
+
+        return orderDao.getEmployeeStatistics();
+
+
+    }
+
+
+
 }

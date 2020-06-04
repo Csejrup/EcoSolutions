@@ -2,7 +2,7 @@ package ecosolutions.presentation.controllers;
 
 import com.jfoenix.controls.*;
 import ecosolutions.Domain.OrderService;
-import ecosolutions.persistence.DAO.OrderDao;
+import ecosolutions.persistence.DAO.*;
 import ecosolutions.presentation.models.Order;
 import ecosolutions.presentation.models.Status;
 import javafx.collections.FXCollections;
@@ -52,13 +52,11 @@ public class DriverController extends AbstractController implements Initializabl
     private void loadData(){
         list.clear();
         List<Order> listoforders = OrderService.getDriverOrders();
-        listoforders.forEach(System.out::println);
         tableView.getItems().addAll(listoforders);
     }
     public void changeStatus(ActionEvent event){
         checkBoxDeliv.setSelected(false);
         change("Under_Way");
-
     }
     public void statusDelivered(ActionEvent event) {
         checkBoxUp.setSelected(false);

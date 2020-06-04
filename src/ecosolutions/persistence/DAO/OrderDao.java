@@ -1,6 +1,9 @@
 package ecosolutions.persistence.DAO;
 import ecosolutions.persistence.DatabaseHandler;
 import ecosolutions.presentation.models.Order;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.chart.PieChart;
 
 import java.sql.*;
 import java.util.*;
@@ -301,4 +304,73 @@ public class OrderDao implements Dao<Order>{
         return itemQuantity;
 
     }
+    public static ObservableList<PieChart.Data> getOrderGraphStatistics(){
+        ObservableList<PieChart.Data> data = FXCollections.observableArrayList();
+        try {
+            var conn = DatabaseHandler.getInstance().getConnection();
+            var stmt1 = conn.prepareStatement("SELECT COUNT(*) FROM tblOrder WHERE fldOrderStatusID = 1");
+            var stmt2 = conn.prepareStatement("SELECT COUNT(*) FROM tblOrder WHERE fldOrderStatusID = 2");
+            var stmt3 = conn.prepareStatement("SELECT COUNT(*) FROM tblOrder WHERE fldOrderStatusID = 3");
+            var stmt4 = conn.prepareStatement("SELECT COUNT(*) FROM tblOrder WHERE fldOrderStatusID = 4");
+            ResultSet rs = stmt1.executeQuery();
+            if(rs.next()){
+                int count = rs.getInt(1);
+                data.add(new PieChart.Data("Total Pending ("+count+")", count));
+            }
+           // rs = execQuery(query2);
+            rs = stmt2.executeQuery();
+            if(rs.next()){
+                int count = rs.getInt(1);
+                data.add(new PieChart.Data("Total Ready ("+count+")", count));
+            }
+            //rs = execQuery(query3);
+            rs = stmt3.executeQuery();
+            if(rs.next()){
+                int count = rs.getInt(1);
+                data.add(new PieChart.Data("Total Cleaning ("+count+")", count));
+            }
+            //rs = execQuery(query4);
+            rs = stmt4.executeQuery();
+            if(rs.next()){
+                int count = rs.getInt(1);
+                data.add(new PieChart.Data("Total Complete ("+count+")", count));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return data;
+    }
+
+    public static ObservableList<PieChart.Data> getEmployeeStatistics(){
+        ObservableList<PieChart.Data> data2 = FXCollections.observableArrayList();
+
+        try {
+            var conn = DatabaseHandler.getInstance().getConnection();
+            var stmt1 = conn.prepareStatement("SELECT COUNT(*) FROM tblEmployee WHERE fldStatusID = 1");
+            var stmt2 = conn.prepareStatement("SELECT COUNT(*) FROM tblEmployee WHERE fldStatusID = 2");
+            var stmt3 = conn.prepareStatement("SELECT COUNT(*) FROM tblEmployee WHERE fldStatusID = 3");
+
+            ResultSet rs = stmt1.executeQuery();
+            if(rs.next()){
+                int count = rs.getInt(1);
+                data2.add(new PieChart.Data("Total Signed-In ("+count+")" , count));
+            }
+            rs = stmt2.executeQuery();
+            if(rs.next()){
+                int count = rs.getInt(1);
+                data2.add(new PieChart.Data("Total Signed-Off ("+count+")", count));
+            }
+            rs = stmt3.executeQuery();
+            if(rs.next()){
+                int count = rs.getInt(1);
+                data2.add(new PieChart.Data("Total On Vacation ("+count+")", count));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return data2;
+    }
+
+
+
 }
