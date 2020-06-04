@@ -3,9 +3,11 @@ package ecosolutions.Domain;
 import ecosolutions.persistence.DAO.DeliveryPointDao;
 import ecosolutions.persistence.DB;
 
+
 import javafx.collections.ObservableList;
 
-public class DeliveryPointService extends AccountService {
+
+public class DeliveryPointService  {
 
 	public static boolean login(String employeeID, String password) {
 		DB.selectSQL("SELECT fldPassword from tblAccount WHERE fldEmployeeID = ('" + employeeID + "')");
