@@ -2,7 +2,7 @@ package ecosolutions.Domain;
 
 import ecosolutions.persistence.DB;
 
-public class DriverService extends AccountService {
+public class DriverService  {
 
 	private String driverName;
 

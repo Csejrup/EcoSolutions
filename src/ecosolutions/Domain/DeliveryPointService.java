@@ -2,7 +2,7 @@ package ecosolutions.Domain;
 
 import ecosolutions.persistence.DB;
 
-public class DeliveryPointService extends AccountService {
+public class DeliveryPointService  {
 
 
 	private String assistantName;

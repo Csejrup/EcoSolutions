@@ -15,11 +15,12 @@ public class AccountDao implements Dao<Account> {
     {
         var conn = DatabaseHandler.getInstance().getConnection();
         try{
-            var stmt = conn.prepareStatement("SELECT fldAccountID FROM tblAccount WHERE fldAccountID =" + id);
+            var stmt = conn.prepareStatement("SELECT fldAccountID FROM tblAccount WHERE fldAccountID  =" + id);
             ResultSet rs = stmt.executeQuery();
             if(rs.next()){
                 var acc = new Account();
                 acc.setAccount_id(rs.getInt("fldAccountID"));
+
                 return Optional.of(acc);
             }
             stmt.close();
@@ -92,4 +93,28 @@ public class AccountDao implements Dao<Account> {
         account.setUsername(rs.getString("fldUsername"));
         return account;
     }
-}
+
+
+    public Optional<Account> getByUsername(String username){
+
+
+        var conn = DatabaseHandler.getInstance().getConnection();
+        try{
+            var stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM tblAccount WHERE fldUsername ='" + username +"'");
+            if(rs.next()) {
+                Account acc = new Account();
+                acc.setUsername(rs.getString("fldUsername"));
+                acc.setAccount_id(rs.getInt("fldAccountID"));
+                acc.setPw(rs.getString("fldPassword"));
+                return Optional.of(acc);
+            }
+            stmt.close();
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return Optional.empty();
+    }
+    }
+

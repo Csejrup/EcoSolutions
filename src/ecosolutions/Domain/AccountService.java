@@ -7,7 +7,7 @@ import ecosolutions.presentation.models.Account;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class AccountService {
+public  class AccountService {
 
 	private static int accountID;
 
@@ -43,9 +43,9 @@ public abstract class AccountService {
 		}
 		return true;
 	}
-	public static Optional<Account> getAccount(int id){
+	public static Optional<Account> getAccount(String username){
 		var accountDao = new AccountDao();
-		return accountDao.getbyID(id);
+		return accountDao.getByUsername(username);
 	}
 	public static void addAccount(Account acc){
 		var accountDao = new AccountDao();
