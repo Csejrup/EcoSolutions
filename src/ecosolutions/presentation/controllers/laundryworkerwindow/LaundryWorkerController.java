@@ -47,7 +47,15 @@ public class LaundryWorkerController extends AbstractController implements Initi
         Stage stage = (Stage) btnLogOut.getScene().getWindow();
         loadScreen(stage, "LoginView.fxml");
     }
-
+    @FXML
     public void handlePrintLabel(ActionEvent event) {
+        Order order =  tableview.getSelectionModel().getSelectedItem();
+        int orderID = order.getOrderID();
+        List<Integer> itemIDlist = OrderService.getItemIDList(orderID);
+        List<Integer> itemQuantity = OrderService.getItemQuantityByID(itemIDlist,orderID);
+        List<String> itemTypes = OrderService.getItemTypeByID(itemIDlist);
+        for (int i = 0;i<itemIDlist.size();i++) {
+            System.out.println("ORDER ID: " + orderID + "\nCLOTH TYPE: " + itemTypes.get(i)+"\nQUANTITY: "+itemQuantity.get(i));
+        }
     }
 }
