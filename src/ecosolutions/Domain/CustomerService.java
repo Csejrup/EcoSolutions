@@ -48,4 +48,7 @@ public class CustomerService  {
 		var customerDao = new CustomerDao();
 		return customerDao.getCustomerID();
 	}
+	public static boolean isExist(int customerID){
+		return CustomerDao.exist(customerID);
+	}
 }

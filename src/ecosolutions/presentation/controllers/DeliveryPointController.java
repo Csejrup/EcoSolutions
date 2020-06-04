@@ -42,13 +42,11 @@ public class DeliveryPointController extends AbstractController implements Initi
 
     @FXML
     void handleOrderConfirm(ActionEvent event) {
-        String customerName = firstnameTextField.getText();
-        String customerSurName = lastnameTextField.getText();
-        String customerPhoneNr = phoneNoTextField.getText();
+
 
         int orderStatusID = 1;
-        CustomerService.addCustomer(new Customer(customerName,customerSurName,customerPhoneNr));
-        int customerID = CustomerService.getCustomerID();
+
+        int customerID = Integer.parseInt(cusidTextField.getText());
         int orderID = OrderService.getLastOrderID();
         java.util.Date now = new Date();
         SimpleDateFormat sdp = new SimpleDateFormat("yyyy/MM/dd");
@@ -57,17 +55,13 @@ public class DeliveryPointController extends AbstractController implements Initi
         float weigth = 10F;
         //TODO PRICE AND WEIGHT HERE - DONE
         //TODO ERROR WHILE INSERTING CUSTOMERID CAUSED BY INSERTING DATA INTO FK FIELD
-        Order newOrder = new Order(customerID,orderStatusID,date, items,price,weigth);
 
-            if(customerName.isEmpty()||customerSurName.isEmpty()||customerPhoneNr.isEmpty()){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("INSERT CUSTOMER DETAILS");
-                alert.show();
-            }else if(items.size()==0){
+            if(items.size()==0){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("ORDER IS EMPTY, PICK CLOTH TYPE AND QUANTITY.");
                 alert.show();
-            }else{
+            }else if(CustomerService.isExist(customerID)){
+                Order newOrder = new Order(customerID,orderStatusID,date, items,price,weigth);
                 OrderService.addOrder(newOrder);
                 OrderService.addOrderDetails(newOrder);
                 items.clear();
