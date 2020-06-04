@@ -243,12 +243,62 @@ public class OrderDao implements Dao<Order>{
         return Integer.parseInt(s.getString(Collumn));
 
     }
-    public static int getLastDescID() throws SQLException {
+    public static List<Integer> getItemsID(int orderID){
         var conn = DatabaseHandler.getInstance().getConnection();
-        var stmt = conn.prepareStatement("SELECT MAX(fldOrderDesID) FROM tblOrderDescription");
-        ResultSet s = stmt.executeQuery();
-        ResultSetMetaData rsmd = s.getMetaData();
-        int Collumn = rsmd.getColumnCount();
-        return Integer.parseInt(s.getString(Collumn));
+        List<Integer> itemIDList = new ArrayList<>();
+        try{
+            var stmt = conn.prepareStatement("SELECT fldItemID FROM tblOrderDescription WHERE fldOrderID = '"+orderID+"';");
+            ResultSet s = stmt.executeQuery();
+            ResultSetMetaData rsmd = s.getMetaData();
+            int collumns = rsmd.getColumnCount();
+            while(s.next()){
+            for(int i=0; i<collumns;i++){
+                int itemID = Integer.parseInt(s.getString(i+1));
+                itemIDList.add(itemID);
+            }}
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return itemIDList;
+    }
+    public static List<String> getItemTypeByID(List<Integer> itemIDList){
+        List<String> itemTypes = new ArrayList<>();
+        var conn = DatabaseHandler.getInstance().getConnection();
+        try {
+            for (int i = 0; i < itemIDList.size(); i++) {
+                int itemID = itemIDList.get(i);
+                var stmt = conn.prepareStatement("SELECT fldItemType FROM tblLaundryItem where fldItemID = '" + itemID + "';");
+                ResultSet rs = stmt.executeQuery();
+                ResultSetMetaData rsmd = rs.getMetaData();
+                int Collumn = rsmd.getColumnCount();
+                while (rs.next()) {
+                    String itemType = rs.getString(Collumn);
+                    itemTypes.add(i, itemType);
+                }}
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return itemTypes;
+    }
+    public static List<Integer> getQuantityByID(List<Integer> itemIDList,int orderID){
+        List<Integer> itemQuantity = new ArrayList<>();
+        var conn = DatabaseHandler.getInstance().getConnection();
+        try {
+            for(int i = 0; i<itemIDList.size();i++) {
+                int itemID = itemIDList.get(i);
+                var stmt = conn.prepareStatement("SELECT fldQuantity FROM tblOrderDescription where fldItemID = '" + itemID + "' AND fldOrderID = '"+orderID+"';");
+                ResultSet rs = stmt.executeQuery();
+                ResultSetMetaData rsmd = rs.getMetaData();
+                int Collumn = rsmd.getColumnCount();
+                while (rs.next()) {
+                    int itemQTY = Integer.parseInt(rs.getString(Collumn));
+                    itemQuantity.add(i,itemQTY);
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return itemQuantity;
+
     }
 }

@@ -59,6 +59,14 @@ public class OrderService {
         OrderDao orderDao = new OrderDao();
         return orderDao.checkOrder(id);
     }
+    public static List<Integer> getItemIDList(int orderID){
+        return OrderDao.getItemsID(orderID);
+    }
+    public static List<String>getItemTypeByID(List<Integer> itemIDList){
+        return OrderDao.getItemTypeByID(itemIDList);
+    }public static List<Integer>getItemQuantityByID(List<Integer> itemIDList,int orderID){
+        return OrderDao.getQuantityByID(itemIDList,orderID);
+    }
 
 
     public static int getLastOrderID(){
