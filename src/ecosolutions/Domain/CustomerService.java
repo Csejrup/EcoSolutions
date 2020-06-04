@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-public class CustomerService extends AccountService {
+public class CustomerService  {
 
 /*	public static int getCustomerID(){
 		DB.selectSQL("SELECT MAX(fldCustomerID) FROM tblCustomer");
