@@ -1,8 +1,10 @@
-package ecosolutions.presentation.controllers.ManagerWindow;
+package ecosolutions.presentation.controllers.managerwindow;
 
 import com.jfoenix.controls.*;
+import ecosolutions.Domain.EmployeeService;
 import ecosolutions.persistence.DatabaseHandler;
 import ecosolutions.presentation.controllers.AbstractController;
+import ecosolutions.presentation.models.Employee;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,20 +17,19 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import ecosolutions.presentation.models.Status;
 
+
 /**
  *
  */
 public class ManagerController extends AbstractController implements Initializable {
-    PieChart orderchart, employchart;
+
     @FXML private Text txtorderno, txtorderstat, txtempname, txtrole, txtstatus;
-
     @FXML private JFXButton btnrefresh, btnworkforce, btnorders, btnstatistics, btnsettings;
-
     @FXML private JFXTextField employIDInput, orderIDInput;
     @FXML private StackPane ordercontainer, employcontainer;
-
     @FXML private Tab overviewtab, laundryotab;
 
+    private PieChart orderchart, employchart;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -38,15 +39,13 @@ public class ManagerController extends AbstractController implements Initializab
     @FXML
     private void loadEmployeeInfo(){
         clearemployCache();
-
-
+        disablenableGraph(false);
     }
     @FXML
     private void loadOrderInfo(){
         clearOrderCache();
-        disablenableGraph(false);
-
     }
+
     void clearOrderCache(){
         txtorderno.setText("");
         txtorderstat.setText("");
@@ -62,15 +61,11 @@ public class ManagerController extends AbstractController implements Initializab
 
         employchart = new PieChart(DatabaseHandler.getEmployeeStatistics());
         employcontainer.getChildren().add(employchart);
-
-
-
     }
     private void refreshGraphs(){
         orderchart = new PieChart(DatabaseHandler.getOrderGraphStatistics());
         employchart = new PieChart(DatabaseHandler.getEmployeeStatistics());
     }
-
     private void disablenableGraph(Boolean status){
         if(status){
             orderchart.setOpacity(1);
@@ -80,7 +75,6 @@ public class ManagerController extends AbstractController implements Initializab
             employchart.setOpacity(0);
         }
     }
-
     private boolean validateInput(){
        orderIDInput.fireEvent(new ActionEvent());
        employIDInput.fireEvent(new ActionEvent());
@@ -91,7 +85,6 @@ public class ManagerController extends AbstractController implements Initializab
     }
     @FXML
     void handleRefresh(ActionEvent event) {
-
     }
     @FXML
     void loadOrderList(ActionEvent event) {
@@ -104,8 +97,8 @@ public class ManagerController extends AbstractController implements Initializab
     }
     @FXML
     void loadStatisticsList(ActionEvent event) {
-
     }
+
     @FXML
     void loadWorkForceList(ActionEvent event) {
         loadpopup("EmployeesView.fxml");

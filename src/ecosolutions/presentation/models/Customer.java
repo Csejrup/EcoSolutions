@@ -14,6 +14,10 @@ public class Customer {
         this.phone_No = phone_No;
         this.last_name = last_name;
         this.customer_id = customer_id;
+    }public Customer(String first_name, String last_name, String phone_No) {
+        this.first_name = first_name;
+        this.phone_No = phone_No;
+        this.last_name = last_name;
     }
 
     public String getFirst_name() {

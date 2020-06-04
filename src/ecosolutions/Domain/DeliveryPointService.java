@@ -1,11 +1,13 @@
 package ecosolutions.Domain;
 
+import ecosolutions.persistence.DAO.DeliveryPointDao;
 import ecosolutions.persistence.DB;
 
+
+import javafx.collections.ObservableList;
+
+
 public class DeliveryPointService  {
-
-
-	private String assistantName;
 
 	public static boolean login(String employeeID, String password) {
 		DB.selectSQL("SELECT fldPassword from tblAccount WHERE fldEmployeeID = ('" + employeeID + "')");
@@ -23,6 +25,18 @@ public class DeliveryPointService  {
 	public void setStatus() {
 		// TODO - implement ecosolutions.Domain.Account.ShopAssistant.setStatus
 		throw new UnsupportedOperationException();
+	}
+	public static ObservableList<String> getItemTypes(){
+
+		return DeliveryPointDao.getLaundryTypes();
+	}
+
+	public static int getID(String clothType){
+		return DeliveryPointDao.getItemID(clothType);
+
+	}
+	public static float getPrice(String clothType){
+		return DeliveryPointDao.getPrice(clothType);
 	}
 
 }

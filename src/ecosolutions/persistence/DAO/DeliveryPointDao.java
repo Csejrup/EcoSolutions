@@ -1,8 +1,12 @@
 package ecosolutions.persistence.DAO;
 import ecosolutions.persistence.DatabaseHandler;
 import ecosolutions.presentation.models.DeliveryPoint;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -68,6 +72,56 @@ public class DeliveryPointDao implements Dao<DeliveryPoint>{
         DeliveryPoint deliveryPoint = new DeliveryPoint();
 
         return deliveryPoint;
-
+    }
+    public static ObservableList<String> getLaundryTypes(){
+        ObservableList<String> laundryTypeItems = FXCollections.observableArrayList();
+        var conn = DatabaseHandler.getInstance().getConnection();
+        try{
+            var stmt = conn.prepareStatement("SELECT fldItemType FROM tblLaundryItem");
+            ResultSet rs = stmt.executeQuery();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int collumns = rsmd.getColumnCount();
+            while(rs.next()){
+            for(int i = 0; i<collumns;i++){
+                String itemType = rs.getString(i+1);
+                laundryTypeItems.add(i,itemType);
+            }}
+            stmt.close();
+            rs.close();
+            }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return laundryTypeItems;
+    }
+    public static int getItemID(String itemType){
+        var conn = DatabaseHandler.getInstance().getConnection();
+        int itemID = 0;
+        try{
+            PreparedStatement stmt = conn.prepareStatement("SELECT fldItemID FROM tblLaundryItem WHERE fldItemType = '"+itemType+"';");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+            itemID = Integer.parseInt(rs.getString(1));
+            }
+            stmt.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return itemID;
+    }
+    public static float getPrice(String itemType){
+        var conn = DatabaseHandler.getInstance().getConnection();
+        float itemPrice = 0;
+        try{
+            PreparedStatement stmt = conn.prepareStatement("SELECT fldPrice FROM tblLaundryItem WHERE fldItemType= '"+itemType+"';");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                itemPrice = Float.parseFloat(rs.getString(1));
+            }
+            stmt.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return itemPrice;
     }
 }

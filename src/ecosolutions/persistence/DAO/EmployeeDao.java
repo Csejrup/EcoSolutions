@@ -14,19 +14,22 @@ public class EmployeeDao implements Dao<Employee> {
      public Optional<Employee> getbyID(int id) {
         var conn = DatabaseHandler.getInstance().getConnection();
         try{
-            var stmt = conn.prepareStatement("SELECT fldName,fldSurname FROM tblEmployee WHERE fldEmployeeID=" + id);
+            var stmt = conn.prepareStatement("SELECT fldEmployeeID,fldName,fldSurname,fldPhone_no FROM tblEmployee WHERE fldEmployeeID=" + id);
             ResultSet rs = stmt.executeQuery();
-
             if(rs.next()){
-
-
+                var employ_id = rs.getInt("fldEmployeeID");
+                var firstname = rs.getString("fldName");
+                var surname = rs.getString("fldSurname");
+                var phone_no = rs.getString("fldPhone_no");
+                System.out.println(employ_id);
+                Employee employee = new Employee(firstname, surname, employ_id,phone_no);
                 return Optional.of(exportEmployee(rs));
             }
             stmt.close();
         }catch(SQLException e){
             e.printStackTrace();
         }
-        return null;
+        return Optional.empty();
     }
 
     @Override

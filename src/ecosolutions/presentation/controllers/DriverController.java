@@ -18,52 +18,32 @@ import javax.swing.*;
 import java.net.URL;
 import java.net.http.WebSocket;
 import java.sql.SQLOutput;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class DriverController extends AbstractController implements Initializable {
+
+    @FXML private JFXButton btnLogOut;
+    @FXML private JFXCheckBox checkBoxUp, checkBoxDeliv;
+    @FXML private TableView<Order> tableView;
+    @FXML private TableColumn<Order, String> ordernoCol;
+    @FXML private TableColumn<Order, String> ordstatCol;
+    @FXML private TableColumn<Order, String> locaCol;
+
     ObservableList list = FXCollections.observableArrayList();
-
-    @FXML
-    private JFXButton btnLogOut;
-
-    @FXML
-    private JFXCheckBox checkBoxUp;
-
-    @FXML
-    private JFXCheckBox checkBoxDeliv;
-
-    @FXML
-    private JFXButton driverLogOut;
-
-    @FXML
-    private TableView<Order> tableView;
-
-    @FXML
-    private TableColumn<Order, String> ordernoCol;
-
-    @FXML
-    private TableColumn<Order, String> ordstatCol;
-
-    @FXML
-    private TableColumn<Order, String> locaCol;
-
-
     @FXML
     private void handleLogOut(ActionEvent event) {
         Stage stage = (Stage) btnLogOut.getScene().getWindow();
         loadScreen(stage, "LoginView.fxml");
     }
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initCol();
         loadData();
 
     }
-
     private void initCol(){
         ordernoCol.setCellValueFactory(new PropertyValueFactory<>("orderID"));
         ordstatCol.setCellValueFactory(new PropertyValueFactory<>("orderstatus"));
@@ -71,20 +51,18 @@ public class DriverController extends AbstractController implements Initializabl
     }
     private void loadData(){
         list.clear();
-        tableView.getItems().addAll(OrderService.getOrders());
+        List<Order> listoforders = OrderService.getDriverOrders();
+        tableView.getItems().addAll(listoforders);
     }
-
     public void changeStatus(ActionEvent event){
         checkBoxDeliv.setSelected(false);
         change("Under_Way");
 
     }
-
     public void statusDelivered(ActionEvent event) {
         checkBoxUp.setSelected(false);
         change("Delivered");
     }
-
      private void change(String status){
          Order order = new Order();
          OrderDao dao = new OrderDao();
@@ -92,21 +70,15 @@ public class DriverController extends AbstractController implements Initializabl
              showMessageDialog(null,"Select order");
              checkBoxDeliv.setSelected(false);
              checkBoxUp.setSelected(false);
-         }
-                else {
+         }else{
              order.setOrderID(tableView.getSelectionModel().getSelectedItem().getOrderID());
              order.setOrderstatus(status);
-             System.out.println(order);
              dao.update(order);
              refresh();
-
          }
-
     }
     private void refresh(){
         tableView.getItems().clear();
         loadData();
     }
-
-
 }
