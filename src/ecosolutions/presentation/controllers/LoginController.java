@@ -34,6 +34,8 @@ public class LoginController extends AbstractController{
     @FXML private JFXPasswordField txtPW;
     @FXML private JFXButton btnLogIn;
 
+
+
     /**
      * TEMPORARY SOLUTION TO LOGIN
      *
@@ -47,7 +49,9 @@ public class LoginController extends AbstractController{
         if(employeeID.startsWith("M")) {
             Stage stage = (Stage) btnLogIn.getScene().getWindow();
             loadScreen(stage, "ManagerView.fxml");
+
             //verifyLogIn("ManagerView.fxml");
+
 
         }
         else if (employeeID.startsWith("S")){
@@ -91,10 +95,7 @@ public class LoginController extends AbstractController{
             loadScreen(stage, scene);
         }
     }
-
-
-
-    }
+}
 
 
 

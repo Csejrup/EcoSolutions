@@ -17,7 +17,7 @@ public class LaundryWorkerController extends AbstractController implements Initi
 
     ObservableList list = FXCollections.observableArrayList();
 
-    @FXML private JFXButton btnLogOut, btncheckOrder, btnNewOrder, btnCleaning;
+    @FXML private JFXButton btnLogOut, btncheckOrder, btnNewOrder, btnCleaning, btnPrint;
     @FXML private JFXTextField orderNoTextField;
     @FXML private TableView<Order> tableview;
     @FXML private TableColumn<Order, String> ord_noCol;
@@ -28,7 +28,6 @@ public class LaundryWorkerController extends AbstractController implements Initi
         initCol();
         loadData();
     }
-
     private void initCol(){
         ord_noCol.setCellValueFactory(new PropertyValueFactory<>("orderID"));
         c_statCol.setCellValueFactory(new PropertyValueFactory<>("orderstatus"));
@@ -43,10 +42,12 @@ public class LaundryWorkerController extends AbstractController implements Initi
         Stage stage = (Stage) btnNewOrder.getScene().getWindow();
         loadScreen(stage, "CleaningView.fxml");
     }
-
     @FXML
     private void handleLogOut(ActionEvent event) {
         Stage stage = (Stage) btnLogOut.getScene().getWindow();
         loadScreen(stage, "LoginView.fxml");
+    }
+
+    public void handlePrintLabel(ActionEvent event) {
     }
 }

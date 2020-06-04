@@ -31,6 +31,11 @@
                               <Font name="Myanmar Text" size="12.0" />
                            </font>
                         </JFXButton>
+                        <JFXButton fx:id="btnPrint" alignment="CENTER" layoutX="19.0" layoutY="83.0" onAction="#handlePrintLabel" prefHeight="47.0" prefWidth="128.0" text="Print Label" textFill="WHITE">
+                           <font>
+                              <Font name="Myanmar Text" size="15.0" />
+                           </font>
+                        </JFXButton>
                      </children>
                   </Pane>
                </left>

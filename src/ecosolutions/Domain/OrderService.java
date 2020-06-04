@@ -23,7 +23,7 @@ public class OrderService {
     }
     public static Optional<Order> getOrder(int id){
         OrderDao orderDao = new OrderDao();
-        return orderDao.getbyID(id);
+        return orderDao.checkorderbyID(id);
     }
     public static void addOrder(Order order){
         OrderDao orderDao = new OrderDao();
@@ -34,9 +34,9 @@ public class OrderService {
             orderDao.addOrderDetails(order);
 
     }
-    public static void updateOrder(Order order){
+    public static void updateOrder(int id, String status){
         OrderDao orderDao = new OrderDao();
-        orderDao.update(order);
+        orderDao.update(id, status);
     }
     public static void deleteOrder(Order order){
         OrderDao orderDao = new OrderDao();
@@ -54,6 +54,13 @@ public class OrderService {
         OrderDao orderDao = new OrderDao();
         return orderDao.driverGetStatus();
     }
+
+    public static List<Order>checkorder(int id){
+        OrderDao orderDao = new OrderDao();
+        return orderDao.checkOrder(id);
+    }
+
+
     public static int getLastOrderID(){
        return OrderDao.getLastOrderID();
     }

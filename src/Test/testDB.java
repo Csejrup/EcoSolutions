@@ -19,8 +19,8 @@ public class testDB {
 
         try {
             var stmt = conn.createStatement();
-            stmt.execute("CREATE TABLE tblTESTDB (Message CHAR(20))");
-            stmt.execute("INSERT INTO tblTESTDB VALUES ('Hello, Boys!')");
+            stmt.execute("CREATE TABLE tblTESTDB (Message CHAR(40))");
+            stmt.execute("INSERT INTO tblTESTDB VALUES ('Hello, Corona Free World!')");
             ResultSet rs = stmt.executeQuery("SELECT * FROM tblTESTDB");
             rs.next();
             System.out.println(rs.getString(1));
@@ -31,6 +31,4 @@ public class testDB {
             conn.close();
         }
     }
-
-
 }
