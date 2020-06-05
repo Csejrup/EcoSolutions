@@ -6,6 +6,7 @@
     -fx-primarytext: #424242;
     -fx-red: #FF0000;
     -fx-managerprimary : #78909c;
+    -fx-textfill: white;
 }
 
 .root{
@@ -24,7 +25,7 @@
 .button:hover {
     -fx-border-color: -fx-secondary;
     -fx-background-color: -fx-secondary;
-    -fx-text-fill: -fx-primarytext;
+    -fx-text-fill: -fx-textfill;
 }
 /** Login Screen Specifics **/
 .label-login1{
@@ -54,7 +55,7 @@
 }
 .logout-button{
     -fx-text-fill: #FFFFFF;
-    -fx-background-color: -fx-secondary;
+    -fx-background-color: -fx-primary;
     -fx-border-color: -fx-primary;
     -fx-border-radius: 20px;
     -fx-border-width: 1.5pt;
@@ -64,7 +65,7 @@
 .logout-button:hover {
     -fx-border-color: -fx-secondary;
     -fx-background-color: -fx-primary;
-    -fx-text-fill: #FFFFFF;
+    -fx-text-fill: -fx-textfill;
 }
 /** Manager Screen CSS Style **/
 
@@ -113,6 +114,8 @@
 .toolbar-button:hover{
     -fx-background-color: derive(-fx-primary, -20%);
     -fx-border-color: derive(-fx-primary, -20%);
+    -fx-text-fill: -fx-textfill;
+
 }
 
 /*text style*/
@@ -135,7 +138,7 @@
 .dialog-button:hover{
     -fx-background-color: -fx-color-1;
     -fx-border-color: derive(-fx-color-1, -20%);
-    -fx-text-fill: white;
+    -fx-text-fill: -fx-textfill;
 }
 
 .jfx-layout-actions
