@@ -89,12 +89,14 @@ public class OrderService {
     }
     public static ObservableList<PieChart.Data> getGraph2(){
         OrderDao orderDao = new OrderDao();
-
         return orderDao.getEmployeeStatistics();
-
-
     }
-
+    public static int getCustomerIDbyOrderID(int orderID){
+       return OrderDao.getCustomerIDbyOrderID(orderID);
+    }
+    public static void issueStatus(int orderID){
+        OrderDao.issueStatus(orderID);
+    }
 
 
 }

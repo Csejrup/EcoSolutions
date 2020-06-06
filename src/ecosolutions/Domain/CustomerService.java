@@ -51,4 +51,10 @@ public class CustomerService  {
 	public static boolean isExist(int customerID){
 		return CustomerDao.exist(customerID);
 	}
+	public static String getCustomerName(int customerID){
+		return CustomerDao.getCustomerName(customerID);
+	}
+	public static String getCustomerPhone(int customerID){
+		return CustomerDao.getCustomerPhone(customerID);
+	}
 }

@@ -370,6 +370,31 @@ public class OrderDao implements Dao<Order>{
         }
         return data2;
     }
+    public static int getCustomerIDbyOrderID(int orderID){
+        var conn = DatabaseHandler.getInstance().getConnection();
+        int custID = 0;
+       try {
+           var stmt = conn.prepareStatement("SELECT fldCustomerID FROM tblOrder WHERE fldOrderID = '"+orderID+"';");
+           ResultSet s = stmt.executeQuery();
+           ResultSetMetaData rsmd = s.getMetaData();
+           int Collumn = rsmd.getColumnCount();
+          custID = Integer.parseInt(s.getString(Collumn));
+          stmt.close();
+       }catch (Exception e){
+           e.printStackTrace();
+       }
+        return custID;
+
+    }
+    public static void issueStatus(int orderID){
+        var conn = DatabaseHandler.getInstance().getConnection();
+        try{
+        var stmt = conn.prepareStatement("INSERT INTO tblOrder(fldOrderStatusID) VALUE ('7')");
+        stmt.executeUpdate();
+    }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 
 
 
