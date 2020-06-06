@@ -137,6 +137,34 @@ public class CustomerDao implements Dao<Customer> {
         catch (SQLException e){
             e.printStackTrace();}
         return false;
+    }
+    public static String getCustomerName(int customerID){
+        var conn = DatabaseHandler.getInstance().getConnection();
+        String customerName = "";
+        try{
+            PreparedStatement stmt = conn.prepareStatement("SELECT fldName FROM tblCustomer WHERE fldCustomerID = '"+customerID+"';");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                customerName =rs.getString(1);
+            }
 
+        }catch (Exception e){
+
+        }
+        return customerName;
+    }public static String getCustomerPhone(int customerID){
+        var conn = DatabaseHandler.getInstance().getConnection();
+        String customerPhone = "";
+        try{
+            PreparedStatement stmt = conn.prepareStatement("SELECT fldPhone FROM tblCustomer WHERE fldCustomerID = '"+customerID+"';");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                customerPhone =rs.getString(1);
+            }
+
+        }catch (Exception e){
+
+        }
+        return customerPhone;
     }
 }
