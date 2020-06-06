@@ -42,8 +42,8 @@ public class DriverController extends AbstractController implements Initializabl
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initCol();
         loadData();
-
     }
+
     private void initCol(){
         ordernoCol.setCellValueFactory(new PropertyValueFactory<>("orderID"));
         ordstatCol.setCellValueFactory(new PropertyValueFactory<>("orderstatus"));
