@@ -2,6 +2,7 @@ package ecosolutions.presentation.controllers.laundryworkerwindow;
 
 import com.jfoenix.controls.*;
 import ecosolutions.Domain.OrderService;
+import ecosolutions.alert.AlertCreator;
 import ecosolutions.presentation.controllers.AbstractController;
 import ecosolutions.presentation.models.Order;
 import javafx.collections.*;
@@ -9,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import java.net.URL;
 import java.util.*;
@@ -16,8 +18,16 @@ import java.util.*;
 public class LaundryWorkerController extends AbstractController implements Initializable {
 
     ObservableList list = FXCollections.observableArrayList();
+    @FXML
+    private AnchorPane root;
 
-    @FXML private JFXButton btnLogOut, btnNewOrder,btnComplete;
+    @FXML
+    private StackPane rootpane;
+
+    @FXML
+    private BorderPane rootborderpane;
+
+    @FXML private JFXButton btnLogOut, btnNewOrder;
     @FXML private TableView<Order> tableview;
     @FXML private TableColumn<Order, String> ord_noCol;
     @FXML private TableColumn<Order, String> c_statCol;
@@ -48,16 +58,27 @@ public class LaundryWorkerController extends AbstractController implements Initi
     }
     @FXML
     void handleStatus(ActionEvent event) {
-        var orderService = new OrderService();
-        var order = new Order();
-        if(tableview.getSelectionModel().isEmpty()){
-
+        if(!tableview.getSelectionModel().isEmpty()){
+            id("Complete");
+            refresh();
         }else{
-           Order ord = tableview.getSelectionModel().getSelectedItem();
-            //System.out.println(Integer.parseInt(String.valueOf(ord)));
-          //  orderService.updateOrder(Integer.parseInt(String.valueOf(ord)),"Complete");
-
-            tableview.refresh();
+            JFXButton button = new JFXButton("Okay");
+            AlertCreator.showAlertDialog(rootpane,rootborderpane, Arrays.asList(button),"Check Information","Select an Order and then Click Update Status");
         }
     }
+
+    private void id(String status){
+        var order = new Order();
+        var orderservice = new OrderService();
+        order.setOrderID(tableview.getSelectionModel().getSelectedItem().getOrderID());
+        order.setOrderstatus(status);
+
+        orderservice.updateOrderr(order);
+    }
+    private void refresh(){
+        tableview.getItems().clear();
+        loadData();
+    }
+
+
 }

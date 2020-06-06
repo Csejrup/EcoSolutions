@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane stylesheets="@../../../resources/StyleSheets/color-style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.laundryworkerwindow.LaundryWorkerController">
+<AnchorPane fx:id="root" stylesheets="@../../../resources/StyleSheets/color-style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.laundryworkerwindow.LaundryWorkerController">
    <children>
-      <AnchorPane>
+      <StackPane fx:id="rootpane" layoutX="9.0" layoutY="7.0" prefHeight="408.0" prefWidth="609.0" stylesheets="@../../../resources/StyleSheets/color-style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <BorderPane layoutY="1.0" prefHeight="401.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <BorderPane fx:id="rootborderpane" prefHeight="401.0" prefWidth="600.0">
                <left>
                   <Pane prefHeight="340.0" prefWidth="163.0" BorderPane.alignment="CENTER">
                      <children>
@@ -31,7 +31,7 @@
                               <Font name="Myanmar Text" size="12.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton fx:id="btnComplete" alignment="CENTER" layoutX="19.0" layoutY="83.0" onAction="#handleStatus" prefHeight="47.0" prefWidth="128.0" text="Update Status" textFill="WHITE">
+                        <JFXButton alignment="CENTER" layoutX="19.0" layoutY="83.0" onAction="#handleStatus" prefHeight="47.0" prefWidth="128.0" text="Update Status" textFill="WHITE">
                            <font>
                               <Font name="Myanmar Text" size="15.0" />
                            </font>
@@ -42,7 +42,7 @@
                <top>
                   <Pane prefHeight="61.0" prefWidth="516.0" styleClass="panelaundry" BorderPane.alignment="CENTER">
                      <children>
-                        <Label layoutX="241.0" prefHeight="62.0" prefWidth="277.0" text="Active Cleaning Orders" textFill="WHITE">
+                        <Label layoutX="246.0" prefHeight="62.0" prefWidth="277.0" text="Active Cleaning Orders" textFill="WHITE">
                            <font>
                               <Font name="Myanmar Text" size="26.0" />
                            </font>
@@ -61,10 +61,10 @@
                </top>
                <center>
                   <TableView fx:id="tableview" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                    <columns>
-                      <TableColumn fx:id="ord_noCol" prefWidth="75.0" text="Order Number" />
-                      <TableColumn fx:id="c_statCol" prefWidth="75.0" text="Cleaning Status" />
-                    </columns>
+                     <columns>
+                        <TableColumn fx:id="ord_noCol" prefWidth="75.0" text="Order Number" />
+                        <TableColumn fx:id="c_statCol" prefWidth="75.0" text="Cleaning Status" />
+                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
@@ -72,6 +72,6 @@
                </center>
             </BorderPane>
          </children>
-      </AnchorPane>
+      </StackPane>
    </children>
-</StackPane>
+</AnchorPane>

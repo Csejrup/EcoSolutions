@@ -40,6 +40,10 @@ public class OrderService {
             orderDao.addOrderDetails(order);
 
     }
+    public static void updateOrderr(Order order){
+        OrderDao orderDao = new OrderDao();
+        orderDao.update(order);
+    }
     public static void updateOrder(int id, String status){
         OrderDao orderDao = new OrderDao();
         orderDao.update(id, status);

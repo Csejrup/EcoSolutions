@@ -73,6 +73,7 @@ public class DriverController extends AbstractController implements Initializabl
              order.setOrderID(tableView.getSelectionModel().getSelectedItem().getOrderID());
              order.setOrderstatus(status);
              dao.update(order);
+             System.out.println(status);
              refresh();
          }
     }
