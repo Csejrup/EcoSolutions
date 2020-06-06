@@ -3,6 +3,7 @@ package ecosolutions.presentation.controllers;
 import com.jfoenix.controls.*;
 
 import ecosolutions.Domain.AccountService;
+import ecosolutions.presentation.models.Account;
 import javafx.event.*;
 import javafx.fxml.*;
 import javafx.stage.*;
@@ -14,6 +15,8 @@ public class LoginController extends AbstractController{
     @FXML private JFXTextField txtUserName;
     @FXML private JFXPasswordField txtPW;
     @FXML private JFXButton btnLogIn;
+    public static int accountID = Account.getStaticAccountID();
+
 
     @FXML
     private void handleLogIn(ActionEvent event) {

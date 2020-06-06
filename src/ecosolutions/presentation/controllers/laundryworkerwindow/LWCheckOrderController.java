@@ -13,6 +13,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
@@ -73,9 +75,19 @@ public class LWCheckOrderController extends AbstractController implements Initia
                 List<Integer> itemIDlist = OrderService.getItemIDList(id());
                 List<Integer> itemQuantity = OrderService.getItemQuantityByID(itemIDlist,id());
                 List<String> itemTypes = OrderService.getItemTypeByID(itemIDlist);
+                File file = new File("Label.txt");
+                FileWriter fw = new FileWriter("Label.txt");
                 for (int i = 0;i<itemIDlist.size();i++) {
-                    System.out.println("ORDER ID: " + id() + "\nCLOTH TYPE: " + itemTypes.get(i)+"\nQUANTITY: "+itemQuantity.get(i));
+                   // File filez = new File(itemTypes.get(i));
+                   // FileWriter x = new FileWriter(filez);
+                    for(int j =0; j<itemQuantity.get(i);j++){
+                        //x.write("ORDER ID: "+id()+"\nCLOTH TYPE: " + itemTypes.get(i)+"\n");
+                        fw.write("ORDER ID: "+id()+"\nCLOTH TYPE: " + itemTypes.get(i)+"\n");
+                        System.out.println("ORDER ID: " + id() + "\nCLOTH TYPE: " + itemTypes.get(i)+"\nQUANTITY: "+itemQuantity.get(i));
+                    }
+
                 }
+                fw.close();
             }
         } catch (Exception e) {
             JFXButton button = new JFXButton("Okay");

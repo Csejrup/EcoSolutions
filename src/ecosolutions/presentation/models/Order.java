@@ -42,13 +42,14 @@ public class Order {
 		this.orderdate = orderdate;
 		this.deliverypointname = deliverypointname;
 	}
-	public Order(int customerID,int orderStatusID, String date, ObservableList<OrderTableView> items,float price, float weight ){
+	public Order(int customerID,int orderStatusID, String date, int deliveryPointID,ObservableList<OrderTableView> items,float price, float weight ){
 		this.customerID = customerID;
 		this.orderStatusID = orderStatusID;
 		this.date = date;
 		this.itemz = items;
 		this.price = price;
 		this.weight = weight;
+		this.deliveryPointID = deliveryPointID;
 
 	}
 

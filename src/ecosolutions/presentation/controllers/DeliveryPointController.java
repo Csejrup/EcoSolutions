@@ -50,11 +50,11 @@ public class DeliveryPointController extends AbstractController implements Initi
     @FXML
     void handleOrderConfirm(ActionEvent event) {
 
-
+        try {
         int orderStatusID = 1;
-
         int customerID = Integer.parseInt(cusidTextField.getText());
         int orderID = OrderService.getLastOrderID();
+        int accountID = LoginController.accountID;
         java.util.Date now = new Date();
         SimpleDateFormat sdp = new SimpleDateFormat("yyyy/MM/dd");
         String date = sdp.format(now);
@@ -63,12 +63,12 @@ public class DeliveryPointController extends AbstractController implements Initi
         //TODO PRICE AND WEIGHT HERE - DONE
         //TODO ERROR WHILE INSERTING CUSTOMERID CAUSED BY INSERTING DATA INTO FK FIELD
 
-            if(items.size()==0){
+            if (items.size() == 0) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("ORDER IS EMPTY, PICK CLOTH TYPE AND QUANTITY.");
                 alert.show();
-            }else if(CustomerService.isExist(customerID)){
-                Order newOrder = new Order(customerID,orderStatusID,date, items,price,weigth);
+            } else if (CustomerService.isExist(customerID)) {
+                Order newOrder = new Order(customerID, orderStatusID, date, accountID, items, price, weigth);
                 OrderService.addOrder(newOrder);
                 OrderService.addOrderDetails(newOrder);
                 items.clear();
@@ -78,6 +78,12 @@ public class DeliveryPointController extends AbstractController implements Initi
                 alert.show();
                 System.out.println(orderID);
             }
+        }catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("INSERT ORDER DETAILS");
+            alert.setContentText("ORDER CAN NOT BE CREATED, INSERT ORDER DETAILS");
+            alert.show();
+        }
         }
     /**
      * ADDING ITEM TO THE 'BASKET'
