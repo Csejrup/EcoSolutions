@@ -19,7 +19,7 @@
             <Pane prefHeight="321.0" prefWidth="155.0" BorderPane.alignment="CENTER">
                <children>
 
-                  <JFXCheckBox fx:id="checkBoxUp" layoutX="13.0" layoutY="59.0" onAction="#changeStatus" text="Picked Up">
+                  <JFXCheckBox fx:id="checkBoxUp" layoutX="14.0" layoutY="59.0" onAction="#statusUnderWay" prefHeight="29.0" prefWidth="77.0" text="Picked Up">
 
 
                      <font>
@@ -27,7 +27,7 @@
                      </font>
                   </JFXCheckBox>
 
-                  <JFXCheckBox fx:id="checkBoxDeliv" layoutX="14.0" layoutY="88.0" onAction="#statusDelivered" prefHeight="30.0" prefWidth="89.0" text="Delivered">
+                  <JFXCheckBox fx:id="checkBoxDeliv" layoutX="14.0" layoutY="117.0" onAction="#statusDelivered" prefHeight="30.0" prefWidth="89.0" text="Delivered">
 
 
                      <font>
@@ -44,6 +44,11 @@
                         <Font name="Myanmar Text Bold" size="20.0" />
                      </font>
                   </Label>
+                  <JFXCheckBox fx:id="checkboxTransit" layoutX="14.0" layoutY="88.0" onAction="#statusTransit" prefHeight="29.0" prefWidth="75.0" text="In Transit">
+                     <font>
+                        <Font name="Myanmar Text" size="12.0" />
+                     </font>
+                  </JFXCheckBox>
                </children>
             </Pane>
          </left>

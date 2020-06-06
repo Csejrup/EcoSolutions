@@ -18,14 +18,10 @@ import java.util.*;
 public class LaundryWorkerController extends AbstractController implements Initializable {
 
     ObservableList list = FXCollections.observableArrayList();
-    @FXML
-    private AnchorPane root;
 
-    @FXML
-    private StackPane rootpane;
-
-    @FXML
-    private BorderPane rootborderpane;
+    @FXML private AnchorPane root;
+    @FXML private StackPane rootpane;
+    @FXML private BorderPane rootborderpane;
 
     @FXML private JFXButton btnLogOut, btnNewOrder;
     @FXML private TableView<Order> tableview;
@@ -58,7 +54,9 @@ public class LaundryWorkerController extends AbstractController implements Initi
     }
     @FXML
     void handleStatus(ActionEvent event) {
-        if(!tableview.getSelectionModel().isEmpty()){
+        String stat;
+        stat = tableview.getSelectionModel().getSelectedItem().getOrderstatus();
+        if(!stat.isEmpty() && !stat.equals("In_Transit")){
             id("Complete");
             refresh();
         }else{
@@ -72,13 +70,10 @@ public class LaundryWorkerController extends AbstractController implements Initi
         var orderservice = new OrderService();
         order.setOrderID(tableview.getSelectionModel().getSelectedItem().getOrderID());
         order.setOrderstatus(status);
-
         orderservice.updateOrderr(order);
     }
     private void refresh(){
         tableview.getItems().clear();
         loadData();
     }
-
-
 }
