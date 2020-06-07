@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTabPane?>
-<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,111 +17,104 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-
-<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.managerwindow.ManagerController">
+<AnchorPane prefHeight="480.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controllers.managerwindow.ManagerController">
    <children>
-      <StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="800.0" stylesheets="@../../../resources/StyleSheets/color-style.css">
+      <StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="595.0" stylesheets="@../../../resources/StyleSheets/color-style.css">
          <children>
             <BorderPane fx:id="rootborderPane" prefHeight="200.0" prefWidth="200.0">
                <center>
                   <AnchorPane prefHeight="389.0" prefWidth="737.0" BorderPane.alignment="CENTER">
                      <children>
-                        <JFXTabPane styleClass="root" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <Tab text="Overview">
-                              <content>
-                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
-                                    <children>
-                                       <VBox layoutX="3.0" layoutY="6.0" prefHeight="420.0" prefWidth="670.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                          <children>
-                                             <HBox alignment="CENTER" prefHeight="208.0" prefWidth="623.0">
-                                                <children>
-                                                   <JFXTextField fx:id="orderIDInput" labelFloat="true" promptText="Order ID" />
-                                                   <StackPane fx:id="ordercontainer">
-                                                      <children>
-                                                         <VBox alignment="CENTER" prefHeight="170.0" prefWidth="436.0" spacing="10.0">
-                                                            <children>
-                                                               <Text fx:id="txtorderno" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" textAlignment="CENTER" wrappingWidth="333.625">
-                                                                  <VBox.margin>
-                                                                     <Insets />
-                                                                  </VBox.margin>
-                                                                  <font>
-                                                                     <Font name="Myanmar Text" size="12.0" />
-                                                                  </font>
-                                                               </Text>
-                                                               <Text fx:id="txtorderstat" layoutX="10.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" textAlignment="CENTER" wrappingWidth="314.625">
-                                                                  <font>
-                                                                     <Font name="Myanmar Text" size="12.0" />
-                                                                  </font>
-                                                               </Text>
-                                                            </children>
-                                                         </VBox>
-                                                      </children>
-                                                   </StackPane>
-                                                </children>
-                                                <VBox.margin>
-                                                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                                </VBox.margin>
-                                             </HBox>
-                                             <HBox alignment="CENTER" prefHeight="208.0" prefWidth="623.0">
-                                                <children>
-                                                   <JFXTextField fx:id="employIDInput" labelFloat="true" prefHeight="38.0" prefWidth="194.0" promptText="Employee ID" />
-                                                   <StackPane fx:id="employcontainer" prefHeight="197.0" prefWidth="424.0">
-                                                      <children>
-                                                         <VBox alignment="CENTER" prefHeight="170.0" prefWidth="449.0" spacing="10.0">
-                                                            <children>
-                                                               <Text fx:id="txtempname" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" textAlignment="CENTER" wrappingWidth="299.13671875">
-                                                                  <font>
-                                                                     <Font name="Myanmar Text" size="12.0" />
-                                                                  </font>
-                                                               </Text>
-                                                               <Text fx:id="txtrole" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" textAlignment="CENTER" wrappingWidth="281.390625">
-                                                                  <font>
-                                                                     <Font name="Myanmar Text" size="12.0" />
-                                                                  </font>
-                                                               </Text>
-                                                               <Text fx:id="txtstatus" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" textAlignment="CENTER" wrappingWidth="281.49609375">
-                                                                  <font>
-                                                                     <Font name="Myanmar Text" size="12.0" />
-                                                                  </font>
-                                                               </Text>
-                                                            </children>
-                                                         </VBox>
-                                                      </children>
-                                                   </StackPane>
-                                                </children>
-                                                <VBox.margin>
-                                                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                                </VBox.margin>
-                                             </HBox>
-                                          </children>
-                                       </VBox>
-                                    </children>
-                                 </AnchorPane>
-                              </content>
-                           </Tab>
-                           <Tab text="Laundry Order">
-                              <content>
-                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
-                                    <children>
-                                       <BorderPane layoutX="165.0" layoutY="97.0" prefHeight="426.0" prefWidth="590.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                          <top>
-                                             <Pane prefHeight="54.0" prefWidth="590.0" BorderPane.alignment="CENTER" />
-                                          </top>
-                                          <bottom>
-                                             <Pane prefHeight="75.0" prefWidth="590.0" BorderPane.alignment="CENTER">
-                                                <children>
-                                                   <JFXButton fx:id="btnrefresh" layoutX="282.0" layoutY="18.0" onAction="#handleRefresh" prefHeight="36.0" prefWidth="106.0" styleClass="login-button" text="Refresh" />
-                                                </children>
-                                             </Pane>
-                                          </bottom>
-                                       </BorderPane>
-                                    </children>
-                                 </AnchorPane>
-                              </content>
-                           </Tab>
-                        </JFXTabPane>
+                        <TabPane prefHeight="480.0" prefWidth="465.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <tabs>
+                            <Tab fx:id="overviewtab" closable="false" text="Overview">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
+                                       <children>
+                                          <VBox layoutX="3.0" layoutY="6.0" prefHeight="420.0" prefWidth="486.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-21.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <HBox alignment="CENTER" prefHeight="208.0" prefWidth="623.0">
+                                                   <children>
+                                                      <Label prefHeight="34.0" prefWidth="236.0" text="Total Orders:">
+                                                         <font>
+                                                            <Font name="Myanmar Text" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <StackPane fx:id="ordercontainer">
+                                                         <children>
+                                                            <VBox alignment="CENTER" prefHeight="170.0" prefWidth="436.0" spacing="10.0" />
+                                                         </children>
+                                                      </StackPane>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="208.0" prefWidth="623.0">
+                                                   <children>
+                                                      <Label prefHeight="34.0" prefWidth="200.0" text="Total Employees:">
+                                                         <font>
+                                                            <Font name="Myanmar Text" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <StackPane fx:id="employcontainer" prefHeight="197.0" prefWidth="424.0">
+                                                         <children>
+                                                            <VBox alignment="CENTER" prefHeight="170.0" prefWidth="449.0" spacing="10.0" />
+                                                         </children>
+                                                      </StackPane>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                            <Tab fx:id="laundryotab" text="Active Orders">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
+                                       <children>
+                                          <BorderPane layoutX="165.0" layoutY="97.0" prefHeight="426.0" prefWidth="590.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <top>
+                                                <Pane prefHeight="46.0" prefWidth="465.0" BorderPane.alignment="CENTER">
+                                                   <children>
+                                                      <Label layoutX="219.0" layoutY="15.0" text="Label" />
+                                                   </children>
+                                                </Pane>
+                                             </top>
+                                             <bottom>
+                                                <Pane prefHeight="75.0" prefWidth="590.0" BorderPane.alignment="CENTER">
+                                                   <children>
+                                                      <JFXButton fx:id="btnrefresh" layoutX="180.0" layoutY="17.0" onAction="#handleRefresh" prefHeight="36.0" prefWidth="106.0" styleClass="login-button" text="Refresh" />
+                                                   </children>
+                                                </Pane>
+                                             </bottom>
+                                             <center>
+                                                <TableView fx:id="tableviewm" prefHeight="298.0" prefWidth="465.0" BorderPane.alignment="CENTER">
+                                                  <columns>
+                                                    <TableColumn fx:id="orderCol" prefWidth="75.0" text="Order Number" />
+                                                    <TableColumn fx:id="statusCol" prefWidth="75.0" text="Status" />
+                                                      <TableColumn fx:id="active_byCol" prefWidth="75.0" text="Active By" />
+                                                  </columns>
+                                                   <columnResizePolicy>
+                                                      <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                   </columnResizePolicy>
+                                                </TableView>
+                                             </center>
+                                          </BorderPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                          </tabs>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </TabPane>
                      </children>
                   </AnchorPane>
                </center>

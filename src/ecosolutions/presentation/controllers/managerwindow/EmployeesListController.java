@@ -2,19 +2,16 @@ package ecosolutions.presentation.controllers.managerwindow;
 
 import ecosolutions.Domain.EmployeeService;
 import ecosolutions.presentation.models.Employee;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
-
 import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.collections.*;
+import javafx.fxml.*;
+import javafx.scene.control.*;
+import java.util.*;
 
+/**
+ *
+ */
 public class EmployeesListController implements Initializable {
 
     ObservableList list = FXCollections.observableArrayList();
@@ -33,10 +30,6 @@ public class EmployeesListController implements Initializable {
         initCol();
         loadData();
     }
-    private Stage getStage(){
-        return (Stage) tableView.getScene().getWindow();
-    }
-
     private void initCol(){
         idCol.setCellValueFactory(new PropertyValueFactory<>("employeeid"));
         fnCol.setCellValueFactory(new PropertyValueFactory<>("firstname"));

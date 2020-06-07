@@ -56,6 +56,9 @@ public class LaundryWorkerController extends AbstractController implements Initi
     void handleStatus(ActionEvent event) {
         String stat;
         stat = tableview.getSelectionModel().getSelectedItem().getOrderstatus();
+
+        System.out.println(stat);
+
         if(!stat.isEmpty() && !stat.equals("In_Transit")){
             id("Complete");
             refresh();
@@ -69,6 +72,7 @@ public class LaundryWorkerController extends AbstractController implements Initi
         var order = new Order();
         var orderservice = new OrderService();
         order.setOrderID(tableview.getSelectionModel().getSelectedItem().getOrderID());
+        System.out.println(order.getOrderID());
         order.setOrderstatus(status);
         orderservice.updateOrderr(order);
     }

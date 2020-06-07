@@ -1,8 +1,7 @@
 package ecosolutions.presentation.controllers;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -31,6 +30,11 @@ public abstract class AbstractController {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Methods loads a new fxml file and creates a new stage (pop up window)
+     * @param layoutfile
+     */
     protected void loadpopup(String layoutfile) {
         try {
             FXMLLoader fxmlloader = new FXMLLoader((getClass().getResource("/ecosolutions/presentation/views/" + layoutfile)));

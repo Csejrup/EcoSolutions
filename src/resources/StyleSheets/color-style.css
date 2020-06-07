@@ -81,13 +81,13 @@
 /* TabPane Style */
 .tab{
     -fx-background-color: -fx-primary ;
-    -fx-pref-width: 280;
+    -fx-pref-width: 200;
     -fx-pref-height: 60;
     -fx-text-color: -fx-managerprimary;
 
 }
 .tab-label{
-    -fx-text-fill: -fx-managerprimary;
+    -fx-text-fill: -fx-primarytext;
     -fx-font-size: 15pt;
 }
 .tab-header-background{
