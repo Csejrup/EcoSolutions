@@ -312,25 +312,34 @@ public class OrderDao implements Dao<Order>{
             var stmt2 = conn.prepareStatement("SELECT COUNT(*) FROM tblOrder WHERE fldOrderStatusID = 2");
             var stmt3 = conn.prepareStatement("SELECT COUNT(*) FROM tblOrder WHERE fldOrderStatusID = 3");
             var stmt4 = conn.prepareStatement("SELECT COUNT(*) FROM tblOrder WHERE fldOrderStatusID = 4");
+            var stmt5 = conn.prepareStatement("SELECT COUNT(*) FROM tblOrder WHERE fldOrderStatusID = 6");
+            var stmt6 = conn.prepareStatement("SELECT COUNT(*) FROM tblOrder WHERE fldOrderStatusID = 7");
             ResultSet rs = stmt1.executeQuery();
             if(rs.next()){
                 int count = rs.getInt(1);
-                data.add(new PieChart.Data("Total Pending ("+count+")", count));
+                data.add(new PieChart.Data("Total Confirmed ("+count+")", count));
             }
-           // rs = execQuery(query2);
             rs = stmt2.executeQuery();
             if(rs.next()){
                 int count = rs.getInt(1);
-                data.add(new PieChart.Data("Total Ready ("+count+")", count));
+                data.add(new PieChart.Data("Total Under_Way ("+count+")", count));
             }
-            //rs = execQuery(query3);
             rs = stmt3.executeQuery();
+            if(rs.next()){
+                int count = rs.getInt(1);
+                data.add(new PieChart.Data("Total In_Transit ("+count+")", count));
+            }
+            rs = stmt4.executeQuery();
             if(rs.next()){
                 int count = rs.getInt(1);
                 data.add(new PieChart.Data("Total Cleaning ("+count+")", count));
             }
-            //rs = execQuery(query4);
-            rs = stmt4.executeQuery();
+            rs = stmt5.executeQuery();
+            if(rs.next()){
+                int count = rs.getInt(1);
+                data.add(new PieChart.Data("Total Delivered ("+count+")", count));
+            }
+            rs = stmt6.executeQuery();
             if(rs.next()){
                 int count = rs.getInt(1);
                 data.add(new PieChart.Data("Total Complete ("+count+")", count));

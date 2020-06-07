@@ -16,7 +16,6 @@ public class testDB {
     }
     public static void runDBTest() throws SQLException, IOException {
         var conn = DatabaseHandler.getInstance().getConnection();
-
         try {
             var stmt = conn.createStatement();
             stmt.execute("CREATE TABLE tblTESTDB (Message CHAR(40))");
