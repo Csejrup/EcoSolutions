@@ -3,12 +3,13 @@ package ecosolutions.persistence.DAO;
 import ecosolutions.persistence.DatabaseHandler;
 import ecosolutions.presentation.models.Employee;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.sql.*;
+import java.util.*;
 
+/**
+ * DAO Class Responsible for connecting with the Database and fetch an Employee and its information
+ * CRUD - Create, retrieve, update, delete
+ */
 public class EmployeeDao implements Dao<Employee> {
     @Override
      public Optional<Employee> getbyID(int id) {
@@ -31,11 +32,9 @@ public class EmployeeDao implements Dao<Employee> {
         }
         return Optional.empty();
     }
-
     @Override
     public List<Employee> getAll() {
         List<Employee> employees = new ArrayList<>();
-
         var conn = DatabaseHandler.getInstance().getConnection();
         try{
             var stmt = conn.createStatement();
@@ -52,13 +51,11 @@ public class EmployeeDao implements Dao<Employee> {
     }
     @Override
     public void save(Employee employee) {
-
+        //EMPTY
     }
-
     @Override
     public void update(Employee employee) {
         var conn = DatabaseHandler.getInstance().getConnection();
-
         try {
             var stmt = conn.prepareStatement("UPDATE tblCustomerID SET fldName=?,fldSurname=?,fldPhone=? WHERE fldCustomerID=?");
             stmt.setString(1, employee.getFirstname());

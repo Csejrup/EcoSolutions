@@ -13,19 +13,15 @@ public class Employee {
     private String lastname;
     private int employeeid;
     private String phone_no;
-
     //DEFAULT CONSTRUCTOR//
     public Employee(){
-
     }
-
     public Employee(String firstname, String lastname, int employeeid, String phone_no) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.employeeid = employeeid;
         this.phone_no = phone_no;
     }
-
     //SETTERS//
     public void setPhone_no(String phone_no) {
         this.phone_no = phone_no;

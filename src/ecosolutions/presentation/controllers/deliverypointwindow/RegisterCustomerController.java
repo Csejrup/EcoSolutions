@@ -1,8 +1,9 @@
-package ecosolutions.presentation.controllers;
+package ecosolutions.presentation.controllers.deliverypointwindow;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import ecosolutions.Domain.CustomerService;
+import ecosolutions.presentation.controllers.AbstractController;
 import ecosolutions.presentation.models.Customer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

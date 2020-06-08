@@ -1,14 +1,17 @@
-package ecosolutions.presentation.controllers;
+package ecosolutions.presentation.controllers.deliverypointwindow;
 
 import com.jfoenix.controls.JFXButton;
+import ecosolutions.presentation.controllers.AbstractController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
-public class dpmainController extends AbstractController {
+/**
+ *
+ */
+public class DPMainScreenController extends AbstractController {
 
     @FXML private JFXButton btncustomer, btnconfirm, btnverify,btnlogout;
-
 
     @FXML
     void handleConfirmation(ActionEvent event) {
@@ -30,7 +33,7 @@ public class dpmainController extends AbstractController {
 
     @FXML
     void handleVerification(ActionEvent event) {
-        Stage stage = (Stage) btncustomer.getScene().getWindow();
+        Stage stage = (Stage) btnverify.getScene().getWindow();
         loadScreen(stage, "verifyorder.fxml");
     }
 

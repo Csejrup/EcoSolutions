@@ -4,9 +4,7 @@ import ecosolutions.persistence.DatabaseHandler;
 
 import java.io.IOException;
 import java.sql.*;
-
 public class testDB {
-
     public static void main(String[] args) {
         try{
             runDBTest();
@@ -14,6 +12,12 @@ public class testDB {
             e.printStackTrace();
         }
     }
+    /**
+     * Method that tests database connection
+     * Creates a new table, and inserts new data, drops the table at the end
+     * @throws SQLException
+     * @throws IOException
+     */
     public static void runDBTest() throws SQLException, IOException {
         var conn = DatabaseHandler.getInstance().getConnection();
         try {

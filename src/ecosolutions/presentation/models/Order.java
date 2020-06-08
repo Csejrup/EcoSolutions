@@ -1,9 +1,7 @@
 package ecosolutions.presentation.models;
 
-import ecosolutions.presentation.controllers.DeliveryPointController;
+import ecosolutions.presentation.controllers.deliverypointwindow.CreateOrderController;
 import javafx.collections.ObservableList;
-
-import java.util.Date;
 
 /**
  * Class that represents the Model of an Order
@@ -12,47 +10,37 @@ import java.util.Date;
 
 //TODO CLEAN UP THIS CLASS
 public class Order {
+
 	private String itemtype;
 	//VARIABLES//
 	private int orderID;
 	private int customerID;
 	private int qty;
+	private int orderDescID;
+	private int orderStatusID;
+	private int deliveryPointID;
+	private float price;
+
 	private String orderstatus;
 	private String deliverypointname;
-	private int orderDescID;
 	private String status;
 	private String clothtype;
 	private String orderdate;
-	private int orderStatusID;
 	private String date;
 	private ObservableList<OrderTableView> itemz;
-	private int deliveryPointID;
-	private float price;
-	private float weight;
 	//DEFAULT CONSTRUCTOR//
 	public Order(){
 	}
 	//CONSTRUCTOR//
-	public Order(int orderID, int customerID, int qty, String orderstatus, String clothtype, String orderdate, String deliverypointname) {
-		this.orderID = orderID;
-		this.customerID = customerID;
-		this.qty = qty;
-		this.status = orderstatus;
-		this.clothtype = clothtype;
-		this.orderdate = orderdate;
-		this.deliverypointname = deliverypointname;
-	}
-	public Order(int customerID,int orderStatusID, String date, int deliveryPointID,ObservableList<OrderTableView> items,float price, float weight ){
+
+	public Order(int customerID,int orderStatusID, String date, int deliveryPointID,ObservableList<OrderTableView> items,float price){
 		this.customerID = customerID;
 		this.orderStatusID = orderStatusID;
 		this.date = date;
 		this.itemz = items;
 		this.price = price;
-		this.weight = weight;
 		this.deliveryPointID = deliveryPointID;
-
 	}
-
 	public Order(int orderID, String orderstatus, String deliverypointname) {
 		this.orderID = orderID;
 		this.orderstatus = orderstatus;
@@ -93,27 +81,14 @@ public class Order {
 	public void setOrderdate(String orderdate) {
 		this.orderdate = orderdate;
 	}
-
-	public void setOrderDescID(int orderDescID) {
-		this.orderDescID = orderDescID; }
-
-	public void setOrderStatusID(int orderStatusID) {
-		this.orderStatusID = orderStatusID; }
-
-	public void setDate(String date) {
-		this.date = date; }
-
-	public void setDeliveryPointID(int deliveryPointID) {
-		this.deliveryPointID = deliveryPointID; }
+	public void setOrderDescID(int orderDescID) { this.orderDescID = orderDescID; }
+	public void setOrderStatusID(int orderStatusID) { this.orderStatusID = orderStatusID; }
+	public void setDate(String date) { this.date = date; }
+	public void setDeliveryPointID(int deliveryPointID) { this.deliveryPointID = deliveryPointID; }
 
 	//GETTERS//
-
 	public float getPrice() {
 		return price;
-	}
-
-	public float getWeight() {
-		return weight;
 	}
 
 	public String getDeliverypointname() {
@@ -149,7 +124,7 @@ public class Order {
 	}
 
 	public ObservableList<OrderTableView> getOrderDetails(){
-		return DeliveryPointController.getItems();
+		return CreateOrderController.getItems();
 	}
 
 	public int getOrderDescID() { return orderDescID; }
@@ -163,7 +138,6 @@ public class Order {
 	public ObservableList<OrderTableView> getItemz() {
 		return itemz;
 	}
-
 	/**
 	 * Method to convert DB data to Strings
 	 *
@@ -187,7 +161,6 @@ public class Order {
 				", itemz=" + itemz +
 				", deliveryPointID=" + deliveryPointID +
 				", price=" + price +
-				", weight=" + weight +
 				'}';
 	}
 }

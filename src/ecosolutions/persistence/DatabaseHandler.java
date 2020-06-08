@@ -1,11 +1,5 @@
 package ecosolutions.persistence;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.chart.PieChart;
-
-import java.io.FileInputStream;
-import java.io.InputStream;
+import java.io.*;
 import java.sql.*;
 import java.util.Properties;
 
@@ -19,7 +13,6 @@ public final class DatabaseHandler {
     private static String database;
     private static String user;
     private static String password;
-
     static {
         Properties props = new Properties();
         String fileName = "db.properties";

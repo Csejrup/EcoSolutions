@@ -10,8 +10,7 @@
         <columns>
           <TableColumn fx:id="ordernoCol" editable="false" prefWidth="75.0" sortable="false" text="Order Number" />
           <TableColumn fx:id="statusCol" editable="false" prefWidth="75.0" sortable="false" text="Status" />
-            <TableColumn fx:id="qtyCol" editable="false" prefWidth="75.0" sortable="false" text="Quantity" />
-            <TableColumn fx:id="customerCol" editable="false" prefWidth="75.0" sortable="false" text="Customer" />
+            <TableColumn fx:id="dateCol" editable="false" prefWidth="75.0" sortable="false" text="Date Issued" />
             <TableColumn fx:id="deliverypointCol" editable="false" prefWidth="75.0" sortable="false" text="Location" />
         </columns>
          <columnResizePolicy>

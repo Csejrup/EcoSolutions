@@ -12,28 +12,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class DeliveryPointDao implements Dao<DeliveryPoint>{
-
+/**
+ * DAO Class Responsible for connecting with the Database and fetch an orders laundry items and its information
+ * CRUD - Create, retrieve, update, delete
+ */
+public class LaundryItemDao implements Dao<DeliveryPoint>{
     @Override
     public Optional<DeliveryPoint> getbyID(int id) {
-        var conn = DatabaseHandler.getInstance().getConnection();
-        try{
-            var stmt = conn.prepareStatement("SELECT fldDeliveryPointID FROM tblDeliveryPoint WHERE fldDeliveryPointID ="+ id);
-            //stmt.setInt(1,id);
-            ResultSet rs = stmt.executeQuery();
-
-            if(rs.next()){
-                DeliveryPoint deliveryPoint = new DeliveryPoint();
-                deliveryPoint.setDpID(rs.getInt("fldDeliveryPointID"));
-                return Optional.of(deliveryPoint);
-            }
-            stmt.close();
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
-        return Optional.empty();
+        //EMPTY
+        return null;
     }
-
     @Override
     public List<DeliveryPoint> getAll() {
         List<DeliveryPoint> deliveryPoints = new ArrayList<>();
@@ -53,25 +41,19 @@ public class DeliveryPointDao implements Dao<DeliveryPoint>{
         }
         return deliveryPoints;
     }
-
     @Override
     public void save(DeliveryPoint deliveryPoint) {
-
+        //EMPTY
     }
 
     @Override
     public void update(DeliveryPoint deliveryPoint) {
-
+        //EMPTY
     }
 
     @Override
     public void delete(DeliveryPoint deliveryPoint) {
-
-    }
-    private DeliveryPoint exportDeliveryPoint(ResultSet rs) throws SQLException{
-        DeliveryPoint deliveryPoint = new DeliveryPoint();
-
-        return deliveryPoint;
+        //EMPTY
     }
     public static ObservableList<String> getLaundryTypes(){
         ObservableList<String> laundryTypeItems = FXCollections.observableArrayList();
@@ -123,5 +105,9 @@ public class DeliveryPointDao implements Dao<DeliveryPoint>{
             e.printStackTrace();
         }
         return itemPrice;
+    }
+    private DeliveryPoint exportDeliveryPoint(ResultSet rs){
+        DeliveryPoint deliveryPoint = new DeliveryPoint();
+        return deliveryPoint;
     }
 }

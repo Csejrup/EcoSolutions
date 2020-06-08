@@ -5,7 +5,6 @@ import ecosolutions.Domain.OrderService;
 import ecosolutions.persistence.DAO.*;
 import ecosolutions.presentation.models.Customer;
 import ecosolutions.presentation.models.Order;
-import ecosolutions.presentation.models.Status;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,19 +13,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
-import javax.swing.*;
 import java.net.URL;
-import java.net.http.WebSocket;
-import java.sql.SQLException;
-import java.sql.SQLOutput;
+;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
@@ -103,7 +95,7 @@ public class DriverController extends AbstractController implements Initializabl
             try {
                 customers = customerDao.getCustomerFromOrder(tableView.getSelectionModel().getSelectedItem().getOrderID());
 
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
