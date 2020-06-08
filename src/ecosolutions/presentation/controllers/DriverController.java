@@ -3,6 +3,7 @@ package ecosolutions.presentation.controllers;
 import com.jfoenix.controls.*;
 import ecosolutions.Domain.OrderService;
 import ecosolutions.persistence.DAO.*;
+import ecosolutions.presentation.models.Customer;
 import ecosolutions.presentation.models.Order;
 import ecosolutions.presentation.models.Status;
 import javafx.collections.FXCollections;
@@ -17,7 +18,9 @@ import javafx.stage.Stage;
 import javax.swing.*;
 import java.net.URL;
 import java.net.http.WebSocket;
+import java.sql.SQLException;
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
@@ -92,6 +95,22 @@ public class DriverController extends AbstractController implements Initializabl
         tableView.getItems().clear();
         loadData();
     }
+    private void sendMassage(String ready) {
+        List<Customer> customers = new ArrayList<>();
+        CustomerDao customerDao = new CustomerDao();
+        Customer cuss = new Customer();
+        if (ready.equals("Delivered")) {
+            try {
+                customers = customerDao.getCustomerFromOrder(tableView.getSelectionModel().getSelectedItem().getOrderID());
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            System.out.println("Calling customer ="+ cuss+" Order is ready");
+        }
+    }
+
     @FXML
     private void handleLogOut(ActionEvent event) {
         Stage stage = (Stage) btnLogOut.getScene().getWindow();

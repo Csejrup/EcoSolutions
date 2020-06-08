@@ -167,4 +167,20 @@ public class CustomerDao implements Dao<Customer> {
         }
         return customerPhone;
     }
+    public List<Customer> getCustomerFromOrder(int orderID) throws SQLException {
+        List<Customer> customers = new ArrayList<>();
+        var conn = DatabaseHandler.getInstance().getConnection();
+        try {
+            var stmt = conn.prepareStatement("EXEC done_SMS @getOrderID=" + orderID);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Customer customer = exportCustomer(rs);
+                customers.add(customer);
+            }
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return customers;
+    }
 }
