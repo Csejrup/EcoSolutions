@@ -80,9 +80,12 @@
                                        <children>
                                           <BorderPane layoutX="165.0" layoutY="97.0" prefHeight="426.0" prefWidth="590.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <top>
-                                                <Pane prefHeight="46.0" prefWidth="465.0" BorderPane.alignment="CENTER">
+                                                <Pane prefHeight="46.0" prefWidth="465.0" styleClass="buttonmanager" BorderPane.alignment="CENTER">
                                                    <children>
-                                                      <Label layoutX="219.0" layoutY="15.0" text="Label" />
+                                                      <Label layoutX="135.0" layoutY="-3.0" text="List of Active Orders" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Myanmar Text" size="22.0" />
+                                                         </font></Label>
                                                    </children>
                                                 </Pane>
                                              </top>

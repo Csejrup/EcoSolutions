@@ -58,13 +58,21 @@ public class LaundryWorkerController extends AbstractController implements Initi
     @FXML
     void handleStatus(ActionEvent event) {
         String stat;
-        stat = tableview.getSelectionModel().getSelectedItem().getOrderstatus();
-        if(!stat.isEmpty() && !stat.equals("In_Transit")){
-            id("Complete");
-            refresh();
-        }else{
+        try {
+            stat = tableview.getSelectionModel().getSelectedItem().getOrderstatus();
+            if(!stat.isEmpty() && !stat.equals("In_Transit")){
+                id("Complete");
+                System.out.println(stat);
+                refresh();
+            }else{
+                JFXButton button = new JFXButton("Okay");
+
+                AlertCreator.showAlertDialog(rootpane,rootborderpane, Arrays.asList(button),"Check Information","Cannot Select a 'In_Transit Order'"+
+                        "\n And please select an 'Cleaning' Order");
+            }
+        } catch (Exception e) {
             JFXButton button = new JFXButton("Okay");
-            AlertCreator.showAlertDialog(rootpane,rootborderpane, Arrays.asList(button),"Check Information","Select an Order and then Click Update Status");
+            AlertCreator.showAlertDialog(rootpane,rootborderpane, Arrays.asList(button),"Check Information","Please Select an Order from the list");
         }
     }
     @FXML

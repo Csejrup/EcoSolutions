@@ -6,7 +6,10 @@ import ecosolutions.Domain.AccountService;
 import ecosolutions.presentation.models.Account;
 import javafx.event.*;
 import javafx.fxml.*;
+import javafx.scene.Scene;
 import javafx.stage.*;
+import javafx.scene.input.*;
+
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
@@ -17,12 +20,11 @@ public class LoginController extends AbstractController{
     @FXML private JFXButton btnLogIn;
     public static int accountID = Account.getStaticAccountID();
 
-
+    //Action for btnLogIn
     @FXML
     private void handleLogIn(ActionEvent event) {
         String employeeID = txtUserName.getText();
         String password = txtPW.getText();
-
         // method in the comment works
         if(employeeID.startsWith("M")) {
             Stage stage = (Stage) btnLogIn.getScene().getWindow();
@@ -46,6 +48,8 @@ public class LoginController extends AbstractController{
         } else{
             txtUserName.getStyleClass().add("wrong-credentials");
             txtPW.getStyleClass().add("wrong-credentials");
+            txtUserName.setText("");
+            txtPW.setText("");
         }
     }
     private void verifyLogIn(String scene) {
@@ -54,12 +58,16 @@ public class LoginController extends AbstractController{
         AccountService accountService = new AccountService();
         var account = accountService.getAccount(username);
         String pass = account.get().getPw();
-        if (account.isEmpty() || !pass.equals(password)) {
-            showMessageDialog(null, "Wrong username or password. Try again!");
-        } else {
-            Stage stage = (Stage) btnLogIn.getScene().getWindow();
-            loadScreen(stage, scene);
-        }
+        btnLogIn.setOnKeyPressed(event ->{
+           if(event.getCode() == KeyCode.ENTER){
+               if (account.isEmpty() || !pass.equals(password)) {
+                   showMessageDialog(null, "Wrong username or password. Try again!");
+               } else {
+                   Stage stage = (Stage) btnLogIn.getScene().getWindow();
+                   loadScreen(stage, scene);
+               }
+           }
+       });
     }
 }
 

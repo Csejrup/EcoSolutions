@@ -83,6 +83,9 @@ public class LWCheckOrderController extends AbstractController implements Initia
                     }
                 }
                 fw.close();
+                JFXButton button = new JFXButton("Okay");
+                AlertCreator.showAlertDialog(rootPane,borderPane, Arrays.asList(button),"Label Printed","Labels are now printed for Order Number: "+id()+
+                        "\n You may now start the Cleaning Process");
             }
         } catch (Exception e) {
             JFXButton button = new JFXButton("Okay");

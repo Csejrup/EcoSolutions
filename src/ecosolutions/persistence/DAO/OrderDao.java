@@ -342,6 +342,7 @@ public class OrderDao implements Dao<Order>{
         order.setOrderID(rs.getInt("fldOrderID"));
         order.setOrderstatus(rs.getString("fldOrderStatus"));
         order.setDeliverypointname(rs.getString("fldDPointName"));
+        order.setOrderdate(rs.getString("fldDateofOrder"));
         return order;
     }
 }

@@ -30,7 +30,7 @@ public class CustomerDao implements Dao<Customer> {
     }
     @Override
     public List<Customer> getAll() {
-        List<Customer> orders = new ArrayList<>();
+        List<Customer> customers = new ArrayList<>();
         var conn = DatabaseHandler.getInstance().getConnection();
         try {
             var stmt = conn.createStatement();
@@ -38,13 +38,13 @@ public class CustomerDao implements Dao<Customer> {
             ResultSet rs = stmt.executeQuery("SELECT * FROM tblCustomer");
             while (rs.next()) {
                 Customer customer = exportCustomer(rs);
-                orders.add(customer);
+                customers.add(customer);
             }
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return orders;
+        return customers;
     }
     @Override
     public void save(Customer customer) {

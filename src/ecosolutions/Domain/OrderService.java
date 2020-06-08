@@ -56,7 +56,6 @@ public class OrderService {
     public static int getLastOrderID(){
        return OrderDao.getLastOrderID();
     }
-
     public static ObservableList<PieChart.Data> getGraph1(){
         OrderDao orderDao = new OrderDao();
         return orderDao.getOrderGraphStatistics();

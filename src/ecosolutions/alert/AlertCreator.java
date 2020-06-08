@@ -13,7 +13,14 @@ import java.util.*;
  * This Class is for making global accessible Alerts throughout the code.
  */
 public class AlertCreator {
-
+    /**
+     * Method for making background blurred when the alert dialog is called and executed
+     * @param root
+     * @param nodeblurred
+     * @param dialogcontrols
+     * @param header
+     * @param body
+     */
     public static void showAlertDialog(StackPane root, Node nodeblurred, List<JFXButton> dialogcontrols, String header, String body) {
         BoxBlur blur = new BoxBlur(2, 2, 2);
         if (dialogcontrols.isEmpty()) {
@@ -35,4 +42,6 @@ public class AlertCreator {
         });
         nodeblurred.setEffect(blur);
     }
+
+
 }

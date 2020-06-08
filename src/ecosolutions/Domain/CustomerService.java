@@ -3,11 +3,18 @@ package ecosolutions.Domain;
 import ecosolutions.persistence.DAO.CustomerDao;
 import ecosolutions.presentation.models.Customer;
 
+import java.util.List;
+
 
 /**
  * This Class is a service class for CustomerDao and Connects to the View
  */
 public class CustomerService  {
+
+	public static List<Customer> getCustomers(){
+		var customerDao = new CustomerDao();
+		return customerDao.getAll();
+	}
 
 	public static void addCustomer(Customer customer){
 		var customerDao = new CustomerDao();
