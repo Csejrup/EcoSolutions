@@ -56,7 +56,7 @@
    <bottom>
       <Pane prefHeight="72.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton fx:id="btnOrderWindow" layoutX="31.0" layoutY="15.0" onAction="#handleOrderWindow" prefHeight="43.0" prefWidth="238.0" text="Order Creation Window" textFill="WHITE">
+            <JFXButton fx:id="btnreturn" layoutX="31.0" layoutY="15.0" onAction="#handleReturn" prefHeight="43.0" prefWidth="238.0" text="Return to Main " textFill="WHITE">
                <font>
                   <Font name="Myanmar Text" size="15.0" />
                </font>

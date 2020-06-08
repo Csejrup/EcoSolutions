@@ -131,6 +131,6 @@ public class DeliveryPointController extends AbstractController implements Initi
     @FXML
     void handleReturn(ActionEvent event) {
         Stage stage = (Stage) btnreturn.getScene().getWindow();
-        loadScreen(stage, "CustomerCreationView.fxml");
+        loadScreen(stage, "deliverypointmain.fxml");
     }
 }

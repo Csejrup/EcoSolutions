@@ -31,7 +31,7 @@ public class LoginController extends AbstractController{
         }
         else if (employeeID.startsWith("S")){
             Stage stage = (Stage) btnLogIn.getScene().getWindow();
-            loadScreen(stage, "DeliveryPointView.fxml");
+            loadScreen(stage, "deliverypointmain.fxml");
             //verifyLogIn("DeliveryPointView.fxml");
         }
         else if (employeeID.startsWith("L")){

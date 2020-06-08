@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 public class RegisterCustomerController extends AbstractController {
 
 
-    @FXML private JFXButton btnLogOut, btnConfirm;
+    @FXML private JFXButton btnLogOut, btnreturn;
     @FXML private JFXTextField firstnameTextField, phoneNoTextField, lastnameTextField;
 
 
@@ -45,9 +45,9 @@ public class RegisterCustomerController extends AbstractController {
         loadScreen(stage, "LoginView.fxml");
     }
     @FXML
-    private void handleOrderWindow(ActionEvent event){
+    private void handleReturn(ActionEvent event){
         Stage stage = (Stage) btnLogOut.getScene().getWindow();
-        loadScreen(stage, "DeliveryPointView.fxml");
+        loadScreen(stage, "deliverypointmain.fxml");
     }
 
 
