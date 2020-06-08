@@ -27,7 +27,7 @@ public class LoginController extends AbstractController{
         if(employeeID.startsWith("M")) {
             Stage stage = (Stage) btnLogIn.getScene().getWindow();
             loadScreen(stage, "ManagerView.fxml");
-            //verifyLogIn("ManagerView.fxml");
+            verifyLogIn("ManagerView.fxml");
         }
         else if (employeeID.startsWith("S")){
             Stage stage = (Stage) btnLogIn.getScene().getWindow();

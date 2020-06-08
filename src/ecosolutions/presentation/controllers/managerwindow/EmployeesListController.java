@@ -23,8 +23,6 @@ public class EmployeesListController implements Initializable {
     @FXML private TableColumn<Employee, String> roleCol;
     @FXML private TableColumn<Employee, String> statCol;
     @FXML private TableColumn<Employee, String> phone_noCol;
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initCol();

@@ -14,9 +14,6 @@ import java.util.*;
  */
 public class AlertCreator {
 
-
-
-
     public static void showAlertDialog(StackPane root, Node nodeblurred, List<JFXButton> dialogcontrols, String header, String body) {
         BoxBlur blur = new BoxBlur(2, 2, 2);
         if (dialogcontrols.isEmpty()) {

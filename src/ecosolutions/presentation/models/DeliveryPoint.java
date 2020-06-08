@@ -1,5 +1,7 @@
 package ecosolutions.presentation.models;
-
+/**
+ *
+ */
 public class DeliveryPoint {
 
 	private int dpID;

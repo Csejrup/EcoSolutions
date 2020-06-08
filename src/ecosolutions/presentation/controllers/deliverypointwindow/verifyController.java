@@ -1,15 +1,16 @@
-package ecosolutions.presentation.controllers;
+package ecosolutions.presentation.controllers.deliverypointwindow;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import ecosolutions.Domain.CustomerService;
 import ecosolutions.Domain.OrderService;
+import ecosolutions.presentation.controllers.AbstractController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
-public class verifyController extends AbstractController{
+public class verifyController extends AbstractController {
 
     @FXML
     private JFXButton btnverify;

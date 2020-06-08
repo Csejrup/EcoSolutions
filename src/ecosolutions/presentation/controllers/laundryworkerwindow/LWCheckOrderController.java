@@ -8,26 +8,22 @@ import ecosolutions.presentation.models.Order;
 import com.jfoenix.controls.*;
 import javafx.scene.control.*;
 import javafx.fxml.*;
+import javafx.scene.layout.*;
+import java.util.*;
+import java.io.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.event.ActionEvent;
-import javafx.scene.layout.*;
 import javafx.stage.Stage;
-
-import java.io.File;
-import java.io.FileWriter;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
-
-
+/**
+ *
+ */
 public class LWCheckOrderController extends AbstractController implements Initializable {
 
-    @FXML private AnchorPane rootAnchorPane;
     @FXML private BorderPane borderPane;
     @FXML private StackPane rootPane;
     @FXML private JFXTextField orderNoTextField;
-    @FXML private JFXButton btnCleaning, btncheckOrder, btnLogOut, btnprintlabel;
+    @FXML private JFXButton btnCleaning, btncheckOrder, btnLogOut;
     @FXML private TableView<Order> tableview;
     @FXML private TableColumn<Order, String> launditemCol;
     @FXML private TableColumn<Order, Integer> qtyCol;
@@ -85,7 +81,6 @@ public class LWCheckOrderController extends AbstractController implements Initia
                         fw.write("ORDER ID: "+id()+"\nCLOTH TYPE: " + itemTypes.get(i)+"\n");
                         System.out.println("ORDER ID: " + id() + "\nCLOTH TYPE: " + itemTypes.get(i)+"\nQUANTITY: "+itemQuantity.get(i));
                     }
-
                 }
                 fw.close();
             }
@@ -99,7 +94,6 @@ public class LWCheckOrderController extends AbstractController implements Initia
         Stage stage = (Stage) btnLogOut.getScene().getWindow();
         loadScreen(stage, "LoginView.fxml");
     }
-
     private int id(){
         _ORDER_NO = orderNoTextField.getText();
         return Integer.parseInt(_ORDER_NO);

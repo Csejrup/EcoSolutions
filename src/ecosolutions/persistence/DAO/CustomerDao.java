@@ -1,23 +1,20 @@
 package ecosolutions.persistence.DAO;
-
 import ecosolutions.persistence.DatabaseHandler;
 import ecosolutions.presentation.models.Customer;
+import java.sql.*;
+import java.util.*;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
+/**
+ *  DAO Class Responsible for connecting with the Database and fetch a Customer and its information
+ *  CRUD - Create, retrieve, update, delete
+ */
 public class CustomerDao implements Dao<Customer> {
     @Override
     public Optional<Customer> getbyID(int id) {
         var conn = DatabaseHandler.getInstance().getConnection();
         try {
             var stmt = conn.prepareStatement("SELECT fldCustomerID FROM tblCustomer WHERE fldCustomerID =" + id);
-            //stmt.setInt(1,id);
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
@@ -31,7 +28,6 @@ public class CustomerDao implements Dao<Customer> {
         }
         return Optional.empty();
     }
-
     @Override
     public List<Customer> getAll() {
         List<Customer> orders = new ArrayList<>();
@@ -50,11 +46,9 @@ public class CustomerDao implements Dao<Customer> {
         }
         return orders;
     }
-
     @Override
     public void save(Customer customer) {
         var conn = DatabaseHandler.getInstance().getConnection();
-
         try {
             var stmt = conn.prepareStatement("INSERT INTO tblCustomer (fldName,fldSurname,fldPhone) VALUES ('" + customer.getFirst_name() + "','" + customer.getLast_name() + "','" + customer.getPhone_No() + "');");
             stmt.executeUpdate();
@@ -63,7 +57,6 @@ public class CustomerDao implements Dao<Customer> {
             e.printStackTrace();
         }
     }
-
     @Override
     public void update(Customer customer) {
         var conn = DatabaseHandler.getInstance().getConnection();
@@ -79,7 +72,6 @@ public class CustomerDao implements Dao<Customer> {
             e.printStackTrace();
         }
     }
-
     @Override
     public void delete(Customer customer) {
         var conn = DatabaseHandler.getInstance().getConnection();
@@ -91,33 +83,6 @@ public class CustomerDao implements Dao<Customer> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    private Customer exportCustomer(ResultSet rs) throws SQLException {
-        Customer customer = new Customer();
-        customer.setCustomer_id(rs.getInt("fldCustomerID"));
-        customer.setFirst_name(rs.getString("fldName"));
-        customer.setLast_name(rs.getString("fldSurname"));
-        customer.setPhone_No(rs.getString("fldPhone"));
-
-        return customer;
-    }
-
-    public int getCustomerID() {
-        var conn = DatabaseHandler.getInstance().getConnection();
-        int customerID = 0;
-        try{
-        PreparedStatement stmt = conn.prepareStatement("SELECT MAX(fldCustomerID) FROM tblCustomer");
-        ResultSet rs = stmt.executeQuery();
-        while (rs.next()){
-        customerID = Integer.parseInt(rs.getString(1));
-        }
-        stmt.close();
-        }
-
-        catch (SQLException e){
-        e.printStackTrace();}
-        return customerID;
     }
     public static boolean exist(int customerID){
         var conn = DatabaseHandler.getInstance().getConnection();
@@ -133,11 +98,16 @@ public class CustomerDao implements Dao<Customer> {
             }
             stmt.close();
         }
-
         catch (SQLException e){
             e.printStackTrace();}
         return false;
     }
+
+    /**
+     * Method for getting the name of a Customer by CustomerID
+     * @param customerID
+     * @return
+     */
     public static String getCustomerName(int customerID){
         var conn = DatabaseHandler.getInstance().getConnection();
         String customerName = "";
@@ -147,12 +117,17 @@ public class CustomerDao implements Dao<Customer> {
             while (rs.next()){
                 customerName =rs.getString(1);
             }
-
-        }catch (Exception e){
-
+        }catch (SQLException e){
+            e.printStackTrace();
         }
         return customerName;
-    }public static String getCustomerPhone(int customerID){
+    }
+    /**
+     * Method for getting the phone number of a customer by CustomerID
+     * @param customerID
+     * @return
+     */
+    public static String getCustomerPhone(int customerID){
         var conn = DatabaseHandler.getInstance().getConnection();
         String customerPhone = "";
         try{
@@ -161,13 +136,17 @@ public class CustomerDao implements Dao<Customer> {
             while (rs.next()){
                 customerPhone =rs.getString(1);
             }
-
-        }catch (Exception e){
-
+        }catch (SQLException e){
+            e.printStackTrace();
         }
         return customerPhone;
     }
-    public List<Customer> getCustomerFromOrder(int orderID) throws SQLException {
+    /**
+     * Method for getting Customer Data by OrderID
+     * @param orderID
+     * @return
+     */
+    public List<Customer> getCustomerFromOrder(int orderID){
         List<Customer> customers = new ArrayList<>();
         var conn = DatabaseHandler.getInstance().getConnection();
         try {
@@ -182,5 +161,13 @@ public class CustomerDao implements Dao<Customer> {
             e.printStackTrace();
         }
         return customers;
+    }
+    private Customer exportCustomer(ResultSet rs) throws SQLException {
+        Customer customer = new Customer();
+        customer.setCustomer_id(rs.getInt("fldCustomerID"));
+        customer.setFirst_name(rs.getString("fldName"));
+        customer.setLast_name(rs.getString("fldSurname"));
+        customer.setPhone_No(rs.getString("fldPhone"));
+        return customer;
     }
 }
