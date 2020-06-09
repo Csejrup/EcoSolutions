@@ -53,7 +53,7 @@ public class OrderDao implements Dao<Order>{
     public void save(Order order) {
         var conn = DatabaseHandler.getInstance().getConnection();
         try{
-            var stmt = conn.prepareStatement("EXEC insertnewOrder VALUES('@customerid="+order.getCustomerID()+"','@orderstatusid="+order.getOrderStatusID()+ "','@dpid="+order.getDeliveryPointID()+"','@date="+order.getDate()+"')");
+            var stmt = conn.prepareStatement("EXEC insertnewOrder @customerid='"+order.getCustomerID()+"',@orderstatusid='"+order.getOrderStatusID()+ "',@dpid='"+order.getDeliveryPointID()+"',@date='"+order.getDate()+"';");
             stmt.executeUpdate();
             stmt.close();
         }catch(SQLException e){
