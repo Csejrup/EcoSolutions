@@ -5,6 +5,7 @@ import ecosolutions.presentation.models.Order;
 import java.util.*;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 
 /**
  * This Class is a service class for OrderDao and Connects to the View
@@ -63,6 +64,10 @@ public class OrderService {
     public static ObservableList<PieChart.Data> getGraph2(){
         OrderDao orderDao = new OrderDao();
         return orderDao.getEmployeeStatistics();
+    }
+    public static ObservableList<XYChart.Data<Integer, Integer>> getGraph3(){
+        OrderDao orderDao = new OrderDao();
+        return orderDao.getBarChartData();
     }
     public static int getCustomerIDbyOrderID(int orderID){
        return OrderDao.getCustomerIDbyOrderID(orderID);

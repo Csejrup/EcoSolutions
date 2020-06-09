@@ -2,6 +2,7 @@ package ecosolutions.presentation.controllers;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -14,7 +15,6 @@ import java.io.IOException;
 public abstract class AbstractController {
     /**
      * Method loads a new screen and assigns it to the current Stage
-     *
      * @param primaryStage
      * @param layoutfile
      */
@@ -46,5 +46,22 @@ public abstract class AbstractController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Methods loads a new stage with Stage and Stackpane as load in,
+     * @param secondaryStage
+     * @param layout
+     */
+    protected void loadnewstage(Stage secondaryStage, StackPane layout) {
+        try {
+            Parent content = layout;
+            secondaryStage.setTitle("Statistic");
+            secondaryStage.setScene(new Scene(content,500,500));
+            secondaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
