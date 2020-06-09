@@ -1,6 +1,7 @@
 package ecosolutions.persistence.DAO;
 import ecosolutions.persistence.DatabaseHandler;
 import ecosolutions.presentation.models.Order;
+import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.collections.*;
 import java.sql.*;
@@ -263,6 +264,12 @@ public class OrderDao implements Dao<Order>{
             e.printStackTrace();
         }
     }
+
+    /**
+     * This Method is responsible for
+     * Fetching DATA from the Database and Adding it to a PieChart
+     * @return data
+     */
     public static ObservableList<PieChart.Data> getOrderGraphStatistics(){
         ObservableList<PieChart.Data> data = FXCollections.observableArrayList();
         try {
@@ -308,6 +315,11 @@ public class OrderDao implements Dao<Order>{
         }
         return data;
     }
+    /**
+     * This Method is responsible for
+     * Fetching DATA from the Database and Adding it to a PieChart
+     * @return data2
+     */
     public static ObservableList<PieChart.Data> getEmployeeStatistics(){
         ObservableList<PieChart.Data> data2 = FXCollections.observableArrayList();
 
@@ -316,7 +328,6 @@ public class OrderDao implements Dao<Order>{
             var stmt1 = conn.prepareStatement("SELECT COUNT(*) FROM tblEmployee WHERE fldStatusID = 1");
             var stmt2 = conn.prepareStatement("SELECT COUNT(*) FROM tblEmployee WHERE fldStatusID = 2");
             var stmt3 = conn.prepareStatement("SELECT COUNT(*) FROM tblEmployee WHERE fldStatusID = 3");
-
             ResultSet rs = stmt1.executeQuery();
             if(rs.next()){
                 int count = rs.getInt(1);
@@ -337,6 +348,35 @@ public class OrderDao implements Dao<Order>{
         }
         return data2;
     }
+    public static ObservableList<javafx.scene.chart.XYChart.Data<Integer, Integer>> getBarChartData(){
+        ObservableList<javafx.scene.chart.XYChart.Data<Integer, Integer>> data3 = FXCollections.observableArrayList();
+        try {
+            var conn = DatabaseHandler.getInstance().getConnection();
+            var stmt1 = conn.prepareStatement("SELECT COUNT(*) FROM tblEmployee WHERE fldStatusID = 1");
+            var stmt2 = conn.prepareStatement("SELECT COUNT(*) FROM tblEmployee WHERE fldStatusID = 2");
+            var stmt3 = conn.prepareStatement("SELECT COUNT(*) FROM tblEmployee WHERE fldStatusID = 3");
+            ResultSet rs = stmt1.executeQuery();
+            if(rs.next()){
+                int count = rs.getInt(1);
+                data3.add(new BarChart.Data<>(1,1));
+            }
+            rs = stmt2.executeQuery();
+            if(rs.next()){
+                int count = rs.getInt(1);
+                data3.add(new BarChart.Data<>(2,2));
+            }
+            rs = stmt3.executeQuery();
+            if(rs.next()){
+                int count = rs.getInt(1);
+                data3.add(new BarChart.Data<>(3,3));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return data3;
+    }
+
+
     private Order exportOrder(ResultSet rs) throws SQLException{
         Order order = new Order();
         order.setOrderID(rs.getInt("fldOrderID"));
