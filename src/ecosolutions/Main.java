@@ -17,7 +17,7 @@ public class Main extends Application {
     public void start(Stage primaryStage)throws Exception{
 
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("presentation/views/LoginView.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("presentation/view/LoginView.fxml"));
             primaryStage.setScene(new Scene(root));
             primaryStage.setTitle("Eco Solutions");
             primaryStage.setResizable(false);

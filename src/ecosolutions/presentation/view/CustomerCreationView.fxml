@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controller.deliverypointwindow.RegisterCustomerController">
+   <top>
+      <Pane prefHeight="65.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton fx:id="btnLogOut" alignment="CENTER" layoutX="192.0" layoutY="12.0" onAction="#handleLogOut" prefHeight="39.0" prefWidth="94.0" text="Log Out" textFill="WHITE" />
+            <ImageView fitHeight="57.0" fitWidth="113.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/pictures/Ecosolution2.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </top>
+   <center>
+      <Pane prefHeight="373.0" prefWidth="306.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXTextField fx:id="firstnameTextField" layoutX="43.0" layoutY="79.0" prefHeight="54.0" prefWidth="205.0" promptText="First Name">
+               <font>
+                  <Font name="Myanmar Text" size="10.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="phoneNoTextField" layoutX="41.0" layoutY="192.0" prefHeight="54.0" prefWidth="208.0" promptText="Phone Number">
+               <font>
+                  <Font name="Myanmar Text" size="10.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="lastnameTextField" layoutX="41.0" layoutY="133.0" prefHeight="54.0" prefWidth="208.0" promptText="Last Name">
+               <font>
+                  <Font name="Myanmar Text" size="10.0" />
+               </font>
+            </JFXTextField>
+            <Label alignment="CENTER" layoutX="31.0" layoutY="14.0" prefHeight="0.0" prefWidth="230.0" text="Register Customer" underline="true">
+               <font>
+                  <Font name="Myanmar Text" size="24.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btnConfirm1" layoutX="31.0" layoutY="271.0" onAction="#handleCreateCustomer" prefHeight="43.0" prefWidth="238.0" text="Confirm" textFill="WHITE">
+               <font>
+                  <Font name="Myanmar Text" size="15.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+   </center>
+   <bottom>
+      <Pane prefHeight="72.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton fx:id="btnreturn" layoutX="31.0" layoutY="15.0" onAction="#handleReturn" prefHeight="43.0" prefWidth="238.0" text="Return to Main " textFill="WHITE">
+               <font>
+                  <Font name="Myanmar Text" size="15.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+   </bottom>
+   <stylesheets>
+      <URL value="@../../../resources/StyleSheets/color-style.css" />
+      <URL value="@../../../resources/StyleSheets/color-style.css" />
+   </stylesheets>
+</BorderPane>

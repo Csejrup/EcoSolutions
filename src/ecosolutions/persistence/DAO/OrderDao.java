@@ -1,6 +1,6 @@
 package ecosolutions.persistence.DAO;
 import ecosolutions.persistence.DatabaseHandler;
-import ecosolutions.presentation.models.Order;
+import ecosolutions.Domain.Order;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.collections.*;

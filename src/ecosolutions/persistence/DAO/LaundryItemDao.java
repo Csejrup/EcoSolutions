@@ -1,6 +1,6 @@
 package ecosolutions.persistence.DAO;
 import ecosolutions.persistence.DatabaseHandler;
-import ecosolutions.presentation.models.DeliveryPoint;
+import ecosolutions.Domain.DeliveryPoint;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
