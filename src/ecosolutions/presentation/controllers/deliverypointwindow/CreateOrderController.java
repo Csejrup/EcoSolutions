@@ -1,6 +1,7 @@
 package ecosolutions.presentation.controllers.deliverypointwindow;
 import com.jfoenix.controls.*;
 import ecosolutions.Domain.CustomerService;
+import ecosolutions.Domain.DeliveryPointService;
 import ecosolutions.Domain.LaundryItemService;
 import ecosolutions.Domain.OrderService;
 import ecosolutions.presentation.controllers.AbstractController;
@@ -32,6 +33,7 @@ public class CreateOrderController extends AbstractController implements Initial
     public static int orderQTY, orderID;
     public static float itemPrice;
     public static float totalAmount = 0;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         itemListView.setItems(LaundryItemService.getItemTypes());
@@ -43,23 +45,26 @@ public class CreateOrderController extends AbstractController implements Initial
         SimpleDateFormat sdp = new SimpleDateFormat("yyyy/MM/dd");
         int orderStatusID = 1;
         float price = 12.3F;
+
         try {
             int customerID = Integer.parseInt(cusidTextField.getText());
-            int orderID = OrderService.getLastOrderID();
+
             int accountID = LoginController.accountID;
+            int deliveryPointID = DeliveryPointService.getDpID(accountID);
             String date = sdp.format(now);
                 if (items.size() == 0){
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setContentText("ORDER IS EMPTY, PICK CLOTH TYPE AND QUANTITY.");
                     alert.show();
                 }else if (CustomerService.isExist(customerID)) {
-                    Order newOrder = new Order(customerID, orderStatusID, date, accountID, items, price);
+                    Order newOrder = new Order(customerID, orderStatusID, date, deliveryPointID, items, price);
                     OrderService.addOrder(newOrder);
                     OrderService.addOrderDetails(newOrder);
                     items.clear();
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setContentText("ORDER HAS BEN CREATED");
                     alert.show();
+                    int orderID = OrderService.getLastOrderID();
                     System.out.println(orderID);
                 }
         }catch (Exception e){
@@ -76,6 +81,7 @@ public class CreateOrderController extends AbstractController implements Initial
     @FXML
     void addToBasket(ActionEvent event) {
         try{
+
             orderType = itemListView.getSelectionModel().getSelectedItem();
             orderQTY = Integer.parseInt(qtyTextField.getText());
             orderID = LaundryItemService.getID(orderType);

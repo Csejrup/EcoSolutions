@@ -3,22 +3,23 @@ package ecosolutions.presentation.controllers;
 import com.jfoenix.controls.*;
 
 import ecosolutions.Domain.AccountService;
-import ecosolutions.presentation.models.Account;
+
 import javafx.event.*;
 import javafx.fxml.*;
-import javafx.scene.Scene;
+
 import javafx.stage.*;
 import javafx.scene.input.*;
 
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
+
 public class LoginController extends AbstractController{
 
     @FXML private JFXTextField txtUserName;
     @FXML private JFXPasswordField txtPW;
     @FXML private JFXButton btnLogIn;
-    public static int accountID = Account.getStaticAccountID();
+    public static int accountID = 0;
 
     //Action for btnLogIn
     @FXML
@@ -34,7 +35,7 @@ public class LoginController extends AbstractController{
         else if (employeeID.startsWith("S")){
             Stage stage = (Stage) btnLogIn.getScene().getWindow();
             loadScreen(stage, "deliverypointmain.fxml");
-            //verifyLogIn("DeliveryPointView.fxml");
+           // verifyLogIn("deliverypointmain.fxml");
         }
         else if (employeeID.startsWith("L")){
             Stage stage = (Stage) btnLogIn.getScene().getWindow();
@@ -58,6 +59,8 @@ public class LoginController extends AbstractController{
         AccountService accountService = new AccountService();
         var account = accountService.getAccount(username);
         String pass = account.get().getPw();
+        accountID = account.get().getAccount_id();
+        System.out.println(accountID);
         btnLogIn.setOnKeyPressed(event ->{
            if(event.getCode() == KeyCode.ENTER){
                if (account.isEmpty() || !pass.equals(password)) {
@@ -65,6 +68,8 @@ public class LoginController extends AbstractController{
                } else {
                    Stage stage = (Stage) btnLogIn.getScene().getWindow();
                    loadScreen(stage, scene);
+
+
                }
            }
        });
