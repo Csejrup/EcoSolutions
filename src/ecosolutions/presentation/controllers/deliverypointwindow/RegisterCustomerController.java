@@ -50,6 +50,6 @@ public class RegisterCustomerController extends AbstractController {
         Stage stage = (Stage) btnLogOut.getScene().getWindow();
         loadScreen(stage, "deliverypointmain.fxml");
     }
-
+    
 
 }
