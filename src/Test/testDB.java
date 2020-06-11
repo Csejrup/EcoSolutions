@@ -1,24 +1,22 @@
 package Test;
 
 import ecosolutions.persistence.DatabaseHandler;
-
+import org.junit.Test;
+import static org.junit.Assert.*;
 import java.io.IOException;
 import java.sql.*;
+
+
 public class testDB {
-    public static void main(String[] args) {
-        try{
-            runDBTest();
-        }catch(SQLException | IOException e){
-            e.printStackTrace();
-        }
-    }
+
     /**
      * Method that tests database connection
      * Creates a new table, and inserts new data, drops the table at the end
      * @throws SQLException
      * @throws IOException
      */
-    public static void runDBTest() throws SQLException, IOException {
+    @Test
+    public void runDBTest() throws SQLException {
         var conn = DatabaseHandler.getInstance().getConnection();
         try {
             var stmt = conn.createStatement();
