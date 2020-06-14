@@ -10,9 +10,12 @@ import javafx.fxml.*;
 import javafx.scene.control.*;
 import java.util.*;
 
-
+/**
+ * Controller responsible for handling the view FullOrderListView.fxml
+ * Responsible for getting order objects through OrderService.
+ */
 public class OrderFullListController implements Initializable {
-    ObservableList<Order> list = FXCollections.observableArrayList();
+    private final ObservableList<Order> list = FXCollections.observableArrayList();
 
     @FXML private TableView<Order> tableView;
     @FXML private TableColumn<Order, String> ordernoCol;
@@ -32,7 +35,6 @@ public class OrderFullListController implements Initializable {
         deliverypointCol.setCellValueFactory(new PropertyValueFactory<>("deliverypointname"));
     }
     private void loadData(){
-
         list.clear();
         tableView.getItems().addAll(OrderService.getOrders());
     }

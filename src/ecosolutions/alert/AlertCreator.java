@@ -28,18 +28,14 @@ public class AlertCreator {
         }
         JFXDialogLayout dialogLayout = new JFXDialogLayout();
         JFXDialog dialog = new JFXDialog(root, dialogLayout, JFXDialog.DialogTransition.TOP);
-        dialogcontrols.forEach(controlButton -> {
-            controlButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
-                dialog.close();
-            });
-        });
+        dialogcontrols.forEach(controlButton -> controlButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
+            dialog.close();
+        }));
         dialogLayout.setHeading(new Label(header));
         dialogLayout.setBody(new Label(body));
         dialogLayout.setActions(dialogcontrols);
         dialog.show();
-        dialog.setOnDialogClosed((JFXDialogEvent event1) -> {
-            nodeblurred.setEffect(null);
-        });
+        dialog.setOnDialogClosed((JFXDialogEvent event1) -> nodeblurred.setEffect(null));
         nodeblurred.setEffect(blur);
     }
 

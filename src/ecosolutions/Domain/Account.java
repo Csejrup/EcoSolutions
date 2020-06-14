@@ -8,7 +8,7 @@ public class Account {
     private int account_id;
     private String pw;
     private String username;
-    private static int staticaccountID;
+    // --Commented out by Inspection (14-06-2020 23:58):private static int staticaccountID;
     //DEFAULT CONSTRUCTOR//
     public Account(){
     }
@@ -22,9 +22,11 @@ public class Account {
     public void setUsername(String username) {
         this.username = username;
     }
-    public static void setStaticAccountID(int staticaccountID) {
-        staticaccountID = staticaccountID;
-    }
+// --Commented out by Inspection START (14-06-2020 23:58):
+//    public static void setStaticAccountID(int staticaccountID) {
+//        staticaccountID = staticaccountID;
+//    }
+// --Commented out by Inspection STOP (14-06-2020 23:58)
     //GETTERS//
     public int getAccount_id() {
         return account_id;
@@ -32,15 +34,19 @@ public class Account {
     public String getPw() {
         return pw;
     }
-    public String getUsername() {
-        return username;
-    }
-    public static int getStaticAccountID() {
-        return staticaccountID;
-    }
+// --Commented out by Inspection START (14-06-2020 23:58):
+//    public String getUsername() {
+//        return username;
+//    }
+// --Commented out by Inspection STOP (14-06-2020 23:58)
+// --Commented out by Inspection START (14-06-2020 23:58):
+//    public static int getStaticAccountID() {
+//        return staticaccountID;
+//    }
+// --Commented out by Inspection STOP (14-06-2020 23:58)
     /**
      * Method to convert DB data to Strings
-     * @return
+     *
      */
     @Override
     public String toString() {

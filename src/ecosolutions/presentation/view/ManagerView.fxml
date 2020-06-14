@@ -21,15 +21,15 @@
 
 <AnchorPane prefHeight="480.0" prefWidth="586.0" stylesheets="@../../../resources/StyleSheets/color-style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecosolutions.presentation.controller.managerwindow.ManagerController">
    <children>
-      <StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="595.0">
+      <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="595.0">
          <children>
-            <BorderPane fx:id="rootborderPane" prefHeight="200.0" prefWidth="200.0">
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
                <center>
                   <AnchorPane prefHeight="389.0" prefWidth="737.0" BorderPane.alignment="CENTER">
                      <children>
                         <TabPane prefHeight="480.0" prefWidth="465.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <tabs>
-                            <Tab fx:id="overviewtab" closable="false" text="Overview">
+                            <Tab closable="false" text="Overview">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
                                        <children>
@@ -75,7 +75,7 @@
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                            <Tab fx:id="laundryotab" text="Active Orders">
+                            <Tab text="Active Orders">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
                                        <children>
@@ -134,7 +134,7 @@
                               </ImageView>
                            </children>
                         </Pane>
-                        <JFXButton fx:id="btnworkforce" contentDisplay="TOP" mnemonicParsing="false" onAction="#loadWorkForceList" prefHeight="110.0" prefWidth="130.0" styleClass="toolbar-button" text="Workforce" textFill="WHITE">
+                        <JFXButton contentDisplay="TOP" mnemonicParsing="false" onAction="#loadWorkForceList" prefHeight="110.0" prefWidth="130.0" styleClass="toolbar-button" text="Workforce" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -143,7 +143,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="btnorders" contentDisplay="TOP" mnemonicParsing="false" onAction="#loadOrderList" prefHeight="111.0" prefWidth="130.0" styleClass="toolbar-button" text="Orders" textFill="WHITE">
+                        <JFXButton contentDisplay="TOP" mnemonicParsing="false" onAction="#loadOrderList" prefHeight="111.0" prefWidth="130.0" styleClass="toolbar-button" text="Orders" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

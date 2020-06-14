@@ -10,7 +10,8 @@ import java.io.IOException;
 /**
  * This Class Represents an Abstract Controller
  * For all Controller Classes used in this Project
- *
+ * The purpose of this class is to make a general Controller for making new scenes and stages
+ * primarily created to remove duplicated code.
  */
 public abstract class AbstractController {
     /**
@@ -55,9 +56,8 @@ public abstract class AbstractController {
      */
     protected void loadnewstage(Stage secondaryStage, StackPane layout) {
         try {
-            Parent content = layout;
             secondaryStage.setTitle("Statistic");
-            secondaryStage.setScene(new Scene(content,500,500));
+            secondaryStage.setScene(new Scene(layout,500,500));
             secondaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();

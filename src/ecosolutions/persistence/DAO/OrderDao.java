@@ -52,7 +52,7 @@ public class OrderDao implements Dao<Order>{
 
     /**
      * METHOD FOR INSERTING ORDER DETAILS INSIDE OF DATABASE.
-     * @param order
+     *
      */
     @Override
     public void save(Order order) {
@@ -156,8 +156,6 @@ public class OrderDao implements Dao<Order>{
     }
     /**
      * HANDLING ORDER DESCRIPTION
-     * @param order
-     * @throws SQLException
      */
     public void addOrderDetails(Order order){
         var conn = DatabaseHandler.getInstance().getConnection();
@@ -176,7 +174,7 @@ public class OrderDao implements Dao<Order>{
 
     /**
      * METHOD FOR GETTING LAST ORDER ID FROM DATABASE
-     * @return
+     * @return lastOrderID
      */
     public static int getLastOrderID()  {
         var conn = DatabaseHandler.getInstance().getConnection();
@@ -196,8 +194,7 @@ public class OrderDao implements Dao<Order>{
 
     /**
      * METHOD FOR GETTING ALL ITEM ID INCLUDED INSIDE ORDER.
-     * @param orderID
-     * @return
+     * @return itemIDList
      */
     public static List<Integer> getItemsID(int orderID){
         var conn = DatabaseHandler.getInstance().getConnection();
@@ -220,8 +217,7 @@ public class OrderDao implements Dao<Order>{
 
     /**
      * METHOD FOR GETTING ITEMS TYPE BASED ON ITEM ID FROM DATABASE.
-     * @param itemIDList
-     * @return
+     * @return itemTypes
      */
     public static List<String> getItemTypeByID(List<Integer> itemIDList){
         List<String> itemTypes = new ArrayList<>();
@@ -245,9 +241,7 @@ public class OrderDao implements Dao<Order>{
 
     /**
      * METHOD FOR GETTING QUANTITY OF ITEM IN ORDER BASED ON ITEMID AND ORDERID.
-     * @param itemIDList
-     * @param orderID
-     * @return
+     * @return itemQuantity
      */
     public static List<Integer> getQuantityByID(List<Integer> itemIDList,int orderID){
         List<Integer> itemQuantity = new ArrayList<>();
@@ -272,8 +266,7 @@ public class OrderDao implements Dao<Order>{
 
     /**
      * METHOD FOR GETTING CUSTOMERID BASED ON ORDER ID.
-     * @param orderID
-     * @return
+     * @return custID
      */
     public static int getCustomerIDbyOrderID(int orderID){
         var conn = DatabaseHandler.getInstance().getConnection();
@@ -293,7 +286,6 @@ public class OrderDao implements Dao<Order>{
 
     /**
      * METHOD FOR UPDATING STATUS WHEN CUSTOMER ISSUE ORDER.
-     * @param orderID
      */
     public static void issueStatus(int orderID){
         var conn = DatabaseHandler.getInstance().getConnection();
@@ -415,8 +407,6 @@ public class OrderDao implements Dao<Order>{
         }
         return data3;
     }
-
-
     private Order exportOrder(ResultSet rs) throws SQLException{
         Order order = new Order();
         order.setOrderID(rs.getInt("fldOrderID"));

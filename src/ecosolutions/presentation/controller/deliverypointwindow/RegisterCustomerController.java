@@ -10,16 +10,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
+/**
+ * Controller responsible for handling the view CustomerCreationView.fxml
+ * Creates a new Customer object into the database through CustomerService
+ */
 public class RegisterCustomerController extends AbstractController {
-
 
     @FXML private JFXButton btnLogOut, btnreturn;
     @FXML private JFXTextField firstnameTextField, phoneNoTextField, lastnameTextField;
-
-
     /**
      * METHOOD FOR CREATION CUSTOMER.
-     * @param event
      */
     @FXML
     void handleCreateCustomer(ActionEvent event) {
@@ -43,10 +43,8 @@ public class RegisterCustomerController extends AbstractController {
         }
 
     }
-
     /**
      * METHOD FOR LOGGING OUT.
-     * @param event
      */
     @FXML
     private void handleLogOut(ActionEvent event) {
@@ -56,13 +54,10 @@ public class RegisterCustomerController extends AbstractController {
 
     /**
      * METHOD FOR RETURNING TO MAIN WINDOW.
-     * @param event
      */
     @FXML
     private void handleReturn(ActionEvent event){
         Stage stage = (Stage) btnLogOut.getScene().getWindow();
         loadScreen(stage, "deliverypointmain.fxml");
     }
-    
-
 }

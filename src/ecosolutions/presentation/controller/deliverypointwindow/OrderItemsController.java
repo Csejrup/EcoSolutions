@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 
 /**
  * CLASS IS REPRESENTATION OF 'BUSKET'.
+ * Controller responsible for handling the view OrderListView.fxml
  */
 public class OrderItemsController extends AbstractController implements Initializable {
 
@@ -24,30 +25,25 @@ public class OrderItemsController extends AbstractController implements Initiali
     @FXML private TableColumn<OrderTableView,String> tcClothType;
     @FXML private TableColumn<OrderTableView, Integer> tcClothQTY;
     @FXML private JFXButton btnReturn, btnRemove;
-    OrderTableView item;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tcClothQTY.setCellValueFactory(new PropertyValueFactory<OrderTableView,Integer>("clothQty"));
-        tcClothType.setCellValueFactory(new PropertyValueFactory<OrderTableView,String>("clothType"));
+        tcClothQTY.setCellValueFactory(new PropertyValueFactory<>("clothQty"));
+        tcClothType.setCellValueFactory(new PropertyValueFactory<>("clothType"));
         tv.setItems(CreateOrderController.getItems());
 
     }
-
     /**
      * METHOD FOR REMOVING ITEM FROM BASKET.
-     * @param event
      */
     @FXML
     void handleRemove(ActionEvent event) {
-        item = tv.getSelectionModel().getSelectedItem();
+        OrderTableView item = tv.getSelectionModel().getSelectedItem();
         tv.getItems().remove(item);
-        CreateOrderController.totalAmount -= (item.getItemPrice()*item.getClothQty());
+        CreateOrderController.totalAmount -= (item.getItemPrice()* item.getClothQty());
     }
 
     /**
      * METHOD FOR RETURNING TO MAIN WINDOW.
-     * @param event
      */
     @FXML
     private void handleReturn(ActionEvent event) {

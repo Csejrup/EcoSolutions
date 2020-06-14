@@ -19,7 +19,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 
 /**
- *
+ * This controller is responsible for handling the view DeliveryPointView.fxml
  */
 public class CreateOrderController extends AbstractController implements Initializable {
     @FXML private JFXListView<String> itemListView = new JFXListView<>();
@@ -27,11 +27,7 @@ public class CreateOrderController extends AbstractController implements Initial
     @FXML private JFXTextField dueTextField;
     @FXML private TextField qtyTextField, cusidTextField;
     //ADD BASIC CLOTH TYPES
-    public static ObservableList<OrderTableView> items = FXCollections.observableArrayList();
-    //GLOBAL VARIABLES FOR TABLEVIEW
-    public static String orderType;
-    public static int orderQTY, orderID;
-    public static float itemPrice;
+    private static final ObservableList<OrderTableView> items = FXCollections.observableArrayList();
     public static float totalAmount = 0;
 
     @Override
@@ -39,10 +35,9 @@ public class CreateOrderController extends AbstractController implements Initial
         itemListView.setItems(LaundryItemService.getItemTypes());
         dueTextField.setText(String.valueOf(totalAmount));
     }
-
     /**
      * METHOD FOR CREATING ORDER.
-     * @param event
+     *
      */
     @FXML
     void handleOrderConfirm(ActionEvent event) {
@@ -50,7 +45,6 @@ public class CreateOrderController extends AbstractController implements Initial
         SimpleDateFormat sdp = new SimpleDateFormat("yyyy/MM/dd");
         int orderStatusID = 1;
         float price = 12.3F;
-
         try {
             int customerID = Integer.parseInt(cusidTextField.getText());
 
@@ -81,18 +75,19 @@ public class CreateOrderController extends AbstractController implements Initial
     }
     /**
      * ADDING ITEM TO THE 'BASKET'
-     * @param event
+     *
      */
     @FXML
     void addToBasket(ActionEvent event) {
         try{
 
-            orderType = itemListView.getSelectionModel().getSelectedItem();
-            orderQTY = Integer.parseInt(qtyTextField.getText());
-            orderID = LaundryItemService.getID(orderType);
-            itemPrice = LaundryItemService.getPrice(orderType);
-            if(orderType!=null&&orderQTY!=0){
-            items.add(new OrderTableView(orderType,orderQTY,orderID,itemPrice));
+            //GLOBAL VARIABLES FOR TABLEVIEW
+            String orderType = itemListView.getSelectionModel().getSelectedItem();
+            int orderQTY = Integer.parseInt(qtyTextField.getText());
+            int orderID = LaundryItemService.getID(orderType);
+            float itemPrice = LaundryItemService.getPrice(orderType);
+            if(orderType !=null&& orderQTY !=0){
+            items.add(new OrderTableView(orderType, orderQTY, orderID, itemPrice));
 
             }
             else{
@@ -101,7 +96,7 @@ public class CreateOrderController extends AbstractController implements Initial
                 alert.show();
             }
             System.out.println(orderID);
-            totalAmount+=(itemPrice*orderQTY);
+            totalAmount+=(itemPrice * orderQTY);
             qtyTextField.clear();
             dueTextField.setText(String.valueOf(totalAmount));
         }catch(NumberFormatException e){

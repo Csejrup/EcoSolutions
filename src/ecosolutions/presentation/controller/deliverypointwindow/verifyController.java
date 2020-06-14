@@ -10,36 +10,24 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
+/**
+ * Controller class for handling verifyorder.fxml
+ */
 public class verifyController extends AbstractController {
 
-    @FXML
-    private JFXButton btnverify;
-
-    @FXML
-    private JFXTextField phoneTextField;
-
-    @FXML
-    private JFXButton btnreturn;
-
-    @FXML
-    private JFXTextField nameTextField;
-
-    @FXML
-    private JFXTextField ordnoTextField;
-
+    @FXML private JFXButton btnverify;
+    @FXML private JFXTextField phoneTextField, nameTextField, ordnoTextField;
+    @FXML private JFXButton btnreturn;
     /**
      * METHOD FOR RETURNING INTO DELIVERY POINT WINDOW.
-     * @param event
      */
     @FXML
     void handleReturn(ActionEvent event) {
         Stage stage = (Stage) btnreturn.getScene().getWindow();
         loadScreen(stage, "deliverypointmain.fxml");
     }
-
     /**
      * METHOD FOR ISSUING THE ORDER.
-     * @param event
      */
     @FXML
     void handleVerify(ActionEvent event) {
@@ -57,11 +45,8 @@ public class verifyController extends AbstractController {
                 alert.setHeaderText("WRONG ORDER DETAILS, TRY AGAIN");
                 alert.show();
             }
-
         }catch (Exception e){
             e.printStackTrace();
         }
-
     }
-
 }

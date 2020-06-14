@@ -6,8 +6,11 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+/**
+ * A Testing Class that compares a fixed name, phone or customerID
+ * with another and compares it with the database.
+ */
 public class CustomerDaoTest {
-
     @Test
     public void getCustomerName() {
         String customerName = "Tony";

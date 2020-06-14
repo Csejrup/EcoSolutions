@@ -49,13 +49,14 @@ public class Employee {
         return phone_no;
     }
 
-    public String getRole() {
+   public String getRole() {
         return role;
-    }
+   }
 
     public String getStatus() {
-        return status;
-    }
+       return status;
+   }
+
 
     public String getLastname() {
         return lastname;
@@ -67,7 +68,7 @@ public class Employee {
 
     /**
      * Method to convert DB data to Strings
-     * @return
+     *
      */
     @Override
     public String toString(){
