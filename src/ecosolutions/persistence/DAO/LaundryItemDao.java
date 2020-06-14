@@ -55,6 +55,11 @@ public class LaundryItemDao implements Dao<DeliveryPoint>{
     public void delete(DeliveryPoint deliveryPoint) {
         //EMPTY
     }
+
+    /**
+     * Method that returning list of Cloth types from DataBase
+     * @return
+     */
     public static ObservableList<String> getLaundryTypes(){
         ObservableList<String> laundryTypeItems = FXCollections.observableArrayList();
         var conn = DatabaseHandler.getInstance().getConnection();
@@ -76,6 +81,12 @@ public class LaundryItemDao implements Dao<DeliveryPoint>{
         }
         return laundryTypeItems;
     }
+
+    /**
+     * Method for getting itemID(clothID) based on item type.
+     * @param itemType
+     * @return
+     */
     public static int getItemID(String itemType){
         var conn = DatabaseHandler.getInstance().getConnection();
         int itemID = 0;
@@ -91,6 +102,13 @@ public class LaundryItemDao implements Dao<DeliveryPoint>{
         }
         return itemID;
     }
+
+    /**
+     *
+     * METHOD THAT GETTING PRICE OF ITEM BASED ON ITEM TYPE
+     * @param itemType
+     * @return
+     */
     public static float getPrice(String itemType){
         var conn = DatabaseHandler.getInstance().getConnection();
         float itemPrice = 0;

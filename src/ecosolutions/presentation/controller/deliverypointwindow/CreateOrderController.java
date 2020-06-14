@@ -39,6 +39,11 @@ public class CreateOrderController extends AbstractController implements Initial
         itemListView.setItems(LaundryItemService.getItemTypes());
         dueTextField.setText(String.valueOf(totalAmount));
     }
+
+    /**
+     * METHOD FOR CREATING ORDER.
+     * @param event
+     */
     @FXML
     void handleOrderConfirm(ActionEvent event) {
         java.util.Date now = new Date();

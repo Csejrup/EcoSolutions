@@ -11,6 +11,9 @@ import java.util.*;
  * CRUD - Create, retrieve, update, delete
  */
 public class EmployeeDao implements Dao<Employee> {
+    /**
+     * METHOD FOR GETTING EMPLOYEE DETAILS BASED ON EMPLOYEE ID
+     */
     @Override
      public Optional<Employee> getbyID(int id) {
         var conn = DatabaseHandler.getInstance().getConnection();
@@ -53,6 +56,11 @@ public class EmployeeDao implements Dao<Employee> {
     public void save(Employee employee) {
         //EMPTY
     }
+
+    /**
+     * Method that updates employee Details in Database
+     * @param employee
+     */
     @Override
     public void update(Employee employee) {
         var conn = DatabaseHandler.getInstance().getConnection();
@@ -69,6 +77,11 @@ public class EmployeeDao implements Dao<Employee> {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Method for deleting Employee from DataBase
+     * @param employee
+     */
     @Override
     public void delete(Employee employee) {
         var conn = DatabaseHandler.getInstance().getConnection();

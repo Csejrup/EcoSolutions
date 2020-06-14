@@ -10,6 +10,11 @@ import java.util.*;
  * CRUD - Create, retrieve, update, delete
  */
 public class AccountDao {
+    /**
+     * Gets Account From DataBase based on Username
+     * @param username
+     * @return
+     */
     public Optional<Account> getByUsername(String username){
         var conn = DatabaseHandler.getInstance().getConnection();
         try{

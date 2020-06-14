@@ -14,6 +14,9 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * CLASS IS REPRESENTATION OF 'BUSKET'.
+ */
 public class OrderItemsController extends AbstractController implements Initializable {
 
     //TABLE VIEW DETAILS
@@ -30,6 +33,11 @@ public class OrderItemsController extends AbstractController implements Initiali
         tv.setItems(CreateOrderController.getItems());
 
     }
+
+    /**
+     * METHOD FOR REMOVING ITEM FROM BASKET.
+     * @param event
+     */
     @FXML
     void handleRemove(ActionEvent event) {
         item = tv.getSelectionModel().getSelectedItem();
@@ -37,6 +45,10 @@ public class OrderItemsController extends AbstractController implements Initiali
         CreateOrderController.totalAmount -= (item.getItemPrice()*item.getClothQty());
     }
 
+    /**
+     * METHOD FOR RETURNING TO MAIN WINDOW.
+     * @param event
+     */
     @FXML
     private void handleReturn(ActionEvent event) {
         Stage stage = (Stage) btnReturn.getScene().getWindow();

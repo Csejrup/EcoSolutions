@@ -9,7 +9,11 @@ import java.util.List;
 import java.util.Optional;
 
 public class DeliveryPointDao {
-
+    /**
+     * METHOD FOR GETTING DELIVERYPOINT ID BASED ON LOGGED IN ACCOUNT
+     * @param accountID
+     * @return
+     */
     public static int getIdByAccID(int accountID){
         var conn = DatabaseHandler.getInstance().getConnection();
         int dpID = 0;

@@ -46,6 +46,11 @@ public class CustomerDao implements Dao<Customer> {
         }
         return customers;
     }
+
+    /**
+     * Method for Inserting the customer details inside of the database
+     * @param customer
+     */
     @Override
     public void save(Customer customer) {
         var conn = DatabaseHandler.getInstance().getConnection();
@@ -57,6 +62,11 @@ public class CustomerDao implements Dao<Customer> {
             e.printStackTrace();
         }
     }
+
+    /**
+     * METHOD FOR UPDATING CUSTOMER DETAILS BASED ON CUSTOMER ID.
+     * @param customer
+     */
     @Override
     public void update(Customer customer) {
         var conn = DatabaseHandler.getInstance().getConnection();
@@ -72,6 +82,11 @@ public class CustomerDao implements Dao<Customer> {
             e.printStackTrace();
         }
     }
+
+    /**
+     * METHOD FOR DELETING CUSTOMER FROM DATABASE -- FOR FUTURE IMPLEMENTATION.
+     * @param customer
+     */
     @Override
     public void delete(Customer customer) {
         var conn = DatabaseHandler.getInstance().getConnection();
@@ -84,6 +99,12 @@ public class CustomerDao implements Dao<Customer> {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Method that returns true if the customer exist inside of the DataBase
+     * @param customerID
+     * @return
+     */
     public static boolean exist(int customerID){
         var conn = DatabaseHandler.getInstance().getConnection();
         try{
