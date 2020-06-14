@@ -37,6 +37,8 @@ public class RegisterCustomerController extends AbstractController {
             alert.setHeaderText("CUSTOMER CREATED");
             alert.setContentText("CUSTOMER HAS BEEN CREATED");
             alert.show();
+            int customerID = CustomerService.getLastCustomerID();
+            System.out.println(customerID);
 
         }
 

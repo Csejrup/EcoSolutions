@@ -29,4 +29,5 @@ public class CustomerService  {
 	public static String getCustomerPhone(int customerID){
 		return CustomerDao.getCustomerPhone(customerID);
 	}
+	public static int getLastCustomerID(){return CustomerDao.getLastCustomerID();}
 }
