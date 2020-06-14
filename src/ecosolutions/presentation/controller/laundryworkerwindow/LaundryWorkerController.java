@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 
 /**
- *
+ * Class is responsible for handle Laundry worker GUI after the cleaning process is finish
  */
 public class LaundryWorkerController extends AbstractController implements Initializable {
     //---------------------FXML-------------------------//
@@ -43,6 +43,7 @@ public class LaundryWorkerController extends AbstractController implements Initi
         List<Order> listoforders = OrderService.getLWOrders();
         tableview.getItems().addAll(listoforders);
     }
+    //Update order status based on selected orderID in tableview
     private void id(String status){
         var order = new Order();
         var orderservice = new OrderService();
@@ -55,6 +56,7 @@ public class LaundryWorkerController extends AbstractController implements Initi
         tableview.getItems().clear();
         loadData();
     }
+    //Button changes status of selected order to "Complete"
     @FXML
     void handleStatus(ActionEvent event) {
         String stat;

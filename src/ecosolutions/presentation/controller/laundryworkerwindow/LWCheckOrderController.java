@@ -16,7 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import java.net.URL;
 /**
- *
+ * Class is responsible for handle Laundry worker GUI trough the cleaning process
  */
 public class LWCheckOrderController extends AbstractController implements Initializable {
 
@@ -48,6 +48,7 @@ public class LWCheckOrderController extends AbstractController implements Initia
             AlertCreator.showAlertDialog(rootPane,borderPane, Arrays.asList(button),"Insert Order Number",null);
         }
     }
+    //Button change order status to "Cleaning"
     @FXML
     private void handleCleaning(ActionEvent event) {
         var orderservice = new OrderService();
@@ -62,6 +63,7 @@ public class LWCheckOrderController extends AbstractController implements Initia
             AlertCreator.showAlertDialog(rootPane,borderPane, Arrays.asList(button),"Check Order Number","Insert an Order Number\nAnd select an order from the list");
         }
     }
+    //Method print out washable labels with orderID, ClothType and quantity based on data in DB that matches given orderID
     @FXML
     void handlePrint(ActionEvent event) {
         try {
