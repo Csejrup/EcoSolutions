@@ -1,6 +1,6 @@
 package ecosolutions.persistence.DAO;
 import ecosolutions.persistence.DatabaseHandler;
-import ecosolutions.presentation.models.Account;
+import ecosolutions.Domain.Account;
 
 import java.sql.*;
 import java.util.*;
