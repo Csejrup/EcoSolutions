@@ -1,5 +1,3 @@
-package Test;
-
 import ecosolutions.persistence.DAO.OrderDao;
 import org.junit.After;
 import org.junit.Test;
@@ -13,7 +11,7 @@ public class OrderDaoTest {
 
     @Test
     public void getLastOrderID() {
-        int expectedID = 1;
+        int expectedID = 1015;
         assertEquals(expectedID, OrderDao.getLastOrderID());
     }
 }

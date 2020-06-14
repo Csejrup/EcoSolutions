@@ -27,12 +27,20 @@ public class verifyController extends AbstractController {
     @FXML
     private JFXTextField ordnoTextField;
 
+    /**
+     * METHOD FOR RETURNING INTO DELIVERY POINT WINDOW.
+     * @param event
+     */
     @FXML
     void handleReturn(ActionEvent event) {
         Stage stage = (Stage) btnreturn.getScene().getWindow();
         loadScreen(stage, "deliverypointmain.fxml");
     }
 
+    /**
+     * METHOD FOR ISSUING THE ORDER.
+     * @param event
+     */
     @FXML
     void handleVerify(ActionEvent event) {
         int orderID = Integer.parseInt(ordnoTextField.getText());

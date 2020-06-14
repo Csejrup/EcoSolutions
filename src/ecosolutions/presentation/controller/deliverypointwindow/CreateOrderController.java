@@ -39,6 +39,11 @@ public class CreateOrderController extends AbstractController implements Initial
         itemListView.setItems(LaundryItemService.getItemTypes());
         dueTextField.setText(String.valueOf(totalAmount));
     }
+
+    /**
+     * METHOD FOR CREATING ORDER.
+     * @param event
+     */
     @FXML
     void handleOrderConfirm(ActionEvent event) {
         java.util.Date now = new Date();
@@ -52,7 +57,7 @@ public class CreateOrderController extends AbstractController implements Initial
             int accountID = LoginController.accountID;
             int deliveryPointID = DeliveryPointService.getDpID(accountID);
             String date = sdp.format(now);
-                if (items.size() == 0){
+                if (items.size() == 0||customerID == 0){
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setContentText("ORDER IS EMPTY, PICK CLOTH TYPE AND QUANTITY.");
                     alert.show();
@@ -86,13 +91,21 @@ public class CreateOrderController extends AbstractController implements Initial
             orderQTY = Integer.parseInt(qtyTextField.getText());
             orderID = LaundryItemService.getID(orderType);
             itemPrice = LaundryItemService.getPrice(orderType);
+            if(orderType!=null&&orderQTY!=0){
             items.add(new OrderTableView(orderType,orderQTY,orderID,itemPrice));
+
+            }
+            else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("PICK CLOTHTYPE AND QUANTITY");
+                alert.show();
+            }
             System.out.println(orderID);
             totalAmount+=(itemPrice*orderQTY);
             qtyTextField.clear();
             dueTextField.setText(String.valueOf(totalAmount));
-        }catch(Exception e){
-            e.printStackTrace();
+        }catch(NumberFormatException e){
+           // e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("PICK CLOTH TYPE AND INSERT QUANTITY");
             alert.show();
