@@ -67,17 +67,8 @@ public class Order {
 	public void setOrderID(int orderID) {
 		this.orderID = orderID;
 	}
-	public void setCustomerID(int customerID) {
-		this.customerID = customerID;
-	}
-	public void setQty(int qty) {
-		this.qty = qty;
-	}
 	public void setStatus(String status) {
 		this.status = status;
-	}
-	public void setClothtype(String clothtype) {
-		this.clothtype = clothtype;
 	}
 	public void setOrderdate(String orderdate) {
 		this.orderdate = orderdate;
@@ -86,56 +77,53 @@ public class Order {
 	public void setOrderStatusID(int orderStatusID) { this.orderStatusID = orderStatusID; }
 	public void setDate(String date) { this.date = date; }
 	public void setDeliveryPointID(int deliveryPointID) { this.deliveryPointID = deliveryPointID; }
+	public void setCustomerID(int customerID) {
+		this.customerID = customerID;
+	}
+	public void setQty(int qty) {
+		this.qty = qty;
+	}
+	public void setClothtype(String clothtype) {
+		this.clothtype = clothtype;
+	}
 
 	//GETTERS//
+	public String getOrderstatus() {
+		return orderstatus;
+	}
+	public int getOrderID() {
+		return orderID;
+	}
+	public int getCustomerID() {
+		return customerID;
+	}
+	public int getOrderStatusID() { return orderStatusID; }
+	public String getDate() { return date;}
+	public int getDeliveryPointID() { return deliveryPointID; }
+	public String getStatus() {
+		return status;
+	}
+	public int getQty() {
+		return qty;
+	}
+	public String getClothtype() {
+		return clothtype;
+	}
+	public String getOrderdate() {
+		return orderdate;
+	}
+	public int getOrderDescID() { return orderDescID; }
 	public float getPrice() {
 		return price;
 	}
-
 	public String getDeliverypointname() {
 		return deliverypointname;
 	}
 
-	public String getOrderstatus() {
-		return orderstatus;
-	}
-
-	public int getOrderID() {
-		return orderID;
-	}
-
-	public int getCustomerID() {
-		return customerID;
-	}
-
-	public int getQty() {
-		return qty;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public String getClothtype() {
-		return clothtype;
-	}
-
-	public String getOrderdate() {
-		return orderdate;
-	}
-
+	//OBSERVABLE LIST//
 	public ObservableList<OrderTableView> getOrderDetails(){
 		return CreateOrderController.getItems();
 	}
-
-	public int getOrderDescID() { return orderDescID; }
-
-	public int getOrderStatusID() { return orderStatusID; }
-
-	public String getDate() { return date;}
-
-	public int getDeliveryPointID() { return deliveryPointID; }
-
 	public ObservableList<OrderTableView> getItemz() {
 		return itemz;
 	}

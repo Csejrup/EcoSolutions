@@ -13,6 +13,9 @@ import javafx.scene.input.*;
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
+/**
+ * This class is responsible for verifying login
+ */
 
 public class LoginController extends AbstractController {
 
@@ -28,27 +31,26 @@ public class LoginController extends AbstractController {
     @FXML
     private void handleLogIn(ActionEvent event) {
         String employeeID = txtUserName.getText();
-        String password = txtPW.getText();
-        // method in the comment works
+        //veryfyLogIn method is temporary disabled to make access to all GUIs easier trough customer test
         if (employeeID.startsWith("M")) {
-            // Stage stage = (Stage) btnLogIn.getScene().getWindow();
-            // loadScreen(stage, "ManagerView.fxml");
-            verifyLogIn("ManagerView.fxml");
+             Stage stage = (Stage) btnLogIn.getScene().getWindow();
+            loadScreen(stage, "ManagerView.fxml");
+           // verifyLogIn("ManagerView.fxml");
         } else if (employeeID.startsWith("S")) {
-            // Stage stage = (Stage) btnLogIn.getScene().getWindow();
-            // loadScreen(stage, "deliverypointmain.fxml");
-            verifyLogIn("deliverypointmain.fxml");
+            Stage stage = (Stage) btnLogIn.getScene().getWindow();
+            loadScreen(stage, "deliverypointmain.fxml");
+          //  verifyLogIn("deliverypointmain.fxml");
         } else if (employeeID.startsWith("L")) {
-            //  Stage stage = (Stage) btnLogIn.getScene().getWindow();
-            //  loadScreen(stage, "LaundryWorkerView.fxml");
-            verifyLogIn("LaundryWorkerView.fxml");
+              Stage stage = (Stage) btnLogIn.getScene().getWindow();
+              loadScreen(stage, "LaundryWorkerView.fxml");
+           // verifyLogIn("LaundryWorkerView.fxml");
         } else if (employeeID.startsWith("D")) {
-            //Stage stage = (Stage) btnLogIn.getScene().getWindow();
-            // loadScreen(stage, "DriverView.fxml");
-            verifyLogIn("DriverView.fxml");
+            Stage stage = (Stage) btnLogIn.getScene().getWindow();
+            loadScreen(stage, "DriverView.fxml");
+          //  verifyLogIn("DriverView.fxml");
         }
     }
-
+    //Method takes username and password inputted by user and check if it matches data in DB
     private void verifyLogIn(String scene) {
         try {
             String username = txtUserName.getText();

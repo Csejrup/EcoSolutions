@@ -22,6 +22,9 @@ import java.util.ResourceBundle;
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
+/**
+ * Class is responsible for handling driver GUI
+ */
 public class DriverController extends AbstractController implements Initializable {
 
     @FXML private JFXButton btnLogOut;
@@ -65,7 +68,7 @@ public class DriverController extends AbstractController implements Initializabl
         checkBoxUp.setSelected(false);
         change("In_Transit");
     }
-
+    //Change status of order in DB and in talbeview
     private void change(String status){
          Order order = new Order();
          OrderService orderservice = new OrderService();
@@ -83,10 +86,12 @@ public class DriverController extends AbstractController implements Initializabl
              refresh();
          }
     }
+    //Clear the table view and gets data from DB again
     private void refresh(){
         tableView.getItems().clear();
         loadData();
     }
+    //Send massage to customer when his order status is equal to "Delivered"
     private void sendMassage(String ready) {
         List<Customer> customers = new ArrayList<>();
         CustomerDao customerDao = new CustomerDao();
