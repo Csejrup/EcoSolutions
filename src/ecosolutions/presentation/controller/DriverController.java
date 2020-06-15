@@ -81,7 +81,11 @@ public class DriverController extends AbstractController implements Initializabl
          }else{
              order.setOrderID(tableView.getSelectionModel().getSelectedItem().getOrderID());
              order.setOrderstatus(status);
-             OrderService.updateOrderr(order);
+
+             sendMassage(status);
+             orderservice.updateOrderr(order);
+
+
              System.out.println(status);
              refresh();
          }
@@ -94,15 +98,21 @@ public class DriverController extends AbstractController implements Initializabl
     //Send massage to customer when his order status is equal to "Delivered"
     private void sendMessage(String ready) {
         List<Customer> customers = new ArrayList<>();
+
         CustomerDao customerDao = new CustomerDao();
-        Customer cuss = new Customer();
+
         if (ready.equals("Delivered")) {
             try {
-                customers = customerDao.getCustomerFromOrder(tableView.getSelectionModel().getSelectedItem().getOrderID());
+
+                customers=customerDao.getCustomerFromOrder(tableView.getSelectionModel().getSelectedItem().getOrderID());
+
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            System.out.println("Calling customer ="+ cuss+" Order is ready");
+
+            System.out.println("Calling customer ="+ customers+" Order is ready");
+
         }
     }
 

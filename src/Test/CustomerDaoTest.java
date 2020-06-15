@@ -2,6 +2,8 @@ package Test;
 
 import ecosolutions.persistence.DAO.CustomerDao;
 
+
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;

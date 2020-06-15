@@ -169,6 +169,7 @@ public class CustomerDao implements Dao<Customer> {
      */
     public List<Customer> getCustomerFromOrder(int orderID){
         List<Customer> customers = new ArrayList<>();
+
         var conn = DatabaseHandler.getInstance().getConnection();
         try {
             var stmt = conn.prepareStatement("EXEC done_SMS @getOrderID=" + orderID);
