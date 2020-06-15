@@ -10,11 +10,12 @@ import javafx.scene.control.*;
 import java.util.*;
 
 /**
- *
+ * Controller responsible for handling the view EmployeesView
+ * Responsible for getting Employee Objects through EmployeeService
  */
 public class EmployeesListController implements Initializable {
 
-    ObservableList list = FXCollections.observableArrayList();
+    private final ObservableList list = FXCollections.observableArrayList();
 
     @FXML private TableView<Employee> tableView;
     @FXML private TableColumn<Employee, String> idCol;

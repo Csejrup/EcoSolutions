@@ -2,7 +2,6 @@ package Test;
 
 import ecosolutions.persistence.DatabaseHandler;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import java.io.IOException;
 import java.sql.*;
 
@@ -12,8 +11,6 @@ public class testDB {
     /**
      * Method that tests database connection
      * Creates a new table, and inserts new data, drops the table at the end
-     * @throws SQLException
-     * @throws IOException
      */
     @Test
     public void runDBTest() throws SQLException {

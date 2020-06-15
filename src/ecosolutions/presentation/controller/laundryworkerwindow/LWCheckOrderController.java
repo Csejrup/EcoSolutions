@@ -16,6 +16,8 @@ import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import java.net.URL;
 /**
+ * Controller responsible for the view CleaningView.fxml
+ * Reponsible for updating an order object through OrderService
  * Class is responsible for handle Laundry worker GUI trough the cleaning process
  */
 public class LWCheckOrderController extends AbstractController implements Initializable {
@@ -28,7 +30,6 @@ public class LWCheckOrderController extends AbstractController implements Initia
     @FXML private TableColumn<Order, String> launditemCol;
     @FXML private TableColumn<Order, Integer> qtyCol;
 
-    private String _ORDER_NO;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initCol();
@@ -45,22 +46,21 @@ public class LWCheckOrderController extends AbstractController implements Initia
             tableview.getItems().addAll(itemlist);
         } catch (NumberFormatException e) {
             JFXButton button = new JFXButton("Okay");
-            AlertCreator.showAlertDialog(rootPane,borderPane, Arrays.asList(button),"Insert Order Number",null);
+            AlertCreator.showAlertDialog(rootPane,borderPane, Collections.singletonList(button),"Insert Order Number",null);
         }
     }
     //Button change order status to "Cleaning"
     @FXML
     private void handleCleaning(ActionEvent event) {
-        var orderservice = new OrderService();
         try {
             if (id() != 0) {
-                orderservice.updateOrder(id(),"Cleaning");
+                OrderService.updateOrder(id(),"Cleaning");
                 Stage stage = (Stage) btnCleaning.getScene().getWindow();
                 loadScreen(stage, "LaundryWorkerView.fxml");
             }
         } catch (Exception e) {
             JFXButton button = new JFXButton("Okay");
-            AlertCreator.showAlertDialog(rootPane,borderPane, Arrays.asList(button),"Check Order Number","Insert an Order Number\nAnd select an order from the list");
+            AlertCreator.showAlertDialog(rootPane,borderPane, Collections.singletonList(button),"Check Order Number","Insert an Order Number\nAnd select an order from the list");
         }
     }
     //Method print out washable labels with orderID, ClothType and quantity based on data in DB that matches given orderID
@@ -84,12 +84,12 @@ public class LWCheckOrderController extends AbstractController implements Initia
                 }
                 fw.close();
                 JFXButton button = new JFXButton("Okay");
-                AlertCreator.showAlertDialog(rootPane,borderPane, Arrays.asList(button),"Label Printed","Labels are now printed for Order Number: "+id()+
+                AlertCreator.showAlertDialog(rootPane,borderPane, Collections.singletonList(button),"Label Printed","Labels are now printed for Order Number: "+id()+
                         "\n You may now start the Cleaning Process");
             }
         } catch (Exception e) {
             JFXButton button = new JFXButton("Okay");
-            AlertCreator.showAlertDialog(rootPane,borderPane, Arrays.asList(button),"Check Order First, Insert Order Number",null);
+            AlertCreator.showAlertDialog(rootPane,borderPane, Collections.singletonList(button),"Check Order First, Insert Order Number",null);
         }
     }
     @FXML
@@ -98,7 +98,7 @@ public class LWCheckOrderController extends AbstractController implements Initia
         loadScreen(stage, "LoginView.fxml");
     }
     private int id(){
-        _ORDER_NO = orderNoTextField.getText();
+        String _ORDER_NO = orderNoTextField.getText();
         return Integer.parseInt(_ORDER_NO);
     }
 }

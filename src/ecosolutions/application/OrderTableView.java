@@ -4,7 +4,7 @@ package ecosolutions.application;
 import javafx.beans.property.SimpleStringProperty;
 
 public class OrderTableView {
-    private SimpleStringProperty clothType;
+    private final SimpleStringProperty clothType;
     private int clothQty;
     private int itemID;
     private float itemPrice;

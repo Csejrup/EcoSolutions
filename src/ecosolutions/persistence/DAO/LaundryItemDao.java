@@ -20,7 +20,7 @@ public class LaundryItemDao implements Dao<DeliveryPoint>{
     @Override
     public Optional<DeliveryPoint> getbyID(int id) {
         //EMPTY
-        return null;
+        return Optional.empty();
     }
     @Override
     public List<DeliveryPoint> getAll() {
@@ -32,7 +32,7 @@ public class LaundryItemDao implements Dao<DeliveryPoint>{
             //SQL STATEMENT FOR SELECTING EVERY ORDER RELATED DATA IN MULTIPLE TABLES, CONNECTED THROUGH INNER JOIN AND TBLORDER
             ResultSet rs = stmt.executeQuery("SELECT * FROM tblDeliveryPoint");
             while(rs.next()){
-                DeliveryPoint deliveryPoint = exportDeliveryPoint(rs);
+                DeliveryPoint deliveryPoint = exportDeliveryPoint();
                 deliveryPoints.add(deliveryPoint);
             }
             stmt.close();
@@ -58,7 +58,7 @@ public class LaundryItemDao implements Dao<DeliveryPoint>{
 
     /**
      * Method that returning list of Cloth types from DataBase
-     * @return
+     * @return laundryTypeItems
      */
     public static ObservableList<String> getLaundryTypes(){
         ObservableList<String> laundryTypeItems = FXCollections.observableArrayList();
@@ -84,8 +84,8 @@ public class LaundryItemDao implements Dao<DeliveryPoint>{
 
     /**
      * Method for getting itemID(clothID) based on item type.
-     * @param itemType
-     * @return
+     *
+     * @return itemID
      */
     public static int getItemID(String itemType){
         var conn = DatabaseHandler.getInstance().getConnection();
@@ -106,8 +106,8 @@ public class LaundryItemDao implements Dao<DeliveryPoint>{
     /**
      *
      * METHOD THAT GETTING PRICE OF ITEM BASED ON ITEM TYPE
-     * @param itemType
-     * @return
+     *
+     * @return itemPrice
      */
     public static float getPrice(String itemType){
         var conn = DatabaseHandler.getInstance().getConnection();
@@ -124,8 +124,7 @@ public class LaundryItemDao implements Dao<DeliveryPoint>{
         }
         return itemPrice;
     }
-    private DeliveryPoint exportDeliveryPoint(ResultSet rs){
-        DeliveryPoint deliveryPoint = new DeliveryPoint();
-        return deliveryPoint;
+    private DeliveryPoint exportDeliveryPoint(){
+        return new DeliveryPoint();
     }
 }

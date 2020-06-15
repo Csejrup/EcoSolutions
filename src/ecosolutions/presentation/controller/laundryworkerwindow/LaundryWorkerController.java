@@ -16,6 +16,8 @@ import javafx.stage.Stage;
 import java.net.URL;
 
 /**
+ * Controller responsible for handling the view LaundryWorkerView.fxml
+ * Responsible for updating an order object in the database through orderService
  * Class is responsible for handle Laundry worker GUI after the cleaning process is finish
  */
 public class LaundryWorkerController extends AbstractController implements Initializable {
@@ -27,8 +29,7 @@ public class LaundryWorkerController extends AbstractController implements Initi
     @FXML private TableColumn<Order, String> ord_noCol;
     @FXML private TableColumn<Order, String> c_statCol;
     //---------------------FXML-------------------------//
-
-    ObservableList list = FXCollections.observableArrayList();
+    private final ObservableList list = FXCollections.observableArrayList();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initCol();
@@ -44,13 +45,12 @@ public class LaundryWorkerController extends AbstractController implements Initi
         tableview.getItems().addAll(listoforders);
     }
     //Update order status based on selected orderID in tableview
-    private void id(String status){
+    private void id(){
         var order = new Order();
-        var orderservice = new OrderService();
         order.setOrderID(tableview.getSelectionModel().getSelectedItem().getOrderID());
         System.out.println(order.getOrderID());
-        order.setOrderstatus(status);
-        orderservice.updateOrderr(order);
+        order.setOrderstatus("Complete");
+        OrderService.updateOrderr(order);
     }
     private void refresh(){
         tableview.getItems().clear();
@@ -63,18 +63,18 @@ public class LaundryWorkerController extends AbstractController implements Initi
         try {
             stat = tableview.getSelectionModel().getSelectedItem().getOrderstatus();
             if(!stat.isEmpty() && !stat.equals("In_Transit")){
-                id("Complete");
+                id();
                 System.out.println(stat);
                 refresh();
             }else{
                 JFXButton button = new JFXButton("Okay");
 
-                AlertCreator.showAlertDialog(rootpane,rootborderpane, Arrays.asList(button),"Check Information","Cannot Select a 'In_Transit Order'"+
+                AlertCreator.showAlertDialog(rootpane,rootborderpane, Collections.singletonList(button),"Check Information","Cannot Select a 'In_Transit Order'"+
                         "\n And please select an 'Cleaning' Order");
             }
         } catch (Exception e) {
             JFXButton button = new JFXButton("Okay");
-            AlertCreator.showAlertDialog(rootpane,rootborderpane, Arrays.asList(button),"Check Information","Please Select an Order from the list");
+            AlertCreator.showAlertDialog(rootpane,rootborderpane, Collections.singletonList(button),"Check Information","Please Select an Order from the list");
         }
     }
     @FXML

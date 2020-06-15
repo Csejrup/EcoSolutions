@@ -15,7 +15,7 @@ public class EmployeeDao implements Dao<Employee> {
      * METHOD FOR GETTING EMPLOYEE DETAILS BASED ON EMPLOYEE ID
      */
     @Override
-     public Optional<Employee> getbyID(int id) {
+     public  Optional<Employee> getbyID(int id) {
         var conn = DatabaseHandler.getInstance().getConnection();
         try{
             var stmt = conn.prepareStatement("SELECT fldEmployeeID,fldName,fldSurname,fldPhone_no FROM tblEmployee WHERE fldEmployeeID=" + id);
@@ -59,7 +59,7 @@ public class EmployeeDao implements Dao<Employee> {
 
     /**
      * Method that updates employee Details in Database
-     * @param employee
+     *
      */
     @Override
     public void update(Employee employee) {
@@ -80,7 +80,7 @@ public class EmployeeDao implements Dao<Employee> {
 
     /**
      * Method for deleting Employee from DataBase
-     * @param employee
+     *
      */
     @Override
     public void delete(Employee employee) {

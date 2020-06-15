@@ -51,23 +51,19 @@ public class OrderService {
         return OrderDao.getItemTypeByID(itemIDList);
     }
     public static List<Integer>getItemQuantityByID(List<Integer> itemIDList,int orderID){
-        OrderDao orderdao = new OrderDao();
-        return orderdao.getQuantityByID(itemIDList,orderID);
+        return OrderDao.getQuantityByID(itemIDList,orderID);
     }
     public static int getLastOrderID(){
        return OrderDao.getLastOrderID();
     }
     public static ObservableList<PieChart.Data> getGraph1(){
-        OrderDao orderDao = new OrderDao();
-        return orderDao.getOrderGraphStatistics();
+        return OrderDao.getOrderGraphStatistics();
     }
     public static ObservableList<PieChart.Data> getGraph2(){
-        OrderDao orderDao = new OrderDao();
-        return orderDao.getEmployeeStatistics();
+        return OrderDao.getEmployeeStatistics();
     }
     public static ObservableList<XYChart.Data<Integer, Integer>> getGraph3(){
-        OrderDao orderDao = new OrderDao();
-        return orderDao.getBarChartData();
+        return OrderDao.getBarChartData();
     }
     public static int getCustomerIDbyOrderID(int orderID){
        return OrderDao.getCustomerIDbyOrderID(orderID);

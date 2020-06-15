@@ -129,8 +129,6 @@ public class Order {
 	}
 	/**
 	 * Method to convert DB data to Strings
-	 *
-	 * @return
 	 */
 	@Override
 	public String toString() {

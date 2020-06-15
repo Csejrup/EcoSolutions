@@ -11,10 +11,12 @@ import java.util.List;
  */
 public class CustomerService  {
 
-	public static List<Customer> getCustomers(){
-		var customerDao = new CustomerDao();
-		return customerDao.getAll();
-	}
+// --Commented out by Inspection START (15-06-2020 00:00):
+//	public static List<Customer> getCustomers(){
+//		var customerDao = new CustomerDao();
+//		return customerDao.getAll();
+//	}
+// --Commented out by Inspection STOP (15-06-2020 00:00)
 
 	public static void addCustomer(Customer customer){
 		var customerDao = new CustomerDao();
@@ -29,4 +31,5 @@ public class CustomerService  {
 	public static String getCustomerPhone(int customerID){
 		return CustomerDao.getCustomerPhone(customerID);
 	}
+	public static int getLastCustomerID(){return CustomerDao.getLastCustomerID();}
 }

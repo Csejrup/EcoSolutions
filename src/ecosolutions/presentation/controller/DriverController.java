@@ -14,7 +14,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import java.net.URL;
-;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -23,7 +22,9 @@ import java.util.ResourceBundle;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
- * Class is responsible for handling driver GUI
+ * Controller responsible for handling the view DriverView.fxml
+ * Responsible for updating an order through OrderService
+ * Responsible for getting customer objects to send out an notification
  */
 public class DriverController extends AbstractController implements Initializable {
 
@@ -34,7 +35,7 @@ public class DriverController extends AbstractController implements Initializabl
     @FXML private TableColumn<Order, String> ordstatCol;
     @FXML private TableColumn<Order, String> locaCol;
 
-    ObservableList list = FXCollections.observableArrayList();
+    final ObservableList list = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -52,15 +53,16 @@ public class DriverController extends AbstractController implements Initializabl
         List<Order> listoforders = OrderService.getDriverOrders();
         tableView.getItems().addAll(listoforders);
     }
-    public void statusUnderWay(ActionEvent event){
+    public void statusUnderWay(){
         checkBoxDeliv.setSelected(false);
         checkboxTransit.setSelected(false);
         change("Under_Way");
     }
-    public void statusDelivered(ActionEvent event) {
+    public void statusDelivered() {
         checkBoxUp.setSelected(false);
         checkboxTransit.setSelected(false);
         change("Delivered");
+        sendMessage("Delievered");
     }
     @FXML
     void statusTransit(ActionEvent event) {
@@ -71,8 +73,6 @@ public class DriverController extends AbstractController implements Initializabl
     //Change status of order in DB and in talbeview
     private void change(String status){
          Order order = new Order();
-         OrderService orderservice = new OrderService();
-
          if(tableView.getSelectionModel().isEmpty()){
              showMessageDialog(null,"Select order");
              checkBoxDeliv.setSelected(false);
@@ -81,8 +81,11 @@ public class DriverController extends AbstractController implements Initializabl
          }else{
              order.setOrderID(tableView.getSelectionModel().getSelectedItem().getOrderID());
              order.setOrderstatus(status);
+
              sendMassage(status);
              orderservice.updateOrderr(order);
+
+
              System.out.println(status);
              refresh();
          }
@@ -93,13 +96,14 @@ public class DriverController extends AbstractController implements Initializabl
         loadData();
     }
     //Send massage to customer when his order status is equal to "Delivered"
-    private void sendMassage(String ready) {
+    private void sendMessage(String ready) {
         List<Customer> customers = new ArrayList<>();
 
         CustomerDao customerDao = new CustomerDao();
 
         if (ready.equals("Delivered")) {
             try {
+
                 customers=customerDao.getCustomerFromOrder(tableView.getSelectionModel().getSelectedItem().getOrderID());
 
 
@@ -108,6 +112,7 @@ public class DriverController extends AbstractController implements Initializabl
             }
 
             System.out.println("Calling customer ="+ customers+" Order is ready");
+
         }
     }
 

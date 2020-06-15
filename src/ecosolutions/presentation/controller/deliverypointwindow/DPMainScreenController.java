@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 /**
  * CLASS FOR CHOOSING WHICH SERVICE DELIVERY POINT WORKER WANTS TO USE.
+ * Controller responsible for handling the view deliverypointmain.fxml
  */
 public class DPMainScreenController extends AbstractController {
 
@@ -15,7 +16,7 @@ public class DPMainScreenController extends AbstractController {
 
     /**
      * METHOD FOR CHOOSING ORDER CREATION WINDOW.
-     * @param event
+     *
      */
     @FXML
     void handleConfirmation(ActionEvent event) {
@@ -24,7 +25,7 @@ public class DPMainScreenController extends AbstractController {
     }
     /**
      * METHOD FOR CHOOSING CUSTOMER CREATION WINDOW.
-     * @param event
+     *
      */
     @FXML
     void handleCustomer(ActionEvent event) {
@@ -33,7 +34,7 @@ public class DPMainScreenController extends AbstractController {
     }
     /**
      * METHOD FOR LOGGING OUT OF APPLICATION.
-     * @param event
+     *
      */
     @FXML
     void handleLogOut(ActionEvent event) {
@@ -42,7 +43,7 @@ public class DPMainScreenController extends AbstractController {
     }
     /**
      * METHOD FOR CHOOSING ORDER ISSUING WINDOW.
-     * @param event
+     *
      */
     @FXML
     void handleVerification(ActionEvent event) {

@@ -192,4 +192,22 @@ public class CustomerDao implements Dao<Customer> {
         customer.setPhone_No(rs.getString("fldPhone"));
         return customer;
     }
+    /**
+     * METHOD FOR GETTING LASTES CUSTOMER ID.
+     */
+    public static int getLastCustomerID()  {
+        var conn = DatabaseHandler.getInstance().getConnection();
+        int lastCustomerID = 0;
+        try {
+            PreparedStatement stmt = conn.prepareStatement("SELECT MAX(fldCustomerID) FROM tblCustomer");
+            ResultSet s = stmt.executeQuery();
+            if(s.next()){
+                lastCustomerID =  s.getInt(1);
+            }
+            stmt.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return lastCustomerID;
+    }
 }

@@ -9,16 +9,20 @@ public class Customer {
     private String phone_No;
     private String last_name;
     private int customer_id;
+
     //DEFAULT CONSTRUCTOR//
-    public Customer(){
+    public Customer() {
 
     }
+
     public Customer(String first_name, String phone_No, String last_name, int customer_id) {
-        this.first_name = first_name;
-        this.phone_No = phone_No;
-        this.last_name = last_name;
-        this.customer_id = customer_id;
-    }public Customer(String first_name, String last_name, String phone_No) {
+         this.first_name = first_name;
+         this.phone_No = phone_No;
+         this.last_name = last_name;
+         this.customer_id = customer_id;
+    }
+    public Customer(String first_name, String last_name, String phone_No) {
+
         this.first_name = first_name;
         this.phone_No = phone_No;
         this.last_name = last_name;
@@ -52,7 +56,7 @@ public class Customer {
 
     /**
      * Method to convert DB data to Strings
-     * @return
+     *
      */
     @Override
     public String toString() {
