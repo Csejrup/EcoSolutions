@@ -36,20 +36,20 @@ public class LoginController extends AbstractController implements Initializable
     private void handleLogIn(ActionEvent event) {
         String employeeID = txtUserName.getText();
         if (employeeID.startsWith("M")) {
-             Stage stage = (Stage) btnLogIn.getScene().getWindow();
-            loadScreen(stage, "ManagerView.fxml");
+            /* Stage stage = (Stage) btnLogIn.getScene().getWindow();
+            loadScreen(stage, "ManagerView.fxml");*/
            verifyLogIn("ManagerView.fxml");
         } else if (employeeID.startsWith("S")) {
-            Stage stage = (Stage) btnLogIn.getScene().getWindow();
-            loadScreen(stage, "deliverypointmain.fxml");
+           /* Stage stage = (Stage) btnLogIn.getScene().getWindow();
+            loadScreen(stage, "deliverypointmain.fxml");*/
            verifyLogIn("deliverypointmain.fxml");
         } else if (employeeID.startsWith("L")) {
-              Stage stage = (Stage) btnLogIn.getScene().getWindow();
-              loadScreen(stage, "LaundryWorkerView.fxml");
+              /*Stage stage = (Stage) btnLogIn.getScene().getWindow();
+              loadScreen(stage, "LaundryWorkerView.fxml");*/
            verifyLogIn("LaundryWorkerView.fxml");
         } else if (employeeID.startsWith("D")) {
-            Stage stage = (Stage) btnLogIn.getScene().getWindow();
-            loadScreen(stage, "DriverView.fxml");
+           /* Stage stage = (Stage) btnLogIn.getScene().getWindow();
+            loadScreen(stage, "DriverView.fxml");*/
             verifyLogIn("DriverView.fxml");
         }else{
             txtUserName.getStyleClass().add("wrong-credentials");
@@ -78,7 +78,7 @@ public class LoginController extends AbstractController implements Initializable
             txtPW.getStyleClass().add("wrong-credentials");
             txtUserName.setText("");
             txtPW.setText("");
-            //showMessageDialog(null, "Wrong username or password. Try again!");
+            showMessageDialog(null, "Wrong username or password. Try again!");
         }
     }
     /**
@@ -92,7 +92,8 @@ public class LoginController extends AbstractController implements Initializable
                 "insert one of the following options " +
                 "into the username textfield" +
                 "and press the login button, no password needed:" +
-                "\n'S' for DeliveryPoint\n'D' for Driver\n'L' for Laundry Worker\n'M' for Manager");
+                "\nLOGIN: 'S2004' , PASSWORD : '3432' for DeliveryPoint\nLOGIN: 'D1001', PASSWORD: '1234' for Driver\n LOGIN: 'W3002', PASSWORD: '9593' for Laundry Worker\n LOGIN: 'M4001', " +
+                "PASSWORD: '4435'  for Manager");
     }
 }
 
