@@ -1,5 +1,7 @@
+package Test;
+
 import ecosolutions.persistence.DAO.CustomerDao;
-import ecosolutions.presentation.models.Customer;
+//port ecosolutions.presentation.models.Customer;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
