@@ -72,7 +72,8 @@ public class DriverController extends AbstractController implements Initializabl
     }
     //Change status of order in DB and in talbeview
     private void change(String status){
-         Order order = new Order();
+         var order = new Order();
+         var orderservice = new OrderService();
          if(tableView.getSelectionModel().isEmpty()){
              showMessageDialog(null,"Select order");
              checkBoxDeliv.setSelected(false);
@@ -82,7 +83,7 @@ public class DriverController extends AbstractController implements Initializabl
              order.setOrderID(tableView.getSelectionModel().getSelectedItem().getOrderID());
              order.setOrderstatus(status);
 
-             sendMassage(status);
+             sendMessage(status);
              orderservice.updateOrderr(order);
 
 
@@ -103,14 +104,10 @@ public class DriverController extends AbstractController implements Initializabl
 
         if (ready.equals("Delivered")) {
             try {
-
                 customers=customerDao.getCustomerFromOrder(tableView.getSelectionModel().getSelectedItem().getOrderID());
-
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
             System.out.println("Calling customer ="+ customers+" Order is ready");
 
         }

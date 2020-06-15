@@ -56,6 +56,7 @@
                               <Image url="@../../../resources/pictures/key.png" />
                            </image>
                         </ImageView>
+                        <JFXButton layoutX="381.0" layoutY="26.0" onAction="#handleLoginInfo" text="Login Info" />
                         </children>
                     </Pane>
                </center>

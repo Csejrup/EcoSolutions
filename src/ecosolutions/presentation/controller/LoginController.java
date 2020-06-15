@@ -43,7 +43,7 @@ public class LoginController extends AbstractController implements Initializable
            /* Stage stage = (Stage) btnLogIn.getScene().getWindow();
             loadScreen(stage, "deliverypointmain.fxml");*/
            verifyLogIn("deliverypointmain.fxml");
-        } else if (employeeID.startsWith("L")) {
+        } else if (employeeID.startsWith("W")) {
               /*Stage stage = (Stage) btnLogIn.getScene().getWindow();
               loadScreen(stage, "LaundryWorkerView.fxml");*/
            verifyLogIn("LaundryWorkerView.fxml");
@@ -90,8 +90,18 @@ public class LoginController extends AbstractController implements Initializable
         JFXButton button = new JFXButton("Okay");
         AlertCreator.showAlertDialog(stackroot,bpaneroot, Collections.singletonList(button),"Log In Information For Testing","Hello, Tester please " +
                 "insert one of the following options " +
+                "into the username textfield and password field" +
+                " and press the login button:" +
+                "\nLOGIN: 'S2004' , PASSWORD : '3432' for DeliveryPoint\nLOGIN: 'D1001', PASSWORD: '1234' for Driver\n LOGIN: 'W3002', PASSWORD: '9593' for Laundry Worker\n LOGIN: 'M4001', " +
+                "PASSWORD: '4435'  for Manager");
+    }
+    @FXML
+    void handleLoginInfo(ActionEvent event) {
+        JFXButton button = new JFXButton("Okay");
+        AlertCreator.showAlertDialog(stackroot,bpaneroot, Collections.singletonList(button),"Log In Information For Testing","Hello, Tester please " +
+                "insert one of the following options " +
                 "into the username textfield" +
-                "and press the login button, no password needed:" +
+                "and press the login button" +
                 "\nLOGIN: 'S2004' , PASSWORD : '3432' for DeliveryPoint\nLOGIN: 'D1001', PASSWORD: '1234' for Driver\n LOGIN: 'W3002', PASSWORD: '9593' for Laundry Worker\n LOGIN: 'M4001', " +
                 "PASSWORD: '4435'  for Manager");
     }

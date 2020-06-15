@@ -46,7 +46,6 @@ public class CustomerDao implements Dao<Customer> {
         }
         return customers;
     }
-
     /**
      * Method for Inserting the customer details inside of the database
      * @param customer

@@ -16,7 +16,6 @@ import javafx.stage.*;
  * and updating the order for when it is ready to be delivered back to customer
  * the manager is able to see an overview of orders and employees.
  */
-
 public class eCoSolution extends Application {
 
     @Override

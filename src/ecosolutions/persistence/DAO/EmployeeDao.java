@@ -77,7 +77,6 @@ public class EmployeeDao implements Dao<Employee> {
             e.printStackTrace();
         }
     }
-
     /**
      * Method for deleting Employee from DataBase
      *

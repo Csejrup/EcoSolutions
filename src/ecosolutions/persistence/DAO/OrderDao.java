@@ -272,11 +272,14 @@ public class OrderDao implements Dao<Order>{
         var conn = DatabaseHandler.getInstance().getConnection();
         int custID = 0;
         try {
-            var stmt = conn.prepareStatement("SELECT fldCustomerID FROM tblOrder WHERE fldOrderID = '"+orderID+"';");
+            var stmt = conn.prepareStatement("SELECT fldCustomerID FROM tblOrder WHERE fldOrderID = '"+orderID+"'");
             ResultSet s = stmt.executeQuery();
             ResultSetMetaData rsmd = s.getMetaData();
+
             int Collumn = rsmd.getColumnCount();
-            custID = Integer.parseInt(s.getString(Collumn));
+            while(s.next()){
+                custID = Integer.parseInt(s.getString(Collumn));
+            }
             stmt.close();
         }catch (Exception e){
             e.printStackTrace();
@@ -290,13 +293,12 @@ public class OrderDao implements Dao<Order>{
     public static void issueStatus(int orderID){
         var conn = DatabaseHandler.getInstance().getConnection();
         try{
-            var stmt = conn.prepareStatement("INSERT INTO tblOrder(fldOrderStatusID) WHERE fldOrderID = '"+orderID+"' VALUE ('7')");
+            var stmt = conn.prepareStatement("UPDATE tblOrder SET fldOrderStatusID = 6 WHERE fldOrderID = '"+orderID +"'");
             stmt.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();
         }
     }
-
     /**
      * This Method is responsible for
      * Fetching DATA from the Database and Adding it to a PieChart
