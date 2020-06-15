@@ -55,7 +55,10 @@ public class CreateOrderController extends AbstractController implements Initial
             int customerID = Integer.parseInt(cusidTextField.getText());
 
             int accountID = LoginController.accountID;
-            int deliveryPointID = DeliveryPointService.getDpID(accountID);
+            //METHOD WORKS
+            //int deliveryPointID = DeliveryPointService.getDpID(accountID);
+            //FOR TESTING PURPOOSE
+            int deliveryPointID = 1;
             String date = sdp.format(now);
                 if (items.size() == 0||customerID == 0){
                     Alert alert = new Alert(Alert.AlertType.ERROR);
